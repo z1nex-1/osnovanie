@@ -1,0 +1,12 @@
+# Домены, разрешённые без отдельного согласования. Остальные человек утверждает в точке G2.
+domains = [
+  "megafon.ru",
+  "corp.megafon.ru",
+  "cnews.ru",
+  "comnews.ru",
+  "itunes.apple.com",
+  "apps.apple.com",
+  "rosstat.gov.ru",
+  "fedstat.ru",
+  "wikipedia.org",
+]

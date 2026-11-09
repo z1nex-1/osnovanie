@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kb-state": {
+      "command": "python3",
+      "args": ["bin/osnovanie", "mcp"]
+    }
+  }
+}

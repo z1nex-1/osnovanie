@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": ["Bash(bin/osnovanie:*)", "Bash(./bin/osnovanie:*)", "Bash(python3 bin/osnovanie:*)", "mcp__kb-state__*", "Read", "Grep", "Glob", "WebSearch"],
+    "deny": ["WebFetch", "Read(./.env)", "Read(./.env.*)", "Read(./projects/*/materials/raw/**)", "Read(./projects/*/materials/quarantine/**)"]
+  },
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\""}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\""}]}],
+    "PreToolUse": [{"matcher": "*", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\" strict"}]}],
+    "PostToolUse": [{"matcher": "*", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\""}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\""}]}],
+    "SubagentStop": [{"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\""}]}],
+    "PreCompact": [{"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/claude_hook.py\""}]}]
+  }
+}

@@ -1,0 +1,22 @@
+[judge]
+order = ["jev", "claude-haiku", "claude-sonnet"]
+min_confidence = 0.75
+entail_yes = 0.7
+injection_flag = 0.5
+
+[routing.mechanical]
+model = "haiku"
+tool = "cli"
+[routing.routine]
+model = "haiku"
+tool = "subagent"
+[routing.complex]
+model = "sonnet"
+tool = "subagent"
+[routing.strategic]
+model = "opus"
+tool = "main"
+
+[budget]
+default_usd = 6.0
+warn_share = 0.8

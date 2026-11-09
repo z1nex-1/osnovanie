@@ -1,0 +1,9 @@
+.env
+*.pem
+.DS_Store
+__pycache__/
+*.pyc
+projects/.active
+projects/*/state/index/
+.osn-tmp/
+evals/runs/

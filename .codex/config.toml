@@ -1,0 +1,10 @@
+# Настройки для запуска агента в Codex. Скопируйте в ~/.codex/config.toml или укажите через --config.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = false
+
+[mcp_servers.kb-state]
+command = "python3"
+args = ["bin/osnovanie", "mcp"]

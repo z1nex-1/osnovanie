@@ -1,0 +1,35 @@
+# Цены за миллион токенов, USD. Источник: platform.claude.com/docs/en/about-claude/pricing, проверено 2026-11-09.
+checked_at = "2026-11-09"
+usd_rub = 92.0  # допущение для пересчёта в рубли, задаётся командой
+web_search_usd = 0.01
+human_rub_per_hour = 1500.0  # допущение: стоимость часа руководителя продукта для учёта правок
+
+[models.claude-opus-5-5]
+input = 4.0
+output = 20.0
+cache_read = 0.20
+cache_write = 5.0
+
+[models.claude-sonnet-5-5]
+input = 2.0
+output = 10.0
+cache_read = 0.10
+cache_write = 2.5
+
+[models.claude-haiku-5-5]
+input = 0.10
+output = 0.50
+cache_read = 0.01
+cache_write = 0.125
+
+[models.claude-haiku-4-5]
+input = 1.0
+output = 5.0
+cache_read = 0.10
+cache_write = 1.25
+
+[models.jev-latest]
+input = 0.042
+output = 0.0
+cache_read = 0.0
+cache_write = 0.0
