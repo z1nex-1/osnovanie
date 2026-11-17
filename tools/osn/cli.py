@@ -495,6 +495,42 @@ def _skills_diff(root: Path) -> list[str]:
     return problems
 
 
+RULE_FILES = ("AGENTS.md", "CLAUDE.md", "instructions/*.md", ".claude/settings.json", ".claude/agents/*.md", ".agents/skills/*/SKILL.md", ".cursor/rules/*", ".codex/*", "tools/hooks/*.py", "tools/osn/guard.py", "tools/osn/detect.py", "tools/osn/workflow.py", "config/*.toml")
+
+
+def _rules_hashes(root: Path) -> dict[str, str]:
+    import hashlib
+
+    found = {}
+    for pattern in RULE_FILES:
+        for path in sorted(root.glob(pattern)):
+            if path.is_file():
+                found[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return found
+
+
+def _rules_drift(root: Path) -> list[str] | None:
+    lock = read_json(root / "config/rules.lock.json", None)
+    if lock is None:
+        return None
+    current = _rules_hashes(root)
+    changed = [p for p in current if lock.get(p) != current[p]]
+    return changed + [f"удалён {p}" for p in lock if p not in current]
+
+
+def cmd_rules(args):
+    root = repo_root()
+    if args.action == "lock":
+        workflow.require_tty("Фиксацию правил")
+        hashes = _rules_hashes(root)
+        atomic_write(root / "config/rules.lock.json", json.dumps(hashes, ensure_ascii=False, indent=1) + "\n")
+        emit({"files": len(hashes)}, f"Правила зафиксированы: {len(hashes)} файлов.")
+        return 0
+    drift = _rules_drift(root)
+    emit({"drift": drift}, "Нет config/rules.lock.json" if drift is None else ("Правила совпадают с зафиксированными." if not drift else "Изменены после фиксации:\n" + "\n".join(drift)))
+    return 0 if drift == [] else 1
+
+
 def cmd_doctor(args):
     root = repo_root()
     rows: list[tuple[str, bool, str, bool]] = [("Python 3.11+", sys.version_info >= (3, 11), sys.version.split()[0], True)]
@@ -514,6 +550,8 @@ def cmd_doctor(args):
     rows.append(("навыки .claude = .agents", not drift, ", ".join(drift[:4]) or "совпадают", True))
     settings = read_json(root / ".claude/settings.json", {})
     rows.append(("хуки Claude Code", "PreToolUse" in settings.get("hooks", {}), ".claude/settings.json", True))
+    drift = _rules_drift(root)
+    rows.append(("правила совпадают с зафиксированными", drift == [], "нет config/rules.lock.json: bin/osnovanie rules lock" if drift is None else (", ".join(drift[:4]) or "хеши сходятся"), True))
     rows.append(("MCP kb-state", "kb-state" in read_json(root / ".mcp.json", {}).get("mcpServers", {}), ".mcp.json", True))
     project = active_project(args.project, required=False)
     if project:
@@ -551,6 +589,7 @@ def parser() -> argparse.ArgumentParser:
         return sub.add_subparsers(dest="action", required=True)
 
     add("doctor", cmd_doctor, "проверка окружения").add_argument("--repair", action="store_true")
+    add("rules", cmd_rules, "хеши правил: check или lock (только человек в терминале)").add_argument("action", choices=["check", "lock"], nargs="?", default="check")
     p = add("new", cmd_new, "создать проект")
     p.add_argument("slug")
     p.add_argument("--question", required=True)
