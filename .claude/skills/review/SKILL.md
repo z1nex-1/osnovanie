@@ -12,4 +12,6 @@ description: Пересмотр выводов при новых данных. �
 5. После `R да` перепиши затронутые абзацы и замени ссылки. Если сменился лидер, этап вернётся к стратегиям и потребуется новая точка G4.
 6. `bin/osnovanie review finish`, `bin/osnovanie map`. Покажи `bin/osnovanie review diff`.
 
+Когда наступил срок проверки обязательства: `bin/osnovanie commit close k001 --outcome "что вышло" --hit yes|no`. `commit track` показывает, сколько ожиданий команды сбылось.
+
 Что решать сейчас: `bin/osnovanie decide next`.

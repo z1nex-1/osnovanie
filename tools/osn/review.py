@@ -170,17 +170,36 @@ def add_commitment(project: Project, data: dict) -> dict:
     state = workflow.load(project)
     if state["gates"].get("G4", {}).get("status") != "approved":
         raise PolicyError("Обязательства записываются после решения человека в точке G4.")
-    for field in ("what", "owner", "due", "metric", "threshold", "review_if"):
+    for field in ("what", "owner", "due", "metric", "threshold", "expected", "review_if"):
         if not data.get(field):
             raise OsnError(f"У обязательства нет поля {field}.")
     claims = project.current("claims")
     bad = [c for c in data.get("claims", []) if c not in claims]
     if bad:
         raise OsnError(f"Нет утверждений: {', '.join(bad)}.")
-    record = {"id": project.next_id("commitments", "k"), "ts": now(), "status": "active", "observations": [], **data}
+    record = {"id": project.next_id("commitments", "k"), "ts": now(), "status": "active", "observations": [], "check_at": data.get("check_at") or data["due"], **data}
     project.append("commitments", record)
     project.event("commitment", id=record["id"])
     return record
+
+
+def close_commitment(project: Project, commitment_id: str, outcome: str, hit: bool) -> dict:
+    """Журнал решения: что ожидали при G4 и что вышло. Без этого команда не учится на своих ставках."""
+    current = project.current("commitments")
+    if commitment_id not in current:
+        raise OsnError(f"Обязательство {commitment_id} не найдено.")
+    if not outcome.strip():
+        raise OsnError("Опишите фактический итог.")
+    record = {**current[commitment_id], "status": "closed", "outcome": outcome.strip(), "hit": hit, "closed_at": now(), "ts": now()}
+    project.append("commitments", record)
+    project.event("commitment_closed", id=commitment_id, hit=hit)
+    return record
+
+
+def track_record(project: Project) -> dict:
+    closed = [c for c in project.current("commitments").values() if c["status"] == "closed"]
+    hits = sum(1 for c in closed if c.get("hit"))
+    return {"closed": len(closed), "hit": hits, "rows": [{"id": c["id"], "expected": c.get("expected"), "outcome": c.get("outcome"), "hit": c.get("hit")} for c in closed]}
 
 
 def add_metric(project: Project, commitment_id: str, value: float, note: str) -> dict:
@@ -211,10 +230,16 @@ def what_next(project: Project) -> list[dict]:
     if pending:
         items.append({"priority": 1, "kind": "bases", "text": f"Заменённые утверждения ещё не прошли пересмотр: {', '.join(sorted(pending))}."})
     today = date.today()
+    soon = sorted(c["id"] for c in claims.values() if c["status"] == "verified" and c.get("expires") and 0 <= (date.fromisoformat(c["expires"]) - today).days <= 14)
+    expired = sorted(c["id"] for c in claims.values() if c["status"] == "verified" and claims_mod.expired(c, today.isoformat()))
+    if expired:
+        items.append({"priority": 1, "kind": "expired", "text": f"Истёк срок годности фактов: {', '.join(expired)}. Найдите свежий источник и замените: claim supersede."})
+    if soon:
+        items.append({"priority": 3, "kind": "expires", "text": f"Скоро истечёт срок фактов: {', '.join(soon)}."})
     for item in project.current("commitments").values():
         if item["status"] != "active":
             continue
-        days = (date.fromisoformat(item["due"]) - today).days
+        days = (date.fromisoformat(item.get("check_at") or item["due"]) - today).days
         if days < 0:
             items.append({"priority": 1, "kind": "overdue", "text": f"{item['id']} просрочено на {-days} дн.: {item['what']} ({item['owner']})"})
         elif days <= 14:

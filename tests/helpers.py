@@ -80,7 +80,7 @@ def full_path(box: Sandbox, slug="demo"):
     box.ok("advance")
     specs = [("O1", "keep", "Оставить тариф прежним и ничего не менять"), ("O2", "change", "Поднять цену и добавить новые модели"), ("O3", "close", "Свернуть направление полностью и перевести людей")]
     for oid, kind, thesis in specs:
-        box.ok("options", "add", "--json", json.dumps({"id": oid, "title": oid, "kind": kind, "thesis": thesis, "basis": [claims[0]], "loses_if": "если", "what_changes": "что"}))
+        box.ok("options", "add", "--json", json.dumps({"id": oid, "title": oid, "kind": kind, "thesis": thesis, "basis": [claims[0]], "loses_if": "если", "what_changes": "что", "portfolio": "не задевает другие продукты"}))
         box.ok("objection", "add", oid, "--by", "skeptic", "--text", "сильное возражение")
         box.ok("objection", "add", oid, "--by", "closure-advocate" if oid == "O2" else "pre-mortem", "--text", "второе возражение")
     model = {

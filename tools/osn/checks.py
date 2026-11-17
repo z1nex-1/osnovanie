@@ -111,6 +111,11 @@ def _options(project: Project) -> list[str]:
         missing = [c for c in option.get("basis", []) if c not in claims]
         if missing:
             problems.append(f"{option['id']}: нет утверждений {', '.join(missing)}")
+        if option.get("kind") != "keep" and not option.get("portfolio"):
+            problems.append(f"{option['id']}: не указано влияние на портфель (каннибализация, общие ресурсы, связанные продукты)")
+        vague = [c for c in option.get("basis", []) if c in claims and claims[c]["type"] in {"hypothesis", "forecast", "assumption"} and claims[c].get("confidence") is None]
+        if vague:
+            problems.append(f"{option['id']}: у гипотез в основании нет уверенности: {', '.join(vague)}")
     if not any(o.get("by") == "closure-advocate" for option in options.values() for o in option.get("objections", [])):
         problems.append("нет аргументов адвоката закрытия")
     titles = [set(re.findall(r"\w{4,}", (o.get("thesis") or "").lower())) for o in options.values()]
@@ -283,6 +288,10 @@ def full_report(project: Project) -> list[tuple[str, bool, str]]:
     report.append(("синтетика не стала фактом", not synthetic, ", ".join(synthetic)))
     weasel = language_problems(project)
     report.append(("без пустых усилителей", not weasel, "; ".join(weasel[:6])))
+    from . import claims as claims_mod
+
+    expired = sorted(c["id"] for c in claims.values() if c["status"] == "verified" and claims_mod.expired(c))
+    report.append(("истёкшие факты проверены заново", not expired, ", ".join(expired)))
     old = stale_sources(project)
     report.append((f"факты не старше {STALE_MONTHS} мес. или старость названа", True, ("предупреждение: " + ", ".join(old)) if old else ""))
     return report

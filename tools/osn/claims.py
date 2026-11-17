@@ -15,12 +15,18 @@ LABEL = {
 }
 
 
+def expired(claim: dict, today: str | None = None) -> bool:
+    # Цена конкурента или доля рынка верны на дату; после expires факт снова требует проверки.
+    until = claim.get("expires")
+    return bool(until) and until < (today or now()[:10])
+
+
 def effective_type(claim: dict) -> str:
     if claim["status"] == "retracted":
         return "retracted"
     if claim.get("superseded_by"):
         return "stale"
-    if claim["status"] == "stale":
+    if claim["status"] == "stale" or expired(claim):
         return "stale"
     if claim["type"] in {"fact", "opinion", "calculation"} and claim["status"] != "verified":
         return "unverified"
@@ -46,6 +52,12 @@ def add(project: Project, data: dict, author: str = "agent") -> dict:
         raise PolicyError(f"Тип {kind} требует источник и дословную цитату. Иначе запишите как hypothesis.")
     if quote:
         _check_text(quote)
+    confidence = data.get("confidence")
+    if confidence is not None and not (isinstance(confidence, (int, float)) and 0 <= confidence <= 1):
+        raise OsnError("confidence — число от 0 до 1: насколько вывод выдержит проверку.")
+    expires = data.get("expires")
+    if expires and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(expires)):
+        raise OsnError("expires — дата ГГГГ-ММ-ДД, после которой факт надо проверить заново.")
     if kind == "calculation" and not data.get("calc_id"):
         raise PolicyError("Расчёт записывается только через osnovanie calc или model, у него должен быть calc_id.")
     with project.lock():
@@ -66,7 +78,7 @@ def add(project: Project, data: dict, author: str = "agent") -> dict:
             "depends_on": data.get("depends_on", []), "confidence": data.get("confidence"),
             "supersedes": data.get("supersedes"), "superseded_by": None, "verified_by": None,
             "calc_id": data.get("calc_id"), "author": author, "stage": project.meta().get("stage_hint"), "created_at": now(),
-            "topic": data.get("topic"),
+            "topic": data.get("topic"), "expires": expires,
         }
         if kind in {"hypothesis", "forecast", "assumption", "synthetic"}:
             record["status"] = "open"

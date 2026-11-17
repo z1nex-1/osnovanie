@@ -371,6 +371,12 @@ def cmd_commit(args):
         emit(record, f"Обязательство {record['id']} записано.")
     elif args.action == "metric":
         emit(review.add_metric(project, args.id, args.value, args.note or ""), "Значение записано.")
+    elif args.action == "close":
+        record = review.close_commitment(project, args.id, args.outcome, args.hit == "yes")
+        emit(record, f"{record['id']} закрыто. Ожидали: {record.get('expected')}. Вышло: {record['outcome']}.")
+    elif args.action == "track":
+        result = review.track_record(project)
+        emit(result, f"Закрыто {result['closed']}, ожидание сбылось в {result['hit']}." + "".join(f"\n{r['id']}: ждали «{r['expected']}», вышло «{r['outcome']}»" for r in result["rows"]))
     else:
         rows = list(project.current("commitments").values())
         emit(rows, "\n".join(f"{c['id']} {c['what']} — {c['owner']}, до {c['due']}, {c['metric']} (порог {c['threshold']})" for c in rows) or "Обязательств нет.")
@@ -706,6 +712,11 @@ def parser() -> argparse.ArgumentParser:
     s.add_argument("id")
     s.add_argument("value", type=float)
     s.add_argument("--note")
+    s = a.add_parser("close", help="записать фактический итог")
+    s.add_argument("id")
+    s.add_argument("--outcome", required=True)
+    s.add_argument("--hit", choices=("yes", "no"), required=True)
+    a.add_parser("track", help="сколько ожиданий сбылось")
 
     p = add("review", cmd_review, "пересмотр при новых данных")
     a = actions(p)

@@ -21,7 +21,7 @@ class FullPath(unittest.TestCase):
         box.ok("advance")
         self.assertEqual(box.js("status")["stage"], "decided")
         self.assertTrue((box.tmp / "projects/demo/outputs/versions/v1/product.md").exists())
-        box.ok("commit", "add", "--json", json.dumps({"what": "проверить", "owner": "Анна", "due": "2030-01-01", "metric": "ARPU", "threshold": ">500", "review_if": "падение", "claims": [claims[0]]}))
+        box.ok("commit", "add", "--json", json.dumps({"what": "проверить", "owner": "Анна", "due": "2030-01-01", "metric": "ARPU", "threshold": ">500", "expected": "ARPU вырастет до 550", "review_if": "падение", "claims": [claims[0]]}))
 
         new_source = box.source("Подписка стоит 90 рублей в месяц по новому тарифу.", "new.txt", "scenario")
         box.ok("claim", "supersede", claims[0], "--json", json.dumps({"text": "Цена 90 рублей в месяц", "type": "fact", "source_id": new_source["id"], "quote": "Подписка стоит 90 рублей в месяц", "value": 90, "unit": "руб/чел"}))

@@ -1,0 +1,58 @@
+import json
+import unittest
+
+from helpers import Sandbox, full_path, write_strategy
+
+
+class Fields(unittest.TestCase):
+    def setUp(self):
+        self.box = Sandbox()
+        self.addCleanup(self.box.close)
+
+    def test_expired_fact_becomes_stale_and_blocks_report(self):
+        box = self.box
+        box.ok("new", "demo", "--question", "q")
+        source = box.source("Тариф конкурента стоит 299 рублей в месяц.", "c.txt", "primary")
+        fact = box.js("claim", "add", "--json", json.dumps({"text": "Конкурент берёт 299 рублей", "type": "fact", "source_id": source["id"], "quote": "Тариф конкурента стоит 299 рублей в месяц", "expires": "2020-01-01"}))
+        box.ok("verify")
+        listing = {c["id"]: c for c in box.js("claim", "list")}
+        self.assertEqual(listing[fact["id"]]["status"], "verified")
+        self.assertIn("Истёк срок годности", box.ok("decide", "next"))
+        bad = box.osn("claim", "add", "--json", json.dumps({"text": "x", "type": "hypothesis", "expires": "завтра"}))
+        self.assertEqual(bad.returncode, 1)
+
+    def test_confidence_must_be_probability(self):
+        box = self.box
+        box.ok("new", "demo", "--question", "q")
+        bad = box.osn("claim", "add", "--json", json.dumps({"text": "Спрос вырастет", "type": "forecast", "confidence": 80}))
+        self.assertNotEqual(bad.returncode, 0)
+        self.assertIn("от 0 до 1", bad.stderr)
+        box.ok("claim", "add", "--json", json.dumps({"text": "Спрос вырастет", "type": "forecast", "confidence": 0.4}))
+
+    def test_option_needs_portfolio_and_confident_basis(self):
+        box = self.box
+        claims = full_path(box)
+        box.ok("options", "add", "--json", json.dumps({"id": "O4", "title": "O4", "kind": "change", "thesis": "Продавать через партнёров малому бизнесу в регионах", "basis": [claims[3]], "loses_if": "если", "what_changes": "что"}))
+        report = box.osn("check").stdout
+        self.assertIn("O4: не указано влияние на портфель", report)
+        self.assertIn(f"O4: у гипотез в основании нет уверенности: {claims[3]}", report)
+
+    def test_commitment_records_expected_and_outcome(self):
+        box = self.box
+        claims = full_path(box)
+        write_strategy(box, claims)
+        box.ok("gate", "open", "G4")
+        box.say("G4 да O1 ответственный Анна")
+        box.ok("advance")
+        base = {"what": "проверить", "owner": "Анна", "due": "2030-01-01", "metric": "ARPU", "threshold": ">500", "review_if": "падение", "claims": [claims[0]]}
+        self.assertNotEqual(box.osn("commit", "add", "--json", json.dumps(base)).returncode, 0)
+        record = box.js("commit", "add", "--json", json.dumps({**base, "expected": "ARPU 550 через квартал", "check_at": "2029-06-01"}))
+        self.assertEqual(record["check_at"], "2029-06-01")
+        box.ok("commit", "close", record["id"], "--outcome", "ARPU 520", "--hit", "no")
+        track = box.js("commit", "track")
+        self.assertEqual((track["closed"], track["hit"]), (1, 0))
+        self.assertEqual(track["rows"][0]["expected"], "ARPU 550 через квартал")
+
+
+if __name__ == "__main__":
+    unittest.main()

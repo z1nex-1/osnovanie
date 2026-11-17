@@ -36,7 +36,7 @@ const D=JSON.parse(document.getElementById('data').textContent),P=document.getEl
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function card(id){const c=D.claims[id];if(!c)return'';const s=D.sources[c.source_id];
 const link=s?(/^https?:/.test(s.origin)?`<a href="${esc(s.origin)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a>`:esc(s.title)):'нет источника';
-return`<div class=card><b>${id}</b> · ${esc(c.label)}<p>${esc(c.text)}</p>${c.quote?`<blockquote>${esc(c.quote)}</blockquote>`:''}<div class=k>Источник: ${link}${s?' · получен '+esc(s.accessed_at.slice(0,10))+' · '+esc(s.kind):''}</div><div class=k>Проверено: ${esc(c.verified_by||'—')}</div>${c.depends_on.length?`<div class=k>Зависит от: ${c.depends_on.map(esc).join(', ')}</div>`:''}</div>`}
+return`<div class=card><b>${id}</b> · ${esc(c.label)}<p>${esc(c.text)}</p>${c.quote?`<blockquote>${esc(c.quote)}</blockquote>`:''}<div class=k>Источник: ${link}${s?' · получен '+esc(s.accessed_at.slice(0,10))+' · '+esc(s.kind):''}</div><div class=k>Проверено: ${esc(c.verified_by||'—')}${c.confidence!=null?' · уверенность '+Math.round(c.confidence*100)+'%':''}${c.expires?' · действует до '+esc(c.expires):''}</div>${c.depends_on.length?`<div class=k>Зависит от: ${c.depends_on.map(esc).join(', ')}</div>`:''}</div>`}
 function show(ids){P.innerHTML=ids.map(card).join('')||'<p>Нет данных.</p>'}
 document.querySelectorAll('[data-c]').forEach(e=>{const go=()=>show(e.dataset.c.split(','));e.addEventListener('click',go);e.addEventListener('keydown',k=>{if(k.key==='Enter')go()})});
 const tabs=[...document.querySelectorAll('nav button')];tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('.doc').forEach(d=>d.classList.toggle('on',d.id===b.dataset.t))}));
@@ -129,7 +129,7 @@ def build(project: Project) -> Path:
         rows = "<h2>Расчёт вариантов</h2><table><tr><th>Вариант</th><th>База</th><th>P10</th><th>P90</th><th>Лидирует</th></tr>" + "".join(f"<tr><td>{o}</td><td>{r['base']:,.0f}</td><td>{r['p10']:,.0f}</td><td>{r['p90']:,.0f}</td><td>{r['p_best'] * 100:.0f}%</td></tr>" for o, r in run["results"].items()) + f"</table><p>Единица: {html.escape(run['output_unit'])}. Доля допущений в величинах: {run['assumption_share'] * 100:.0f}%.</p>"
     docs.append(f'<section class="doc" id="audit"><h2>Точки человека</h2><table><tr><th>Точка</th><th>Смысл</th><th>Статус</th><th>Канал</th><th>Когда</th><th>Комментарий</th></tr>{gates}</table>{rows}</section>')
     payload = {
-        "claims": {cid: {"label": claims_mod.LABEL[claims_mod.effective_type(c)], "text": c["text"], "quote": c.get("quote"), "source_id": c.get("source_id"), "verified_by": c.get("verified_by"), "depends_on": c.get("depends_on", [])} for cid, c in claims.items()},
+        "claims": {cid: {"label": claims_mod.LABEL[claims_mod.effective_type(c)], "text": c["text"], "quote": c.get("quote"), "source_id": c.get("source_id"), "verified_by": c.get("verified_by"), "depends_on": c.get("depends_on", []), "confidence": c.get("confidence"), "expires": c.get("expires")} for cid, c in claims.items()},
         "sources": {sid: {"title": s["title"], "origin": s["origin"], "accessed_at": s["accessed_at"], "kind": s["kind"]} for sid, s in sources.items()},
     }
     blob = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
