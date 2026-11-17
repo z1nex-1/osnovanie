@@ -7,3 +7,5 @@ projects/.active
 projects/*/state/index/
 .osn-tmp/
 evals/runs/
+.pytest_cache/
+.ruff_cache/
