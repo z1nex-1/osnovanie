@@ -82,7 +82,7 @@ def full_path(box: Sandbox, slug="demo"):
     for oid, kind, thesis in specs:
         box.ok("options", "add", "--json", json.dumps({"id": oid, "title": oid, "kind": kind, "thesis": thesis, "basis": [claims[0]], "loses_if": "если", "what_changes": "что"}))
         box.ok("objection", "add", oid, "--by", "skeptic", "--text", "сильное возражение")
-    box.ok("objection", "add", "O2", "--by", "closure-advocate", "--text", "закрыть выгоднее")
+        box.ok("objection", "add", oid, "--by", "closure-advocate" if oid == "O2" else "pre-mortem", "--text", "второе возражение")
     model = {
         "params": {"price": {"label": "цена", "unit": "руб/чел", "low": 400, "base": 590, "high": 900, "claim": claims[0]}, "users": {"label": "люди", "unit": "чел", "low": 80, "base": 100, "high": 130}},
         "constants": {"cost": {"value": 30000, "unit": "руб"}},
@@ -100,6 +100,7 @@ def full_path(box: Sandbox, slug="demo"):
 def write_strategy(box: Sandbox, claims, slug="demo"):
     outputs = box.tmp / "projects" / slug / "outputs"
     ref = f"[{claims[0]}]"
-    (outputs / "product.md").write_text(f"# Продукт\n\nВариант: O1\n\n## Аудитория\n\nТекст {ref}.\n\n## Альтернативы\n\nТекст.\n\n## Направление\n\nТекст.\n\n## Отказы\n\nТекст.\n\n## Экономика\n\nЦена 590 рублей {ref}.\n\n## Возможности\n\n| CAP1 | доступ | есть | {ref} |\n", "utf-8")
-    (outputs / "communication.md").write_text(f"# Коммуникация\n\nВариант: O1\n\n## Аудитория\n\nТекст.\n\n## Барьер\n\nТекст.\n\n## Ключевое сообщение\n\nТекст.\n\n## Подтверждение\n\nТекст {ref}.\n\n## Каналы\n\nТекст.\n\n## Обещания\n\n| P1 | доступ | CAP1 | сейчас | {ref} |\n", "utf-8")
-    (outputs / "validation.md").write_text("# Проверка\n\nВариант: O1\n\n## Ожидаемое изменение\n\nТекст.\n\n## С чем сравниваем\n\nТекст.\n\n## Срок\n\nТекст.\n\n## Нежелательные последствия\n\nТекст.\n", "utf-8")
+    (outputs / "product.md").write_text(f"# Продукт\n\nВариант: O1\n\n## Аудитория\n\nТекст {ref}.\n\n## Альтернативы\n\nТекст.\n\n## Направление\n\nДиагноз: текст.\n\n## Отказы\n\n- не делаем А, теряем Б\n- не делаем В, теряем Г\n\n## Экономика\n\nЦена 590 рублей {ref}.\n\n## Возможности\n\n| CAP1 | доступ | есть | {ref} |\n", "utf-8")
+    (outputs / "communication.md").write_text(f"# Коммуникация\n\nВариант: O1\n\n## Аудитория\n\nТекст.\n\n## Барьер\n\nЦелевое поведение: подключить тариф. Главный барьер: тревога из-за цены ошибки и привычка к старому способу.\n\n## Ключевое сообщение\n\nТекст.\n\n## Подтверждение\n\nТекст {ref}.\n\n## Каналы\n\nТекст.\n\n## Обещания\n\n| P1 | доступ | CAP1 | сейчас | {ref} |\n", "utf-8")
+    (outputs / "validation.md").write_text("# Проверка\n\nВариант: O1\n\n## Ожидаемое изменение\n\nТекст.\n\n## С чем сравниваем\n\nКонтрольная группа.\n\n## Срок\n\n28 дней.\n\n## Нежелательные последствия\n\n- жалобы\n- отток\n", "utf-8")
+    (outputs / "monday.md").write_text(f"# Понедельник\n\nРешение O1 {ref}.\n", "utf-8")

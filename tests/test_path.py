@@ -93,3 +93,50 @@ class FullPath(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class StrategyChecks(unittest.TestCase):
+    """Каждая проверка качества стратегии ловит свой дефект."""
+
+    def setUp(self):
+        self.box = Sandbox()
+        self.addCleanup(self.box.close)
+        self.claims = full_path(self.box)
+        write_strategy(self.box, self.claims)
+        self.outputs = self.box.tmp / "projects" / "demo" / "outputs"
+
+    def spoil(self, name, old, new):
+        path = self.outputs / name
+        text = path.read_text("utf-8")
+        self.assertIn(old, text)
+        path.write_text(text.replace(old, new), "utf-8")
+        return self.box.osn("gate", "open", "G4")
+
+    def test_defects(self):
+        cases = [
+            ("product.md", "- не делаем В, теряем Г\n", "", "меньше двух пунктов"),
+            ("product.md", "Диагноз: текст.", "Текст.", "нет диагноза"),
+            ("communication.md", "Главный барьер: тревога из-за цены ошибки и привычка к старому способу.", "", "барьер не раскрыт"),
+            ("validation.md", "28 дней.", "Скоро.", "срок наблюдения без числа"),
+            ("validation.md", "- отток\n", "", "меньше двух антиметрик"),
+            ("validation.md", "Контрольная группа.", "Ни с чем.", "не указано, с чем сравниваем"),
+            ("communication.md", "| P1 | доступ | CAP1 | сейчас |", "| P1 | доступ | CAP9 | сейчас |", "не связано ни с одной возможностью"),
+            ("product.md", "Цена 590 рублей", "Цена 590 рублей без ссылки.\n\nЕщё 700 рублей", "число без ссылки"),
+        ]
+        for name, old, new, expected in cases:
+            with self.subTest(expected):
+                backup = (self.outputs / name).read_text("utf-8")
+                result = self.spoil(name, old, new)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(expected, result.stdout + result.stderr)
+                (self.outputs / name).write_text(backup, "utf-8")
+
+    def test_monday_required(self):
+        (self.outputs / "monday.md").unlink()
+        result = self.box.osn("gate", "open", "G4")
+        self.assertIn("monday.md", result.stdout + result.stderr)
+
+    def test_weasel_words_reported(self):
+        path = self.outputs / "product.md"
+        path.write_text(path.read_text("utf-8") + "\nЭто значительный рост.\n", "utf-8")
+        self.assertIn("«значительный» без числа", self.box.osn("check").stdout)

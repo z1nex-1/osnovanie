@@ -12,11 +12,28 @@ SECTIONS = {
     "communication.md": ["Аудитория", "Барьер", "Ключевое сообщение", "Подтверждение", "Каналы", "Обещания"],
     "validation.md": ["Ожидаемое изменение", "С чем сравниваем", "Срок", "Нежелательные последствия"],
 }
+WEASEL = re.compile(r"\b(значительн\w*|существенн\w*|растущ\w*|огромн\w*|революц\w*|уникальн\w*)\b", re.I)
+STALE_MONTHS = 18
 BRIEF_FIELDS = {"question": "вопрос", "goal": "цель", "recipient": "получатель", "constraints": "ограничения", "data": "доступные данные"}
 
 
 def paragraphs(text: str) -> list[str]:
     return [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
+
+
+def section(text: str, title: str) -> str:
+    """Текст раздела Markdown от заголовка с title до следующего заголовка того же или более высокого уровня."""
+    match = re.search(rf"^(#+)\s[^\n]*{title}[^\n]*$", text, re.I | re.M)
+    if not match:
+        return ""
+    level = len(match.group(1))
+    rest = text[match.end():]
+    end = re.search(rf"^#{{1,{level}}}\s", rest, re.M)
+    return rest[: end.start()] if end else rest
+
+
+def items(block: str) -> list[str]:
+    return [line for line in block.splitlines() if re.match(r"\s*(?:[-*]|\d+[.)])\s+\S", line) or re.match(r"\|\s*[^-|\s]", line)]
 
 
 def _intake(project: Project) -> list[str]:
@@ -61,6 +78,10 @@ def _research(project: Project) -> list[str]:
         for title in ("Что известно", "Чего мы не знаем"):
             if title.lower() not in text.lower():
                 problems.append(f"в situation.md нет раздела «{title}»")
+        gaps = [q for q in project.current("questions").values() if q["status"] == "gap"]
+        unknown = items(section(text, "Чего мы не знаем"))
+        if gaps and len(unknown) < len(gaps):
+            problems.append(f"в «Чего мы не знаем» {len(unknown)} пунктов, а пробелов {len(gaps)}: каждый пробел назван с причиной")
     return problems
 
 
@@ -81,6 +102,10 @@ def _options(project: Project) -> list[str]:
             problems.append(f"{option['id']}: нет возражения скептика")
         if not option.get("loses_if"):
             problems.append(f"{option['id']}: не указано, при каких условиях вариант проигрывает")
+        if len(objections) < 2:
+            problems.append(f"{option['id']}: меньше двух возражений")
+        if option.get("kind") != "keep" and not option.get("basis"):
+            problems.append(f"{option['id']}: вариант не опирается ни на одно утверждение")
         if not option.get("what_changes"):
             problems.append(f"{option['id']}: не указано, что изменит решение")
         missing = [c for c in option.get("basis", []) if c not in claims]
@@ -163,8 +188,66 @@ def promise_problems(project: Project) -> list[str]:
     return problems
 
 
+def structure_problems(project: Project) -> list[str]:
+    problems = []
+    out = project.outputs
+    if (out / "product.md").exists():
+        text = (out / "product.md").read_text("utf-8")
+        if len(items(section(text, "Отказы"))) < 2:
+            problems.append("product.md: в «Осознанных отказах» меньше двух пунктов")
+        direction = section(text, "Направление")
+        if direction and not re.search(r"диагноз", direction, re.I):
+            problems.append("product.md: в «Направлении» нет диагноза (methods/rumelt.md)")
+    if (out / "communication.md").exists():
+        text = (out / "communication.md").read_text("utf-8")
+        if len(section(text, "Барьер").strip()) < 80:
+            problems.append("communication.md: барьер не раскрыт (methods/behavior-barrier.md)")
+    if (out / "validation.md").exists():
+        text = (out / "validation.md").read_text("utf-8")
+        if not re.search(r"\d+\s*(дн|недел|месяц|day|week)", section(text, "Срок"), re.I):
+            problems.append("validation.md: срок наблюдения без числа и единицы")
+        if len(items(section(text, "Нежелательные последствия"))) < 2:
+            problems.append("validation.md: меньше двух антиметрик в «Нежелательных последствиях»")
+        if not re.search(r"контрол|до запуска|период до|разност|A/B|рандом", section(text, "С чем сравниваем"), re.I):
+            problems.append("validation.md: не указано, с чем сравниваем (контроль, период до, квазиэксперимент)")
+    if not (out / "monday.md").exists():
+        problems.append("нет outputs/monday.md — страницы «что делать в понедельник»")
+    return problems
+
+
+def language_problems(project: Project) -> list[str]:
+    found = []
+    for name in ("situation.md", "product.md", "communication.md", "validation.md", "monday.md"):
+        path = project.outputs / name
+        if not path.exists():
+            continue
+        for paragraph in paragraphs(path.read_text("utf-8")):
+            word = WEASEL.search(paragraph)
+            if word and not NUM.search(paragraph):
+                found.append(f"{name}: «{word.group(0)}» без числа")
+    return found
+
+
+def stale_sources(project: Project) -> list[str]:
+    import datetime as dt
+
+    today = dt.date.today()
+    sources = project.current("sources")
+    used = {c.get("source_id") for c in project.current("claims").values() if c["type"] == "fact" and c["status"] == "verified"}
+    old = []
+    for sid in sorted(s for s in used if s in sources):
+        published = (sources[sid].get("published_at") or "")[:10]
+        try:
+            date = dt.date.fromisoformat({4: published + "-01-01", 7: published + "-01"}.get(len(published), published))
+        except ValueError:
+            continue
+        if (today - date).days > STALE_MONTHS * 30:
+            old.append(f"{sid} ({published})")
+    return old
+
+
 def _strategy(project: Project) -> list[str]:
-    problems = doc_problems(project) + promise_problems(project)
+    problems = doc_problems(project) + promise_problems(project) + structure_problems(project) + language_problems(project)
     shortlist = set(project.meta().get("shortlist", []))
     for name in ("product.md", "communication.md"):
         path = project.outputs / name
@@ -198,6 +281,10 @@ def full_report(project: Project) -> list[tuple[str, bool, str]]:
     report.append(("факт только после проверки", not bad, ", ".join(bad)))
     synthetic = [c["id"] for c in claims.values() if c["type"] == "synthetic" and c["status"] == "verified"]
     report.append(("синтетика не стала фактом", not synthetic, ", ".join(synthetic)))
+    weasel = language_problems(project)
+    report.append(("без пустых усилителей", not weasel, "; ".join(weasel[:6])))
+    old = stale_sources(project)
+    report.append((f"факты не старше {STALE_MONTHS} мес. или старость названа", True, ("предупреждение: " + ", ".join(old)) if old else ""))
     return report
 
 
