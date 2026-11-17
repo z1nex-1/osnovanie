@@ -61,7 +61,12 @@ def _call_claude(model: str, kind: str, state: str, instructions: str, options) 
         "Поле confidence от 0 до 1. Если не уверен, ставь низкое значение.\n"
         f"<STATE>\n{state[:20000]}\n</STATE>"
     )
-    command = ["claude", "-p", "--bare", "--no-session-persistence", "--model", model, "--output-format", "json", "--max-budget-usd", "0.2", "--json-schema", json.dumps(SCHEMA)]
+    command = ["claude", "-p", "--no-session-persistence", "--model", model, "--output-format", "json", "--max-budget-usd", "0.2", "--json-schema", json.dumps(SCHEMA)]
+    # --bare не читает подписку, только ANTHROPIC_API_KEY; без ключа изолируем вызов флагами
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        command.insert(2, "--bare")
+    else:
+        command += ["--setting-sources", "project", "--strict-mcp-config", "--tools", "", "--disable-slash-commands"]
     with tempfile.TemporaryDirectory() as tmp:
         done = subprocess.run(command, input=prompt, capture_output=True, text=True, timeout=180, cwd=tmp)
     if done.returncode:
