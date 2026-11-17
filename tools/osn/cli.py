@@ -588,6 +588,19 @@ def cmd_facts(args):
     return 1 if problems else 0
 
 
+def cmd_replay(args):
+    from . import replay
+
+    root = repo_root()
+    project = active_project(args.project, required=False)
+    sessions = [Path(p).expanduser() for p in args.session] if args.session else replay.find_transcripts(root, project.slug if project else None)
+    out = Path(args.out) if args.out else (project.outputs / "replay" if project else root / "replay")
+    run_id = args.id or (project.slug if project else "run")
+    data = replay.build(root, sessions, project, run_id, args.title or (project.meta().get("question") if project else "") or run_id, args.mode)
+    result = replay.write(data, out, root)
+    emit(result, f"Реплей: {result['out']}, событий {result['events']}, утверждений {result['claims']}, {result['usd']:.2f} $ ({result['rub']:.0f} ₽), {result['kb']} КБ." + "".join(f"\nпредупреждение: {c}" for c in result["checks"]))
+
+
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(prog="osnovanie", description="Рабочий инструмент агента «Основание»: проект, утверждения, источники, точки человека.")
     root.add_argument("--json", action="store_true", dest="as_json", help="вывод для программ")
@@ -607,6 +620,13 @@ def parser() -> argparse.ArgumentParser:
         return sub.add_subparsers(dest="action", required=True)
 
     add("doctor", cmd_doctor, "проверка окружения").add_argument("--repair", action="store_true")
+    p = add("replay", cmd_replay, "реплей прогона из журналов Claude Code")
+    s = actions(p).add_parser("build")
+    s.add_argument("--session", action="append", help="путь к журналу .jsonl; без него берутся журналы этой папки, где упоминается проект")
+    s.add_argument("--out")
+    s.add_argument("--id")
+    s.add_argument("--title")
+    s.add_argument("--mode", choices=("agent", "chat"), default="agent")
     add("facts", cmd_facts, "числа для README, PDF и сайта: build или check").add_argument("action", choices=["build", "check"], nargs="?", default="check")
     add("rules", cmd_rules, "хеши правил: check или lock (только человек в терминале)").add_argument("action", choices=["check", "lock"], nargs="?", default="check")
     p = add("new", cmd_new, "создать проект")
