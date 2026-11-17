@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T23:16:31+03:00",
+  "generated_at": "2026-11-18T00:04:21+03:00",
   "agent": {
     "cli_commands": 38,
     "methods": 21,
@@ -7,7 +7,7 @@
     "subagents": 6,
     "rule_files": 30,
     "rule_patterns": 13,
-    "tests": 31
+    "tests": 36
   },
   "evals": {
     "split": "test2",
