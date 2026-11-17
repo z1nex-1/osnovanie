@@ -332,7 +332,8 @@ def _chapters_and_sixty(events: list[dict]) -> tuple[list[dict], list[dict]]:
 
 
 def find_transcripts(root: Path, slug: str | None) -> list[Path]:
-    folder = Path.home() / ".claude" / "projects" / re.sub(r"[^A-Za-z0-9]", "-", str(root))
+    config = Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude").expanduser()
+    folder = config / "projects" / re.sub(r"[^A-Za-z0-9]", "-", str(root))
     found = []
     for path in sorted(folder.glob("*.jsonl"), key=lambda p: p.stat().st_mtime):
         text = path.read_text("utf-8", "replace")
