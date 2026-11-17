@@ -10,7 +10,7 @@
 
 ```bash
 make doctor   # окружение, хуки, навыки, хеши правил
-make test     # 23 теста: путь от запроса до решения, точки человека, защита
+make test     # 28 тестов: путь от запроса до решения, точки человека, защита
 make eval     # оценки: инъекции, каналы атак, дефекты стратегии → evals/report.md
 ```
 
@@ -36,7 +36,7 @@ make eval     # оценки: инъекции, каналы атак, дефе�
 | Постоянные правила | `AGENTS.md` (вход для любой среды), `instructions/quality.md` |
 | Этапы и навыки | `.agents/skills/` → intake, collect, research, options, strategy, validation, review, interview, ux-review, data-analysis |
 | Методики | `methods/` — 21 файл с процедурой, типичными ошибками и критерием готовности (JTBD, Rumelt, COM-B, ACH, Fermi, unit-экономика, A/B с расчётом MDE…) |
-| Инструмент | `bin/osnovanie` — 36 команд: утверждения, источники, проверки, модель вариантов, точки человека, пересмотр, стоимость |
+| Инструмент | `bin/osnovanie` — 37 команд: утверждения, источники, проверки, модель вариантов, точки человека, пересмотр, стоимость |
 | Защита | хуки `tools/hooks/claude_hook.py`: запись только в `outputs/`, точки закрывает только человек, карантин инъекций, бюджет |
 | Субагенты | `.claude/agents/`: skeptic, closure-advocate, verifier, researcher, source-sanitizer, synthetic-respondent |
 | Знания между проектами | `kb/`, поиск `search`, MCP `kb-state` |

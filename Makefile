@@ -1,6 +1,6 @@
 PY ?= python3
 
-.PHONY: doctor test eval eval-all
+.PHONY: doctor test eval eval-all facts
 
 doctor:
 	$(PY) bin/osnovanie doctor
@@ -13,3 +13,7 @@ eval:
 
 eval-all:
 	$(PY) evals/run.py --split all
+
+facts:
+	$(PY) bin/osnovanie facts build
+	$(PY) bin/osnovanie facts check

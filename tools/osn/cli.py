@@ -576,6 +576,18 @@ def cmd_doctor(args):
     return 0 if all(ok or not r for _, ok, _, r in rows) else 1
 
 
+def cmd_facts(args):
+    from . import facts
+
+    root = repo_root()
+    if args.action == "build":
+        emit({"path": str(facts.write(root))}, "docs/facts.json обновлён.")
+        return 0
+    problems = facts.check(root)
+    emit(problems, "\n".join(problems) or "Числа в текстах совпадают с репозиторием.")
+    return 1 if problems else 0
+
+
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(prog="osnovanie", description="Рабочий инструмент агента «Основание»: проект, утверждения, источники, точки человека.")
     root.add_argument("--json", action="store_true", dest="as_json", help="вывод для программ")
@@ -595,6 +607,7 @@ def parser() -> argparse.ArgumentParser:
         return sub.add_subparsers(dest="action", required=True)
 
     add("doctor", cmd_doctor, "проверка окружения").add_argument("--repair", action="store_true")
+    add("facts", cmd_facts, "числа для README, PDF и сайта: build или check").add_argument("action", choices=["build", "check"], nargs="?", default="check")
     add("rules", cmd_rules, "хеши правил: check или lock (только человек в терминале)").add_argument("action", choices=["check", "lock"], nargs="?", default="check")
     p = add("new", cmd_new, "создать проект")
     p.add_argument("slug")

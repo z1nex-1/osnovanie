@@ -1,7 +1,9 @@
 import json
+import subprocess
+import sys
 import unittest
 
-from helpers import Sandbox, full_path, write_strategy
+from helpers import REPO, Sandbox, full_path, write_strategy
 
 
 class Fields(unittest.TestCase):
@@ -52,6 +54,12 @@ class Fields(unittest.TestCase):
         track = box.js("commit", "track")
         self.assertEqual((track["closed"], track["hit"]), (1, 0))
         self.assertEqual(track["rows"][0]["expected"], "ARPU 550 через квартал")
+
+
+class Facts(unittest.TestCase):
+    def test_numbers_in_texts_match_repository(self):
+        done = subprocess.run([sys.executable, str(REPO / "bin/osnovanie"), "facts", "check"], capture_output=True, text=True, cwd=REPO)
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
 
 
 if __name__ == "__main__":

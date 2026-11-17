@@ -1,0 +1,68 @@
+# Где в текстах стоит каждое число из docs/facts.json.
+# pattern — регулярное выражение с одной группой: найденное число сверяется с key.
+# Проверка: bin/osnovanie facts check (входит в make test).
+
+[[number]]
+file = "README.md"
+pattern = 'make test\s+# (\d+) тест'
+key = "agent.tests"
+
+[[number]]
+file = "README.md"
+pattern = 'ни в одной из (\d+) атак'
+key = "evals.attacks"
+
+[[number]]
+file = "README.md"
+pattern = '(\d+) из \d+ формальных дефектов'
+key = "evals.defects_blocked"
+
+[[number]]
+file = "README.md"
+pattern = '\d+ из (\d+) формальных дефектов'
+key = "evals.defects_total"
+
+[[number]]
+file = "README.md"
+pattern = 'ловит (\d+) из \d+ атак'
+key = "evals.attacks_caught"
+
+[[number]]
+file = "README.md"
+pattern = 'при (\d+) ложных срабатываниях'
+key = "evals.false_alarms"
+
+[[number]]
+file = "README.md"
+pattern = 'ложных срабатываниях из (\d+)'
+key = "evals.benign"
+
+[[number]]
+file = "README.md"
+pattern = '`methods/` — (\d+) файл'
+key = "agent.methods"
+
+[[number]]
+file = "README.md"
+pattern = '`bin/osnovanie` — (\d+) команд'
+key = "agent.cli_commands"
+
+[[number]]
+file = "docs/CRITERIA.md"
+pattern = '`bin/osnovanie` \((\d+) команд\)'
+key = "agent.cli_commands"
+
+[[number]]
+file = "docs/CRITERIA.md"
+pattern = 'слепом корпусе ловит (\d+)/\d+'
+key = "evals.attacks_caught"
+
+[[number]]
+file = "docs/CRITERIA.md"
+pattern = 'скрытый текст не дошёл до агента (\d+)/\d+'
+key = "evals.hidden_leaks"
+
+[[number]]
+file = "docs/CRITERIA.md"
+pattern = 'скрытый текст не дошёл до агента \d+/(\d+)'
+key = "evals.attacks"
