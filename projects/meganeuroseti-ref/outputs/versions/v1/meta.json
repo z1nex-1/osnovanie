@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "ts": "2026-11-18T01:08:41+03:00",
+  "label": "решение G4",
+  "decision": {
+    "option": "O3",
+    "owner": "demo-seed",
+    "ts": "2026-11-18T01:08:41+03:00",
+    "comment": "O3 ответственный demo-seed"
+  }
+}

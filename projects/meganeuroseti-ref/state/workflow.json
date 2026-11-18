@@ -1,0 +1,56 @@
+{
+  "stage": "decided",
+  "awaiting": null,
+  "paused": false,
+  "gates": {
+    "G1": {
+      "status": "approved",
+      "opened_at": "2026-11-18T01:08:41+03:00",
+      "round": 1,
+      "closed_at": "2026-11-18T01:08:41+03:00",
+      "comment": "постановка собрана демо-командой",
+      "channel": "demo-seed"
+    },
+    "G2": {
+      "status": "approved",
+      "opened_at": "2026-11-18T01:08:41+03:00",
+      "round": 1,
+      "closed_at": "2026-11-18T01:08:41+03:00",
+      "comment": "источники и бюджет собраны демо-командой",
+      "channel": "demo-seed"
+    },
+    "G3": {
+      "status": "approved",
+      "opened_at": "2026-11-18T01:08:41+03:00",
+      "round": 1,
+      "closed_at": "2026-11-18T01:08:41+03:00",
+      "comment": "O1 O2 O3 варианты собраны демо-командой",
+      "channel": "demo-seed",
+      "options": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    "G4": {
+      "status": "approved",
+      "opened_at": "2026-11-18T01:08:41+03:00",
+      "round": 1,
+      "closed_at": "2026-11-18T01:08:41+03:00",
+      "comment": "O3 ответственный demo-seed",
+      "channel": "demo-seed",
+      "options": [
+        "O3"
+      ],
+      "owner": "demo-seed"
+    },
+    "R": {
+      "status": "approved",
+      "opened_at": "2026-11-18T01:08:41+03:00",
+      "round": 1,
+      "closed_at": "2026-11-18T01:08:41+03:00",
+      "comment": "пересмотр принят, формулировки обновлены демо-командой",
+      "channel": "demo-seed"
+    }
+  }
+}

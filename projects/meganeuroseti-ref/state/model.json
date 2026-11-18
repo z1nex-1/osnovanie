@@ -1,0 +1,101 @@
+{
+  "params": {
+    "users": {
+      "label": "подключили «Лайт»",
+      "unit": "чел",
+      "low": 5000,
+      "base": 20000,
+      "high": 60000,
+      "claim": "c028"
+    },
+    "conv": {
+      "label": "доля перешедших в «Про»",
+      "unit": "1",
+      "low": 0.02,
+      "base": 0.05,
+      "high": 0.1,
+      "claim": "c029"
+    },
+    "price": {
+      "label": "цена «Про»",
+      "unit": "руб/чел/мес",
+      "low": 199,
+      "base": 299,
+      "high": 399,
+      "claim": "c002"
+    },
+    "tokens": {
+      "label": "токены сверх подписки",
+      "unit": "руб/чел/мес",
+      "low": 30,
+      "base": 120,
+      "high": 250,
+      "claim": "c030"
+    },
+    "unitcost": {
+      "label": "закупка моделей на пользователя «Про»",
+      "unit": "руб/чел/мес",
+      "low": 40,
+      "base": 90,
+      "high": 180,
+      "claim": "c031"
+    },
+    "smb": {
+      "label": "рост платящих при продаже малому бизнесу",
+      "unit": "1",
+      "low": 1.0,
+      "base": 1.6,
+      "high": 2.5,
+      "claim": "c032"
+    },
+    "bundle_price": {
+      "label": "доплата за ИИ в тарифе",
+      "unit": "руб/чел/мес",
+      "low": 49,
+      "base": 99,
+      "high": 149,
+      "claim": "c033"
+    },
+    "bundle_users": {
+      "label": "абоненты тарифа с ИИ",
+      "unit": "чел",
+      "low": 2000,
+      "base": 8000,
+      "high": 25000,
+      "claim": "c034"
+    },
+    "bundle_cost": {
+      "label": "закупка моделей на абонента тарифа",
+      "unit": "руб/чел/мес",
+      "low": 10,
+      "base": 25,
+      "high": 60,
+      "claim": "c035"
+    }
+  },
+  "constants": {
+    "fixed": {
+      "value": 450000,
+      "unit": "руб/мес"
+    },
+    "smb_sales": {
+      "value": 150000,
+      "unit": "руб/мес"
+    },
+    "cannibal": {
+      "value": 90000,
+      "unit": "руб/мес"
+    },
+    "winddown": {
+      "value": 200000,
+      "unit": "руб/мес"
+    }
+  },
+  "options": {
+    "O1": "users * conv * (price + tokens - unitcost) - fixed",
+    "O2": "users * conv * smb * (price + tokens - unitcost) - fixed - smb_sales",
+    "O3": "users * conv * (price + tokens - unitcost) + bundle_users * (bundle_price - bundle_cost) - fixed - cannibal",
+    "O4": "-winddown"
+  },
+  "output_unit": "руб/мес"
+}

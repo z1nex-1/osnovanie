@@ -1,0 +1,10 @@
+{"action": "open", "gate": "G1", "round": 1, "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "approve", "channel": "demo-seed", "comment": "постановка собрана демо-командой", "gate": "G1", "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "open", "gate": "G2", "round": 1, "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "approve", "channel": "demo-seed", "comment": "источники и бюджет собраны демо-командой", "gate": "G2", "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "open", "gate": "G3", "round": 1, "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "approve", "channel": "demo-seed", "comment": "O1 O2 O3 варианты собраны демо-командой", "gate": "G3", "options": ["O1", "O2", "O3"], "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "open", "gate": "G4", "round": 1, "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "approve", "channel": "demo-seed", "comment": "O3 ответственный demo-seed", "gate": "G4", "options": ["O3"], "owner": "demo-seed", "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "open", "gate": "R", "round": 1, "ts": "2026-11-18T01:08:41+03:00"}
+{"action": "approve", "channel": "demo-seed", "comment": "пересмотр принят, формулировки обновлены демо-командой", "gate": "R", "ts": "2026-11-18T01:08:41+03:00"}

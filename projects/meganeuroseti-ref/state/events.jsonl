@@ -1,0 +1,134 @@
+{"kind": "created", "question": "Кому и как продавать МегаНейросети и продолжать ли направление?", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "brief", "ts": "2026-11-18T01:08:41+03:00"}
+{"gate": "G1", "kind": "gate_open", "ts": "2026-11-18T01:08:41+03:00"}
+{"channel": "demo-seed", "gate": "G1", "kind": "gate_approve", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "stage", "stage": "plan", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://moscow.megafon.ru/help/info/popular/information/20260408-1728.html"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://moscow.megafon.ru/corporate/services/mega_ai"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://www.anti-malware.ru/news/2026-04-10-121598/49666"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://itspeaker.ru/news/megafon-otkryl-dostup-k-25-ii-servisam-/"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://www.tadviser.ru/index.php/Продукт:МегаФон:_МегаНейросети"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://allweb.ru/novosti-it/megafon-otkryl-dostyp-k-25-ii-servisam/"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://mobile-review.com/all/articles/operator/tarify-s-nejrosetyami-u-operatorov/"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://lenta.ru/articles/2026/04/15/bilayn-integriroval-neyroseti-v-tarify-mobilnoy-svyazi/"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://checkroi.ru/blog/alisa-plyus-vs-alisa-pro/"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://3dnews.ru/1138791/sber-hochet-prevratit-gigachat-v-zamenu-vsem-prilogeniyam-i-sdelat-ego-platnim/amp"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://gogpt.ru"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://chadgpt.ru"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://bothub.chat"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://wciom.ru/analytical-reviews/analiticheskii-obzor/neiroseti-v-nashei-zhizni"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://expert.ru/news/auditoriya-neyrosetey-v-rossii-za-god-vyrosla-vdvoe"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://www.hse.ru/news/expertise/1162855603.html"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://adindex.ru/news/innovations/2026/07/30/347630.phtml"}
+{"kind": "source_plan", "ts": "2026-11-18T01:08:41+03:00", "url": "https://www.iphones.ru/iNotes/megafon-chislo-polzovateley-neyrosetey-starshe-55-let-vyroslo-v-chetyre-raza"}
+{"gate": "G2", "kind": "gate_open", "ts": "2026-11-18T01:08:41+03:00"}
+{"channel": "demo-seed", "gate": "G2", "kind": "gate_approve", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "stage", "stage": "research", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s001", "kind": "source_added", "quarantined": 0, "title": "Запуск нового продукта «МегаНейросети»", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s002", "kind": "source_added", "quarantined": 0, "title": "Услуга МегаНейросети от МегаФона (страница продукта)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s003", "kind": "source_added", "quarantined": 0, "title": "МегаФон запустил доступ к популярным зарубежным ИИ-моделям", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s004", "kind": "source_added", "quarantined": 0, "title": "«МегаФон» открыл доступ к 25 ИИ-сервисам", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s005", "kind": "source_added", "quarantined": 0, "title": "МегаФон: МегаНейросети (TAdviser)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s006", "kind": "source_added", "quarantined": 0, "title": "«МегаФон» открыл доступ к 25 ИИ-сервисам", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s007", "kind": "source_added", "quarantined": 0, "title": "Тарифы с нейросетями у операторов", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s008", "kind": "source_added", "quarantined": 0, "title": "Алиса Плюс, Алиса Про и бесплатная Алиса: разбор тарифов в 2026", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s009", "kind": "source_added", "quarantined": 0, "title": "«Сбер» хочет превратить «ГигаЧат» в замену всем приложениям — и сделать его платным", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s010", "kind": "source_added", "quarantined": 0, "title": "GoGPT (независимый агрегатор)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s011", "kind": "source_added", "quarantined": 0, "title": "Chad AI (независимый агрегатор)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s012", "kind": "source_added", "quarantined": 0, "title": "BotHub (страница на английском)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s013", "kind": "source_added", "quarantined": 0, "title": "Нейросети в нашей жизни (ВЦИОМ)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s014", "kind": "source_added", "quarantined": 0, "title": "Аудитория нейросетей в России за год выросла вдвое", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s015", "kind": "source_added", "quarantined": 0, "title": "Использование ИИ: НИУ ВШЭ и Ромир", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s016", "kind": "source_added", "quarantined": 0, "title": "Доля активных пользователей нейросетей в России достигла 58%", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s017", "kind": "source_added", "quarantined": 0, "title": "МегаФон: люди старше 55 лет стали в четыре раза чаще пользоваться нейросетями", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c001", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c002", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c003", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c004", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c005", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c006", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c007", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "opinion"}
+{"id": "c008", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c009", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c010", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c011", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c012", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c013", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c014", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c015", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c016", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c017", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c018", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c019", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c020", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c021", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c022", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c023", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c024", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c025", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"contested": 0, "kind": "verify", "ts": "2026-11-18T01:08:41+03:00", "verified": 25}
+{"id": "s018", "kind": "source_added", "quarantined": 0, "title": "Таблица цен из цитат (собрана демо-командой)", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c026", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "calculation"}
+{"id": "c027", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c028", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c029", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c030", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c031", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c032", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c033", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c034", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c035", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"id": "c036", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c037", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c038", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c039", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c040", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "forecast"}
+{"id": "c041", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c042", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c043", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c044", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c045", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c046", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"kind": "stage", "stage": "options", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "O1", "kind": "option", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "O2", "kind": "option", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "O3", "kind": "option", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "O4", "kind": "option", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "model_set", "options": 4, "params": 9, "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "model_run", "ranking": ["O3", "O2", "O1", "O4"], "run": "r001", "ts": "2026-11-18T01:08:41+03:00"}
+{"gate": "G3", "kind": "gate_open", "ts": "2026-11-18T01:08:41+03:00"}
+{"channel": "demo-seed", "gate": "G3", "kind": "gate_approve", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "stage", "stage": "strategy", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c047", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "calculation"}
+{"id": "c048", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"id": "c049", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"gate": "G4", "kind": "gate_open", "ts": "2026-11-18T01:08:41+03:00"}
+{"channel": "demo-seed", "gate": "G4", "kind": "gate_approve", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "snapshot", "label": "решение G4", "ts": "2026-11-18T01:08:41+03:00", "version": "v1"}
+{"kind": "stage", "stage": "decided", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "k001", "kind": "commitment", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "k002", "kind": "commitment", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "k003", "kind": "commitment", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "s019", "kind": "source_added", "quarantined": 0, "title": "Билайн интегрировал валюту для нейросетей в тарифы мобильной связи", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c050", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"id": "c051", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"contested": 0, "kind": "verify", "ts": "2026-11-18T01:08:41+03:00", "verified": 2}
+{"id": "c052", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c052", "old": "c027", "ts": "2026-11-18T01:08:41+03:00"}
+{"contested": 0, "kind": "verify", "ts": "2026-11-18T01:08:41+03:00", "verified": 1}
+{"id": "c053", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "assumption"}
+{"kind": "claim_superseded", "new": "c053", "old": "c033", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "model_run", "ranking": ["O3", "O2", "O1", "O4"], "run": "r002", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "review", "leader_changed": false, "number": 1, "ts": "2026-11-18T01:08:41+03:00"}
+{"gate": "R", "kind": "gate_open", "ts": "2026-11-18T01:08:41+03:00"}
+{"channel": "demo-seed", "gate": "R", "kind": "gate_approve", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c054", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "calculation"}
+{"kind": "claim_superseded", "new": "c054", "old": "c047", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c055", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c055", "old": "c038", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c056", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c056", "old": "c048", "ts": "2026-11-18T01:08:41+03:00"}
+{"id": "c057", "kind": "claim_added", "ts": "2026-11-18T01:08:41+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c057", "old": "c049", "ts": "2026-11-18T01:08:41+03:00"}
+{"kind": "snapshot", "label": "после пересмотра", "ts": "2026-11-18T01:08:41+03:00", "version": "v2"}
+{"kind": "map_built", "ts": "2026-11-18T01:08:41+03:00"}
