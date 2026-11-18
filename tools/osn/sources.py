@@ -128,7 +128,7 @@ def add_file(project: Project, path: Path, title: str | None, kind: str, publish
     return ingest_bytes(project, path.read_bytes(), path.suffix.lower(), title or path.name, kind, f"file:{path.name}", published)
 
 
-def fetch(project: Project, url: str, title: str | None, kind: str, published: str | None) -> dict:
+def check_url(project: Project, url: str):
     parsed = urlparse(url)
     if parsed.scheme not in {"http", "https"} or not parsed.hostname:
         raise PolicyError("Разрешены только адреса http и https.")
@@ -138,6 +138,11 @@ def fetch(project: Project, url: str, title: str | None, kind: str, published: s
             "человек подтвердит в точке G2."
         )
     _assert_public(parsed.hostname)
+    return parsed
+
+
+def fetch(project: Project, url: str, title: str | None, kind: str, published: str | None) -> dict:
+    parsed = check_url(project, url)
     for record in project.current("sources").values():
         if record["origin"] == url and record["status"] == "active":
             return {**record, "duplicate": True}

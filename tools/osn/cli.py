@@ -9,7 +9,7 @@ from pathlib import Path
 from . import checks, claims as claims_mod, cost, data_tools, judge, model, portable, review, search as search_mod, sources, steps, verify, workflow
 from .store import SLUG, OsnError, PolicyError, Project, active_file, active_project, atomic_write, load_toml, now, read_json, repo_root, scan_jsonl, write_json
 
-MUTATING = {"new", "use", "brief", "budget", "question", "source", "claim", "verify", "options", "objection", "model", "gate", "advance", "commit", "review", "import", "data", "ux", "interview", "step", "route", "map"}
+MUTATING = {"new", "use", "brief", "budget", "question", "source", "claim", "verify", "options", "objection", "model", "gate", "advance", "commit", "review", "import", "data", "ux", "interview", "step", "route", "map", "watch", "demo", "deck"}
 AS_JSON = False
 
 
@@ -409,8 +409,61 @@ def cmd_cost(args):
         emit(cost.summary(project), text)
 
 
+def cmd_whatif(args):
+    from . import whatif
+
+    sets = {}
+    for item in args.set or []:
+        name, _, value = item.partition("=")
+        try:
+            sets[name.strip()] = float(value.replace(",", "."))
+        except ValueError:
+            raise OsnError(f"--set ждёт имя=число, получено «{item}».")
+    result = whatif.run(active_project(args.project), args.drop_source or [], args.drop_claim or [], sets)
+    emit(result, whatif.render(result))
+
+
+def cmd_watch(args):
+    from . import watch
+
+    result = watch.run(active_project(args.project), args.apply)
+    emit(result, watch.render(result))
+
+
+def cmd_score(args):
+    from . import score
+
+    project = active_project(args.project)
+    result = score.compute(project)
+    if args.badge:
+        result["badge"] = str(score.write_badge(result, Path(args.badge)))
+    emit(result, score.render(result) + (f"\nБейдж: {result['badge']}" if args.badge else ""))
+
+
+def cmd_deck(args):
+    from . import deck
+
+    result = deck.build(active_project(args.project))
+    emit(result, f"Презентация: {result['path']}, слайдов {result['slides']}, сносок {result['footnotes']}, {result['bytes'] // 1024} КБ.")
+
+
+def cmd_demo(args):
+    from . import demo
+
+    result = demo.seed(args.force)
+    emit(result, f"Эталонный проект {result['project']} собран: утверждений {result['claims']}, источников {result['sources']}, пересмотров {result['reviews']}, этап {result['stage']}.")
+
+
 def cmd_export(args):
     project = active_project(args.project)
+    if args.path == "site":
+        from . import site
+
+        if not args.out:
+            raise OsnError("Для пакета сайта нужен --out каталог: osnovanie export site --out DIR")
+        result = site.export(project, Path(args.out))
+        emit(result, f"Пакет сайта: {result['out']}, {result['schema']}, утверждений {result['claims']}, рёбер {result['edges']}, узлов раскладки {result['nodes']}, {result['kb']} КБ.")
+        return
     emit(portable.export(project, Path(args.path), args.with_agent))
 
 
@@ -770,9 +823,27 @@ def parser() -> argparse.ArgumentParser:
     s.add_argument("--note")
     a.add_parser("ingest").add_argument("transcript")
 
+    p = add("whatif", cmd_whatif, "что будет, если убрать источник или утверждение (без записи)")
+    p.add_argument("--drop-source", action="append")
+    p.add_argument("--drop-claim", action="append")
+    p.add_argument("--set", action="append", help="величина=значение")
+
+    p = add("watch", cmd_watch, "сторож источников: страница изменилась, цитата исчезла")
+    p.add_argument("--apply", action="store_true")
+
+    p = add("score", cmd_score, "индекс обоснованности 0-100")
+    p.add_argument("--badge", help="записать SVG-бейдж")
+
+    add("deck", cmd_deck, "презентация outputs/deck.html")
+
+    p = add("demo", cmd_demo, "эталонный проект из demo/")
+    s = actions(p).add_parser("seed")
+    s.add_argument("--force", action="store_true")
+
     p = add("export", cmd_export, "перенос: упаковать")
     p.add_argument("path")
     p.add_argument("--with-agent", action="store_true")
+    p.add_argument("--out", help="каталог для export site")
     p = add("import", cmd_import, "перенос: распаковать")
     p.add_argument("path")
     p.add_argument("--name")

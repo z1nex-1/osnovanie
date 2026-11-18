@@ -13,7 +13,7 @@ sys.path.insert(0, str(REPO / "tools"))
 class Sandbox:
     def __init__(self):
         self.tmp = Path(tempfile.mkdtemp(prefix="osn-"))
-        for name in ("bin", "tools", "config", ".agents", ".claude"):
+        for name in ("bin", "tools", "config", ".agents", ".claude", "demo"):
             shutil.copytree(REPO / name, self.tmp / name, ignore=shutil.ignore_patterns("__pycache__"))
         shutil.copy(REPO / ".mcp.json", self.tmp / ".mcp.json")
         (self.tmp / "projects").mkdir()
@@ -104,3 +104,24 @@ def write_strategy(box: Sandbox, claims, slug="demo"):
     (outputs / "communication.md").write_text(f"# Коммуникация\n\nВариант: O1\n\n## Аудитория\n\nТекст.\n\n## Барьер\n\nЦелевое поведение: подключить тариф. Главный барьер: тревога из-за цены ошибки и привычка к старому способу.\n\n## Ключевое сообщение\n\nТекст.\n\n## Подтверждение\n\nТекст {ref}.\n\n## Каналы\n\nТекст.\n\n## Обещания\n\n| P1 | доступ | CAP1 | сейчас | {ref} |\n", "utf-8")
     (outputs / "validation.md").write_text("# Проверка\n\nВариант: O1\n\n## Ожидаемое изменение\n\nТекст.\n\n## С чем сравниваем\n\nКонтрольная группа.\n\n## Срок\n\n28 дней.\n\n## Нежелательные последствия\n\n- жалобы\n- отток\n", "utf-8")
     (outputs / "monday.md").write_text(f"# Понедельник\n\nРешение O1 {ref}.\n", "utf-8")
+
+
+_SEEDED = None
+SLUG = "meganeuroseti-ref"
+
+
+def seeded() -> Sandbox:
+    """Эталонный проект собирается один раз за прогон, каждому тесту отдаётся своя копия."""
+    global _SEEDED
+    if _SEEDED is None:
+        _SEEDED = Sandbox()
+        _SEEDED.ok("demo", "seed")
+    box = Sandbox()
+    shutil.copytree(_SEEDED.tmp / "projects", box.tmp / "projects", dirs_exist_ok=True)
+    return box
+
+
+def tree_hashes(root: Path) -> dict[str, str]:
+    import hashlib
+
+    return {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.rglob("*")) if p.is_file()}

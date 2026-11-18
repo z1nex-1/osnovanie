@@ -151,16 +151,10 @@ def _winner(values: dict[str, float]) -> str:
     return max(sorted(values), key=lambda k: values[k])
 
 
-def run(project: Project, tag: str = "manual") -> dict:
-    model = read_json(project.state / "model.json")
-    if not model:
-        raise OsnError("Модель не задана: osnovanie model set --file ...")
-    params = _resolve(project, model)
-    _check_units(model, params)
-    constants = {k: v["value"] for k, v in model.get("constants", {}).items()}
+def simulate(model: dict, params: dict[str, dict], constants: dict[str, float], keep_samples: bool = False):
+    """Расчёт без записи на диск: им же пользуется whatif, поэтому гипотетический прогон не оставляет следов."""
     base_env = {**{k: p["base"] for k, p in params.items()}, **constants}
     base = {o: evaluate(f, base_env)[0] for o, f in model["options"].items()}
-
     fingerprint = hashlib.sha256(repr(sorted(params.items())).encode()).hexdigest()
     rng = random.Random(fingerprint)
     draws: dict[str, list[float]] = {o: [] for o in model["options"]}
@@ -176,6 +170,18 @@ def run(project: Project, tag: str = "manual") -> dict:
     for option, values in draws.items():
         ordered = sorted(values)
         results[option] = {"base": round(base[option], 2), "p10": round(ordered[int(SAMPLES * 0.1)], 2), "p90": round(ordered[int(SAMPLES * 0.9)], 2), "p_best": round(wins[option] / SAMPLES, 3)}
+    return base, results, ranking, (draws if keep_samples else None)
+
+
+def run(project: Project, tag: str = "manual") -> dict:
+    model = read_json(project.state / "model.json")
+    if not model:
+        raise OsnError("Модель не задана: osnovanie model set --file ...")
+    params = _resolve(project, model)
+    _check_units(model, params)
+    constants = {k: v["value"] for k, v in model.get("constants", {}).items()}
+    base_env = {**{k: p["base"] for k, p in params.items()}, **constants}
+    base, results, ranking, samples = simulate(model, params, constants)
     record = {
         "id": project.next_id("model_runs", "r"), "ts": now(), "tag": tag, "output_unit": model["output_unit"],
         "results": results, "ranking": ranking, "breakeven": _breakeven(model, params, constants, base_env, ranking[0]),
@@ -209,7 +215,7 @@ def _breakeven(model: dict, params: dict, constants: dict, base_env: dict, leade
                     lo = mid
                 else:
                     hi = mid
-            flips.append({"param": name, "label": spec["label"], "unit": spec["unit"], "threshold": round(hi, 4), "direction": bound, "new_leader": leader_at(end), "base": round(spec["base"], 4)})
+            flips.append({"param": name, "label": spec["label"], "unit": spec["unit"], "threshold": round(hi, 4), "direction": bound, "new_leader": leader_at(hi), "base": round(spec["base"], 4)})
     return flips
 
 

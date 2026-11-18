@@ -49,7 +49,7 @@ key = "agent.cli_commands"
 
 [[number]]
 file = "docs/CRITERIA.md"
-pattern = '`bin/osnovanie` \((\d+) команд\)'
+pattern = '`bin/osnovanie` \((\d+) команд\w*\)'
 key = "agent.cli_commands"
 
 [[number]]
