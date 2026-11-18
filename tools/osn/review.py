@@ -7,6 +7,7 @@ import shutil
 from . import checks, claims as claims_mod, model, workflow
 from .store import OsnError, PolicyError, Project, atomic_write, now, write_json
 
+TYPE_RU = {"fact": "факт", "calculation": "расчёт", "hypothesis": "гипотеза", "forecast": "прогноз", "opinion": "мнение", "assumption": "допущение", "synthetic": "синтетика"}
 DOCS = ["situation.md", "product.md", "communication.md", "validation.md"]
 
 
@@ -27,18 +28,104 @@ def snapshot(project: Project, label: str) -> str:
 
 
 def _downstream(claims: dict[str, dict], changed: set[str]) -> set[str]:
+    return set(_chains(claims, changed))
+
+
+def _chains(claims: dict[str, dict], changed: set[str]) -> dict[str, list[str]]:
+    """Для каждого задетого вывода — кратчайшая цепочка до изменившегося основания: [вывод, ..., основание]."""
     reverse: dict[str, set[str]] = {}
     for claim in claims.values():
         for dep in claim.get("depends_on", []):
             reverse.setdefault(dep, set()).add(claim["id"])
-    seen: set[str] = set()
-    frontier = list(changed)
+    parent: dict[str, str] = {}
+    frontier = sorted(changed)
     while frontier:
-        for child in reverse.get(frontier.pop(), ()):
-            if child not in seen and child not in changed:
-                seen.add(child)
-                frontier.append(child)
-    return seen
+        nxt = []
+        for node in frontier:
+            for child in sorted(reverse.get(node, ())):
+                if child not in parent and child not in changed:
+                    parent[child] = node
+                    nxt.append(child)
+        frontier = nxt
+    chains = {}
+    for child in parent:
+        path, node = [child], child
+        while node in parent:
+            node = parent[node]
+            path.append(node)
+        chains[child] = path
+    return chains
+
+
+def _short(text: str, limit: int = 110) -> str:
+    text = " ".join(str(text).split())
+    return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
+
+
+def fallen(project: Project, claims: dict[str, dict], changed: list[str], before: dict | None, after: dict | None) -> dict:
+    """Что упало и почему: цепочки выводов, величины модели было/стало, варианты, обязательства, что устояло."""
+    cause = {}
+    for claim_id in changed:
+        old = claims[claim_id]
+        if old.get("superseded_by"):
+            new = claims[old["superseded_by"]]
+            cause[claim_id] = {"was": old["text"], "now": new["text"], "new_id": new["id"], "source": new.get("source_id"), "quote": new.get("quote")}
+        else:
+            cause[claim_id] = {"was": old["text"], "now": None, "reason": old.get("retract_reason")}
+    chains = _chains(claims, set(changed))
+    rows = []
+    for claim_id, path in sorted(chains.items(), key=lambda kv: (len(kv[1]), kv[0])):
+        claim = claims[claim_id]
+        rows.append({"id": claim_id, "type": claim.get("type"), "text": claim["text"], "path": path, "root": path[-1], "depth": len(path) - 1})
+    params = []
+    if before and after:
+        for name, p in after["params"].items():
+            old = before["params"].get(name)
+            if old and (old["base"] != p["base"] or old.get("claim") != p.get("claim")):
+                params.append({"name": name, "label": p["label"], "unit": p["unit"], "was": old["base"], "now": p["base"], "claim_was": old.get("claim"), "claim_now": p.get("claim")})
+    options = []
+    if before and after:
+        for option, b in after["results"].items():
+            a = before["results"].get(option, b)
+            options.append({"id": option, "base_was": a["base"], "base_now": b["base"], "p_best_was": a["p_best"], "p_best_now": b["p_best"]})
+    touched = set(changed) | set(chains)
+    commitments = []
+    for c in project.current("commitments").values():
+        hit = set(c.get("claims", [])) & touched
+        if hit:
+            commitments.append({"id": c["id"], "what": c.get("what"), "review_if": c.get("review_if"), "claims": sorted(hit)})
+    active = [c for c in claims.values() if c.get("status") not in ("retracted",) and not c.get("superseded_by")]
+    held = [c["id"] for c in active if c["id"] not in touched]
+    return {"cause": cause, "chains": rows, "params": params, "options": options, "commitments": commitments, "held": len(held), "total": len(active)}
+
+
+def render_fallen(f: dict, claims: dict[str, dict]) -> list[str]:
+    lines = ["## Что упало и почему", ""]
+    for claim_id, c in f["cause"].items():
+        if c["now"] is not None:
+            quote = f" Цитата: «{_short(c['quote'], 160)}»" if c.get("quote") else ""
+            lines.append(f"- Основание {claim_id} больше не верно: «{_short(c['was'])}». Теперь {c['new_id']}: «{_short(c['now'])}» (источник {c.get('source') or 'нет, это допущение'}).{quote}")
+        else:
+            lines.append(f"- Основание {claim_id} отозвано: «{_short(c['was'])}». Причина: {c.get('reason') or 'не указана'}.")
+    if f["chains"]:
+        lines += ["", "| Вывод | Тип | Почему под вопросом |", "|---|---|---|"]
+        for row in f["chains"]:
+            via = " → ".join(row["path"][1:])
+            lines.append(f"| {row['id']} «{_short(row['text'], 80)}» | {TYPE_RU.get(row['type'], row['type'])} | держался на {via} |")
+    if f["params"]:
+        lines += ["", "Величины модели:", ""]
+        lines += [f"- {p['label']}: было {p['was']:g}, стало {p['now']:g} {p['unit']} (основание {p['claim_was']} → {p['claim_now']})" for p in f["params"]]
+    moved = [o for o in f["options"] if abs(o["p_best_now"] - o["p_best_was"]) >= 0.05 or o["base_was"] != o["base_now"]]
+    if moved:
+        lines += ["", "Варианты:", ""]
+        for o in moved:
+            money = lambda v: f"{v:,.0f}".replace(",", " ")  # noqa: E731
+            lines.append(f"- {o['id']}: база {money(o['base_was'])} → {money(o['base_now'])}, лидер в {o['p_best_was'] * 100:.0f}% → {o['p_best_now'] * 100:.0f}% прогонов модели")
+    if f["commitments"]:
+        lines += ["", "Обязательства, которые держались на изменившемся:", ""]
+        lines += [f"- {c['id']}: {c['what']}; условие пересмотра «{c['review_if']}» (опоры {', '.join(c['claims'])})" for c in f["commitments"]]
+    lines += ["", f"Устояло {f['held']} из {f['total']} действующих утверждений: их основания не менялись.", ""]
+    return lines
 
 
 def _pending(project: Project, claims: dict[str, dict]) -> set[str]:
@@ -55,7 +142,7 @@ def _paragraphs(project: Project, touched: set[str]) -> list[dict]:
         for paragraph in checks.paragraphs(path.read_text("utf-8")):
             refs = set(claims_mod.refs_in(paragraph)) & touched
             if refs:
-                found.append({"doc": doc, "refs": sorted(refs), "text": paragraph[:200]})
+                found.append({"doc": doc, "refs": sorted(refs), "text": _short(paragraph, 220)})
     return found
 
 
@@ -117,15 +204,17 @@ def run(project: Project, changed: set[str] | None = None, note: str = "") -> di
         lines += ["", verdict, ""]
     if model_error:
         lines += [f"Модель не пересчитана: {model_error}", ""]
+    why = fallen(project, project.current("claims"), impact["changed"], before, after)
+    lines += render_fallen(why, claims)
     lines += ["## Абзацы, которые надо переписать", ""]
     lines += [f"- `{p['doc']}` ({', '.join(p['refs'])}): {p['text']}" for p in impact["paragraphs"]] or ["- нет"]
     lines += ["", "Агент не меняет решение сам. Ответьте: `R да` или `R правка: ...`."]
     report = f"review-{number}.md"
     atomic_write(project.outputs / report, "\n".join(lines) + "\n")
-    project.append("reviews", {"id": f"R{number}", "ts": now(), "changed": impact["changed"], "downstream": impact["downstream"], "options": impact["options"], "paragraphs": len(impact["paragraphs"]), "leader_before": before["ranking"][0] if before else None, "leader_after": after["ranking"][0] if after else None, "leader_changed": leader_changed, "note": note, "report": report})
+    project.append("reviews", {"id": f"R{number}", "ts": now(), "changed": impact["changed"], "downstream": impact["downstream"], "options": impact["options"], "paragraphs": len(impact["paragraphs"]), "leader_before": before["ranking"][0] if before else None, "leader_after": after["ranking"][0] if after else None, "leader_changed": leader_changed, "note": note, "report": report, "fallen": why["chains"], "held": why["held"], "total": why["total"], "params_changed": why["params"]})
     project.event("review", number=number, leader_changed=leader_changed)
     workflow.open_gate(project, "R", f"Подробности: outputs/{report}")
-    return {**impact, "report": f"outputs/{report}", "leader_changed": leader_changed, "ranking": after["ranking"] if after else None}
+    return {**impact, "report": f"outputs/{report}", "leader_changed": leader_changed, "fallen": why, "ranking": after["ranking"] if after else None}
 
 
 def after_approval(project: Project) -> None:

@@ -36,7 +36,8 @@ def repo_root() -> Path:
 
 
 def now() -> str:
-    return datetime.now(MSK).isoformat(timespec="seconds")
+    # OSN_NOW фиксирует часы: эталонный проект пересобирается байт в байт
+    return os.environ.get("OSN_NOW") or datetime.now(MSK).isoformat(timespec="seconds")
 
 
 def sha256(data: bytes | str) -> str:
