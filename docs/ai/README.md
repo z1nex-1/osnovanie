@@ -14,6 +14,7 @@
 | Claude Sonnet 5.5 | субагенты skeptic, closure-advocate, verifier, researcher; запасной судья | там же |
 | Claude Haiku 5.5 | source-sanitizer (единственный, кто читает текст источников), synthetic-respondent, судья по умолчанию без Jev | там же |
 | Jev (typesafe.ai) | узкий классификатор для маршрутизации и коротких оценок «да/нет», «выбери из списка» | нет, `TYPESAFE_API_KEY`; без него судья — haiku, потом sonnet |
+| YandexGPT-5-Lite 8B и Qwen 3.5 9B через Ollama | судьи D13 другой модельной семьи, локально, без сети и ключей | нет, только для `evals/d13` |
 | WebSearch Claude Code | поиск открытых источников субагентом researcher; страницы скачивает `source fetch` из списка разрешённых доменов | нет, источники можно положить файлами |
 | Python 3.11+, стандартная библиотека | `bin/osnovanie`: утверждения, проверки, модель вариантов, стоимость, реплей | да |
 | uv | запуск тестов и evals | только для `make test` |

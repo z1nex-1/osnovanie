@@ -508,6 +508,9 @@ def report(results: dict) -> str:
             for judge, s in judges.items():
                 prefer = ", ".join(NAMES.get(p, p) for p in s["prefer"])
                 lines.append(f"| {ARMS[arm]} | {judge} | {s['agent_total']} | {s[f'chat-{arm}_total']} | {prefer} | {'да' if s['consistent'] else 'нет'} | {s['quotes'][0]} из {s['quotes'][1]} |")
+        weak = sorted({judge for judges in r["pairs"].values() for judge, s in judges.items() if s["quotes"][0] * 2 < s["quotes"][1]})
+        if weak:
+            lines += ["", f"Судья {', '.join(weak)} привёл меньше половины цитат, которые действительно есть в работах, хотя бы в одной паре: его оценки опираются на текст слабо, главный счёт — Sonnet и Qwen."]
         sides = list(r["metrics"])
         lines += ["", "### Что можно посчитать без судьи", "", "| | " + " | ".join(NAMES[s] for s in sides) + " |", "|---|" + "---|" * len(sides)]
         m, meta, fc = r["metrics"], r["meta"], r["factcheck"]

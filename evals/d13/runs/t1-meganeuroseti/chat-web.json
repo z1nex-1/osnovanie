@@ -1,0 +1,13 @@
+{
+  "arm": "web",
+  "label": "чат с поиском",
+  "model": "claude-opus-5-5",
+  "runner": "субагент Claude Code с WebSearch и WebFetch",
+  "seconds": 366.2,
+  "tokens": 110522,
+  "usd": 0.7006,
+  "rub": 64.46,
+  "usd_note": "оценка: токены субагента без разбивки, выход по длине ответа (знаки / 3), вход включает системный промпт Claude Code и 15 открытых страниц",
+  "searches": 13,
+  "human_minutes": 0
+}

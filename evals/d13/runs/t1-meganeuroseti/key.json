@@ -1,0 +1,17 @@
+{
+  "seed": "1",
+  "pairs": {
+    "plain": {
+      "X": "agent",
+      "Y": "chat-plain"
+    },
+    "web": {
+      "X": "agent",
+      "Y": "chat-web"
+    },
+    "docs": {
+      "X": "agent",
+      "Y": "chat-docs"
+    }
+  }
+}

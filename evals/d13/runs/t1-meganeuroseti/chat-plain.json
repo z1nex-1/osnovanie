@@ -1,0 +1,13 @@
+{
+  "arm": "plain",
+  "label": "чат без поиска",
+  "model": "claude-opus-5-5",
+  "runner": "субагент Claude Code без инструментов",
+  "seconds": 88.7,
+  "tokens": 65624,
+  "usd": 0.4089,
+  "rub": 37.62,
+  "usd_note": "оценка: токены субагента без разбивки, выход по длине ответа, вход включает системный промпт Claude Code",
+  "searches": 0,
+  "human_minutes": 0
+}
