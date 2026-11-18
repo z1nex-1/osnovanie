@@ -1,0 +1,69 @@
+@font-face{font-family:Reper;src:url(fonts/Reper-Regular.woff2) format("woff2")}
+@font-face{font-family:"Plex Sans";src:url(fonts/ibm-plex-sans-cyrillic-wght-normal.woff2) format("woff2");font-weight:100 700;unicode-range:U+0400-04FF}
+@font-face{font-family:"Plex Sans";src:url(fonts/ibm-plex-sans-latin-wght-normal.woff2) format("woff2");font-weight:100 700;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2116,U+2190-21FF,U+2212}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-cyrillic-400-normal.woff2) format("woff2");font-weight:400;unicode-range:U+0400-04FF}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-cyrillic-500-normal.woff2) format("woff2");font-weight:500;unicode-range:U+0400-04FF}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-weight:400;unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+@font-face{font-family:"Plex Mono";src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");font-weight:500;unicode-range:U+0000-00FF,U+2000-206F,U+2190-21FF,U+2212}
+:root{--bg:#07100C;--bg2:#0C1812;--rule:#23362C;--head:#EEF4F0;--mute:#7E9488;--ok:#0CDC78;--mf:#00B956;--hyp:#FFA717;--obj:#FF5A64;
+--paper:#F3F7F4;--ink:#0A140F;--ink2:#3C4F44;--link:#00753A;--hit:#C4EBD3;--line:#C9D6CE;--hypbg:#FFEBC8;--objbg:#FFD9DB;--calc:#D5E6F7}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#888;font:9.6pt/1.5 "Plex Sans",sans-serif;color:var(--ink);counter-reset:pg}
+.page{width:210mm;height:297mm;background:var(--paper);position:relative;overflow:hidden;page-break-after:always;padding:15mm 16mm 17mm;counter-increment:pg}
+.page::after{content:counter(pg);position:absolute;right:16mm;bottom:8mm;font:500 8pt "Plex Mono";color:var(--ink2)}
+.foot{position:absolute;left:16mm;bottom:8mm;font:400 7.5pt "Plex Mono";color:var(--ink2)}
+.page.dark{background:var(--bg);color:#D8E3DC}
+.page.dark::after,.page.dark .foot{color:var(--mute)}
+.kick{font:500 7.8pt "Plex Mono";color:var(--link);text-transform:uppercase;letter-spacing:.06em;margin:0 0 2mm}
+h1,h2,h3{font-family:Reper,"Plex Sans",sans-serif;font-weight:400;margin:0;line-height:1.05}
+h1{font-size:40pt}
+h2{font-size:23pt;margin-bottom:4mm;letter-spacing:.005em}
+h3{font-size:13pt;margin:4mm 0 1.5mm}
+p{margin:0 0 2.4mm}
+.lead{font-size:11.2pt;line-height:1.45}
+.mono,code,pre{font-family:"Plex Mono",monospace}
+code{font-size:8.4pt;background:#E1EAE4;padding:0 1mm;border-radius:1mm}
+pre{margin:0 0 3mm;background:var(--bg);color:#D8E3DC;font-size:7.8pt;line-height:1.45;padding:3mm 4mm;border-left:1.2mm solid var(--ok);white-space:pre-wrap}
+pre .g{color:var(--ok)}pre .y{color:var(--hyp)}pre .r{color:var(--obj)}pre .m{color:var(--mute)}
+table{border-collapse:collapse;width:100%;margin:1mm 0 3.5mm;font-size:8.4pt;line-height:1.38}
+th{font:500 7.3pt "Plex Mono";text-transform:uppercase;letter-spacing:.04em;text-align:left;background:var(--bg);color:var(--head);padding:1.6mm 2mm}
+td{padding:1.5mm 2mm;border-bottom:.25mm solid var(--line);vertical-align:top}
+tr{break-inside:avoid}
+td:first-child{font-weight:600}
+.num{text-align:right;font-family:"Plex Mono";white-space:nowrap}
+.tag{display:inline-block;font:500 7pt "Plex Mono";padding:.3mm 1.6mm;border-radius:.8mm;white-space:nowrap}
+.t-ok{background:var(--hit);color:#05321A}.t-hyp{background:var(--hypbg);color:#6B3F00}.t-obj{background:var(--objbg);color:#7A0A14}.t-calc{background:var(--calc);color:#0D3355}.t-mute{background:#E1E6E3;color:#3C4F44}
+.shot{display:block;width:100%;border:.25mm solid var(--line);margin:0 0 1mm}
+.cap{font:400 7.4pt "Plex Mono";color:var(--ink2);margin:0 0 3.5mm}
+.crop{overflow:hidden;border:.25mm solid var(--line);margin-bottom:1mm;background:#fff}
+.crop img{display:block;width:100%}
+.cols{display:grid;gap:5mm}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}.c21{grid-template-columns:1.15fr 1fr}
+.box{border:.3mm solid var(--line);background:#fff;padding:3mm 3.6mm;margin-bottom:3mm}
+.box.warn{border-color:var(--hyp);background:#FFF6E4}
+.box.ok{border-color:var(--mf);background:#EAF7EF}
+.box h4{margin:0 0 1mm;font:600 9pt "Plex Sans"}
+.box p:last-child{margin:0}
+.stat{background:var(--bg);color:var(--head);padding:3mm 3.4mm}
+.stat b{display:block;font:400 25pt/1 Reper;color:var(--ok)}
+.stat span{font:400 7.4pt "Plex Mono";color:var(--mute)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding-left:10mm;margin-bottom:3mm}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-1mm;font:400 20pt Reper;color:var(--link)}
+ul{margin:0 0 3mm;padding-left:4.6mm}li{margin-bottom:1mm}
+.flow{display:flex;align-items:stretch;gap:1.2mm;margin:2mm 0 4mm}
+.flow div{flex:1;border:.3mm solid var(--ink);padding:2mm;font-size:7.6pt;line-height:1.3;background:#fff}
+.flow div b{display:block;font:400 11pt Reper}
+.flow div.gate{background:var(--bg);color:var(--head);border-color:var(--bg)}
+.flow div.gate b{color:var(--ok)}
+.band{background:var(--bg);color:var(--head);margin:-15mm -16mm 7mm;padding:10mm 16mm 9mm;position:relative}
+.band .note{font:400 7.6pt "Plex Mono";color:var(--hyp);border:.3mm solid var(--hyp);display:inline-block;padding:.8mm 2mm;margin-top:4mm}
+.band img.logo{height:9mm;display:block;margin-bottom:7mm;color:var(--ok)}
+.small{font-size:8pt;color:var(--ink2)}
+.dark td{color:#D8E3DC;border-bottom-color:var(--rule)}
+.dark td code{background:#0C1812;color:var(--ok)}
+.dark th{background:#0C1812;color:var(--ok)}
+.dark .flow div{color:var(--ink)}
+.dark .flow div.gate{color:var(--head)}

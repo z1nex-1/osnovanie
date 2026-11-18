@@ -1,0 +1,31 @@
+import { createRequire } from 'module';
+import fs from 'fs';
+import { execSync } from 'child_process';
+const require = createRequire('/Users/z1nex/ya-games/studio/');
+const { chromium } = require('playwright-core');
+const dir = new URL('./', import.meta.url).pathname;
+const facts = JSON.parse(fs.readFileSync(dir + '../facts.json', 'utf8'));
+facts.P = facts.projects['meganeuroseti-ref'];
+const get = (o, p) => p.split('.').reduce((x, k) => (x == null ? x : x[k]), o);
+let html = fs.readFileSync(dir + 'index.html', 'utf8');
+html = html.replace('{{LOGO}}', fs.readFileSync(dir + 'img/lockup.svg', 'utf8').replace('<svg ', '<svg width="100%" height="100%" '));
+html = html.replace(/\{\{([\w.]+)\}\}/g, (m, p) => {
+  const v = get(facts, p);
+  if (v === undefined) throw new Error('нет в facts.json: ' + p);
+  return String(v);
+});
+fs.writeFileSync(dir + '.built.html', html);
+const browser = await chromium.launch();
+const page = await browser.newPage();
+await page.goto('file://' + dir + '.built.html', { waitUntil: 'load' });
+await page.evaluate(() => document.fonts.ready);
+const over = await page.evaluate(() => [...document.querySelectorAll('.page')].map((p, i) => {
+  let maxB = 0;
+  const pb = p.getBoundingClientRect().top;
+  p.querySelectorAll('*').forEach(e => { if (e.closest('.foot') || (e.closest('.crop') && !e.classList.contains('crop'))) return; const r = e.getBoundingClientRect(); if (r.height) maxB = Math.max(maxB, r.bottom - pb); });
+  return [i + 1, Math.round(maxB), p.clientHeight];
+}));
+for (const [n, b, h] of over) console.log(`стр ${n}: низ контента ${b}px из ${h}px`, b > h - 52 ? 'ТЕСНО/ПЕРЕПОЛНЕНИЕ' : '');
+await page.pdf({ path: dir + '../description.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true });
+await browser.close();
+console.log(execSync('pdfinfo ' + dir + '../description.pdf | grep Pages').toString());
