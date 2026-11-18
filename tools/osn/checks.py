@@ -252,7 +252,10 @@ def stale_sources(project: Project) -> list[str]:
 
 
 def _strategy(project: Project) -> list[str]:
+    from . import fidelity
+
     problems = doc_problems(project) + promise_problems(project) + structure_problems(project) + language_problems(project)
+    problems += fidelity.problems(project)
     shortlist = set(project.meta().get("shortlist", []))
     for name in ("product.md", "communication.md"):
         path = project.outputs / name
@@ -270,6 +273,27 @@ BY_STAGE = {"intake": _intake, "plan": _plan, "research": _research, "options": 
 
 def failures(project: Project, stage: str) -> list[str]:
     return BY_STAGE.get(stage, lambda _: [])(project)
+
+
+ROLES = {"skeptic": "скептик", "closure-advocate": "сторонник закрытия", "pre-mortem": "разбор провала заранее"}
+
+
+def options_lines(project: Project, refs: bool = False) -> list[str]:
+    from . import model
+
+    run = model.last_run(project)
+    lines = []
+    for option in project.current("options").values():
+        res = (run or {}).get("results", {}).get(option["id"], {})
+        head = f"**{option['id']}. {option['title']}**"
+        if res:
+            money = lambda x: f"{x:,.0f}".replace(",", " ").replace("-", "−")
+            head += f" — база {money(res['base'])} {run['output_unit']}, диапазон {money(res['p10'])}…{money(res['p90'])}, лидирует в {res['p_best'] * 100:.0f}% случаев"
+        cite = lambda ids: f" [{', '.join(ids)}]" if refs and ids else ""
+        lines += [head, option.get("thesis", "") + cite(option.get("basis", [])), "Возражения:"]
+        lines += [f"- {ROLES.get(o['by'], o['by'])}: {o['text']}{cite(o.get('claims', []))}" for o in option.get("objections", [])]
+        lines += [f"Проигрывает, если: {option.get('loses_if')}", ""]
+    return lines
 
 
 def full_report(project: Project) -> list[tuple[str, bool, str]]:
@@ -292,6 +316,12 @@ def full_report(project: Project) -> list[tuple[str, bool, str]]:
 
     expired = sorted(c["id"] for c in claims.values() if c["status"] == "verified" and claims_mod.expired(c))
     report.append(("истёкшие факты проверены заново", not expired, ", ".join(expired)))
+    from . import fidelity
+
+    faithful = fidelity.run(project)
+    bad_rows = [f"{r['where']}: {r['what']}" for r in faithful["rows"] if r["level"] == "error"]
+    warn = f"предупреждений {faithful['warnings']}" if faithful["warnings"] else ""
+    report.append(("пересказ не искажает цитаты и утверждения", not bad_rows, "; ".join(bad_rows[:4]) or warn))
     old = stale_sources(project)
     report.append((f"факты не старше {STALE_MONTHS} мес. или старость названа", True, ("предупреждение: " + ", ".join(old)) if old else ""))
     return report
@@ -324,15 +354,7 @@ def gate_packet(project: Project, gate: str, summary: str | None) -> str:
         lines += ["", "## Источники", ""] + [f"- {r['url']} — {r['why']}" for r in project.records("source_plan")]
         lines += ["", "Ответьте: `G2 да` (можно `G2 да бюджет 8`) или `G2 правка: ...`."]
     elif gate == "G3":
-        lines += ["## Варианты", ""]
-        run = model.last_run(project)
-        for option in project.current("options").values():
-            res = (run or {}).get("results", {}).get(option["id"], {})
-            head = f"**{option['id']}. {option['title']}**"
-            if res:
-                head += f" — база {res['base']:,.0f} {run['output_unit']}, диапазон {res['p10']:,.0f}…{res['p90']:,.0f}, лидирует в {res['p_best'] * 100:.0f}% случаев"
-            lines += [head, option.get("thesis", ""), "Возражения:"] + [f"- {o['by']}: {o['text']}" for o in option.get("objections", [])]
-            lines += [f"Проигрывает, если: {option.get('loses_if')}", ""]
+        lines += ["## Варианты", ""] + options_lines(project)
         lines += ["Ответьте: `G3 да O2 O3` (какие варианты развивать в стратегии) или `G3 правка: ...`."]
     elif gate == "G4":
         lines += ["Готовы: outputs/product.md, outputs/communication.md, outputs/validation.md, outputs/trust-map.html.", ""]

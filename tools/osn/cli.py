@@ -340,6 +340,14 @@ def cmd_check(args):
     return 0 if all(ok for _, ok, _ in report) and not report_docs else 1
 
 
+def cmd_fidelity(args):
+    from . import fidelity
+
+    result = fidelity.run(active_project(args.project))
+    emit(result, fidelity.render(result))
+    return 1 if result["errors"] else 0
+
+
 def cmd_gate(args):
     project = active_project(args.project)
     if args.action == "open":
@@ -772,6 +780,7 @@ def parser() -> argparse.ArgumentParser:
     a.add_parser("run").add_argument("--tag", default="manual")
 
     add("check", cmd_check, "проверки качества")
+    add("fidelity", cmd_fidelity, "пересказ против цитат и утверждений")
 
     p = add("gate", cmd_gate, "точки человека")
     a = actions(p)
