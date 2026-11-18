@@ -31,55 +31,63 @@ class D13(unittest.TestCase):
                   "c002": {"text": "Пробный период неделя", "type": "fact", "source_id": "s001", "quote": "пробный период 7 дней"}}
         text = d13._footnotes(AGENT, claims, {"s001": {"title": "Тарифы"}})
         (self.run_dir / "agent.md").write_text(text, "utf-8")
-        (self.run_dir / "chat.md").write_text(CHAT, "utf-8")
+        (self.run_dir / "chat-plain.md").write_text(CHAT, "utf-8")
+        (self.run_dir / "chat-docs.md").write_text(CHAT, "utf-8")
 
     def test_footnotes_replace_internal_ids_with_quotes(self):
         text = (self.run_dir / "agent.md").read_text("utf-8")
         self.assertNotIn("c001", text)
         self.assertIn("[1, 2]", text)
-        self.assertIn("[1] (fact) Подписка 590 рублей. Цитата: «Подписка стоит 590 рублей в месяц». Источник: Тарифы.", text)
+        self.assertIn("[1] (факт) Подписка 590 рублей. Цитата: «Подписка стоит 590 рублей в месяц». Источник: Тарифы.", text)
 
-    def test_blind_hides_authorship_and_keeps_key_apart(self):
+    def test_blind_pairs_every_arm_and_keeps_key_apart(self):
         d13.cmd_blind(SimpleNamespace(task="t1-meganeuroseti", seed="1"))
         key = json.loads((self.run_dir / "key.json").read_text("utf-8"))
-        self.assertEqual(sorted([key["X"], key["Y"]]), ["agent", "chat"])
-        for letter in "XY":
-            text = (self.run_dir / "blind" / f"{letter}.md").read_text("utf-8")
-            self.assertNotIn("osnovanie", text.lower())
-            self.assertNotIn("agent", text)
-        self.assertIn("r1 = { X = , Y = }", (self.run_dir / "human.toml").read_text("utf-8"))
+        self.assertEqual(sorted(key["pairs"]), ["docs", "plain"])
+        for arm, pair in key["pairs"].items():
+            self.assertEqual(sorted(pair.values()), ["agent", f"chat-{arm}"])
+            for letter in "XY":
+                text = (self.run_dir / "blind" / arm / f"{letter}.md").read_text("utf-8")
+                self.assertNotIn("osnovanie", text.lower())
+                self.assertNotIn("agent", text)
+        self.assertIn("[plain]", (self.run_dir / "human.toml").read_text("utf-8"))
 
     def test_factcheck_finds_numbers_absent_from_materials(self):
-        chat = d13.factcheck(self.run_dir, "chat")
+        chat = d13.factcheck(self.run_dir, "chat-plain")
         self.assertEqual((chat["checked"], chat["traced"]), (2, 1))
         self.assertEqual(chat["untraced"][0]["missing"], ["990", "40"])
         agent = d13.factcheck(self.run_dir, "agent")
         self.assertEqual(agent["checked"], agent["traced"])
 
-    def test_score_unblinds_and_flags_order_dependence(self):
+    def test_score_unblinds_checks_quotes_and_flags_order_dependence(self):
         d13.cmd_blind(SimpleNamespace(task="t1-meganeuroseti", seed="1"))
-        key = json.loads((self.run_dir / "key.json").read_text("utf-8"))
-        agent_letter = "X" if key["X"] == "agent" else "Y"
+        pair = json.loads((self.run_dir / "key.json").read_text("utf-8"))["pairs"]["plain"]
+        agent_letter = "X" if pair["X"] == "agent" else "Y"
         chat_letter = "Y" if agent_letter == "X" else "X"
-        judges = self.run_dir / "judges"
-        judges.mkdir()
+        texts = {letter: (self.run_dir / "blind" / "plain" / f"{letter}.md").read_text("utf-8") for letter in "XY"}
+        judges = self.run_dir / "judges" / "plain"
+        judges.mkdir(parents=True)
         items = [i["id"] for i in d13.rubric()]
         for order, prefer in (("XY", agent_letter), ("YX", chat_letter)):
-            scores = {i: {agent_letter: 8, chat_letter: 5, "why": "-"} for i in items}
+            scores = {i: {agent_letter: 8, chat_letter: 5, f"quote_{agent_letter}": texts[agent_letter].split("\n")[2][:40],
+                          f"quote_{chat_letter}": "фразы нет в работе", "why": "-"} for i in items}
             scores["r5"] = {agent_letter: 4, chat_letter: 7, "why": "-"}
-            (judges / f"sonnet-{order}.json").write_text(json.dumps({"judge": "sonnet", "order": order, "scores": {**scores, "prefer": prefer, "why": "-"}}), "utf-8")
-        result = d13.score_task(self.run_dir)["judges"]["sonnet"]
+            (judges / f"sonnet-{order}.json").write_text(json.dumps({"judge": "sonnet", "family": "claude", "order": order, "scores": {**scores, "prefer": prefer, "why": "-"}}), "utf-8")
+        result = d13.score_task(self.run_dir)["pairs"]["plain"]["sonnet"]
         self.assertEqual(result["agent"]["r1"], 8)
-        self.assertEqual(result["chat"]["r5"], 7)
+        self.assertEqual(result["chat-plain"]["r5"], 7)
         self.assertFalse(result["consistent"])
+        self.assertEqual(result["quotes"], [12, 24])
         report = d13.report({"t1-meganeuroseti": d13.score_task(self.run_dir)})
         self.assertIn("r5: агент 4, чат 7", report)
 
     def test_chat_prompt_carries_same_requirements_as_judges(self):
-        prompt = d13.chat_prompt("Кому продавать?", MATERIALS)
+        prompt = d13.chat_prompt("Кому продавать?", "docs", MATERIALS)
         for item in d13.rubric():
             self.assertIn(item["ask"], prompt)
         self.assertIn("оставить как есть", prompt)
+        self.assertIn("590 рублей", prompt)
+        self.assertNotIn("590 рублей", d13.chat_prompt("Кому продавать?", "plain", MATERIALS))
 
 
 if __name__ == "__main__":
