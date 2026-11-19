@@ -1,21 +1,32 @@
-{"task":"t1-meganeuroseti","stage":"intake","agent":"general-purpose (Opus 5.5)","tokens":62728,"tool_uses":5,"seconds":21.5}
-{"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Opus 5.5)","tokens":64671,"tool_uses":18,"seconds":58.4}
+{"task":"t1-meganeuroseti","stage":"intake","agent":"general-purpose (Sonnet 5.5)","tokens":62728,"tool_uses":5,"seconds":21.5}
+{"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Sonnet 5.5)","tokens":64671,"tool_uses":18,"seconds":58.4}
 {"task":"t1-meganeuroseti","stage":"collect","agent":"researcher (Sonnet)","tokens":41079,"tool_uses":19,"seconds":105.9}
-{"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Opus 5.5), продолжение","tokens":69093,"tool_uses":7,"seconds":24.0}
+{"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Sonnet 5.5), продолжение","tokens":69093,"tool_uses":7,"seconds":24.0}
 {"task":"t1-meganeuroseti","stage":"research","agent":"researcher (Sonnet), загрузка и утверждения, второй заход после перезапуска","tokens":136871,"tool_uses":38,"seconds":258.2,"note":"первый заход прерван перезапуском сессии, его время не записано"}
-{"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Opus 5.5)","tokens":135473,"tool_uses":97,"seconds":276.4}
+{"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Sonnet 5.5)","tokens":135473,"tool_uses":97,"seconds":276.4}
 {"task":"t1-meganeuroseti","stage":"research","agent":"verifier (субагент)","tokens":39674,"tool_uses":26,"seconds":83.9}
-{"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Opus 5.5), правки по verifier и advance","tokens":74017,"tool_uses":24,"seconds":60.6}
-{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), варианты O1–O5","tokens":86096,"tool_uses":36,"seconds":109.3}
+{"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Sonnet 5.5), правки по verifier и advance","tokens":74017,"tool_uses":24,"seconds":60.6}
+{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Sonnet 5.5), варианты O1–O5","tokens":86096,"tool_uses":36,"seconds":109.3}
 {"task":"t1-meganeuroseti","stage":"options","agent":"closure-advocate (Sonnet)","tokens":23048,"tool_uses":13,"seconds":35.5}
 {"task":"t1-meganeuroseti","stage":"options","agent":"skeptic (Sonnet)","tokens":26236,"tool_uses":24,"seconds":419.1}
 {"task":"t1-meganeuroseti","stage":"review-prep","agent":"researcher (Sonnet), разведка новости для пересмотра","tokens":23797,"tool_uses":7,"seconds":41.9}
 {"task":"t1-meganeuroseti","stage":"options","agent":"проверка стопа: «стоп» подан в хук оператором, haiku-агент: resume разрешён, objection add заблокирован","tokens":58977,"tool_uses":2,"seconds":10.4}
-{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), модель, options.md, G3","tokens":122803,"tool_uses":47,"seconds":291.8}
-{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), правка по «G3 правка» оператора","tokens":94452,"tool_uses":30,"seconds":227.6}
-{"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Opus 5.5), стратегии, validation, G4","tokens":107168,"tool_uses":46,"seconds":168.1}
-{"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Opus 5.5), обязательства после G4","tokens":66086,"tool_uses":10,"seconds":42.2}
+{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Sonnet 5.5), модель, options.md, G3","tokens":122803,"tool_uses":47,"seconds":291.8}
+{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Sonnet 5.5), правка по «G3 правка» оператора","tokens":94452,"tool_uses":30,"seconds":227.6}
+{"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Sonnet 5.5), стратегии, validation, G4","tokens":107168,"tool_uses":46,"seconds":168.1}
+{"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Sonnet 5.5), обязательства после G4","tokens":66086,"tool_uses":10,"seconds":42.2}
 {"task":"t1-meganeuroseti","stage":"review","agent":"researcher (Sonnet), первый заход: домены не разрешены","tokens":13615,"tool_uses":5,"seconds":22.9}
 {"task":"t1-meganeuroseti","stage":"review","agent":"researcher (Sonnet), загрузка s023, s024 и утверждения","tokens":29614,"tool_uses":15,"seconds":66.9}
-{"task":"t1-meganeuroseti","stage":"review","agent":"general-purpose (Opus 5.5), review run, точка R","tokens":68359,"tool_uses":19,"seconds":45.4}
+{"task":"t1-meganeuroseti","stage":"review","agent":"general-purpose (Sonnet 5.5), review run, точка R","tokens":68359,"tool_uses":19,"seconds":45.4}
 {"task":"t1-meganeuroseti","stage":"review","agent":"general-purpose (Sonnet), review finish, map, diff","tokens":59747,"tool_uses":4,"seconds":13.9}
+{"task":"t2-megafon-app","stage":"intake","agent":"general-purpose (Sonnet 5.5)","tokens":62284,"tool_uses":6,"seconds":29.9}
+{"task":"t2-megafon-app","stage":"collect","agent":"general-purpose (Sonnet 5.5), вопросы и бюджет","tokens":66846,"tool_uses":17,"seconds":47.1}
+{"task":"t2-megafon-app","stage":"collect","agent":"researcher (Sonnet), план источников","tokens":39821,"tool_uses":38,"seconds":67.8}
+{"task":"t2-megafon-app","stage":"collect","agent":"general-purpose (Sonnet 5.5), продолжение, G2","tokens":72482,"tool_uses":8,"seconds":32.2}
+{"task":"t2-megafon-app","stage":"collect","agent":"researcher (Sonnet), правка G2: первоисточники операторов","tokens":24687,"tool_uses":9,"seconds":40.5}
+{"task":"t2-megafon-app","stage":"collect","agent":"general-purpose (Sonnet 5.5), повторное открытие G2","tokens":76782,"tool_uses":1,"seconds":8.7}
+{"task":"t2-megafon-app","stage":"research","agent":"researcher (Sonnet), загрузка 17 страниц и 50 утверждений","tokens":129702,"tool_uses":141,"seconds":320.2}
+{"task":"t2-megafon-app","stage":"research","agent":"researcher (Sonnet), второй заход: отзывы RuStore и App Store","tokens":144033,"tool_uses":20,"seconds":401.0}
+{"task":"t2-megafon-app","stage":"research","agent":"general-purpose (Sonnet 5.5), разбор отзывов, гипотезы, situation.md","tokens":93696,"tool_uses":39,"seconds":147.6}
+{"task":"t2-megafon-app","stage":"research","agent":"verifier (Sonnet)","tokens":43225,"tool_uses":23,"seconds":68.1}
+{"task":"t2-megafon-app","stage":"research","agent":"source-sanitizer (Sonnet), все 30 отзывов s022","tokens":28350,"tool_uses":1,"seconds":null,"note":"время не снято: 2007 с включают перезапуск сессии оператора"}

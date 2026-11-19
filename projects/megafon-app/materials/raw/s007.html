@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html xml:lang="ru" lang="ru">
+<head>
+	<title>Редизайн приложения t2: 20+ млн MAU и 3 млн DAU — кейс e-legion</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Редизайн приложения, подключение виртуального ассистента и интеграция ИИ в сервис Миа, развитие онлайн-сценариев оператора; по итогам года приложение t2 показало 20+ млн MAU и 3 млн DAU." />
+<style>
+	html {
+		font-size: min(calc(100vw / 130), 10.7926px) !important;
+	}
+	html, body, #app, .general-layout {
+		min-height: 100%;
+	}
+.loader {
+		padding: 50vh 0 0 50vw;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 9999;
+		background: #fff;
+		width: 100%;
+		height: 100%;
+		transform: translateZ(0) scale(1);
+		backface-visibility: hidden
+	}
+
+	.loader_box {
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		position: relative;
+		width: 4.5vw;
+		height: 4.5vw	}
+
+	.loader_box-circle {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0
+	}
+
+	.loader_box-circle:before {
+		content: '';
+		display: block;
+		margin: 0 auto;
+		width: 15%;
+		height: 15%;
+		background-color: #00bff3;
+		border-radius: 100%;
+		-webkit-animation: sk-fading-circle-delay 1.2s infinite ease-in-out both;
+		animation: sk-fading-circle-delay 1.2s infinite ease-in-out both
+	}
+
+	.loader_box-circle-2 {
+		-webkit-transform: rotate(30deg);
+		transform: rotate(30deg)
+	}
+
+	.loader_box-circle-3 {
+		-webkit-transform: rotate(60deg);
+		transform: rotate(60deg)
+	}
+
+	.loader_box-circle-4 {
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg)
+	}
+
+	.loader_box-circle-5 {
+		-webkit-transform: rotate(120deg);
+		transform: rotate(120deg)
+	}
+
+	.loader_box-circle-6 {
+		-webkit-transform: rotate(150deg);
+		transform: rotate(150deg)
+	}
+
+	.loader_box-circle-7 {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg)
+	}
+
+	.loader_box-circle-8 {
+		-webkit-transform: rotate(210deg);
+		transform: rotate(210deg)
+	}
+
+	.loader_box-circle-9 {
+		-webkit-transform: rotate(240deg);
+		transform: rotate(240deg)
+	}
+
+	.loader_box-circle-10 {
+		-webkit-transform: rotate(270deg);
+		transform: rotate(270deg)
+	}
+
+	.loader_box-circle-11 {
+		-webkit-transform: rotate(300deg);
+		transform: rotate(300deg)
+	}
+
+	.loader_box-circle-12 {
+		-webkit-transform: rotate(330deg);
+		transform: rotate(330deg)
+	}
+
+	.loader_box-circle-2:before {
+		-webkit-animation-delay: -1.1s;
+		animation-delay: -1.1s
+	}
+
+	.loader_box-circle-3:before {
+		-webkit-animation-delay: -1s;
+		animation-delay: -1s
+	}
+
+	.loader_box-circle-4:before {
+		-webkit-animation-delay: -0.9s;
+		animation-delay: -0.9s
+	}
+
+	.loader_box-circle-5:before {
+		-webkit-animation-delay: -0.8s;
+		animation-delay: -0.8s
+	}
+
+	.loader_box-circle-6:before {
+		-webkit-animation-delay: -0.7s;
+		animation-delay: -0.7s
+	}
+
+	.loader_box-circle-7:before {
+		-webkit-animation-delay: -0.6s;
+		animation-delay: -0.6s
+	}
+
+	.loader_box-circle-8:before {
+		-webkit-animation-delay: -0.5s;
+		animation-delay: -0.5s
+	}
+
+	.loader_box-circle-9:before {
+		-webkit-animation-delay: -0.4s;
+		animation-delay: -0.4s
+	}
+
+	.loader_box-circle-10:before {
+		-webkit-animation-delay: -0.3s;
+		animation-delay: -0.3s
+	}
+
+	.loader_box-circle-11:before {
+		-webkit-animation-delay: -0.2s;
+		animation-delay: -0.2s
+	}
+
+	.loader_box-circle-12:before {
+		-webkit-animation-delay: -0.1s;
+		animation-delay: -0.1s
+	}
+
+	@-webkit-keyframes sk-fading-circle-delay {
+		0%, 39%, 100% {
+			opacity: 0
+		}
+		40% {
+			opacity: 1
+		}
+	}
+
+	@keyframes sk-fading-circle-delay {
+		0%, 39%, 100% {
+			opacity: 0
+		}
+		40% {
+			opacity: 1
+		}
+	}
+
+	</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Workspace","url":"https://workspace.ru","publisher":{"@type":"Organization","name":"Workspace","url":"https://workspace.ru","logo":"https://workspace.ru/local/templates/tender_v2/ws_build/images/logo_new.svg"}}</script>
+<meta property="og:site_name" content="Workspace" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="https://workspace.ru/" />
+<meta name="copyright" content="Workspace.ru" />
+<meta name="referrer" content="unsafe-url" />
+<meta name="yandex-verification" content="aabd9f42c0e98915" />
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-bold-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-semibold-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-regularit-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/pixel-font.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=62944ef2efdeb">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=62944ef2efdeb">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=62944ef2efdeb">
+<link rel="manifest" href="/favicon/site.webmanifest?v=62944ef2efdeb">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=62944ef2efdeb" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon/favicon.ico?v=62944ef2efdeb">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png?v=62944ef2efdeb">
+<meta name="msapplication-config" content="/favicon/browserconfig.xml?v=62944ef2efdeb">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:url" content="https://workspace.ru/cases/prilozhenie-dlya-federalnogo-operatora-tele2/" />
+<meta property="og:image" content="https://workspace.ru/upload/resize_cache/executor_cases/0f7/s2ww1g4olowb008kufzeqafymvylb4t5/1528_800_2619711fa078991f0a23d032687646b21/WS_May24_preview.png" />
+<meta property="og:site_name" content="WORKSPACE" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@WORKSPACE_ru" />
+<meta name="twitter:image" content="https://workspace.ru/upload/resize_cache/executor_cases/0f7/s2ww1g4olowb008kufzeqafymvylb4t5/1528_800_2619711fa078991f0a23d032687646b21/WS_May24_preview.png" />
+<link rel="canonical" href="https://workspace.ru/cases/prilozhenie-dlya-federalnogo-operatora-tele2/"/>
+<link rel="image_src" href="https://workspace.ru/upload/resize_cache/executor_cases/0f7/s2ww1g4olowb008kufzeqafymvylb4t5/1528_800_2619711fa078991f0a23d032687646b21/WS_May24_preview.png" />
+<meta property="og:title" content="Редизайн приложения t2: 20+ млн MAU и 3 млн DAU — кейс e-legion" />
+<meta name="twitter:title" content="Редизайн приложения t2: 20+ млн MAU и 3 млн DAU — кейс e-legion" />
+<meta property="og:description" content="Редизайн приложения, подключение виртуального ассистента и интеграция ИИ в сервис Миа, развитие онлайн-сценариев оператора; по итогам года приложение t2 показало 20+ млн MAU и 3 млн DAU." />
+<meta name="twitter:description" content="Редизайн приложения, подключение виртуального ассистента и интеграция ИИ в сервис Миа, развитие онлайн-сценариев оператора; по итогам года приложение t2 показало 20+ млн MAU и 3 млн DAU." />
+
+
+
+<link href="/bitrix/cache/css/s1/tender_v2/template_0ec200474309754bdea87a2bc02acbbd/template_0ec200474309754bdea87a2bc02acbbd_v1.css?17948433031231807" type="text/css"  data-template-style="true" rel="stylesheet" />
+	</head>
+<body class="">
+<div id='fb-root'></div>
+
+
+	<div class="loader js-loader" data-page-loader>
+		<div class="loader_box">
+			<div class="loader_box-circle loader_box-circle-1"></div>
+			<div class="loader_box-circle loader_box-circle-2"></div>
+			<div class="loader_box-circle loader_box-circle-3"></div>
+			<div class="loader_box-circle loader_box-circle-4"></div>
+			<div class="loader_box-circle loader_box-circle-5"></div>
+			<div class="loader_box-circle loader_box-circle-6"></div>
+			<div class="loader_box-circle loader_box-circle-7"></div>
+			<div class="loader_box-circle loader_box-circle-8"></div>
+			<div class="loader_box-circle loader_box-circle-9"></div>
+			<div class="loader_box-circle loader_box-circle-10"></div>
+			<div class="loader_box-circle loader_box-circle-11"></div>
+			<div class="loader_box-circle loader_box-circle-12"></div>
+		</div>
+	</div>
+
+	<div class='header-notice-on-top'
+		 data-global-notice-block='{"id":36,"type":"beforeHeader","name":"global_notice_","url":"\/api-v\/set\/header\/notice\/close\/"}'>
+		<div class="header-notice-on-top__wrapper" data-ext-links-allow-container><!--ext-link-container-start-->
+			<div class="w-100p u-fx-auto t-a-c">
+				<span data-teams="true"><a data-ext-link-allow href="https://workspace.ru/awards/" >Workspace Digital Awards</a> — приём заявок в самом разгаре! </span>Успейте <a data-ext-link-allow href="https://workspace.ru/awards/" >номинироваться</a> по льготной цене до 30 декабря.			</div>
+			<button data-global-notice-close class="u-btn-reset align-items-center d-flex u-color-white" aria-label="Скрыть сообщение">
+				<svg class="c-svg-icon u-fs-18" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+					<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-width="1.5">
+						<path d="M12.306.356L.26 12.4M.26.356L12.306 12.4" transform="translate(1.43 .848)" />
+					</g>
+				</svg>
+			</button>
+		<!--ext-link-container-end--></div>
+	</div>
+	<header class="header _radius _shadow" data-main-header data-dropdown-container>
+		<div class="header__wrapper d-flex align-items-center">
+			<div class="page-inner__container d-flex w-100p justify-content-start align-items-center">
+				
+<a href="/"><img class='header-new__logo' src='/local/templates/tender_v2/ws_build/images/logo_new.svg' alt='Workspace.ru'></a>
+<button class='pull-left _radius-lg _sm button button--gray1 u-my-auto header-new__dd-btn' data-dropdown-button data-header-main-menu-btn>
+	<svg class="c-svg-icon _xl u-va-bottom">
+		<use xlink:href="/local/templates/tender_v2/ws_build/images/header-new-sprite.svg#menu"></use>
+	</svg>&nbsp;
+	Медиа</button>
+
+
+<div class="u-ml-auto d-flex ">
+	<a data-header-menu-item="all" href="/create/" class="button button--blue _radius-lg _sm u-my-auto u-ml-12" data-header-create-tender-link>Организовать тендер</a>
+
+		<a data-header-menu-item="tender" data-header-favourites data-header-favourites-wrapper href="/favorites"
+	   class="button button--gray1 _sm _radius-lg u-ml-12  ">
+		<svg class="c-svg-icon _xl u-va-bottom">
+			<use xlink:href="/local/templates/tender_v2/ws_build/images/header-new-sprite.svg#heart"></use>
+		</svg>
+		<span class='hide' data-header-favourites-text="1">0</span>
+	</a>
+			<a data-header-menu-item="job" data-header-favourites data-header-favourites-wrapper href="/favorites/vacancies/"
+		   class="button button--gray1 _sm _radius-lg u-ml-12 ">
+			<svg class="c-svg-icon _xl u-va-bottom">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/header-new-sprite.svg#heart"></use>
+			</svg>
+		</a>
+	
+	
+			<a class="button button--gray1 _radius-lg _sm u-radius-right-0 u-my-auto " href="/login/?backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" data-login-popup-show="/login/login.php?ajax=Y">Войти</a>
+	<a class="button button--gray1 _radius-lg _sm u-ml-0 u-radius-left-0 u-my-auto " href="/login/registration.php?backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2">Зарегистрироваться</a>
+
+		<div class="modal" aria-hidden="true" data-modal-popup data-login-popup>
+		<div class="modal__overlay" tabindex="-1">
+			<div class="modal__dialog" role="dialog" aria-modal="true">
+				<button type="button" class="modal__btn-close _type2 u-p-0" data-modal-popup-close><span class="u-sr-only">Закрыть</span></button>
+				<div class="modal__inner _small-pad" data-login-popup-body data-modal-popup-body>
+					<div class="cssload-zenith"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+			</div>
+		</div>
+		<div class="_radius  _bordered d-flex align-items-center header__wrapper">
+					<ul class='page-inner__container w-100p header-new__submenu align-items-center reset-list'>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 _active'
+						href='/cases/'
+											>
+						Кейсы					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/blog/'
+											>
+						Статьи					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/events/'
+											>
+						Афиша					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/expert/'
+											>
+						Слово экспертам					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/docs/'
+											>
+						Документация					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/news/'
+											>
+						Новости компаний					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/interview/'
+											>
+						Интервью					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/video/'
+											>
+						Видео					</a>
+				</li>
+					</ul>
+	
+	<div class='header-new__dropdown-menu' data-dropdown>
+		<div class='page-inner__container w-100p d-flex justify-content-start'>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Тендеры и лиды</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/b2b/'
+																	>
+									Тендерная площадка								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/how-it-works/'
+																	>
+									Как это работает								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/tenders/'
+																	>
+									Каталог тендеров								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/create/'
+																	>
+									Организовать тендер								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Исполнители</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/contractors/'
+																	>
+									Диджитал-агентства								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/people/'
+																	>
+									Специалисты								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/gratitude-letters/'
+																	>
+									Отзывы об агентствах								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/calculator/'
+																	>
+									Стоимость услуг								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/rating/'
+																	>
+									Рейтинги								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Медиа</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 _active'
+									href='/cases/'
+																	>
+									Кейсы								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/blog/'
+																	>
+									Статьи								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/events/'
+																	>
+									Афиша								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/expert/'
+																	>
+									Слово экспертам								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/docs/'
+																	>
+									Документация								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/news/'
+																	>
+									Новости компаний								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/interview/'
+																	>
+									Интервью								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/video/'
+																	>
+									Видео								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Информация</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/about/'
+																	>
+									О проекте								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/project-news/'
+																	>
+									Новости проекта								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/advertising/'
+																	>
+									Платные опции								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/help/'
+																	>
+									Помощь								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/corporate-identity/'
+																	>
+									Наша айдентика								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Другое</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/awards/'
+									target="_blank"								>
+									Премия WDA								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/tools/'
+																	>
+									Инструменты								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/vacancies/'
+																	>
+									Вакансии								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/contests/'
+																	>
+									Каталог премий								</a>
+							</li>
+											</ul>
+				</div>
+					</div>
+	</div>
+		</div>
+			</header>
+	<div class="grid  _with-subheader">
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://workspace.ru/"},{"@type":"ListItem","position":2,"name":"Кейсы","item":"https://workspace.ru/cases/"},{"@type":"ListItem","position":3,"name":"t2. Новый уровень","item":"https://workspace.ru/cases/prilozhenie-dlya-federalnogo-operatora-tele2/"}]}</script> <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"t2. Новый уровень","datePublished":"2026-01-26T17:55:17+03:00","description":"Кейс t2. Новый уровень работа для клиента T2 Мобайл из города Москва в сфере «Информационные технологии и интернет». Услуги, оказанные агентством e-legion: Приложение под ключ .","image":"https://workspace.ru/upload/resize_cache/executor_cases/02f/3patijziio7jjyhrutmb4qhf6p9isz5g/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_cover.png","publisher":{"@type":"Organization","name":"e-legion","url":"https://workspace.ru/contractors/e-legion/","logo":{"@type":"ImageObject","url":"https://workspace.ru/upload/resize_cache/executor_logo/546/m53r8xtfr45dpysqdumsumr3265u7484/120_120_1619711fa078991f0a23d032687646b21/photo_2022_12_15-09.09.38.jpeg"},"image":{"@type":"ImageObject","url":"https://workspace.ru/upload/resize_cache/executor_logo/546/m53r8xtfr45dpysqdumsumr3265u7484/120_120_1619711fa078991f0a23d032687646b21/photo_2022_12_15-09.09.38.jpeg"}}}</script> 		<div class='page-inner__container cases-detail__panel cases-detail__container' data-page-customer data-notice-case-info>
+			<div class='cases-detail__wrapper cases-detail__panel-wrapper d-flex'>
+									<a class='show' href='/contractors/e-legion/' target='_blank'>
+				
+					<img  src="https://workspace.ru/upload/resize_cache/executor_logo/546/m53r8xtfr45dpysqdumsumr3265u7484/120_120_1619711fa078991f0a23d032687646b21/photo_2022_12_15-09.09.38.jpeg"  srcset="https://workspace.ru/upload/resize_cache/executor_logo/546/m53r8xtfr45dpysqdumsumr3265u7484/240_240_1619711fa078991f0a23d032687646b21/photo_2022_12_15-09.09.38.jpeg 2x"  alt='e-legion' class='cases-detail-author__img _xsmall'>
+
+									</a>
+				
+				<div>
+					<div class='cases-detail__panel-title'>t2. Новый уровень</div>
+											<a href='/contractors/e-legion/' class='cases-detail__panel-subtitle c-link _gray2'>
+					
+						e-legion
+											</a>
+									</div>
+			</div>
+		</div>
+	
+<div class='page-inner__container cases-detail__container pos-relative ' data-view='ProjectsDetail'>
+			<div
+		class='cases-detail__wrapper'
+		data-finish-reading-content
+
+		data-ext-analytics
+		data-ext-analytics-source="case"
+		data-ext-analytics-source-id="206451"
+		data-ext-analytics-block="content"
+
+			>					<div class='cases-detail__btn-wrap'>
+				<div class='cases-detail__likes-btn'>
+											
+<button class="u-btn-reset cases-detail-likes__button _small " data-article-rating-button data-goto-by-click-btn="caseratingvote"  data-goto-by-click-center="1" data-goto-by-click-time="500" >
+	<span class="cases-detail-likes__button-counter "
+	      data-article-rating data-article-rating-value="prilozhenie-dlya-federalnogo-operatora-tele2">9.0</span>
+	<div class="cases-detail-likes__button-icon cases-detail__btn-ico u-mb-10 u-fs-28 _small">
+		<span class='u-color-white color-white  hide' data-article-user-rate></span>
+		<svg class="c-svg-icon u-color-white u-fs-46 fz-46  "
+		     viewBox="0 0 47 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-article-rating-unrated-wrap>
+			<path d="M19.157 21.3326C19.157 21.0008 18.8873 20.7566 18.1975 20.7065C17.3884 20.6439 17.4637 19.8925 18.2288 19.7485C19.4831 19.5168 20.0601 18.8281 20.0601 18.2019C20.0377 17.9138 19.9161 17.6424 19.7161 17.4335C19.5161 17.2247 19.2499 17.0913 18.9626 17.0561C18.1222 16.8682 18.2915 16.2985 18.9626 16.2421C20.0978 16.1544 20.6497 15.4782 20.6497 14.827C20.6497 14.4949 20.5175 14.1764 20.2823 13.9415C20.047 13.7067 19.728 13.5747 19.3953 13.5747C18.5361 13.462 18.8121 12.8422 19.3953 12.6606C19.7612 12.6044 20.0961 12.4233 20.3432 12.1481C20.5902 11.873 20.734 11.5208 20.75 11.1516C20.75 10.4691 20.2483 9.58622 18.4734 9.64884C17.2191 9.70519 14.792 9.45473 13.4562 8.76598C14.3656 5.10305 14.146 0 11.7629 0C10.1636 0 9.88139 1.80329 9.37966 3.46882C7.74906 9.42343 4.2997 10.5254 0.75 11.0577V21.0008C7.46057 21.0008 9.27932 24 14.2966 24C17.5013 24 19.157 22.2718 19.157 21.3326Z" stroke="none"/>
+			<path d="M28.343 2.66736C28.343 2.99922 28.6127 3.24341 29.3025 3.2935C30.1116 3.35612 30.0363 4.10749 29.2712 4.2515C28.0169 4.48317 27.4399 5.17193 27.4399 5.79807C27.4623 6.08616 27.5839 6.35763 27.7839 6.56647C27.9839 6.77531 28.2501 6.90866 28.5374 6.94391C29.3778 7.13175 29.2085 7.70154 28.5374 7.75789C27.4022 7.84555 26.8503 8.52179 26.8503 9.17297C26.8503 9.5051 26.9825 9.82362 27.2177 10.0585C27.453 10.2933 27.772 10.4253 28.1047 10.4253C28.9639 10.538 28.6879 11.1578 28.1047 11.3394C27.7388 11.3956 27.4039 11.5767 27.1568 11.8519C26.9098 12.127 26.766 12.4792 26.75 12.8484C26.75 13.5309 27.2517 14.4138 29.0266 14.3512C30.2809 14.2948 32.708 14.5453 34.0438 15.234C33.1344 18.8969 33.354 24 35.7371 24C37.3364 24 37.6186 22.1967 38.1203 20.5312C39.7509 14.5766 43.2003 13.4746 46.75 12.9423V2.99922C40.0394 2.99922 38.2207 0 33.2034 0C29.9987 0 28.343 1.72815 28.343 2.66736Z" stroke="none"/>
+		</svg>
+
+	</div>
+	<div class='cases-detail__btn-txt' data-article-rating-button-text data-no-like-text="Оценить" data-when-like-text="Спасибо!">
+		Оценить	</div>
+</button>						<br><br>
+									</div>
+			</div>
+		
+					<a href="/awards/" target="_blank">
+				<div class="awards__badge in_page" data-tooltip-link="WORKSPACE<br>DIGITAL<br>AWARDS <span>/ 25">
+					<span class="awards__badge-text">WDA<br>2025</span>
+				</div>
+			</a>
+		<a href='/cases/mobile/'
+					 class='cases-detail__tag c-link _blue'>#Приложение под ключ </a>
+		<h1 class='journal-detail__title'>t2. Новый уровень</h1>
+
+		<div class='journal-card__row mt-0'>
+			<div class='journal-card__col journal-card__counter journal-detail__counter'>
+				13849&nbsp;
+				<svg class='c-svg-icon _eye _xsm'>
+					<use xlink:href='/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#eye2'></use>
+				</svg>
+			</div>
+						<span class='journal-card__col journal-card__counter journal-detail__counter _date'
+				  data-public-date='2023-01-30T07:49:37+00:00'>
+							</span>
+		</div>
+
+					<div class='d-flex align-items-center u-mt-30 u-mb-30' data-notice-case-info-fix-start>
+				<div class='d-flex align-items-center u-mr-auto'>
+					<div class='u-pos-rel u-mr-15 mr-16'>
+												<a href='/contractors/e-legion/' target='_blank'>
+						
+							<img  src="https://workspace.ru/upload/resize_cache/executor_logo/546/m53r8xtfr45dpysqdumsumr3265u7484/120_120_1619711fa078991f0a23d032687646b21/photo_2022_12_15-09.09.38.jpeg"  srcset="https://workspace.ru/upload/resize_cache/executor_logo/546/m53r8xtfr45dpysqdumsumr3265u7484/240_240_1619711fa078991f0a23d032687646b21/photo_2022_12_15-09.09.38.jpeg 2x"  alt='e-legion' class='cases-detail-author__img u-mr-0' />
+
+												</a>
+							<a class="u-btn-reset subscribers-button u-ml-5 u-fs-16 u-va-top cases-detail-author__subtitle-subscribe _square _blue-d" href="/login/login.php?backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F" data-login-popup-show="/login/login.php?ajax=Y" >
+		<svg class="c-svg-icon _sub _xl">
+			<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg?v=3#plus-bold2"></use>
+		</svg>	</a>
+					</div>
+
+					<div>
+												<a class='cases-detail-author__title c-link _underline _black-type1' href='/contractors/e-legion/'>
+						
+						e-legion
+												</a>
+						
+													<span class='cases-detail-author__subtitle'>Россия, Санкт-Петербург</span>
+											</div>
+				</div>
+
+				
+<div class="d-flex align-items-center" data-url="https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F" data-social-counts-url="/ajax/social_share_count.php"
+	 data-social-share data-social-page-code="prilozhenie-dlya-federalnogo-operatora-tele2" data-social-page-type="case">
+	<span class="cases-detail-shares__title">Поделиться:</span>
+			<a class="cases-detail-shares__item socials-icon _vkontakte"
+		   href="https://vk.com/share.php?url=https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F&title=t2.+%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9+%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C"
+		   rel="nofollow noopener"
+		   target="_blank"
+		   title="ВКонтакте"
+		   data-social-share-item="VK"
+		   data-ext-link-allow=""
+		 data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://vk.com/share.php?url=https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F&amp;title=t2.+%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9+%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C" data-analytics-block="content">
+			<svg class="c-svg-icon">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/socials25-sprite.svg?v=4#vkontakte"></use>
+			</svg>
+			<span class="u-ml-7 u-fs-14 u-color-gray5" data-social-share-counter>2</span>
+		</a>
+			<a class="cases-detail-shares__item socials-icon _telegram"
+		   href="https://t.me/share/url?url==https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F&title=t2.+%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9+%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C"
+		   rel="nofollow noopener"
+		   target="_blank"
+		   title="Telegram"
+		   data-social-share-item="TELEGRAM"
+		   data-ext-link-allow=""
+		 data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/share/url?url==https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F&amp;title=t2.+%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9+%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C" data-analytics-block="content">
+			<svg class="c-svg-icon">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/socials25-sprite.svg?v=4#telegram"></use>
+			</svg>
+			<span class="u-ml-7 u-fs-14 u-color-gray5" data-social-share-counter>0</span>
+		</a>
+			<a class="cases-detail-shares__item socials-icon _twitter"
+		   href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F&text=t2.+%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9+%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C"
+		   rel="nofollow noopener"
+		   target="_blank"
+		   title="Twitter"
+		   data-social-share-item="TWITTER"
+		   data-ext-link-allow=""
+		 data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://twitter.com/intent/tweet?url=https%3A%2F%2Fworkspace.ru%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F&amp;text=t2.+%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9+%D1%83%D1%80%D0%BE%D0%B2%D0%B5%D0%BD%D1%8C" data-analytics-block="content">
+			<svg class="c-svg-icon">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/socials25-sprite.svg?v=4#twitter"></use>
+			</svg>
+			<span class="u-ml-7 u-fs-14 u-color-gray5" data-social-share-counter>3</span>
+		</a>
+	</div>
+			</div>
+					<div class='cases-detail__fullwidth u-mb-50'>
+									<img class='cases-detail__detail-picture b-lazy' alt='t2. Новый уровень'
+						 src='/local/templates/tender_v2/ws_build/images/pixel.gif'
+						 data-src='https://workspace.ru/upload/resize_cache/executor_cases/02f/3patijziio7jjyhrutmb4qhf6p9isz5g/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_cover.png'
+						 data-srcset='https://workspace.ru/upload/resize_cache/executor_cases/02f/3patijziio7jjyhrutmb4qhf6p9isz5g/1920_1080_1619711fa078991f0a23d032687646b21/WS_T2_cover.png'
+						 style='aspect-ratio: 1920/1080;'
+					>
+							</div>
+		
+<div class="cases-detail__info journal-detail__wide25 u-mt-30 u-mb-50">
+			<div class="cases-detail__item-label">Клиент</div>
+		<p class="cases-detail__item-desc">T2 Мобайл</p>
+			<div class="cases-detail__item-label">Сфера</div>
+		<p class="cases-detail__item-desc">Информационные технологии и интернет</p>
+			<div class="cases-detail__item-label">Страна</div>
+		<p class="cases-detail__item-desc">Россия</p>
+			<div class="cases-detail__item-label">Мобильная платформа</div>
+		<p class="cases-detail__item-desc">iOS, Android</p>
+			<div class="cases-detail__item-label">Сдано</div>
+		<p class="cases-detail__item-desc">Февраль 2025</p>
+	</div>
+		<div class='journal-detail__text'>
+							<h2 class='u-mt-50'>Задача</h2>
+				<div class='u-mb-40 cases-detail__text'>
+					<p>С 2014 года мы с T2 развиваем их основной канал коммуникации с абонентами — мобильное приложение. </p><p></p><p>За это время мы успели создать маркет для обмена гигабайтов, выпустить четыре версии приложения и дойти до отметки в 20 миллионов пользователей ежемесячно. </p><p></p><p>Главной задачей на 2024 год было обеспечение комфорта и интуитивности новой версии приложения при редизайне и сохранение высоких стандартов управляемости, быстродействия и доступности.</p>
+				</div>
+								<h2 class='u-mt-50'>Решение</h2>
+					<div class='u-mb-40 cases-detail__text'>
+						<p>Основные направления работ в 2024 году:</p><p>1. подключение виртуального ассистента;</p><p>2. интеграция ИИ в сервис Миа;</p><p>3. перенос сценариев подключения домашнего интернета;</p><p>4. авторизация и активация;</p><p>5. редизайн приложения;</p><p>6. доработка основных функциональностей.</p>					</div>
+													<h3 class='number-counter__wrap'><span class='number-counter u-mb-0'>1</span>Виртуальный ассистент</h3>
+						<div class='u-mb-40 cases-detail__text'>
+							<p>Добавили возможность подключить виртуального ассистента, который осмысленно ответит на звонок, если абонент занят, не хочет брать трубку или находится вне зоны действия сети. Он представит абонента и узнает цель звонка. После разговора, ассистент отправит аудиозапись и текстовую расшифровку звонка в личный кабинет пользователя.</p><p>Ассистента можно персонализировать. В приложении доступно несколько персонажей — клиент может выбрать голос и функциональности, которые ему больше подходят. Также можно выбрать номера из списка контактов и персонализировать ответы ассистента для них. Если добавить номер в белый список, он не будет попадать на голосового ассистента. </p><a target="_blank" data-fancybox="" class="d-block cases-detail__content-image-wrap page-main-section__fullwidth" href="/upload/executor_cases/814/vt60s09o2fj5o558p83rdd78ane8iftn/WS_T2_02.png"><figure><img alt="" src="/local/templates/tender_v2/ws_build/images/pixel.gif" data-src="https://workspace.ru/upload/resize_cache/executor_cases/814/vt60s09o2fj5o558p83rdd78ane8iftn/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_02.png" data-srcset="https://workspace.ru/upload/resize_cache/executor_cases/814/vt60s09o2fj5o558p83rdd78ane8iftn/1920_1080_1619711fa078991f0a23d032687646b21/WS_T2_02.png" class="cases-detail__content-image b-lazy" style="aspect-ratio: 1340/754;"></figure></a>						</div>
+											<h3 class='number-counter__wrap'><span class='number-counter u-mb-0'>2</span>Интеграция ИИ в сервис Миа</h3>
+						<div class='u-mb-40 cases-detail__text'>
+							<p>Интегрировали искусственный интеллект в сервис Миа. Теперь с ней можно пообщаться голосом, нужно лишь нажать иконку в правом углу экрана. Миа поддержит разговор не только о продуктах t2, но и о погоде, курсах валют и многом другом.</p><p>Также пользователь может персонализировать Мию в зависимости от своих увлечений. Можно выбрать внешний вид персонажа, например, спортивную Мию или Мию рок-звезду.</p>						</div>
+											<h3 class='number-counter__wrap'><span class='number-counter u-mb-0'>3</span>Подключение домашнего интернета</h3>
+						<div class='u-mb-40 cases-detail__text'>
+							<a target="_blank" data-fancybox="" class="d-block cases-detail__content-image-wrap page-main-section__fullwidth" href="/upload/executor_cases/470/sxbnu1yj5jvwg8fmsze2qi0saudakhvi/WS_T2_03.png"><figure><img alt="" src="/local/templates/tender_v2/ws_build/images/pixel.gif" data-src="https://workspace.ru/upload/resize_cache/executor_cases/470/sxbnu1yj5jvwg8fmsze2qi0saudakhvi/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_03.png" data-srcset="https://workspace.ru/upload/resize_cache/executor_cases/470/sxbnu1yj5jvwg8fmsze2qi0saudakhvi/1920_1080_1619711fa078991f0a23d032687646b21/WS_T2_03.png" class="cases-detail__content-image b-lazy" style="aspect-ratio: 1340/754;"></figure></a><p> — Перенесли сценарий подключения домашнего интернета t2 из web-версии личного кабинета в приложение и вынесли его в отдельный раздел на таб-баре «Для дома».</p><p>— Добавили возможность проверить доступность услуги по адресу, оформили онбординг для подключения интернета и ответили на популярные вопросы пользователей. </p><p>— Реализовали сценарий оформления домашнего интернета с возможностью аренды и рассрочки роутера и другой техники.</p><p>— На отдельной странице пользователь может узнать статус подключения, информацию об абонентской плате, а также об аренде/рассрочке.</p>						</div>
+											<h3 class='number-counter__wrap'><span class='number-counter u-mb-0'>4</span>Авторизация и активация</h3>
+						<div class='u-mb-40 cases-detail__text'>
+							<a target="_blank" data-fancybox="" class="d-block cases-detail__content-image-wrap page-main-section__fullwidth" href="/upload/executor_cases/88d/spjze5p9vqwdli9nlr2z18d1njaxq2ul/WS_T2_04.png"><figure><img alt="" src="/local/templates/tender_v2/ws_build/images/pixel.gif" data-src="https://workspace.ru/upload/resize_cache/executor_cases/88d/spjze5p9vqwdli9nlr2z18d1njaxq2ul/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_04.png" data-srcset="https://workspace.ru/upload/resize_cache/executor_cases/88d/spjze5p9vqwdli9nlr2z18d1njaxq2ul/1920_1080_1619711fa078991f0a23d032687646b21/WS_T2_04.png" class="cases-detail__content-image b-lazy" style="aspect-ratio: 1340/754;"></figure></a><p>— Сделали вход в приложение проще: теперь не нужно подтверждать номер, если он находится в сети t2. Для обеспечения большей безопасности добавили двухфакторную аутентификацию. </p><p>— Обновили неавторизованную зону. Пользователь, который ещё не является абонентом t2, может активировать SIM-карту и узнать свой номер, подключить тарифы, подписку Mixx, активировать промокоды. Теперь ему доступен чат с поддержкой и раздел «Больше».</p>						</div>
+											<h3 class='number-counter__wrap'><span class='number-counter u-mb-0'>5</span>Редизайн приложения</h3>
+						<div class='u-mb-40 cases-detail__text'>
+							<p>Совместно с T2 разработали новый дизайн мобильного приложения, полностью соответствующий визуальному стилю и айдентике обновленного бренда Т2. Это решение помогает поддерживать преемственность с наследием компании, но при этом делает интерфейс более современным, интуитивным и технологичным. Акцент на деталях, строгие линии и яркие акценты подчёркивают стратегические цели бренда — занять первое место на рынке мобильной связи — и усиливают пользовательский опыт, делая его понятным и привлекательным для целевой аудитории, ориентированной на цифровые инновации и качество.</p><a target="_blank" data-fancybox="" class="d-block cases-detail__content-image-wrap page-main-section__fullwidth" href="/upload/executor_cases/ff1/s1g9fajp1wzw10b2e8t688smtizslbbg/WS_T2_05.png"><figure><img alt="" src="/local/templates/tender_v2/ws_build/images/pixel.gif" data-src="https://workspace.ru/upload/resize_cache/executor_cases/ff1/s1g9fajp1wzw10b2e8t688smtizslbbg/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_05.png" data-srcset="https://workspace.ru/upload/resize_cache/executor_cases/ff1/s1g9fajp1wzw10b2e8t688smtizslbbg/1920_1080_1619711fa078991f0a23d032687646b21/WS_T2_05.png" class="cases-detail__content-image b-lazy" style="aspect-ratio: 1340/754;"></figure></a>						</div>
+											<h3 class='number-counter__wrap'><span class='number-counter u-mb-0'>6</span>Доработка основных функциональностей</h3>
+						<div class='u-mb-40 cases-detail__text'>
+							<p>— Реализовали возможность привязать счёт к СБП.</p><p>— Разделили профиль пользователя и Мой Тариф. Перенесли профиль пользователя на главный экран, чтобы абоненты могли быстро просматривать и менять свои личные данные и настройки.</p><p>— Реализовали возможность подключить eSIM в приложении или заменить физическую карту на виртуальную. </p><p>— На экранах тарифа и финансов появился баннер, способствующий продвижению продуктов t2 и персонализированных предложений для пользователей. </p><p>— В разделе «Больше» добавили специализированную подборку предложений для каждого пользователя, разделили офферы по категориям и выделили популярные варианты. Увеличили количество взаимодействий пользователей с разделом и количество активаций офферов. </p><p>— Сделали редизайн чата, чтобы улучшить взаимодействие пользователя и оператора. Добавили возможность поделиться геолокацией и отправлять голосовые сообщения в чат.</p>						</div>
+										<h2 class='u-mt-50'>Результат</h2>
+					<div class='u-mb-40 cases-detail__text'>
+						<a target="_blank" data-fancybox="" class="d-block cases-detail__content-image-wrap page-main-section__fullwidth" href="/upload/fileman/8e0/8gemfskdl7f3a1juybzpa4gdxtt426sp/WS_T2_01.png"><figure><img alt="" src="/local/templates/tender_v2/ws_build/images/pixel.gif" data-src="https://workspace.ru/upload/resize_cache/fileman/8e0/8gemfskdl7f3a1juybzpa4gdxtt426sp/1340_9000_1619711fa078991f0a23d032687646b21/WS_T2_01.png" data-srcset="https://workspace.ru/upload/resize_cache/fileman/8e0/8gemfskdl7f3a1juybzpa4gdxtt426sp/1920_1080_1619711fa078991f0a23d032687646b21/WS_T2_01.png" class="cases-detail__content-image b-lazy" style="aspect-ratio: 1340/754;"></figure></a><p>В этом году мы сосредоточились на редизайне, улучшении пользовательских сценариев, добавлении новых функциональностей и продолжили переводить сервисные операции в digital  — абоненты t2 могут подключать любые продукты и услуги оператора, а также управлять ими в режиме онлайн.</p><p>KPI по итогам года:</p><p>● MAU — 20+ млн. пользователей.  </p><p>● DAU — 3 млн. пользователей.</p>					</div>
+											<h2 class='u-mt-50'>Отзыв клиента</h2>
+				
+<blockquote class='_quote _wide25 u-mt-30'>
+	<div class='clearfix d-flex'>
+					<img  src="https://workspace.ru/upload/resize_cache/executor_cases/4f4/pw6j64zn3pwpkllazu6bb57fviadg9vb/75_75_2619711fa078991f0a23d032687646b21/unnamed_7.png"  srcset="https://workspace.ru/upload/resize_cache/executor_cases/4f4/pw6j64zn3pwpkllazu6bb57fviadg9vb/150_150_2619711fa078991f0a23d032687646b21/unnamed_7.png 2x"  alt='T2' />
+		
+		<div class='u-my-auto'>
+			<h5 class='u-mt-0'>T2</h5>
+
+					</div>
+	</div>
+	<p class='u-mt-20 u-mb-34'>
+					<b>Внешняя команда разработки e-legion совместно с командой t2.digital успешно делает цифровой продукт, которым пользуется ежемесячно более 20 миллионов абонентов. Мы ценим, что партнёрам важно понимать, какие изменения и почему T2 вносит в продукт, коллеги имеют экспертизу на телеком-рынке, следят за трендами, команда по-настоящему вовлечена в работу над мобильным приложением. Благодаря этому подходу, синергии, гибкости и скорости в 2024 году команда t2.digital совместно с e-legion успешно реализовала редизайн и ещё ряд проектов, направленных на улучшение опыта клиентов и рост лояльности к бренду.</b>
+			</p>
+
+	</blockquote>		</div>
+
+					<div class='cases-detail__link-title u-pt-10 u-mt-50'>Ссылка на проект</div>
+			<a href="/redirect/?url=aHR0cHM6Ly9hcHBzLmFwcGxlLmNvbS9ydS9hcHAvdDIt0L3QvtCy0YvQuS3Rg9GA0L7QstC10L3RjC9pZDEwMTA2NDg0Mjk%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target='_blank' class='cases-detail__link-text likealink' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://apps.apple.com/ru/app/t2-новый-уровень/id1010648429" data-analytics-block="content">
+				<svg class='c-svg-icon cases-detail__link-icon' width='25' height='25' xmlns='http://www.w3.org/2000/svg'>
+					<path
+						d='M16.403 6.483c.083-.01-.107.167-.107.167.033.257.221.397.581.527.436.157.038.455-.213.385-.139-.038-.854-.255-.879.025 0 .167-.679.001-.573-.175.073-.118.05-.387.185-.562.194-.256.38-.117.386.031 0 .395.4-.372.62-.398M2.056 12.306c0-.54.055-1.068.14-1.586.103.071.261.148.291.184.113.136.113.72.17.911.138.482.483.751.747 1.19.155.262.414.924.332 1.198.11-.179 1.081.823 1.26 1.033.417.492.74 1.088.06 1.573-.219.158.333 1.141.048 1.383-.038.031-.272.037-.365.093-.225.138-.235.398-.166.632a9.946 9.946 0 01-2.517-6.61m5.241-8.794c.07.082.278.092-.027.288-.182.11-.377.81-.548.81-.509.222-.542-.44-1.109.412-.078.115-.395.16-.644.236a10.098 10.098 0 012.328-1.746m5.085-1.19c-.126.091-.239.23-.356.326-.36.298-1.28.883-1.793.705-.523-.18-1.646.667-1.826.673-.067.003.002-.64.36-.689-.14.021.993-.575 1.185-.805a9.994 9.994 0 012.104-.227c.111 0 .217.013.326.017M10.953 5.87c.046-.045.138-.008.151-.094.014-.084.078-.178-.008-.335-.022-.04.117-.082.051-.137-.015-.01-.15.094-.109.032 0 0 .155-.668.364-.366.022.032-.113.053-.089.102.135.135.172.47.215.687.127.066.324.078.098.192.117-.019-.619.315-.715.178-.072-.083.317-.139.306-.173-.003-.01-.317-.018-.264-.086m-.443-.244c.02-.024.046-.07.07-.088.024-.019.051 0 .072-.019.042-.034.086-.118.151-.104.043.008.147.094.112.148-.037.054-.067-.05-.08.1-.019.17-.189.167-.315.222-.087.037-.175-.018-.09-.103.02-.019.102-.072.088-.108-.007-.02-.029-.023-.008-.048m11.114 3.778a.612.612 0 00-.206-.138c-.258-.1-1.35.603-1.515.257-.108-.232-.327.148-.578.008-.12-.068-.459-.52-.61-.465-.313.112.477.974.693 1.087.203-.154.86-.469 1.002-.039.27.812-.745 1.702-1.264 2.171-.775.702-.63-.453-1.159-.86-.277-.213-.274-.667-.555-.823-.125-.07-.7-.732-.694-.822a.255.255 0 01-.017.168c-.094.072-.297-.27-.319-.325 0 .298.485.773.646 1.011.273.41.42 1.005.755 1.34.18.18.867.923 1.045.907.196-.017.811-.462.921-.437.65.154-1.53 3.237-1.738 3.62-.17.32.14 1.111.114 1.49-.029.437-.374.578-.7.817-.35.255-.268.752-.562.933-.52.322-.897 1.367-1.638 1.362-.219-.002-1.152.363-1.274.005-.094-.257-.222-.454-.356-.709-.13-.25-.015-.509-.175-.73-.11-.154-.479-.503-.513-.685-.002-.156.12-.63.284-.714.231-.119.044-.462.015-.663-.048-.358-.269-.653-.535-.859-.392-.303-.189-.543-.098-.974 0-.207-.126-.476-.402-.395-.57.166-.396-.445-.812-.417-.299.021-.543.211-.822.295-.348.104-.707-.083-1.052-.127-1.42-.18-1.885-1.804-1.514-2.976.037-.192-.115-.547-.048-.696.16-.355.485-.755.77-1.024.16-.152.364-.113.551-.23.29-.183.294-.559.578-.79.405-.328.957-.32 1.483-.39.281-.039 1.35-.27 1.517-.062 0 .04.194.611-.018.58.437.022 1.06.755 1.475.584.213-.089.135-.744.574-.428.264.191 1.45.276 1.696.071.152-.126.236-.94.053-1.03.117.115-.618.124-.686.098-.122-.045-.235.115-.429.025.117.055-.652-.358-.22-.674-.18.132-.349-.037-.544.11-.135.108.062.18-.13.276-.305.155-.535-.53-.649-.608-.119-.077-1.025-.713-.778-.297.174.292.897.728.797.793-.04.025-.209-.29-.209-.06.053-.136.02.585-.105.351-.056-.09.09-.14.005-.27 0-.086-.23-.17-.275-.229-.126-.156-.462-.5-.643-.584-.05-.024-.77.087-.832.111a1.718 1.718 0 00-.18.314c-.15.055-.29.127-.424.216-.104.092-.079.288-.159.356-.069.061-.773.294-.777.302.031-.075-.492-.172-.457-.324.04-.167.215-.686.17-.877-.048-.199 1.084.287 1.158-.238.03-.226.046-.492-.317-.53.07.008.702-.249.807-.364.148-.17.486-.447.731-.447.286 0 .225-.417.357-.622.132.054-.072.38.088.513-.01-.104.45.057.494.033.105-.056.691-.024.6-.299-.1-.28.052-.197.183-.255-.02.007.248-.458.363-.456-.103-.09-.398.112-.515.103-.308-.025-.177-.525-.06-.672.09-.116-.247-.259-.25-.036-.007.332-.315.632-.244 1.074.11.666-.743-.16-.817-.115-.283.172-.514-.216-.368-.449.15-.237.51-.226.66-.48.104-.179.226-.389.387-.525.541-.454.69-.09 1.23-.04.525.047.176.124.104.326-.07.193.29.261.413.1a2.52 2.52 0 00.301-.499c.07-.175.578-.2.527-.366a10.046 10.046 0 015.695 6.317M12.056.306c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12'
+						fill-rule='evenodd' stroke='none' />
+				</svg>
+				https://apps.apple.com/ru/app/t2-новый-уровень/id1010648429			</a>
+		
+	<hr class="cases-detail__hr cases-detail__fullwidth">
+<h2 class="cases-detail__members-title">Стек технологий</h2>
+<ul class="cases-detail__members-list u-mb-20">
+	
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href='/tools/language/js/'>
+			<img class='cases-detail-author__img _small border-none'  src="/upload/resize_cache/development_tools/146/c9jp48ngxf7x54hbn7xkijj488eoe5ml/85_85_2619711fa078991f0a23d032687646b21/600px_JavaScript_logo.png"  srcset="/upload/resize_cache/development_tools/146/c9jp48ngxf7x54hbn7xkijj488eoe5ml/170_170_2619711fa078991f0a23d032687646b21/600px_JavaScript_logo.png 2x"  alt='JavaScript' />
+			</a>
+			<span>
+					<a target='_blank' href='/tools/language/js/' class='cases-detail-author__title c-link _underline _black-type1'>JavaScript</a>
+					<span class='cases-detail-author__subtitle'>Язык программирования</span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href='/tools/language/kotlin/'>
+			<img class='cases-detail-author__img _small border-none'  src="/upload/resize_cache/development_tools/c30/j7tt7qc0wznif155yu3v6yv7vwm6omu1/85_85_2619711fa078991f0a23d032687646b21/kotlin_beecoder.org.png"  srcset="/upload/resize_cache/development_tools/c30/j7tt7qc0wznif155yu3v6yv7vwm6omu1/170_170_2619711fa078991f0a23d032687646b21/kotlin_beecoder.org.png 2x"  alt='Kotlin' />
+			</a>
+			<span>
+					<a target='_blank' href='/tools/language/kotlin/' class='cases-detail-author__title c-link _underline _black-type1'>Kotlin</a>
+					<span class='cases-detail-author__subtitle'>Язык программирования</span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href='/tools/language/swift/'>
+			<img class='cases-detail-author__img _small border-none'  src="/upload/resize_cache/development_tools/8f9/k2tl3o3uzp23u6j2tczo44r2jcinc0by/85_85_2619711fa078991f0a23d032687646b21/1_V8ssBk3_A77FhuqxCcUCPA.jpeg"  srcset="/upload/resize_cache/development_tools/8f9/k2tl3o3uzp23u6j2tczo44r2jcinc0by/170_170_2619711fa078991f0a23d032687646b21/1_V8ssBk3_A77FhuqxCcUCPA.jpeg 2x"  alt='Swift' />
+			</a>
+			<span>
+					<a target='_blank' href='/tools/language/swift/' class='cases-detail-author__title c-link _underline _black-type1'>Swift</a>
+					<span class='cases-detail-author__subtitle'>Язык программирования</span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href='/tools/framework/react-native/'>
+			<img class='cases-detail-author__img _small border-none'  src="/upload/resize_cache/development_tools/44b/ww5rv71bdqktawnb4sp9849vxorebqiw/85_85_2619711fa078991f0a23d032687646b21/7e191d15cf.jpg"  srcset="/upload/resize_cache/development_tools/44b/ww5rv71bdqktawnb4sp9849vxorebqiw/170_170_2619711fa078991f0a23d032687646b21/7e191d15cf.jpg 2x"  alt='React Native' />
+			</a>
+			<span>
+					<a target='_blank' href='/tools/framework/react-native/' class='cases-detail-author__title c-link _underline _black-type1'>React Native</a>
+					<span class='cases-detail-author__subtitle'>Фреймворк/библиотека</span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href='/tools/environment/intellij-idea/'>
+			<img class='cases-detail-author__img _small border-none'  src="/upload/resize_cache/development_tools/bf7/sucvv1hygnf850spzib36fjyjtq3077i/85_85_2619711fa078991f0a23d032687646b21/IntelliJ_IDEA_Icon.svg.png"  srcset="/upload/resize_cache/development_tools/bf7/sucvv1hygnf850spzib36fjyjtq3077i/170_170_2619711fa078991f0a23d032687646b21/IntelliJ_IDEA_Icon.svg.png 2x"  alt='Intellij IDEA' />
+			</a>
+			<span>
+					<a target='_blank' href='/tools/environment/intellij-idea/' class='cases-detail-author__title c-link _underline _black-type1'>Intellij IDEA</a>
+					<span class='cases-detail-author__subtitle'>Среда разработки</span>
+			</span>
+	</li></ul>			<hr class="cases-detail__hr cases-detail__fullwidth">
+			
+<h2 class="cases-detail__members-title">Награды</h2>
+<ul class="cases-detail__members-list u-mb-20">
+	
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/72a/2uwbfdu37ow1bwxyn4aoy0n1j934l3pc/zolotoy_sait.png"  alt='Золотой сайт' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">Золотой сайт</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly8yMDIxLmdvbGRlbnNpdGUucnUvbmV3cy9pdG9naS1rb25rdXJzYS16b2xvdG9lLXByaWxvemhlbmllLw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://2021.goldensite.ru/news/itogi-konkursa-zolotoe-prilozhenie/" data-analytics-block="content">Лучший дизайн приложения, Золотая 3, 2021</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/72a/2uwbfdu37ow1bwxyn4aoy0n1j934l3pc/zolotoy_sait.png"  alt='Золотой сайт' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">Золотой сайт</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9yYWVjLnJ1L2xpdmUvYnJhbmNoLzEzODEwLw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://raec.ru/live/branch/13810/" data-analytics-block="content">Лучшее приложение  для потребителя (b2c), Золотая 1, 2022</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/72a/2uwbfdu37ow1bwxyn4aoy0n1j934l3pc/zolotoy_sait.png"  alt='Золотой сайт' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">Золотой сайт</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9yYWVjLnJ1L2xpdmUvYnJhbmNoLzEzODEwLw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://raec.ru/live/branch/13810/" data-analytics-block="content">Образ жизни, Тематическая 1, 2022</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/72a/2uwbfdu37ow1bwxyn4aoy0n1j934l3pc/zolotoy_sait.png"  alt='Золотой сайт' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru" data-analytics-block="content">Золотой сайт</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9nb2xkZW5zaXRlLnJ1L3Jlc3VsdHMv&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://goldensite.ru/results/" data-analytics-block="content">Образ жизни, Тематическая 2, 2023</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/18a/kizbcgh3e0xx86q24ax8kz6tk2f9av5b/rating-runeta.png"  alt='Рейтинг Рунета' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">Рейтинг Рунета</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1LzIwMjAvd2lubmVycy8%2Fc2VjdGlvbj1hcHBz&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru/2020/winners/?section=apps" data-analytics-block="content">Приложение бренда, 2 место, 2020</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/18a/kizbcgh3e0xx86q24ax8kz6tk2f9av5b/rating-runeta.png"  alt='Рейтинг Рунета' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">Рейтинг Рунета</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1LzIwMjAvd2lubmVycy8%2Fc2VjdGlvbj1hcHBz&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru/2020/winners/?section=apps" data-analytics-block="content">Сервисы, 1 место, 2020</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/18a/kizbcgh3e0xx86q24ax8kz6tk2f9av5b/rating-runeta.png"  alt='Рейтинг Рунета' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">Рейтинг Рунета</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1LzIwMjEvd2lubmVycy8%2Fc2VjdGlvbj1hcHBz&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru/2021/winners/?section=apps" data-analytics-block="content">Сервисы, 3 место, 2021</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/18a/kizbcgh3e0xx86q24ax8kz6tk2f9av5b/rating-runeta.png"  alt='Рейтинг Рунета' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">Рейтинг Рунета</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1L3dpbm5lcnMvP3NlY3Rpb249YXBwcw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru/winners/?section=apps" data-analytics-block="content">Приложение бренда, 1 место, 2022</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/18a/kizbcgh3e0xx86q24ax8kz6tk2f9av5b/rating-runeta.png"  alt='Рейтинг Рунета' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">Рейтинг Рунета</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1L3dpbm5lcnMvP3NlY3Rpb249YXBwcw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru/winners/?section=apps" data-analytics-block="content">Сервисы, 3 место, 2023</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/upload/executors_competitions/18a/kizbcgh3e0xx86q24ax8kz6tk2f9av5b/rating-runeta.png"  alt='Рейтинг Рунета' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru" data-analytics-block="content">Рейтинг Рунета</a>
+					<span class='cases-detail-author__subtitle'><a href="/redirect/?url=aHR0cHM6Ly9hd2FyZHMucmF0aW5ncnVuZXRhLnJ1L3dpbm5lcnMvP3NlY3Rpb249YXBwcw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" target="_blank" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://awards.ratingruneta.ru/winners/?section=apps" data-analytics-block="content">Сервисы, 3 место, 2024</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9kaWdpdGFsYXdhcmRzLnJ1Lw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://digitalawards.ru/" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/local/templates/tender_v2/ws_build/images/wda-award.png"  alt='Workspace Digital Awards' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9kaWdpdGFsYXdhcmRzLnJ1Lw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://digitalawards.ru/" data-analytics-block="content">Workspace Digital Awards</a>
+					<span class='cases-detail-author__subtitle'><a href="/awards/cases2025/mobile-apps/services/?stage=winners" target="_blank">Мобильные приложения / Услуги, 3 место, 2025</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9kaWdpdGFsYXdhcmRzLnJ1Lw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://digitalawards.ru/" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/local/templates/tender_v2/ws_build/images/wda-award.png"  alt='Workspace Digital Awards' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9kaWdpdGFsYXdhcmRzLnJ1Lw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://digitalawards.ru/" data-analytics-block="content">Workspace Digital Awards</a>
+					<span class='cases-detail-author__subtitle'><a href="/awards/cases2024/mobile-apps/services/?stage=winners" target="_blank">Мобильные приложения / Услуги, 2 место, 2024</a></span>
+			</span>
+	</li>
+<li class='d-flex align-items-center'>
+		<a class='show' target='_blank' href="/redirect/?url=aHR0cHM6Ly9kaWdpdGFsYXdhcmRzLnJ1Lw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://digitalawards.ru/" data-analytics-block="content">
+			<img class='cases-detail-author__img _small border-none'  src="/local/templates/tender_v2/ws_build/images/wda-award.png"  alt='Workspace Digital Awards' />
+			</a>
+			<span>
+					<a target='_blank' href="/redirect/?url=aHR0cHM6Ly9kaWdpdGFsYXdhcmRzLnJ1Lw%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer" class='cases-detail-author__title c-link _underline _black-type1' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://digitalawards.ru/" data-analytics-block="content">Workspace Digital Awards</a>
+					<span class='cases-detail-author__subtitle'><a href="/awards/cases2024/mobile-apps/big-company/?stage=winners" target="_blank">Мобильные приложения / Приложение для крупнейшей компании, 2 место, 2024</a></span>
+			</span>
+	</li></ul>	</div>
+
+	<div
+		data-analytics-event="finish_reading"
+		data-analytics-entity="case"
+		data-analytics-id="206451"
+	></div>
+
+			<div class='cases-detail__wrapper'>
+			<hr class='cases-detail__hr u-mt-0 u-mb-50 cases-detail__fullwidth'>
+			
+<form data-anchor-target='vote' action='/api-v/set/case/rate/'  data-goto-by-click-block="caseratingvote">
+	<input type='hidden' name='code' value='prilozhenie-dlya-federalnogo-operatora-tele2' />
+	<div class='u-fw-800 fw-800 u-mb-24 u-fs-24 t-a-c article-rate__title hide' data-user-rate-form-title>Оцените кейс</div>
+	<div class='u-fw-800 fw-800 u-mb-24 u-fs-24 t-a-c article-rate__title ' data-user-rate-form-title-success>Спасибо за оценку</div>
+
+	<div class='d-flex justify-content-center align-items-center mb-40'>
+		<svg class='c-svg-icon u-mr-20 u-fs-36 fz-36 color-gray-l u-color-red-l' viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M28.9583 6.02316C28.9583 6.44904 28.6122 6.76242 27.7268 6.82671C26.6886 6.90706 26.7852 7.87132 27.7671 8.05614C29.3768 8.35345 30.1173 9.23735 30.1173 10.0409C30.0885 10.4106 29.9325 10.759 29.6758 11.027C29.4191 11.295 29.0774 11.4662 28.7088 11.5114C27.6303 11.7525 27.8476 12.4837 28.7088 12.556C30.1655 12.6685 30.8738 13.5363 30.8738 14.372C30.8738 14.7982 30.7042 15.207 30.4023 15.5084C30.1005 15.8098 29.691 15.9791 29.2641 15.9791C28.1615 16.1238 28.5156 16.9193 29.2641 17.1523C29.7336 17.2244 30.1635 17.4568 30.4805 17.8099C30.7975 18.1631 30.982 18.6151 31.0026 19.0888C31.0026 19.9647 30.3587 21.0977 28.081 21.0174C26.4713 20.945 23.3565 21.2665 21.6422 22.1504C22.8092 26.8511 22.5275 33.4 19.4691 33.4C17.4167 33.4 17.0545 31.0858 16.4107 28.9484C14.3181 21.3066 9.89139 19.8924 5.33594 19.2094V6.44904C13.9478 6.44904 16.2819 2.60005 22.7207 2.60005C26.8335 2.60005 28.9583 4.81784 28.9583 6.02316Z"
+				stroke="none" />
+		</svg>
+		<div class='article-rate__list d-flex u-mr-5 u-ml-5' >
+							<input required  name="rating" value="1" id="articleuserrate-1"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-1" class="article-rate__item _first c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Очень плохо</span>
+					1				</label>
+											<input required  name="rating" value="2" id="articleuserrate-2"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-2" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Плохо</span>
+					2				</label>
+											<input required  name="rating" value="3" id="articleuserrate-3"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-3" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Ниже среднего</span>
+					3				</label>
+											<input required  name="rating" value="4" id="articleuserrate-4"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-4" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Средне</span>
+					4				</label>
+											<input required  name="rating" value="5" id="articleuserrate-5"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-5" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Нормально</span>
+					5				</label>
+											<input required  name="rating" value="6" id="articleuserrate-6"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-6" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Удовлетворительно</span>
+					6				</label>
+											<input required  name="rating" value="7" id="articleuserrate-7"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-7" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Хорошо</span>
+					7				</label>
+											<input required  name="rating" value="8" id="articleuserrate-8"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-8" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Очень хорошо</span>
+					8				</label>
+											<input required  name="rating" value="9" id="articleuserrate-9"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-9" class="article-rate__item c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Отлично</span>
+					9				</label>
+											<input required  name="rating" value="10" id="articleuserrate-10"
+				       class="article-rate__input noIRC visually-hidden" type="checkbox" data-user-rate-form-input />
+								<label for="articleuserrate-10" class="article-rate__item _last c-tooltip" data-login-popup-show="/login/login.php?ajax=Y" data-change-title="Войдите, чтобы поставить оценку" data-change-title-mods="_small" data-modal-popup-show-btn="auth-login">
+					<span class='c-tooltip__content u-no-max-width nowrap'>Превосходно</span>
+					10				</label>
+									</div>
+		<svg class='c-svg-icon u-ml-20 u-fs-36 fz-36 color-gray-l u-color-green' viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M28.9583 29.9768C28.9583 29.551 28.6122 29.2376 27.7268 29.1733C26.6886 29.0929 26.7852 28.1287 27.7671 27.9439C29.3768 27.6466 30.1173 26.7626 30.1173 25.9591C30.0885 25.5894 29.9325 25.241 29.6758 24.973C29.4191 24.705 29.0774 24.5338 28.7088 24.4886C27.6303 24.2475 27.8476 23.5163 28.7088 23.444C30.1655 23.3315 30.8738 22.4637 30.8738 21.628C30.8738 21.2018 30.7042 20.793 30.4023 20.4916C30.1005 20.1902 29.691 20.0209 29.2641 20.0209C28.1615 19.8762 28.5156 19.0807 29.2641 18.8477C29.7336 18.7756 30.1635 18.5432 30.4805 18.1901C30.7975 17.8369 30.982 17.3849 31.0026 16.9112C31.0026 16.0353 30.3587 14.9023 28.081 14.9826C26.4713 15.055 23.3565 14.7335 21.6422 13.8496C22.8092 9.14889 22.5275 2.59998 19.4691 2.59998C17.4167 2.59998 17.0545 4.91419 16.4107 7.05163C14.3181 14.6934 9.89139 16.1076 5.33594 16.7906V29.551C13.9478 29.551 16.2819 33.4 22.7207 33.4C26.8335 33.4 28.9583 31.1822 28.9583 29.9768Z"
+				stroke="none" />
+		</svg>
+	</div>
+</form>			<div class='t-a-c u-mt-40' data-likes-list-wrap>
+					<div class="cases-detail-likes__small-list u-pos-rel">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/upload/resize_cache/main/1eb/pm0keie0h9ml8qn2r51p0uqsdtw9mfja/40_40_2619711fa078991f0a23d032687646b21/maxim_pahnev.jpg"  srcset="/upload/resize_cache/main/1eb/pm0keie0h9ml8qn2r51p0uqsdtw9mfja/80_80_2619711fa078991f0a23d032687646b21/maxim_pahnev.jpg 2x"  alt="Максим Пахнев">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/upload/resize_cache/main/ad0/rkpar7tizgk78gww4f0xhxyxhkysi5b1/40_40_2619711fa078991f0a23d032687646b21/photo_2023_03_27_23_30_48.jpg"  srcset="/upload/resize_cache/main/ad0/rkpar7tizgk78gww4f0xhxyxhkysi5b1/80_80_2619711fa078991f0a23d032687646b21/photo_2023_03_27_23_30_48.jpg 2x"  alt="Алена Громова">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/upload/resize_cache/main/60a/i04lsm0sdaarcws246szdzdtjcbvxzie/40_40_2619711fa078991f0a23d032687646b21/photo_2018_08_07_07_44_20.jpg"  srcset="/upload/resize_cache/main/60a/i04lsm0sdaarcws246szdzdtjcbvxzie/80_80_2619711fa078991f0a23d032687646b21/photo_2018_08_07_07_44_20.jpg 2x"  alt="Екатерина Ризванова">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/upload/resize_cache/main/5e6/1zj01l4qteqvsnpt7eckwfxdp242bf1n/40_40_2619711fa078991f0a23d032687646b21/photo_2024_11_20_11_51_40.jpg"  srcset="/upload/resize_cache/main/5e6/1zj01l4qteqvsnpt7eckwfxdp242bf1n/80_80_2619711fa078991f0a23d032687646b21/photo_2024_11_20_11_51_40.jpg 2x"  alt="Дмитрий Графов">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/local/templates/tender_v2/ws_build/images/work/big_splash_user.png"  alt="Amira Said">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/local/templates/tender_v2/ws_build/images/work/big_splash_user.png"  alt="Mmd Feasil">
+					<img class="cases-detail-likes__user-photo _small cases-detail-likes__small-list-item"
+				 src="/upload/resize_cache/main/17f/5z4rskhohn3p9fkrge0jexz51e115pik/40_40_2619711fa078991f0a23d032687646b21/105_1056055_raven_fortnite_battle_royale_8k_wallpaper_fortnite_raven.jpg"  srcset="/upload/resize_cache/main/17f/5z4rskhohn3p9fkrge0jexz51e115pik/80_80_2619711fa078991f0a23d032687646b21/105_1056055_raven_fortnite_battle_royale_8k_wallpaper_fortnite_raven.jpg 2x"  alt="Abok Abok">
+			</div>
+
+<div class="cases-detail-likes__text">
+	<div class="u-pos-rel d-ib">
+		
+<div class="modal modal-tooltip__modal " data-likes-list-popup data-modal-popup>
+	<div class="modal__overlay" tabindex="-1" data-modal-popup-close></div>
+	<div class="modal-tooltip " data-likes-list-popup-wrap>
+		<div class="modal-tooltip__wrap u-p-0" data-modal-popup-body>
+			
+<div class="cases-detail-likes__popup">
+			<div class="d-flex align-items-center u-mb-30 nowrap">
+			<div class="u-mr-30">
+															<span class="u-fw-700">
+							51 человек</span>
+						оценил этот кейс												</div>
+
+							<button type="button" class="modal-tooltip__close u-btn-reset u-ml-auto" data-modal-popup-close aria-label="Закрыть">
+					<svg class="c-svg-icon">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#close"></use>
+					</svg>
+				</button>
+					</div>
+	
+	<div class="cases-detail-likes__scroll-wrap modal-tooltip__sticked-right">
+		<ul class="cases-detail-likes__grid reset-list cases-detail-likes__grid--column-5" data-liked-users-list="">
+					<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/abok-abok/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Abok Abok"
+					 src="/upload/resize_cache/main/17f/5z4rskhohn3p9fkrge0jexz51e115pik/100_100_2619711fa078991f0a23d032687646b21/105_1056055_raven_fortnite_battle_royale_8k_wallpaper_fortnite_raven.jpg"  srcset="/upload/resize_cache/main/17f/5z4rskhohn3p9fkrge0jexz51e115pik/200_200_2619711fa078991f0a23d032687646b21/105_1056055_raven_fortnite_battle_royale_8k_wallpaper_fortnite_raven.jpg 2x" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					10.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Abok Abok							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/mmd-feasil/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Mmd Feasil"
+					 src="/local/templates/tender_v2/ws_build/images/work/big_splash_user.png" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					8.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Mmd Feasil							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/amira-said/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Amira Said"
+					 src="/local/templates/tender_v2/ws_build/images/work/big_splash_user.png" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					9.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Amira Said							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/dmitriy-grafov/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Дмитрий Графов"
+					 src="/upload/resize_cache/main/5e6/1zj01l4qteqvsnpt7eckwfxdp242bf1n/100_100_2619711fa078991f0a23d032687646b21/photo_2024_11_20_11_51_40.jpg"  srcset="/upload/resize_cache/main/5e6/1zj01l4qteqvsnpt7eckwfxdp242bf1n/200_200_2619711fa078991f0a23d032687646b21/photo_2024_11_20_11_51_40.jpg 2x" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					9.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Дмитрий Графов							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/ekaterina-rizvanova/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Екатерина Ризванова"
+					 src="/upload/resize_cache/main/60a/i04lsm0sdaarcws246szdzdtjcbvxzie/100_100_2619711fa078991f0a23d032687646b21/photo_2018_08_07_07_44_20.jpg"  srcset="/upload/resize_cache/main/60a/i04lsm0sdaarcws246szdzdtjcbvxzie/200_200_2619711fa078991f0a23d032687646b21/photo_2018_08_07_07_44_20.jpg 2x" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					10.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Екатерина Ризванова							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/alena-gromova-2/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Алена Громова"
+					 src="/upload/resize_cache/main/ad0/rkpar7tizgk78gww4f0xhxyxhkysi5b1/100_100_2619711fa078991f0a23d032687646b21/photo_2023_03_27_23_30_48.jpg"  srcset="/upload/resize_cache/main/ad0/rkpar7tizgk78gww4f0xhxyxhkysi5b1/200_200_2619711fa078991f0a23d032687646b21/photo_2023_03_27_23_30_48.jpg 2x" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					9.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Алена Громова							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/maksim-pahnev/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Максим Пахнев"
+					 src="/upload/resize_cache/main/1eb/pm0keie0h9ml8qn2r51p0uqsdtw9mfja/100_100_2619711fa078991f0a23d032687646b21/maxim_pahnev.jpg"  srcset="/upload/resize_cache/main/1eb/pm0keie0h9ml8qn2r51p0uqsdtw9mfja/120_133_1619711fa078991f0a23d032687646b21/maxim_pahnev.jpg 2x" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					9.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Максим Пахнев							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id/natalya-gracheva/" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt="Наталья Грачёва"
+					 src="/upload/resize_cache/main/706/xsme9sflghu401jt1xyphce1jnpaxndy/100_100_2619711fa078991f0a23d032687646b21/7e7ef64f913f52c06f11c986d4d3498b.jpg"  srcset="/upload/resize_cache/main/706/xsme9sflghu401jt1xyphce1jnpaxndy/200_200_2619711fa078991f0a23d032687646b21/7e7ef64f913f52c06f11c986d4d3498b.jpg 2x" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					8.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								Наталья Грачёва							</span>
+			</a>
+		</div>
+						<div>
+			<a class="c-link _black u-pos-rel show d-block" href="/id//" target="_blank">
+				<img class="cases-detail-likes__user-photo"
+				     alt=" "
+					 src="/local/templates/tender_v2/ws_build/images/work/big_splash_user.png" 				>
+									<span class="cases-detail-likes__small-list-item-rate">
+					10.0				</span>
+				<br>
+
+				<span class="c-link__underlined cases-detail-likes__user-name">
+								 							</span>
+			</a>
+		</div>
+						<div class="d-flex align-items-center justify-content-center u-mt-30 cases-detail-likes__see-more nowrap" data-more-wrapper>
+			<button class=" u-btn-reset u-fw-700"
+			        data-more='/api-v/get/likes/more/'
+			        data-offset='10'
+			        data-params='{"executorCode":"","executorID":null,"encyclopediaID":null,"eventID":null,"caseCode":"prilozhenie-dlya-federalnogo-operatora-tele2","articleCode":"","isFreelanceCase":false,"setTexts":true,"allCount":51,"moreCount":41,"offset":10,"limit":10}'>
+				еще 41			</button>
+		</div>
+	<!--
+
+			if ($usersCount > 0) {
+				$index = 1;
+				foreach ($arResult['users'] as $user) { ?>
+					<li>
+						<a class="c-link _black" href="" target="_blank">
+							<img class="cases-detail-likes__user-photo"
+								alt=""
+															><br>
+
+							<span class="c-link__underlined cases-detail-likes__user-name">
+															</span>
+						</a>
+					</li>
+					-->		</ul>
+	</div>
+</div>		</div>
+	</div>
+</div>
+
+		<button class="u-btn-reset c-link _black _underline" data-likes-list-button>
+			51 человек		</button>
+	</div>
+	оценил этот кейс			<span class="u-fw-700">
+			(9.0)
+		</span>
+	</div>			</div>
+		</div>
+	
+	
+<div class='prev-next'>
+			<a class='prev-next__prev prev-next__hover' href='/cases/ot-0-do-92000-lidov-za-2-goda-na-finansovye-uslugi/'>
+			<img
+				alt='Предыдущий кейс: От 0 до 92000 лидов за 3 года на финансовые услуги'
+				class='svg-object icon-prev-next-arrow'
+				src='/local/templates/tender_v2/ws_build/images/icons/left-arrow-2.svg'
+			/>
+			<span>От 0 до 92000 лидов за 3 года на финансовые услуги</span>
+		</a>
+			<a class='prev-next__next prev-next__hover' href='/cases/prilozhenie-dlya-federalnogo-operatora-tele2/'>
+			<span>t2. Новый уровень</span>
+			<img
+				alt='Следующий кейс: t2. Новый уровень'
+				class='svg-object _rotate-180 icon-prev-next-arrow'
+				src='/local/templates/tender_v2/ws_build/images/icons/left-arrow-2.svg'
+			/>
+		</a>
+	</div>		<div class="cases-detail__wrapper">
+			
+<div class="comments-article">
+	<div class="comments-article__header">
+		<div class="comments-article__title">Выскажите мнение</div>
+		<div class="comments-article__input">
+			<textarea name="comment" id="comment" class="comments-article__textarea" placeholder="Что вы думаете?" disabled></textarea>
+		</div>
+		<div class="comments-article__add">
+			<button class="btn _blue comments-article__add-btn" disabled>Добавить комментарий</button>
+			<div class="comments-article__auth"><a href="/login/login.php">Авторизуйтесь</a>, чтобы добавить свой комментарий.</div>
+		</div>
+	</div>
+	</div>		</div>
+
+	
+</div>
+
+	
+	<div class='cases-detail-promo'>
+		<div class='grid__inner _tenders d-flex'>
+			<div class='journal-detail__left'></div>
+			<div class='journal-detail__right'>
+				<div class='journal-detail__wide cases-detail-promo__inner'>
+					<img class='cases-detail-promo__icon' src='/local/templates/tender_v2/ws_build/images/icons/cases-promo-gray.svg' alt='оставить заявку'>
+					<div>
+						<h3 class='cases-detail-promo__title'>Хотите заказать похожий проект?</h3>
+													<p class='cases-detail-promo__subtitle'>e-legion с удовольствием обсудит вашу задачу</p>
+											</div>
+					<a class='button button--blue _radius-lg u-ml-auto u-fw-600 u-px-20' href='/create/#form'
+					   data-cases-detail-create-tender-btn data-a-post='{"type_add":"from_detail","add[]":"7492"}'>
+						Оставить заявку
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<aside class="scroll-ad" data-scroll-ad data-progress="70" data-dismiss-hours="168"
+             aria-label="Реклама" hidden>
+    <div class="scroll-ad__body">
+        <div class="scroll-ad__media">
+            <img class="scroll-ad__image" src="/local/templates/.default/components/bitrix/advertising.banner.view/scroll-ad/images/workspace-media.png" width="250" height="150" alt="">
+            <details class="scroll-ad__disclosure">
+                <summary>Реклама</summary>
+                <div class="scroll-ad__disclosure-text">
+                    ООО «Воркспейс»                                    </div>
+            </details>
+        </div>
+        <div class="scroll-ad__copy">
+            <p class="scroll-ad__title">Больше полезных материалов в Workspace Media</p>
+                            <div class="scroll-ad__text">Читайте статьи, кейсы и новости о разработке, маркетинге и работе с подрядчиками.</div>
+                    </div>
+        <a class="scroll-ad__link" href="/blog/" rel="sponsored">Перейти</a>
+    </div>
+    <button class="scroll-ad__close" type="button" data-scroll-ad-close aria-label="Закрыть рекламу">
+        <img src="/local/templates/.default/components/bitrix/advertising.banner.view/scroll-ad/images/close.svg" width="48" height="48" alt="">
+    </button>
+</aside>
+		<!-- width content_end -->
+	</div>
+
+	<footer data-footer class="footer _no_margin" data-opinion-btn-unfixed>
+		<div data-back-btn-unfixed class="footer__goto">
+			<a data-back-btn-fixed class="footer__goto-up" data-goto-up
+			   href="javascript:void(0);">Наверх <i class="fa fa-angle-up" aria-hidden="true"></i></a>
+		</div>
+		<div class='footer__chat-btns' data-fixed-cb-buttons>
+			<a href='https://t.me/workspace_robot' target='_blank' class='footer__chat-btn' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace_robot" data-analytics-block="content">
+				<svg class="c-svg-icon _lg u-va-txt-top">
+					<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#chatbot"></use>
+				</svg>&nbsp;
+				Чат-бот
+			</a>
+			<div class='footer__chat-btn-balloon _left'>Подпишитесь на тендеры/лиды, узнайте больше о работе проекта, оставьте отзыв или задайте вопрос</div>
+
+			<a href='/contacts/' target='_blank' class='footer__chat-btn'>Обратная связь</a>
+			<div class='footer__chat-btn-balloon nowrap'>Свяжитесь с менеджером проекта</div>
+		</div>
+
+		<div class='footer__grid page-inner__container'>
+			<div class='footer__grid-col d-flex align-items-center'><a class="footer__logo" href="/" aria-label="На главную Workspace"></a></div>
+			<div class='footer__grid-col _subscribe d-flex align-items-center'>
+				<div class='footer__top-row-subscribe'>
+					Подписывайтесь на наc
+					в&nbsp;Телеграм:&nbsp;<a class='c-link _underline _gray3-type2' target='_blank' href='https://t.me/workspace' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace" data-analytics-block="content">t.me/workspace</a>
+					&nbsp;и&nbsp;Max:&nbsp;<a class='c-link _underline _gray3-type2' target='_blank' href='https://max.ru/workspace' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://max.ru/workspace" data-analytics-block="content">max.ru/workspace</a>
+				</div>
+			</div>
+			<div class='footer__grid-col d-flex align-items-center'>
+				<a href='https://t.me/workspace_robot' target='_blank' class='button button--outline _radius-lg u-ml-auto u-px-20 u-trs-fast' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace_robot" data-analytics-block="content">
+					<svg class="c-svg-icon _lg u-va-txt-top">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#chatbot"></use>
+					</svg>&nbsp;
+					Чат-бот
+				</a>
+				<a href="/contacts/" aria-label="Обратная связь" class='button button--outline _radius-lg u-px-20 u-trs-fast'>Обратная связь</a>
+			</div>
+
+			
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Тендеры и лиды</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Тендерная площадка"
+														href="/b2b/"
+						>Тендерная площадка</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Как это работает"
+														href="/how-it-works/"
+						>Как это работает</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог тендеров"
+														href="/tenders/"
+						>Каталог тендеров</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+							data-footer-tender-create							aria-label="Организовать тендер"
+														href="/create/"
+						>Организовать тендер</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Исполнители</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог диджитал-агентств"
+														href="/contractors/"
+						>Диджитал-агентства</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Каталог специалистов"
+														href="/people/"
+						>Специалисты</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Отзывы об агентствах"
+														href="/gratitude-letters/"
+						>Отзывы об агентствах</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Узнать стоимость услуг агентств"
+														href="/calculator/"
+						>Стоимость услуг</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Рейтинги"
+														href="/rating/"
+						>Рейтинги</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Медиа</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог кейсов"
+														href="/cases/"
+						>Кейсы</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Статьи"
+														href="/blog/"
+						>Статьи</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Афиша"
+														href="/events/"
+						>Афиша</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Слово экспертам"
+														href="/expert/"
+						>Слово экспертам</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Документация"
+														href="/docs/"
+						>Документация</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Новости компаний"
+														href="/news/"
+						>Новости компаний</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Интервью"
+														href="/interview/"
+						>Интервью</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Видео"
+														href="/video/"
+						>Видео</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Информация</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="О проекте"
+														href="/about/"
+						>О проекте</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Новости проекта"
+														href="/project-news/"
+						>Новости проекта</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Каталог задач"
+														href="/advertising/"
+						>Платные опции</a><span class="footer__list-item-fire"></span>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Помощь"
+														href="/help/"
+						>Помощь</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Наша айдентика"
+														href="/corporate-identity/"
+						>Наша айдентика</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Наш пульс в ТГ"
+														href="/pulse/"
+						>Наш пульс в ТГ</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Другое</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Премия WDA"
+							target="_blank"							href="/awards/"
+						>Премия WDA</a>							<span class="header__menu-item-badge"></span>
+											</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог инструментов"
+														href="/tools/"
+						>Инструменты</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Вакансии"
+														href="/vacancies/"
+						>Вакансии</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Каталог премий"
+														href="/contests/"
+						>Каталог премий</a>					</li>
+							</ul>
+		</section>
+	
+			<section class='footer__grid-col footer__bottom-col'>
+				<ul class="footer__social">
+					<li><a class="footer__social-item _telegram" target="_blank" href="https://t.me/workspace" aria-label="Workspace в
+					Telegram" rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _vk" target="_blank" href="https://vk.com/workspace_ru" aria-label="Workspace в VK"
+						   rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://vk.com/workspace_ru" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _yandex" target="_blank"
+						   href="https://dzen.ru/workspace" aria-label="Workspace на Яндекс.Дзен" rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://dzen.ru/workspace" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _twitter" target="_blank" href="https://x.com/WORKSPACE_ru" aria-label="Workspace в X"
+					       rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://x.com/WORKSPACE_ru" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _star" target="_blank" href="/company/workspace/" aria-label="Workspace"
+					       rel="noopener noreferrer" data-ext-link-allow=""></a></li>
+				</ul>
+			</section>
+
+			<section class='footer__grid-col footer__copyright footer__bottom-col _middle'>© 2026, ООО «Воркспейс»</section>
+
+			<section class='footer__grid-col footer__bottom-col _last'>
+				<!-- Yandex.Metrika informer -->
+				<a href="/redirect/?url=aHR0cHM6Ly9tZXRyaWthLnlhbmRleC5ydS9zdGF0Lz9pZD0zNDE1MjgzMCZhbXA7ZnJvbT1pbmZvcm1lcg%3D%3D&backurl=%2Fcases%2Fprilozhenie-dlya-federalnogo-operatora-tele2%2F%3FTYPE%3Dprilozhenie-dlya-federalnogo-operatora-tele2" target="_blank" rel="nofollow noopener noreferrer"
+				   target="_blank" rel="nofollow" class='u-mr-30' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://metrika.yandex.ru/stat/?id=34152830&amp;amp;from=informer" data-analytics-block="content"><img src="https://informer.yandex.ru/informer/34152830/3_0_203F51FF_001F31FF_1_pageviews"
+				                                                         style="width:88px; height:31px; border:0" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и
+				                                       уникальные
+				                                       посетители)" class="ym-advanced-informer" data-cid="34152830" data-lang="ru" /></a>
+				<!-- /Yandex.Metrika informer -->
+				<div>
+					<div class='footer__confidential-item u-mb-7'>
+						Workspace — зарегистрированный торговый знак. Свидетельство №846654, №604820 и №99363.
+					</div>
+					<ul class="footer__confidential footer__list">
+						<li class="footer__confidential-item">
+							<a class='c-link _underline _gray4' href="/upload/security_policy.pdf" aria-label="Скачать файл 'Политика обработки персональных данных'" target="_blank">
+								Политика обработки персональных данных
+							</a>
+						</li>
+						<li class="footer__confidential-item">
+							<a class='c-link _underline _gray4' href="/upload/terms_of_use.pdf" aria-label="Скачать файл 'Пользовательское соглашение'" target="_blank">
+								Пользовательское соглашение
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+					<div class='footer-cookies-consent' data-cookies-consent>
+				<div class='page-inner__container d-flex align-items-center footer-cookies-consent__inner'>
+					<p class='u-my-auto'>
+						Нажмите «ОК», если вы соглашаетесь с
+						<a href="/upload/security_policy.pdf" target="_blank" class='c-link _underline'>условиями</a>
+						обработки cookie и ваших данных о&nbsp;поведении на&nbsp;сайте, необходимых для&nbsp;аналитики.
+						Запретить обработку cookie можете через браузер.
+					</p>
+				<button class='footer-cookies-consent__btn button button--blue text-uppercase' data-cookies-consent-btn='/api-v/set/cookies/consent/accept/'>ок</button>
+				<button class='footer-cookies-consent__btn-close c-link _gray4-type1 d-if u-btn-reset'
+				        aria-label='Закрыть уведомление о cookie'
+				        data-cookies-consent-btn='/api-v/set/cookies/consent/decline/' data-cookies-consent-btn-close>
+					<svg class="c-svg-icon _xsm">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#close"></use>
+					</svg>
+				</button>
+				</div>
+			</div>
+			</footer>
+		<noscript>
+			<div><img src="https://mc.yandex.ru/watch/34152830" style="position:absolute; left:-9999px;" alt="" /></div>
+		</noscript>
+		<noscript><img src="//counter.rambler.ru/top100.cnt?pid=7123451" alt="Топ-100" /></noscript>
+	<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=yoHzv1CJLq20jn" style="display:none" height="1" width="1" alt="" /></noscript>
+		<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-900899-1oTXR" style="position:fixed; left:-999px;" alt="" /></noscript>
+
+<script  src="/bitrix/cache/js/s1/tender_v2/template_7bcd04232b19af16798384a7e37787ee/template_7bcd04232b19af16798384a7e37787ee_v1.js?1795088704665464"></script>
+
+
+<script>
+(function () {
+    if (navigator.webdriver) return; // явная автоматизация (Selenium/Playwright по умолчанию) — не тратим маячок
+
+    function getCookie(name) {
+        var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+        return m ? decodeURIComponent(m[1]) : '';
+    }
+
+    var delay = 2500 + Math.random() * 1500; // 2.5–4с, не мгновенно
+
+    setTimeout(function () {
+        var token = getCookie('bp_bcn');
+        if (!token || !('sendBeacon' in navigator)) return;
+
+        var blob = new Blob(['token=' + encodeURIComponent(token)], {
+            type: 'application/x-www-form-urlencoded'
+        });
+        navigator.sendBeacon('/ajax/bp_engagement.php', blob);
+    }, delay);
+})();
+</script>
+</body>
+</html>
+<div class="modal" data-ext-link-confirm-popup data-modal-popup>
+	<div class="modal__overlay" tabindex="-1">
+		<div class="pop-up__wrapper pop-up__wrapper--narrow2">
+			<button type="button" class="pop-up__close" data-modal-popup-close aria-label="Закрыть"></button>
+
+			<div class="pop-up__main">
+				<h3 class="pop-up__title">Переход на внешний сайт</h3>
+				<p class="pop-up__text">Подтвердите переход по ссылке:</p>
+				<p class="pop-up__text">
+					<a href=""
+					   class="button button--change _big pop-up__link-button"
+					   target="_blank"
+					   data-ext-link-confirm-link
+					   data-ext-link-allow
+					   data-metric-goals='{"yaText":"pop_up_go_to_external_site","gaCategory":"pop_up_external_site","gaAction":"click","gaLabel":"url"}'
+					>
+						<i class="button__icon button__icon--ext-link"></i>
+						Перейти на: <span data-ext-link-confirm-text></span>
+					</a>
+				</p>
+			</div>
+
+			<div class="pop-up__footer">
+				<div class="pop-up__text">
+					<div class="pop-up__note-create-tender">
+						<div><b>Создавайте тендеры на WORKSPACE.RU</b></div>
+						<div>17 000+ агентств готовы обсудить новый проект.</div>
+					</div>
+				</div>
+
+				<a href="/create/"
+				   class="pop-up__button pop-up__button--target"
+				   target="_blank"
+				   data-metric-goals='{"yaText":"pop_up_create_tender","gaCategory":"pop_up_external_site","gaAction":"click","gaLabel":"button"}'
+				>Организовать тендер</a>
+			</div>
+		</div>
+	</div>
+</div>

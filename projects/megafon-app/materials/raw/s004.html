@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html xml:lang="ru" lang="ru">
+<head>
+	<title>Приложение МегаФона: как заставить пользователей «залипать» - опыт инхаус-команды по выращиванию метрики приложения</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Интервью с командой МегаФона: как геймификация, UX-дизайн и анимации превратили приложение оператора в экосистему с миллионами активных пользователей. Одно из лучших мобильных приложений в телекоме: метрики роста, продуктовый подход, игры и UX-исследования помогли удержать миллионы пользователей." />
+<style>
+	html {
+		font-size: min(calc(100vw / 130), 10.7926px) !important;
+	}
+	html, body, #app, .general-layout {
+		min-height: 100%;
+	}
+.loader {
+		padding: 50vh 0 0 50vw;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 9999;
+		background: #fff;
+		width: 100%;
+		height: 100%;
+		transform: translateZ(0) scale(1);
+		backface-visibility: hidden
+	}
+
+	.loader_box {
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		position: relative;
+		width: 4.5vw;
+		height: 4.5vw	}
+
+	.loader_box-circle {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0
+	}
+
+	.loader_box-circle:before {
+		content: '';
+		display: block;
+		margin: 0 auto;
+		width: 15%;
+		height: 15%;
+		background-color: #00bff3;
+		border-radius: 100%;
+		-webkit-animation: sk-fading-circle-delay 1.2s infinite ease-in-out both;
+		animation: sk-fading-circle-delay 1.2s infinite ease-in-out both
+	}
+
+	.loader_box-circle-2 {
+		-webkit-transform: rotate(30deg);
+		transform: rotate(30deg)
+	}
+
+	.loader_box-circle-3 {
+		-webkit-transform: rotate(60deg);
+		transform: rotate(60deg)
+	}
+
+	.loader_box-circle-4 {
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg)
+	}
+
+	.loader_box-circle-5 {
+		-webkit-transform: rotate(120deg);
+		transform: rotate(120deg)
+	}
+
+	.loader_box-circle-6 {
+		-webkit-transform: rotate(150deg);
+		transform: rotate(150deg)
+	}
+
+	.loader_box-circle-7 {
+		-webkit-transform: rotate(180deg);
+		transform: rotate(180deg)
+	}
+
+	.loader_box-circle-8 {
+		-webkit-transform: rotate(210deg);
+		transform: rotate(210deg)
+	}
+
+	.loader_box-circle-9 {
+		-webkit-transform: rotate(240deg);
+		transform: rotate(240deg)
+	}
+
+	.loader_box-circle-10 {
+		-webkit-transform: rotate(270deg);
+		transform: rotate(270deg)
+	}
+
+	.loader_box-circle-11 {
+		-webkit-transform: rotate(300deg);
+		transform: rotate(300deg)
+	}
+
+	.loader_box-circle-12 {
+		-webkit-transform: rotate(330deg);
+		transform: rotate(330deg)
+	}
+
+	.loader_box-circle-2:before {
+		-webkit-animation-delay: -1.1s;
+		animation-delay: -1.1s
+	}
+
+	.loader_box-circle-3:before {
+		-webkit-animation-delay: -1s;
+		animation-delay: -1s
+	}
+
+	.loader_box-circle-4:before {
+		-webkit-animation-delay: -0.9s;
+		animation-delay: -0.9s
+	}
+
+	.loader_box-circle-5:before {
+		-webkit-animation-delay: -0.8s;
+		animation-delay: -0.8s
+	}
+
+	.loader_box-circle-6:before {
+		-webkit-animation-delay: -0.7s;
+		animation-delay: -0.7s
+	}
+
+	.loader_box-circle-7:before {
+		-webkit-animation-delay: -0.6s;
+		animation-delay: -0.6s
+	}
+
+	.loader_box-circle-8:before {
+		-webkit-animation-delay: -0.5s;
+		animation-delay: -0.5s
+	}
+
+	.loader_box-circle-9:before {
+		-webkit-animation-delay: -0.4s;
+		animation-delay: -0.4s
+	}
+
+	.loader_box-circle-10:before {
+		-webkit-animation-delay: -0.3s;
+		animation-delay: -0.3s
+	}
+
+	.loader_box-circle-11:before {
+		-webkit-animation-delay: -0.2s;
+		animation-delay: -0.2s
+	}
+
+	.loader_box-circle-12:before {
+		-webkit-animation-delay: -0.1s;
+		animation-delay: -0.1s
+	}
+
+	@-webkit-keyframes sk-fading-circle-delay {
+		0%, 39%, 100% {
+			opacity: 0
+		}
+		40% {
+			opacity: 1
+		}
+	}
+
+	@keyframes sk-fading-circle-delay {
+		0%, 39%, 100% {
+			opacity: 0
+		}
+		40% {
+			opacity: 1
+		}
+	}
+
+	</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Workspace","url":"https://workspace.ru","publisher":{"@type":"Organization","name":"Workspace","url":"https://workspace.ru","logo":"https://workspace.ru/local/templates/tender_v2/ws_build/images/logo_new.svg"}}</script>
+<meta property="og:site_name" content="Workspace" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="https://workspace.ru/" />
+<meta name="copyright" content="Workspace.ru" />
+<meta name="referrer" content="unsafe-url" />
+<meta name="yandex-verification" content="aabd9f42c0e98915" />
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-bold-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-semibold-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/proximanova-regularit-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/local/templates/tender_v2/ws_build/fonts/pixel-font.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=62944ef2efdeb">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=62944ef2efdeb">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=62944ef2efdeb">
+<link rel="manifest" href="/favicon/site.webmanifest?v=62944ef2efdeb">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg?v=62944ef2efdeb" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon/favicon.ico?v=62944ef2efdeb">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png?v=62944ef2efdeb">
+<meta name="msapplication-config" content="/favicon/browserconfig.xml?v=62944ef2efdeb">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:url" content="https://workspace.ru/interview/pochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili/" />
+<meta property="og:image" content="https://workspace.ru/upload/resize_cache/interview/985/wl89hkfwl3iaxp4160ohq2rsxxjegp66/826_454_1619711fa078991f0a23d032687646b21/000.jpg" />
+<meta property="og:site_name" content="WORKSPACE" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@WORKSPACE_ru" />
+<meta name="twitter:image" content="https://workspace.ru/upload/resize_cache/interview/985/wl89hkfwl3iaxp4160ohq2rsxxjegp66/826_454_1619711fa078991f0a23d032687646b21/000.jpg" />
+<link rel="canonical" href="https://workspace.ru/interview/pochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili/"/>
+<link rel="image_src" href="https://workspace.ru/upload/resize_cache/interview/985/wl89hkfwl3iaxp4160ohq2rsxxjegp66/826_454_1619711fa078991f0a23d032687646b21/000.jpg" />
+<meta property="og:title" content="Приложение МегаФона: как заставить пользователей «залипать» - опыт инхаус-команды по выращиванию метрики приложения" />
+<meta name="twitter:title" content="Приложение МегаФона: как заставить пользователей «залипать» - опыт инхаус-команды по выращиванию метрики приложения" />
+<meta property="og:description" content="Интервью с командой МегаФона: как геймификация, UX-дизайн и анимации превратили приложение оператора в экосистему с миллионами активных пользователей. Одно из лучших мобильных приложений в телекоме: метрики роста, продуктовый подход, игры и UX-исследования помогли удержать миллионы пользователей." />
+<meta name="twitter:description" content="Интервью с командой МегаФона: как геймификация, UX-дизайн и анимации превратили приложение оператора в экосистему с миллионами активных пользователей. Одно из лучших мобильных приложений в телекоме: метрики роста, продуктовый подход, игры и UX-исследования помогли удержать миллионы пользователей." />
+
+
+
+<link href="/bitrix/cache/css/s1/tender_v2/template_66c07cc5bca546bb33e6007b540a6b94/template_66c07cc5bca546bb33e6007b540a6b94_v1.css?17944768681228799" type="text/css"  data-template-style="true" rel="stylesheet" />
+	</head>
+<body class="">
+<div id='fb-root'></div>
+
+
+	<div class="loader js-loader" data-page-loader>
+		<div class="loader_box">
+			<div class="loader_box-circle loader_box-circle-1"></div>
+			<div class="loader_box-circle loader_box-circle-2"></div>
+			<div class="loader_box-circle loader_box-circle-3"></div>
+			<div class="loader_box-circle loader_box-circle-4"></div>
+			<div class="loader_box-circle loader_box-circle-5"></div>
+			<div class="loader_box-circle loader_box-circle-6"></div>
+			<div class="loader_box-circle loader_box-circle-7"></div>
+			<div class="loader_box-circle loader_box-circle-8"></div>
+			<div class="loader_box-circle loader_box-circle-9"></div>
+			<div class="loader_box-circle loader_box-circle-10"></div>
+			<div class="loader_box-circle loader_box-circle-11"></div>
+			<div class="loader_box-circle loader_box-circle-12"></div>
+		</div>
+	</div>
+
+	<div class='header-notice-on-top'
+		 data-global-notice-block='{"id":36,"type":"beforeHeader","name":"global_notice_","url":"\/api-v\/set\/header\/notice\/close\/"}'>
+		<div class="header-notice-on-top__wrapper" data-ext-links-allow-container><!--ext-link-container-start-->
+			<div class="w-100p u-fx-auto t-a-c">
+				<span data-teams="true"><a data-ext-link-allow href="https://workspace.ru/awards/" >Workspace Digital Awards</a> — приём заявок в самом разгаре! </span>Успейте <a data-ext-link-allow href="https://workspace.ru/awards/" >номинироваться</a> по льготной цене до 30 декабря.			</div>
+			<button data-global-notice-close class="u-btn-reset align-items-center d-flex u-color-white" aria-label="Скрыть сообщение">
+				<svg class="c-svg-icon u-fs-18" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+					<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-width="1.5">
+						<path d="M12.306.356L.26 12.4M.26.356L12.306 12.4" transform="translate(1.43 .848)" />
+					</g>
+				</svg>
+			</button>
+		<!--ext-link-container-end--></div>
+	</div>
+	<header class="header _radius _shadow" data-main-header data-dropdown-container>
+		<div class="header__wrapper d-flex align-items-center">
+			<div class="page-inner__container d-flex w-100p justify-content-start align-items-center">
+				
+<a href="/"><img class='header-new__logo' src='/local/templates/tender_v2/ws_build/images/logo_new.svg' alt='Workspace.ru'></a>
+<button class='pull-left _radius-lg _sm button button--gray1 u-my-auto header-new__dd-btn' data-dropdown-button data-header-main-menu-btn>
+	<svg class="c-svg-icon _xl u-va-bottom">
+		<use xlink:href="/local/templates/tender_v2/ws_build/images/header-new-sprite.svg#menu"></use>
+	</svg>&nbsp;
+	Медиа</button>
+
+
+<div class="u-ml-auto d-flex ">
+	<a data-header-menu-item="all" href="/create/" class="button button--blue _radius-lg _sm u-my-auto u-ml-12" data-header-create-tender-link>Организовать тендер</a>
+
+		<a data-header-menu-item="tender" data-header-favourites data-header-favourites-wrapper href="/favorites"
+	   class="button button--gray1 _sm _radius-lg u-ml-12  ">
+		<svg class="c-svg-icon _xl u-va-bottom">
+			<use xlink:href="/local/templates/tender_v2/ws_build/images/header-new-sprite.svg#heart"></use>
+		</svg>
+		<span class='hide' data-header-favourites-text="1">0</span>
+	</a>
+			<a data-header-menu-item="job" data-header-favourites data-header-favourites-wrapper href="/favorites/vacancies/"
+		   class="button button--gray1 _sm _radius-lg u-ml-12 ">
+			<svg class="c-svg-icon _xl u-va-bottom">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/header-new-sprite.svg#heart"></use>
+			</svg>
+		</a>
+	
+	
+			<a class="button button--gray1 _radius-lg _sm u-radius-right-0 u-my-auto " href="/login/?backurl=%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F%3FCODE%3Dpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili" data-login-popup-show="/login/login.php?ajax=Y">Войти</a>
+	<a class="button button--gray1 _radius-lg _sm u-ml-0 u-radius-left-0 u-my-auto " href="/login/registration.php?backurl=%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F%3FCODE%3Dpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili">Зарегистрироваться</a>
+
+		<div class="modal" aria-hidden="true" data-modal-popup data-login-popup>
+		<div class="modal__overlay" tabindex="-1">
+			<div class="modal__dialog" role="dialog" aria-modal="true">
+				<button type="button" class="modal__btn-close _type2 u-p-0" data-modal-popup-close><span class="u-sr-only">Закрыть</span></button>
+				<div class="modal__inner _small-pad" data-login-popup-body data-modal-popup-body>
+					<div class="cssload-zenith"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+			</div>
+		</div>
+		<div class="_radius  _bordered d-flex align-items-center header__wrapper">
+					<ul class='page-inner__container w-100p header-new__submenu align-items-center reset-list'>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/cases/'
+											>
+						Кейсы					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/blog/'
+											>
+						Статьи					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/events/'
+											>
+						Афиша					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/expert/'
+											>
+						Слово экспертам					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/docs/'
+											>
+						Документация					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/news/'
+											>
+						Новости компаний					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 _active'
+						href='/interview/'
+											>
+						Интервью					</a>
+				</li>
+							<li class='header-new__submenu-item u-mt-0'>
+					<a
+						class='c-link _blue-d-type1 u-fw-600 u-mt-0 '
+						href='/video/'
+											>
+						Видео					</a>
+				</li>
+					</ul>
+	
+	<div class='header-new__dropdown-menu' data-dropdown>
+		<div class='page-inner__container w-100p d-flex justify-content-start'>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Тендеры и лиды</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/b2b/'
+																	>
+									Тендерная площадка								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/how-it-works/'
+																	>
+									Как это работает								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/tenders/'
+																	>
+									Каталог тендеров								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/create/'
+																	>
+									Организовать тендер								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Исполнители</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/contractors/'
+																	>
+									Диджитал-агентства								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/people/'
+																	>
+									Специалисты								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/gratitude-letters/'
+																	>
+									Отзывы об агентствах								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/calculator/'
+																	>
+									Стоимость услуг								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/rating/'
+																	>
+									Рейтинги								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Медиа</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/cases/'
+																	>
+									Кейсы								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/blog/'
+																	>
+									Статьи								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/events/'
+																	>
+									Афиша								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/expert/'
+																	>
+									Слово экспертам								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/docs/'
+																	>
+									Документация								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/news/'
+																	>
+									Новости компаний								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 _active'
+									href='/interview/'
+																	>
+									Интервью								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/video/'
+																	>
+									Видео								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Информация</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/about/'
+																	>
+									О проекте								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/project-news/'
+																	>
+									Новости проекта								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/advertising/'
+																	>
+									Платные опции								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/help/'
+																	>
+									Помощь								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/corporate-identity/'
+																	>
+									Наша айдентика								</a>
+							</li>
+											</ul>
+				</div>
+							<div class='header-new__dropdown-menu-col'>
+					<div class='header-new__dropdown-menu-title'>Другое</div>
+					<ul class='reset-list'>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/awards/'
+									target="_blank"								>
+									Премия WDA								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/tools/'
+																	>
+									Инструменты								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/vacancies/'
+																	>
+									Вакансии								</a>
+							</li>
+													<li class="header-new__dropdown-menu-item">
+								<a
+									class='c-link _blue-d-type1 u-fw-600 '
+									href='/contests/'
+																	>
+									Каталог премий								</a>
+							</li>
+											</ul>
+				</div>
+					</div>
+	</div>
+		</div>
+			</header>
+	<div class="grid  _with-subheader">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная страница","item":"https://workspace.ru/"},{"@type":"ListItem","position":2,"name":"Интервью","item":"https://workspace.ru/interview/"}]}</script> <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Почему пользователи «залипают» в приложении МегаФона? Спросили у их команды, победившей в WDA 2023","description":"Интервью с командой МегаФона: как геймификация, UX-дизайн и анимации превратили приложение оператора в экосистему с миллионами активных пользователей. Одно из лучших мобильных приложений в телекоме: метрики роста, продуктовый подход, игры и UX-исследования помогли удержать миллионы пользователей.","datePublished":"2023-12-22T14:10:00+00:00","image":"https://workspace.ru/upload/resize_cache/interview/985/wl89hkfwl3iaxp4160ohq2rsxxjegp66/826_454_1619711fa078991f0a23d032687646b21/000.jpg","articleBody":"Всем привет, на&nbsp;связи редакция Workspace! \r\nМы&nbsp;продолжаем публиковать кейсы победителей WDA 2023 и&nbsp;на&nbsp;этот раз у&nbsp;нас кое-что особенное&nbsp;— интервью с&nbsp;командой МегаФона. Их&nbsp;работа заняла первое место [ https://workspace.ru/awards/cases/mobilnoe-prilozhenie-megafon-v3-0/ ] в&nbsp;номинации «Мобильные приложения» нашей премии&nbsp;— Workspace Digital Awards [ https://workspace.ru/awards/ ] . \r\n\r\nДля нас это новость: в&nbsp;основном в&nbsp;нашей \r\nпремии участвуют digital-агентства. А&nbsp;тут пришли инхаус-специалисты, сделали классное приложение, перевыполнили там все свои KPI и&nbsp;отправили невероятный кейс, чтобы забрать себе золото. Надеемся, что в&nbsp;этом году мы&nbsp;увидим больше кейсов от&nbsp;внутренних продуктовых команд крупных компаний&nbsp;— этот нам очень понравился. \r\n\r\n[ /upload/medialibrary/192/4j24w6bi2nsjifv29ygujm7jpfilof0h/1.jpg ] \r\n\r\nРезультаты кейса действительно впечатляют: \r\nза&nbsp;год команда МегаФона оптимизировала приложение таким образом, что существенно увеличила показатели DAU, MAU и&nbsp;Revenue \r\n\r\nС&nbsp;нами общался Станислав Петров&nbsp;— \r\nруководитель по&nbsp;пользовательскому опыту и&nbsp;интерфейсам в&nbsp;команде МегаФона. \r\n\r\n1 \r\nЗдравствуйте, поздравляем с&nbsp;первым местом \r\nв&nbsp;номинации «Мобильные приложения»! Было&nbsp;ли у&nbsp;вас ожидание, что вы&nbsp;станете победителями в&nbsp;нашем конкурсе кейсов? \r\n\r\nНе&nbsp;будем скромничать&nbsp;— конечно, было \r\n:) Мы&nbsp;уверены в&nbsp;нашем продукте, оттачиваем его год за&nbsp;годом, показатель CSI нашего приложения в&nbsp;лидерах среди приложений «Большой четверки» российских операторов мобильной связи. \r\n\r\n2 \r\nВы&nbsp;входите в&nbsp;малое количество компаний, \r\nкоторые прислали нам свои работы не&nbsp;в&nbsp;тандеме с&nbsp;агентствами, а&nbsp;от&nbsp;себя. Мы&nbsp;были удивлены, когда узнали, что команда Мегафона подготовила кейс для участия в&nbsp;конкурсе. Расскажите, как вы&nbsp;узнали о&nbsp;нашей премии и&nbsp;что замотивировало вас принять в&nbsp;ней участие? Например, агентствам нужно получить престижную премию, чтобы подчеркнуть свой опыт на&nbsp;рынке, а&nbsp;в&nbsp;чем был ваш интерес? \r\n\r\nО&nbsp;вашей премии нам рассказали наши друзья \r\nиз&nbsp;Red Collar, после их&nbsp;рекомендаций сложно отказаться. \r\n\r\nМотивация подачи на&nbsp;самом деле достаточно \r\nпрозаична: мы&nbsp;гордимся своей работой и&nbsp;хотим соревноваться с&nbsp;топовыми проектами за&nbsp;звание лучшего. Плюс, для нас это способ рассказать о&nbsp;нашей работе. О&nbsp;том, какие мысли и&nbsp;труды стоят за&nbsp;пикселями на&nbsp;экране. Какие задачи мы&nbsp;решаем. Это возможность обернуться назад и&nbsp;проанализировать: что мы&nbsp;сделали за&nbsp;год. Ну&nbsp;и&nbsp;конечно, когда сотрудники видят признание независимых экспертов, они осознают ценность своей работы. \r\n\r\n3 \r\nСмотрели&nbsp;ли вы&nbsp;кейсы ваших соперников \r\nили участников других номинаций? \r\n\r\nСреди поданных работ было достаточно интересных \r\nкейсов, которые заставили переживать. Поэтому до&nbsp;самого объявления победителей эмоции находились на&nbsp;пределе, а&nbsp;радость победы ощущалась особенно сильно. \r\n\r\n4 \r\nПодавали&nbsp;ли вы&nbsp;этот проект на&nbsp;другие \r\nконкурсы приложений&nbsp;/ кейсов? Если&nbsp;да, какие были результаты? \r\n\r\nДа, в&nbsp;прошлом году мы&nbsp;принимали участие \r\nв&nbsp;Tagline и&nbsp;получили пять наград, в&nbsp;том числе золото за&nbsp;лучшее телеком-приложение, лучший дизайн и&nbsp;лучшее юзабилити. Также наши игры из&nbsp;приложения собрали еще пять призовых мест. Всего мы&nbsp;получили 10&nbsp;наград. \r\n\r\n5 \r\nТеперь перейдем к&nbsp;вашему кейсу. Вы&nbsp;указали, \r\nчто сделали коммуникацию с&nbsp;пользователем более эмоциональной за&nbsp;счет добавления приятных анимаций. Как рождаются подобные решения: из&nbsp;гипотез, подкрепленных аналитикой или просто из&nbsp;головы? \r\n\r\nКоммуникация с&nbsp;клиентом для нас очень \r\nважна, поэтому мы&nbsp;закладываем ее&nbsp;проработку на&nbsp;всех уровнях: начиная с&nbsp;конкретных задач и&nbsp;заканчивая стратегией развития нашего приложения. Сейчас мы&nbsp;как раз завершаем стратегию на&nbsp;2024&nbsp;год. \r\n\r\nЧасть инсайтов мы&nbsp;получаем из&nbsp;аналитики, \r\nчасть из&nbsp;исследований. Также какие-то идеи приходят в&nbsp;ходе обсуждения в&nbsp;команде или с&nbsp;помощью дизайн-мышления. Готового рецепта тут нет, но&nbsp;когда у&nbsp;команды есть желание сделать хорошо, инструменты найдутся. Очень многие моменты «на&nbsp;тоненького» появились в&nbsp;ходе работы: когда нам не&nbsp;хотелось останавливаться на&nbsp;хорошем результате, когда что-то захватывало и&nbsp;мы&nbsp;хотели довести это до&nbsp;сверхрезультата. \r\n\r\nТак, например, родились в&nbsp;свое время \r\nзаставки приложения с&nbsp;«типичным днем Коржика». Так мы&nbsp;нашли свой стиль в&nbsp;иллюстрациях, которые с&nbsp;одной стороны матовые и&nbsp;софт-тач, но&nbsp;при этом освещение построено из&nbsp;трех источников, что дает приятные блики и&nbsp;рефлексы. И, конечно, слегка юморные приветствия в&nbsp;веб-версии личного кабинета. \r\n\r\n[ /upload/medialibrary/697/ntoljn1py876oa74af79n4tbmcwouz34/2.jpg ] \r\n\r\nОдин из&nbsp;секретов роста метрик приложения&nbsp;— \r\nприятные анимации, которые вызывают положительные эмоции у&nbsp;пользователей \r\n\r\n6 \r\nВы&nbsp;кардинально изменили главный экран \r\nприложения на&nbsp;основе анализа потребностей пользователей. Можете рассказать, как вы&nbsp;узнали, что нужно пользователям? Наверное, вы&nbsp;проводили UX-исследования? Если&nbsp;да, пожалуйста, поделитесь вашей методологией. \r\n\r\nНаш подход к&nbsp;построению приложения действительно \r\nклиентоориентированный. Но, конечно, стоит отметить, что вопрос клиенту «опишите свое идеальное приложение» не&nbsp;является правильным с&nbsp;точки зрения исследований пользовательского опыта. Правильными будут такие вопросы: например, «опишите последний опыт использования приложения». Или «как вы&nbsp;пользовались услугами связи, когда ездили за&nbsp;рубеж». \r\n\r\nМы&nbsp;формируем грамотный баланс, приземляя \r\nполученные сведения о&nbsp;поведении клиента на&nbsp;наши три основополагающие принципа: прозрачность расходов и&nbsp;услуг, демонстрация функций, важных для абонента, а&nbsp;также публикация полезной информации и&nbsp;предложений. Например, в&nbsp;самом верху главного экрана у&nbsp;нас расположен баланс, а&nbsp;также остатки пакетов минут, интернета и&nbsp;SMS. Это крайне важная для пользователей информация. Потом идет виджет с&nbsp;тарифом пользователя, в&nbsp;котором мы&nbsp;пишем, когда у&nbsp;него ближайшая оплата: кстати, на&nbsp;момент публикации кейса этот виджет располагался ниже. Только после всего этого в&nbsp;приложении идет полезная информация и&nbsp;полка продуктов. \r\n\r\n[ /upload/medialibrary/237/1tqujseioqtmtziwbtezf4xmwribumng/3.jpg ] \r\n\r\nЭкраны обновленного мобильного приложения \r\nМегаФона \r\n\r\n7 \r\nВ&nbsp;кейсе было указано, что вы&nbsp;персонализировали \r\nраздел «Для меня»&nbsp;— пользователь мог настроить интересные для себя категории, чтобы получать более целевые предложения. Там есть такие категории, как «Еда» и&nbsp;«Красота». Видимо, это предложения от&nbsp;ваших партнеров? Как вы&nbsp;думаете, они не&nbsp;размывают релевантность функций, которые выполняет приложение, нет&nbsp;ли среди пользователей негативных реакций на&nbsp;подобные интеграции? \r\n\r\nЕсли&nbsp;бы мы&nbsp;эти интересы поместили \r\nна&nbsp;главный экран, убрав важные функции, конечно был&nbsp;бы негативный эффект. В&nbsp;этом году мы&nbsp;проводили большой ресерч по&nbsp;разделам «Услуги» и&nbsp;«Для меня». Не&nbsp;буду вдаваться в&nbsp;подробности, но&nbsp;одним из&nbsp;интересных результатов аналитики и&nbsp;исследований было&nbsp;то, что пользователи абсолютно осознанно идут в&nbsp;оба этих раздела, с&nbsp;разными задачами. При этом оба раздела находятся в&nbsp;топе по&nbsp;посещаемости, не&nbsp;мешая друг другу и&nbsp;другим разделам. \r\n\r\n8 \r\nФормат Историй&nbsp;— то, что раздражает \r\nодну часть аудитории, но&nbsp;очень востребовано другой. Пожалуйста, поделитесь портретом среднестатистического пользователя Историй вашего приложения. Какие его потребности закрывает этот раздел? Насколько сильно он&nbsp;вовлекается в&nbsp;просмотр Историй? \r\n\r\nНаши Истории имеют взвешенное соотношение \r\nполезного, рекомендательного и&nbsp;развлекательного контента&nbsp;— это сделано, чтобы не&nbsp;«выжечь» канал. Для тех, кто не&nbsp;хочет смотреть Истории, мы&nbsp;дали возможность выключить&nbsp;их. Но&nbsp;по&nbsp;нашей статистике это очень небольшой процент: большинство пользователей их&nbsp;просматривает. И&nbsp;у&nbsp;нас правда есть много Историй, которые собирают лайки, их&nbsp;добавляют в&nbsp;избранное. \r\n\r\n[ /upload/medialibrary/e49/mdhwmp29jlpwitz2imn0gql2tu7dw5cx/4.jpg ] \r\n\r\nСтатистика по&nbsp;Историям впечатляет \r\n\r\nСамые любимые Истории&nbsp;— это итоги квартала \r\nабонента. Там находится статистика использования услуг связи, обучающий и&nbsp;информативный контент, выгодные предложения, а&nbsp;также развлекательные опросы. Например, таким был опрос на&nbsp;знание современного сленга или «фишечек» из&nbsp;детства. \r\n\r\nНа&nbsp;момент интервью я&nbsp;ответил на&nbsp;шуточный \r\nопрос «Как настроение», по&nbsp;результатам которого получил ведерко снега, чтобы потушить горящие дедлайны. Это мило и&nbsp;приятно. Спасибо Кате&nbsp;— сердцу Историй&nbsp;— за&nbsp;то, что она хранит эту искру. Думаю, мы&nbsp;смогли выстроить доверительную и&nbsp;искреннюю коммуникацию с&nbsp;нашими пользователями благодаря этому. \r\n\r\n9 \r\nВ&nbsp;приложении есть онлайн-кинотеатр. \r\nНасколько это востребованная функция среди вашей аудитории? Насколько, по-вашему, видеоконтент сейчас востребован среди пользователей мобильных устройств? \r\n\r\nСудя по&nbsp;статистике, это достаточно востребованная \r\nфункция. Люди смотрят видео по&nbsp;дороге на&nbsp;работу или домой, а&nbsp;также в&nbsp;поездках. К&nbsp;тому&nbsp;же, не&nbsp;стоит забывать, что кинотеатры доступны не&nbsp;только в&nbsp;смартфоне, но&nbsp;и&nbsp;на&nbsp;других устройствах с&nbsp;тем&nbsp;же аккаунтом. Вы&nbsp;можете буквально продолжить просмотр с&nbsp;того&nbsp;же места по&nbsp;приходу домой. \r\n\r\n10 \r\nСейчас все приложения крупных компаний \r\nстремятся повысить вовлеченность за&nbsp;счет различных механик: добавляют истории, полезный контент и&nbsp;квизы. В&nbsp;вашем кейсе было указано, что вы&nbsp;добавили несколько мини-игр в&nbsp;приложение, в&nbsp;которые пользователь может сыграть. Такие механики отлично работают на&nbsp;увеличение времени, проведенного в&nbsp;приложении, а&nbsp;также повышение дневной и&nbsp;ежемесячной аудитории, но&nbsp;влияют&nbsp;ли они на&nbsp;ключевые метрики бизнеса? Например, может&nbsp;ли внедрение развлекательных элементов в&nbsp;приложение повысить конверсии в&nbsp;покупку и&nbsp;доход? Если&nbsp;да, то&nbsp;каким образом это можно отследить? \r\n\r\nКонечно. Помимо самого захода в&nbsp;приложение, \r\nигра&nbsp;— это еще и&nbsp;способ рассказать про наши продукты, когда мы&nbsp;награждаем ими пользователя. В&nbsp;обычной ситуации клиент не&nbsp;пойдет в&nbsp;приложение искать тот&nbsp;же онлайн-кинотеатр. Другое дело, когда в&nbsp;награду тебе бесплатный месяц просмотра кино, сериалов и&nbsp;всего, что там есть&nbsp;— это помогает промоутировать наши предложения. \r\n\r\nПомимо DAU и&nbsp;MAU, мы&nbsp;наблюдаем также и&nbsp;рост \r\nпокупок продуктов, проникновения в&nbsp;другие разделы и&nbsp;вовлеченность базы. Да&nbsp;что говорить, после легендарной игры «Потряси» и&nbsp;ее&nbsp;результатов все крупные операторы мобильной связи подались туда&nbsp;же. \r\n\r\n11 \r\nПожалуйста, расскажите подробнее про Игровой \r\nцентр. На&nbsp;какую аудиторию рассчитан этот раздел? По&nbsp;какому принципу подбираются игры для него? Созданием игр занимаются ваши сотрудники или внешние команды? \r\n\r\nКак ни&nbsp;странно, Игровой центр рассчитан \r\nна&nbsp;всех: в&nbsp;него играют от&nbsp;мала до&nbsp;велика, миллионы пользователей. Для каждой игры мы&nbsp;продумываем механику, сеттинг, дизайн&nbsp;и, конечно, призы для участников. Механику и&nbsp;концепцию выбираем на&nbsp;основе анализа игровых трендов. При этом сама игра обязательно должна быть несложной, чтобы игрок легко вник в&nbsp;правила и&nbsp;мог достаточно быстро сыграть: например, при поездке в&nbsp;метро. Дизайн, как правило, мы&nbsp;разрабатываем совместно с&nbsp;топовыми дизайн-студиями. \r\n\r\nВ&nbsp;итоге игры получаются проработанными, \r\nуникальными и&nbsp;интересными. Например, в&nbsp;«Воспоминариуме» для коллекционных карточек привлекался ряд отечественных иллюстраторов. А&nbsp;для игры «Тайны Галактики» был продуман свой мир, где каждая планета имеет отсылку к&nbsp;легендарному sci-fi произведению. Хотя в&nbsp;этой игре в&nbsp;принципе было много отсылок к&nbsp;фантастике: например, бластер червячка Джима. Как итог, каждая игра завоевывала призовые места в&nbsp;диджитал-премиях в&nbsp;течении трех лет. \r\n\r\n[ /upload/medialibrary/8bf/sp62c43dhxdv2g2gt0f7udal2dm6v8yd/5.jpg ] \r\n\r\nВсе игры обладают оригинальным и&nbsp;выразительным \r\nдизайном \r\n\r\n12 \r\nЕсли смотреть в&nbsp;будущее, есть&nbsp;ли вероятность \r\nтого, что пользователи устанут от&nbsp;внедрения однотипных развлекательных механик в&nbsp;приложения разных компаний и&nbsp;начнут их&nbsp;игнорировать? \r\n\r\nЯ&nbsp;думаю, если почивать на&nbsp;лаврах и&nbsp;бессмысленно \r\nповторяться, то&nbsp;огонь в&nbsp;глазах наших пользователей точно потухнет. Именно поэтому будущее за&nbsp;проработанными решениями, в&nbsp;которых есть ценность для клиента. \r\n\r\n13 \r\nВ&nbsp;кейсе вы&nbsp;упомянули «Агента Еву»&nbsp;— \r\nробота, который защищает пользователя от&nbsp;всякого спама и&nbsp;фишинга. Похожий функционал есть у&nbsp;«Тинькофф»&nbsp;— их&nbsp;«Ассистент Олег», который блокирует спамные звонки. При этом у&nbsp;вашей Евы есть хуманизированный аватар. Это классное решение: если уж&nbsp;делать ботов, то&nbsp;очеловечивать их&nbsp;по&nbsp;максимуму. Как вы&nbsp;думаете, в&nbsp;будущем нас ожидает засилье виртуальных различных помощников? Придумают&nbsp;ли дизайн «Ассистенту Олегу»? \r\n\r\nС&nbsp;хуманизацией ассистентов нужно соблюдать \r\nбаланс. Эффект зловещей долины предполагает, что эмпатия человека к&nbsp;синтетику растет по&nbsp;мере его схожести с&nbsp;человеком. Но&nbsp;после определенного предела излишняя человекоподобность вызывает неприязнь и&nbsp;боязнь у&nbsp;живого человека. Поэтому образ Евы открытый и&nbsp;добродушный, но&nbsp;имеет явный синтетический налет. \r\n\r\n[ /upload/medialibrary/394/8v35l0k0b1bb4w5j8waznnt5l72s9ucf/6.jpg ] \r\n\r\nЗнакомьтесь&nbsp;— агент Ева \r\n\r\nДумаю, будущее настолько невероятно, насколько \r\nмы&nbsp;не&nbsp;можем его представить. Голосовые ассистенты с&nbsp;ИИ уже есть в&nbsp;телефонах, автомобилях, умных домах, и&nbsp;это развитие пройдет еще много витков. Надеюсь, эти технологии будут соблюдать принципы Айзека Азимова, и&nbsp;мы&nbsp;избежим «Батлерианского восстания». Мне, например, интересны возможности&nbsp;ИИ для людей с&nbsp;ограничениями восприятия: слуха, зрения, тактильности, ведь получение информации из&nbsp;окружающего мира крайне необходимо каждому. \r\n\r\n14 \r\nНазвание «Агент Ева»&nbsp;— это отсылка к&nbsp;одноименному \r\nфильму с&nbsp;Джессикой Честейн? \r\n\r\nАгент Ева и&nbsp;фильм Ava действительно появились \r\nпримерно в&nbsp;одно время. Но, боюсь, никакой отсылки нет, и&nbsp;это банальное совпадение. \r\n\r\n15 \r\nВы&nbsp;проделали колоссальную работу над \r\nприложением: будто и&nbsp;добавить в&nbsp;него больше нечего. Но&nbsp;если заглянуть в&nbsp;бэклог, много&nbsp;ли там еще задач по&nbsp;обновлению приложения и&nbsp;внедрению в&nbsp;него нового функционала? \r\n\r\nБесконечное множество :) Главная наша цель&nbsp;— \r\nэто сделать самый удобный для пользователя сервис. У&nbsp;нас есть как множество продуктовых идей, так и&nbsp;стратегия по&nbsp;улучшению пользовательского опыта. \r\n\r\n16 \r\nНасколько большая команда работает над \r\nвашим приложением? Сколько в&nbsp;штате продактов, дизайнеров, разработчиков, маркетологов? Как они взаимодействуют между собой, нет&nbsp;ли в&nbsp;работе над таким крупным проектом какой-то путаницы? Привлекаете&nbsp;ли вы&nbsp;специалистов на&nbsp;аутсорс и&nbsp;если&nbsp;да, как это происходит? \r\n\r\nНаше приложение разделено на&nbsp;некоторое \r\nколичество логических зон ответственности, за&nbsp;которые отвечают продуктовые команды: корпоративные услуги, финансы и&nbsp;платежные сервисы, партнерские предложения, омниканальность, B2B и&nbsp;так далее. \r\n\r\nВ&nbsp;команде примерно 10&nbsp;человек, необходимых, \r\nчтобы сделать задачу «под ключ». Это PO, PM, дизайнеры, системные аналитики, продуктовые аналитики, разработчики, тестировщики и&nbsp;так далее. Плюс, есть сотрудники вне команд: например, контент-менеджеры и&nbsp;копирайтеры. Но&nbsp;мы&nbsp;отвечаем за&nbsp;цифровые продукты: сюда не&nbsp;входит бизнес, который выступает заказчиком. \r\n\r\nПодрядчиков мы&nbsp;привлекаем. Например, \r\nвыше я&nbsp;описывал процесс разработки игр с&nbsp;дизайнерами на&nbsp;аутсорсе. \r\n\r\n17 \r\nЕсть&nbsp;ли у&nbsp;вас еще столь&nbsp;же мощный \r\nпроект, чтобы поучаствовать в&nbsp;премии WDA 2024? \r\n\r\nБезусловно, мобильное приложение МегаФона&nbsp;— \r\nмощнейший проект. Оно является главным каналом самооблуживания наших абонентов. Приложение скрупулезно высекалось год за&nbsp;годом, но&nbsp;у&nbsp;нас есть еще чем удивить. \r\n\r\nВ&nbsp;этом году мы&nbsp;подадим проекты Yota, \r\nа&nbsp;также жемчужину наших внутренних процессов&nbsp;— дизайн-систему МегаФона. В&nbsp;нее входят не&nbsp;только компоненты, но&nbsp;также миссия, процессы и&nbsp;вспомогательные инструменты.","mainEntityOfPage":"https://workspace.ru/interview/pochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili/","publisher":{"@type":"Organization","name":"Workspace","url":"https://workspace.ru"}}</script>
+<div class="kb__whole-wrapper journal-detail__wrap u-mb-0" data-view="InterviewDetail">
+	<div class="grid__inner _tenders u-mb-0">
+		<div class="journal-detail-new">
+			<div class="">
+				<a class="journal-detail__back-link u-ml-10 u-mt-7 u-mb-15 u-color-black" href="/blog/">
+					<svg class="journal-detail__back-arrow c-svg-icon _sm">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#arrow-left"></use>
+					</svg>
+					Назад
+				</a>
+				
+<div class="events-posters-widget">
+	<div class="events-posters-widget__title u-mb-20">Афиша мероприятий</div>
+
+	<div class="events-posters-widget__list">
+					<div class="events-posters-widget__item">
+				<img  src="/upload/resize_cache/form_files_default/e5a/004osc3vlh6b2ps6cd09momzu86ry3x0/150_150_1619711fa078991f0a23d032687646b21/photo_2024_02_06_15_21_04.jpg"  class="events-posters-widget__item-image" alt="">
+
+				<div class="">
+					<a href="/events/kak-rabotat-s-ii-v-reklame-i-ne-narushat-zakon-1235/" target="_blank" class="events-posters-widget__item-title">
+						Как работать с ИИ в рекламе и не нарушать закон					</a>
+
+					<div class="events-posters-widget__item-date">
+						26.11.2026 
+						— 26.11.2026					</div>
+				</div>
+			</div>
+					<div class="events-posters-widget__item">
+				<img  src="/upload/resize_cache/form_files_default/16c/g2v1ktj6shb4xs8z3gwe0kwjawxg2v1s/150_150_1619711fa078991f0a23d032687646b21/AD23-LogoLetters-Orange-400x400.png"  class="events-posters-widget__item-image" alt="">
+
+				<div class="">
+					<a href="/events/analyst-days-23-1033/" target="_blank" class="events-posters-widget__item-title">
+						Analyst Days 23					</a>
+
+					<div class="events-posters-widget__item-date">
+						20.11.2026 
+						— 21.11.2026					</div>
+				</div>
+			</div>
+					<div class="events-posters-widget__item">
+				<img  src="/upload/resize_cache/form_files_default/dbd/9j9iizn3u8eo1m1wo7hyjd6tf42bgoto/150_150_1619711fa078991f0a23d032687646b21/AYNET_logo_08-_-kopiya.png"  class="events-posters-widget__item-image" alt="">
+
+				<div class="">
+					<a href="/events/geo-talks-2-0-1248/" target="_blank" class="events-posters-widget__item-title">
+						GEO Talks 2.0					</a>
+
+					<div class="events-posters-widget__item-date">
+						02.12.2026 
+						— 02.12.2026					</div>
+				</div>
+			</div>
+					<div class="events-posters-widget__item">
+				<img  src="/upload/resize_cache/form_files_default/820/3ryyjqy3syyqqrsv48626fax984gs1tm/100_100_1619711fa078991f0a23d032687646b21/HRD_2026_27_100kh100.jpg"  class="events-posters-widget__item-image" alt="">
+
+				<div class="">
+					<a href="/events/ii-hr-forum-quorum-hr-direktor-2026-2027-1191/" target="_blank" class="events-posters-widget__item-title">
+						II HR Форум Quorum «HR ДИРЕКТОР 2026–2027»					</a>
+
+					<div class="events-posters-widget__item-date">
+						10.12.2026 
+						— 11.12.2026					</div>
+				</div>
+			</div>
+					<div class="events-posters-widget__item">
+				<img  src="/upload/resize_cache/form_files_default/a3f/ueue3jab9q45bac0es4zt7a1xkaalyvm/150_150_1619711fa078991f0a23d032687646b21/Logo-B_IT-chernoe_bez-fona.png"  class="events-posters-widget__item-image" alt="">
+
+				<div class="">
+					<a href="/events/business-amp-it-day-cifrovye-resheniya-dlya-finansovogo-sektora/" target="_blank" class="events-posters-widget__item-title">
+						Business&amp;IT Day: Цифровые решения для финансового сектора и страхования					</a>
+
+					<div class="events-posters-widget__item-date">
+						18.02.2027 
+						— 18.02.2027					</div>
+				</div>
+			</div>
+					<div class="events-posters-widget__item">
+				<img  src="/upload/resize_cache/form_files_default/c83/63hxnnvqr4ay955np2kdirq3iahsgz0r/150_150_1619711fa078991f0a23d032687646b21/Logo-chernyy-_3_-_1_.png"  class="events-posters-widget__item-image" alt="">
+
+				<div class="">
+					<a href="/events/business-amp-it-day-retail-cpg/" target="_blank" class="events-posters-widget__item-title">
+						Business&amp;IT Day: Retail CPG					</a>
+
+					<div class="events-posters-widget__item-date">
+						09.12.2026 
+						— 09.12.2026					</div>
+				</div>
+			</div>
+			</div>
+
+	<div class="u-mt-30">
+		<a href="/events/" target="_blank"><b>Посмотреть все</b></a>
+	</div>
+</div>
+
+				<div class="journal-detail__sticky u-mt-20">
+					<!--'start_frame_cache_hoOYLG'--><div class="banner-wrap"><!--'start_frame_cache_VdK7aN'--><a data-banner-click="43" data-ext-link-allow href="https://workspace.ru/awards/?utm_source=workspace&utm_medium=banner&utm_campaign=media" target="_blank" ><img alt="" title="" src="/upload/rk/eff/erduxxcdlhw3h2x0ejgs1x161836d5e7/banner_wda_cat_2-_2x_.png" width="550" height="720" style="border:0;" /></a><!--'end_frame_cache_VdK7aN'--></div><div class="banner-wrap-link u-mt-10"><span class="c-link _gray3 u-mr-15 mr-30" style="cursor:default"><svg class="c-svg-icon u-va-top v-align-txt-top" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+				  <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" fill="currentColor" stroke="none"/>
+				</svg>Реклама</span><a href="/advertising/#banners" class="c-link _gray3"><svg class="c-svg-icon u-va-top v-align-txt-top" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="10" cy="10" r="10" fill="currentColor" stroke="none"/>
+					<path d="M10.064 7.11408C9.49 7.11408 9 6.63809 9 6.05008C9 5.46208 9.49 5.00008 10.064 5.00008C10.652 5.00008 11.128 5.46208 11.128 6.05008C11.128 6.63809 10.652 7.11408 10.064 7.11408ZM10.9617 15.1141H9.18372V8.35202H10.9617V15.1141Z" fill="white" stroke="none"/>
+					</svg> Хотите быть здесь?</a></div><!--'end_frame_cache_hoOYLG'-->				</div>
+			</div>
+			<div class="journal-detail-new__content">
+				<h1 class="journal-detail__title">Почему пользователи «залипают» в приложении МегаФона? Спросили у их команды, победившей в WDA 2023</h1>
+
+				<div class="journal-card__row u-mb-20">
+					<div class="journal-card__col journal-card__counter journal-detail__counter">
+						<span>3913</span>&nbsp;
+						<svg class="c-svg-icon _eye _xsm">
+							<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#eye2"></use>
+						</svg>
+					</div>
+
+					<div class="journal-card__col journal-card__counter journal-detail__counter hide" data-comments-counter-item="interview:9">
+						<span data-comments-counter-item-text></span>&nbsp;<svg class="c-svg-icon _sm _top">
+							<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#comments"></use>
+						</svg>
+					</div>
+
+					<span
+						class="journal-card__col journal-card__counter journal-detail__counter _date"
+						data-public-date="2023-12-22T14:10:00+00:00"
+					></span>
+				</div>
+
+				<div class='d-flex u-mt-30 u-mb-30'>
+					
+<div class="d-flex align-items-center u-ml-auto" data-url="https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F" data-social-counts-url="/ajax/social_share_count.php"
+	 data-social-share data-social-page-code="pochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili" data-social-page-type="interview">
+	<span class="journal-detail-shares__title">Поделиться:</span>
+			<a class="journal-detail-shares__item socials-icon__hover _vkontakte c-link _gray5"
+		   href="https://vk.com/share.php?url=https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F&title=%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8+%C2%AB%D0%B7%D0%B0%D0%BB%D0%B8%D0%BF%D0%B0%D1%8E%D1%82%C2%BB+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%9C%D0%B5%D0%B3%D0%B0%D0%A4%D0%BE%D0%BD%D0%B0%3F+%D0%A1%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D0%BB%D0%B8+%D1%83+%D0%B8%D1%85+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B%2C+%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B5%D0%B9+%D0%B2+WDA+2023&image=https%3A%2F%2Fworkspace.ru%2Fupload%2Fresize_cache%2Finterview%2F985%2Fwl89hkfwl3iaxp4160ohq2rsxxjegp66%2F826_454_1619711fa078991f0a23d032687646b21%2F000.jpg"
+		   rel="nofollow noopener"
+		   target="_blank"
+		   title="ВКонтакте"
+		   data-social-share-item="VK"
+		   data-ext-link-allow=""
+		 data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://vk.com/share.php?url=https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F&amp;title=%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8+%C2%AB%D0%B7%D0%B0%D0%BB%D0%B8%D0%BF%D0%B0%D1%8E%D1%82%C2%BB+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%9C%D0%B5%D0%B3%D0%B0%D0%A4%D0%BE%D0%BD%D0%B0%3F+%D0%A1%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D0%BB%D0%B8+%D1%83+%D0%B8%D1%85+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B%2C+%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B5%D0%B9+%D0%B2+WDA+2023&amp;image=https%3A%2F%2Fworkspace.ru%2Fupload%2Fresize_cache%2Finterview%2F985%2Fwl89hkfwl3iaxp4160ohq2rsxxjegp66%2F826_454_1619711fa078991f0a23d032687646b21%2F000.jpg" data-analytics-block="content">
+			<svg class="c-svg-icon socials-icon _vkontakte">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/socials25-sprite.svg?v=4#vkontakte"></use>
+			</svg>
+			<span class="u-ml-7 u-fs-14" data-social-share-counter>4</span>
+		</a>
+			<a class="journal-detail-shares__item socials-icon__hover _telegram c-link _gray5"
+		   href="https://t.me/share/url?url==https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F&title=%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8+%C2%AB%D0%B7%D0%B0%D0%BB%D0%B8%D0%BF%D0%B0%D1%8E%D1%82%C2%BB+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%9C%D0%B5%D0%B3%D0%B0%D0%A4%D0%BE%D0%BD%D0%B0%3F+%D0%A1%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D0%BB%D0%B8+%D1%83+%D0%B8%D1%85+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B%2C+%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B5%D0%B9+%D0%B2+WDA+2023&picture=https%3A%2F%2Fworkspace.ru%2Fupload%2Fresize_cache%2Finterview%2F985%2Fwl89hkfwl3iaxp4160ohq2rsxxjegp66%2F826_454_1619711fa078991f0a23d032687646b21%2F000.jpg"
+		   rel="nofollow noopener"
+		   target="_blank"
+		   title="Telegram"
+		   data-social-share-item="TELEGRAM"
+		   data-ext-link-allow=""
+		 data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/share/url?url==https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F&amp;title=%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8+%C2%AB%D0%B7%D0%B0%D0%BB%D0%B8%D0%BF%D0%B0%D1%8E%D1%82%C2%BB+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%9C%D0%B5%D0%B3%D0%B0%D0%A4%D0%BE%D0%BD%D0%B0%3F+%D0%A1%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D0%BB%D0%B8+%D1%83+%D0%B8%D1%85+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B%2C+%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B5%D0%B9+%D0%B2+WDA+2023&amp;picture=https%3A%2F%2Fworkspace.ru%2Fupload%2Fresize_cache%2Finterview%2F985%2Fwl89hkfwl3iaxp4160ohq2rsxxjegp66%2F826_454_1619711fa078991f0a23d032687646b21%2F000.jpg" data-analytics-block="content">
+			<svg class="c-svg-icon socials-icon _telegram">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/socials25-sprite.svg?v=4#telegram"></use>
+			</svg>
+			<span class="u-ml-7 u-fs-14" data-social-share-counter>0</span>
+		</a>
+			<a class="journal-detail-shares__item socials-icon__hover _twitter c-link _gray5"
+		   href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F&text=%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8+%C2%AB%D0%B7%D0%B0%D0%BB%D0%B8%D0%BF%D0%B0%D1%8E%D1%82%C2%BB+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%9C%D0%B5%D0%B3%D0%B0%D0%A4%D0%BE%D0%BD%D0%B0%3F+%D0%A1%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D0%BB%D0%B8+%D1%83+%D0%B8%D1%85+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B%2C+%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B5%D0%B9+%D0%B2+WDA+2023"
+		   rel="nofollow noopener"
+		   target="_blank"
+		   title="Twitter"
+		   data-social-share-item="TWITTER"
+		   data-ext-link-allow=""
+		 data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://twitter.com/intent/tweet?url=https%3A%2F%2Fworkspace.ru%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F&amp;text=%D0%9F%D0%BE%D1%87%D0%B5%D0%BC%D1%83+%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8+%C2%AB%D0%B7%D0%B0%D0%BB%D0%B8%D0%BF%D0%B0%D1%8E%D1%82%C2%BB+%D0%B2+%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8+%D0%9C%D0%B5%D0%B3%D0%B0%D0%A4%D0%BE%D0%BD%D0%B0%3F+%D0%A1%D0%BF%D1%80%D0%BE%D1%81%D0%B8%D0%BB%D0%B8+%D1%83+%D0%B8%D1%85+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B%2C+%D0%BF%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%B2%D1%88%D0%B5%D0%B9+%D0%B2+WDA+2023" data-analytics-block="content">
+			<svg class="c-svg-icon socials-icon _twitter">
+				<use xlink:href="/local/templates/tender_v2/ws_build/images/socials25-sprite.svg?v=4#twitter"></use>
+			</svg>
+			<span class="u-ml-7 u-fs-14" data-social-share-counter>6</span>
+		</a>
+	</div>
+				</div>
+
+				<div data-kb-article-text>
+					<div class="journal-detail__text">
+<p>Всем привет, на&nbsp;связи редакция Workspace! Мы&nbsp;продолжаем публиковать кейсы победителей WDA 2023 и&nbsp;на&nbsp;этот раз у&nbsp;нас кое-что особенное&nbsp;— интервью с&nbsp;командой МегаФона. Их&nbsp;работа <a target="_blank" href="https://workspace.ru/awards/cases/mobilnoe-prilozhenie-megafon-v3-0/" >заняла первое место</a> в&nbsp;номинации «Мобильные приложения» нашей премии&nbsp;— <a target="_blank" href="https://workspace.ru/awards/" >Workspace Digital Awards</a>.</p>
+ 
+<p>Для нас это новость: в&nbsp;основном в&nbsp;нашей премии участвуют digital-агентства. А&nbsp;тут пришли инхаус-специалисты, сделали классное приложение, перевыполнили там все свои KPI и&nbsp;отправили невероятный кейс, чтобы забрать себе золото. Надеемся, что в&nbsp;этом году мы&nbsp;увидим больше кейсов от&nbsp;внутренних продуктовых команд крупных компаний&nbsp;— этот нам очень понравился.</p>
+ 
+<p style="text-align: center;"><img src="/upload/medialibrary/192/4j24w6bi2nsjifv29ygujm7jpfilof0h/1.jpg" class="_wide"  /></p>
+ 
+<p style="text-align: center;"><i>Результаты кейса действительно впечатляют: за&nbsp;год команда МегаФона оптимизировала приложение таким образом, что существенно увеличила показатели DAU, MAU и&nbsp;Revenue</i></p>
+ 
+<p>С&nbsp;нами общался Станислав Петров&nbsp;— руководитель по&nbsp;пользовательскому опыту и&nbsp;интерфейсам в&nbsp;команде МегаФона.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">1</div>
+ 
+  <div class="question-counter__content">Здравствуйте, поздравляем с&nbsp;первым местом в&nbsp;номинации «Мобильные приложения»! Было&nbsp;ли у&nbsp;вас ожидание, что вы&nbsp;станете победителями в&nbsp;нашем конкурсе кейсов?</div>
+ </div>
+ 
+<p>Не&nbsp;будем скромничать&nbsp;— конечно, было :) Мы&nbsp;уверены в&nbsp;нашем продукте, оттачиваем его год за&nbsp;годом, показатель CSI нашего приложения в&nbsp;лидерах среди приложений «Большой четверки» российских операторов мобильной связи.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">2</div>
+ 
+  <div class="question-counter__content">Вы&nbsp;входите в&nbsp;малое количество компаний, которые прислали нам свои работы не&nbsp;в&nbsp;тандеме с&nbsp;агентствами, а&nbsp;от&nbsp;себя. Мы&nbsp;были удивлены, когда узнали, что команда Мегафона подготовила кейс для участия в&nbsp;конкурсе. Расскажите, как вы&nbsp;узнали о&nbsp;нашей премии и&nbsp;что замотивировало вас принять в&nbsp;ней участие? Например, агентствам нужно получить престижную премию, чтобы подчеркнуть свой опыт на&nbsp;рынке, а&nbsp;в&nbsp;чем был ваш интерес?</div>
+ </div>
+ 
+<p>О&nbsp;вашей премии нам рассказали наши друзья из&nbsp;Red Collar, после их&nbsp;рекомендаций сложно отказаться.</p>
+ 
+<p>Мотивация подачи на&nbsp;самом деле достаточно прозаична: мы&nbsp;гордимся своей работой и&nbsp;хотим соревноваться с&nbsp;топовыми проектами за&nbsp;звание лучшего. Плюс, для нас это способ рассказать о&nbsp;нашей работе. О&nbsp;том, какие мысли и&nbsp;труды стоят за&nbsp;пикселями на&nbsp;экране. Какие задачи мы&nbsp;решаем. Это возможность обернуться назад и&nbsp;проанализировать: что мы&nbsp;сделали за&nbsp;год. Ну&nbsp;и&nbsp;конечно, когда сотрудники видят признание независимых экспертов, они осознают ценность своей работы.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">3</div>
+ 
+  <div class="question-counter__content">Смотрели&nbsp;ли вы&nbsp;кейсы ваших соперников или участников других номинаций?</div>
+ </div>
+ 
+<p>Среди поданных работ было достаточно интересных кейсов, которые заставили переживать. Поэтому до&nbsp;самого объявления победителей эмоции находились на&nbsp;пределе, а&nbsp;радость победы ощущалась особенно сильно.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">4</div>
+ 
+  <div class="question-counter__content">Подавали&nbsp;ли вы&nbsp;этот проект на&nbsp;другие конкурсы приложений&nbsp;/ кейсов? Если&nbsp;да, какие были результаты?</div>
+ </div>
+ 
+<p>Да, в&nbsp;прошлом году мы&nbsp;принимали участие в&nbsp;Tagline и&nbsp;получили пять наград, в&nbsp;том числе золото за&nbsp;лучшее телеком-приложение, лучший дизайн и&nbsp;лучшее юзабилити. Также наши игры из&nbsp;приложения собрали еще пять призовых мест. Всего мы&nbsp;получили 10&nbsp;наград.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">5</div>
+ 
+  <div class="question-counter__content">Теперь перейдем к&nbsp;вашему кейсу. Вы&nbsp;указали, что сделали коммуникацию с&nbsp;пользователем более эмоциональной за&nbsp;счет добавления приятных анимаций. Как рождаются подобные решения: из&nbsp;гипотез, подкрепленных аналитикой или просто из&nbsp;головы?</div>
+ </div>
+ 
+<p>Коммуникация с&nbsp;клиентом для нас очень важна, поэтому мы&nbsp;закладываем ее&nbsp;проработку на&nbsp;всех уровнях: начиная с&nbsp;конкретных задач и&nbsp;заканчивая стратегией развития нашего приложения. Сейчас мы&nbsp;как раз завершаем стратегию на&nbsp;2024&nbsp;год.</p>
+ 
+<p>Часть инсайтов мы&nbsp;получаем из&nbsp;аналитики, часть из&nbsp;исследований. Также какие-то идеи приходят в&nbsp;ходе обсуждения в&nbsp;команде или с&nbsp;помощью дизайн-мышления. Готового рецепта тут нет, но&nbsp;когда у&nbsp;команды есть желание сделать хорошо, инструменты найдутся. Очень многие моменты «на&nbsp;тоненького» появились в&nbsp;ходе работы: когда нам не&nbsp;хотелось останавливаться на&nbsp;хорошем результате, когда что-то захватывало и&nbsp;мы&nbsp;хотели довести это до&nbsp;сверхрезультата.</p>
+ 
+<p>Так, например, родились в&nbsp;свое время заставки приложения с&nbsp;«типичным днем Коржика». Так мы&nbsp;нашли свой стиль в&nbsp;иллюстрациях, которые с&nbsp;одной стороны матовые и&nbsp;софт-тач, но&nbsp;при этом освещение построено из&nbsp;трех источников, что дает приятные блики и&nbsp;рефлексы. И, конечно, слегка юморные приветствия в&nbsp;веб-версии личного кабинета.</p>
+ 
+<p style="text-align: center;"><img src="/upload/medialibrary/697/ntoljn1py876oa74af79n4tbmcwouz34/2.jpg" class="_wide"  /></p>
+ 
+<p style="text-align: center;"><i>Один из&nbsp;секретов роста метрик приложения&nbsp;— приятные анимации, которые вызывают положительные эмоции у&nbsp;пользователей</i></p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">6</div>
+ 
+  <div class="question-counter__content">Вы&nbsp;кардинально изменили главный экран приложения на&nbsp;основе анализа потребностей пользователей. Можете рассказать, как вы&nbsp;узнали, что нужно пользователям? Наверное, вы&nbsp;проводили UX-исследования? Если&nbsp;да, пожалуйста, поделитесь вашей методологией.</div>
+ </div>
+ 
+<p>Наш подход к&nbsp;построению приложения действительно клиентоориентированный. Но, конечно, стоит отметить, что вопрос клиенту «опишите свое идеальное приложение» не&nbsp;является правильным с&nbsp;точки зрения исследований пользовательского опыта. Правильными будут такие вопросы: например, «опишите последний опыт использования приложения». Или «как вы&nbsp;пользовались услугами связи, когда ездили за&nbsp;рубеж».</p>
+ 
+<p>Мы&nbsp;формируем грамотный баланс, приземляя полученные сведения о&nbsp;поведении клиента на&nbsp;наши три основополагающие принципа: прозрачность расходов и&nbsp;услуг, демонстрация функций, важных для абонента, а&nbsp;также публикация полезной информации и&nbsp;предложений. Например, в&nbsp;самом верху главного экрана у&nbsp;нас расположен баланс, а&nbsp;также остатки пакетов минут, интернета и&nbsp;SMS. Это крайне важная для пользователей информация. Потом идет виджет с&nbsp;тарифом пользователя, в&nbsp;котором мы&nbsp;пишем, когда у&nbsp;него ближайшая оплата: кстати, на&nbsp;момент публикации кейса этот виджет располагался ниже. Только после всего этого в&nbsp;приложении идет полезная информация и&nbsp;полка продуктов.</p>
+ 
+<p style="text-align: center;"><img src="/upload/medialibrary/237/1tqujseioqtmtziwbtezf4xmwribumng/3.jpg" class="_wide"  /></p>
+ 
+<p style="text-align: center;"><i>Экраны обновленного мобильного приложения МегаФона</i></p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">7</div>
+ 
+  <div class="question-counter__content">В&nbsp;кейсе было указано, что вы&nbsp;персонализировали раздел «Для меня»&nbsp;— пользователь мог настроить интересные для себя категории, чтобы получать более целевые предложения. Там есть такие категории, как «Еда» и&nbsp;«Красота». Видимо, это предложения от&nbsp;ваших партнеров? Как вы&nbsp;думаете, они не&nbsp;размывают релевантность функций, которые выполняет приложение, нет&nbsp;ли среди пользователей негативных реакций на&nbsp;подобные интеграции?</div>
+ </div>
+ 
+<p>Если&nbsp;бы мы&nbsp;эти интересы поместили на&nbsp;главный экран, убрав важные функции, конечно был&nbsp;бы негативный эффект. В&nbsp;этом году мы&nbsp;проводили большой ресерч по&nbsp;разделам «Услуги» и&nbsp;«Для меня». Не&nbsp;буду вдаваться в&nbsp;подробности, но&nbsp;одним из&nbsp;интересных результатов аналитики и&nbsp;исследований было&nbsp;то, что пользователи абсолютно осознанно идут в&nbsp;оба этих раздела, с&nbsp;разными задачами. При этом оба раздела находятся в&nbsp;топе по&nbsp;посещаемости, не&nbsp;мешая друг другу и&nbsp;другим разделам.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">8</div>
+ 
+  <div class="question-counter__content">Формат Историй&nbsp;— то, что раздражает одну часть аудитории, но&nbsp;очень востребовано другой. Пожалуйста, поделитесь портретом среднестатистического пользователя Историй вашего приложения. Какие его потребности закрывает этот раздел? Насколько сильно он&nbsp;вовлекается в&nbsp;просмотр Историй?</div>
+ </div>
+ 
+<p>Наши Истории имеют взвешенное соотношение полезного, рекомендательного и&nbsp;развлекательного контента&nbsp;— это сделано, чтобы не&nbsp;«выжечь» канал. Для тех, кто не&nbsp;хочет смотреть Истории, мы&nbsp;дали возможность выключить&nbsp;их. Но&nbsp;по&nbsp;нашей статистике это очень небольшой процент: большинство пользователей их&nbsp;просматривает. И&nbsp;у&nbsp;нас правда есть много Историй, которые собирают лайки, их&nbsp;добавляют в&nbsp;избранное.</p>
+ 
+<p style="text-align: center;"><img src="/upload/medialibrary/e49/mdhwmp29jlpwitz2imn0gql2tu7dw5cx/4.jpg" class="_wide"  /></p>
+ 
+<p style="text-align: center;"><i>Статистика по&nbsp;Историям впечатляет</i></p>
+ 
+<p>Самые любимые Истории&nbsp;— это итоги квартала абонента. Там находится статистика использования услуг связи, обучающий и&nbsp;информативный контент, выгодные предложения, а&nbsp;также развлекательные опросы. Например, таким был опрос на&nbsp;знание современного сленга или «фишечек» из&nbsp;детства.</p>
+ 
+<p>На&nbsp;момент интервью я&nbsp;ответил на&nbsp;шуточный опрос «Как настроение», по&nbsp;результатам которого получил ведерко снега, чтобы потушить горящие дедлайны. Это мило и&nbsp;приятно. Спасибо Кате&nbsp;— сердцу Историй&nbsp;— за&nbsp;то, что она хранит эту искру. Думаю, мы&nbsp;смогли выстроить доверительную и&nbsp;искреннюю коммуникацию с&nbsp;нашими пользователями благодаря этому.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">9</div>
+ 
+  <div class="question-counter__content">В&nbsp;приложении есть онлайн-кинотеатр. Насколько это востребованная функция среди вашей аудитории? Насколько, по-вашему, видеоконтент сейчас востребован среди пользователей мобильных устройств?</div>
+ </div>
+ 
+<p>Судя по&nbsp;статистике, это достаточно востребованная функция. Люди смотрят видео по&nbsp;дороге на&nbsp;работу или домой, а&nbsp;также в&nbsp;поездках. К&nbsp;тому&nbsp;же, не&nbsp;стоит забывать, что кинотеатры доступны не&nbsp;только в&nbsp;смартфоне, но&nbsp;и&nbsp;на&nbsp;других устройствах с&nbsp;тем&nbsp;же аккаунтом. Вы&nbsp;можете буквально продолжить просмотр с&nbsp;того&nbsp;же места по&nbsp;приходу домой.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">10</div>
+ 
+  <div class="question-counter__content">Сейчас все приложения крупных компаний стремятся повысить вовлеченность за&nbsp;счет различных механик: добавляют истории, полезный контент и&nbsp;квизы. В&nbsp;вашем кейсе было указано, что вы&nbsp;добавили несколько мини-игр в&nbsp;приложение, в&nbsp;которые пользователь может сыграть. Такие механики отлично работают на&nbsp;увеличение времени, проведенного в&nbsp;приложении, а&nbsp;также повышение дневной и&nbsp;ежемесячной аудитории, но&nbsp;влияют&nbsp;ли они на&nbsp;ключевые метрики бизнеса? Например, может&nbsp;ли внедрение развлекательных элементов в&nbsp;приложение повысить конверсии в&nbsp;покупку и&nbsp;доход? Если&nbsp;да, то&nbsp;каким образом это можно отследить?</div>
+ </div>
+ 
+<p>Конечно. Помимо самого захода в&nbsp;приложение, игра&nbsp;— это еще и&nbsp;способ рассказать про наши продукты, когда мы&nbsp;награждаем ими пользователя. В&nbsp;обычной ситуации клиент не&nbsp;пойдет в&nbsp;приложение искать тот&nbsp;же онлайн-кинотеатр. Другое дело, когда в&nbsp;награду тебе бесплатный месяц просмотра кино, сериалов и&nbsp;всего, что там есть&nbsp;— это помогает промоутировать наши предложения.</p>
+ 
+<p>Помимо DAU и&nbsp;MAU, мы&nbsp;наблюдаем также и&nbsp;рост покупок продуктов, проникновения в&nbsp;другие разделы и&nbsp;вовлеченность базы. Да&nbsp;что говорить, после легендарной игры «Потряси» и&nbsp;ее&nbsp;результатов все крупные операторы мобильной связи подались туда&nbsp;же.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">11</div>
+ 
+  <div class="question-counter__content">Пожалуйста, расскажите подробнее про Игровой центр. На&nbsp;какую аудиторию рассчитан этот раздел? По&nbsp;какому принципу подбираются игры для него? Созданием игр занимаются ваши сотрудники или внешние команды?</div>
+ </div>
+ 
+<p>Как ни&nbsp;странно, Игровой центр рассчитан на&nbsp;всех: в&nbsp;него играют от&nbsp;мала до&nbsp;велика, миллионы пользователей. Для каждой игры мы&nbsp;продумываем механику, сеттинг, дизайн&nbsp;и, конечно, призы для участников. Механику и&nbsp;концепцию выбираем на&nbsp;основе анализа игровых трендов. При этом сама игра обязательно должна быть несложной, чтобы игрок легко вник в&nbsp;правила и&nbsp;мог достаточно быстро сыграть: например, при поездке в&nbsp;метро. Дизайн, как правило, мы&nbsp;разрабатываем совместно с&nbsp;топовыми дизайн-студиями.</p>
+ 
+<p>В&nbsp;итоге игры получаются проработанными, уникальными и&nbsp;интересными. Например, в&nbsp;«Воспоминариуме» для коллекционных карточек привлекался ряд отечественных иллюстраторов. А&nbsp;для игры «Тайны Галактики» был продуман свой мир, где каждая планета имеет отсылку к&nbsp;легендарному sci-fi произведению. Хотя в&nbsp;этой игре в&nbsp;принципе было много отсылок к&nbsp;фантастике: например, бластер червячка Джима. Как итог, каждая игра завоевывала призовые места в&nbsp;диджитал-премиях в&nbsp;течении трех лет.</p>
+ 
+<p style="text-align: center;"><img src="/upload/medialibrary/8bf/sp62c43dhxdv2g2gt0f7udal2dm6v8yd/5.jpg" class="_wide"  /></p>
+ 
+<p style="text-align: center;"><i>Все игры обладают оригинальным и&nbsp;выразительным дизайном</i></p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">12</div>
+ 
+  <div class="question-counter__content">Если смотреть в&nbsp;будущее, есть&nbsp;ли вероятность того, что пользователи устанут от&nbsp;внедрения однотипных развлекательных механик в&nbsp;приложения разных компаний и&nbsp;начнут их&nbsp;игнорировать?</div>
+ </div>
+ 
+<p>Я&nbsp;думаю, если почивать на&nbsp;лаврах и&nbsp;бессмысленно повторяться, то&nbsp;огонь в&nbsp;глазах наших пользователей точно потухнет. Именно поэтому будущее за&nbsp;проработанными решениями, в&nbsp;которых есть ценность для клиента.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">13</div>
+ 
+  <div class="question-counter__content">В&nbsp;кейсе вы&nbsp;упомянули «Агента Еву»&nbsp;— робота, который защищает пользователя от&nbsp;всякого спама и&nbsp;фишинга. Похожий функционал есть у&nbsp;«Тинькофф»&nbsp;— их&nbsp;«Ассистент Олег», который блокирует спамные звонки. При этом у&nbsp;вашей Евы есть хуманизированный аватар. Это классное решение: если уж&nbsp;делать ботов, то&nbsp;очеловечивать их&nbsp;по&nbsp;максимуму. Как вы&nbsp;думаете, в&nbsp;будущем нас ожидает засилье виртуальных различных помощников? Придумают&nbsp;ли дизайн «Ассистенту Олегу»?</div>
+ </div>
+ 
+<p>С&nbsp;хуманизацией ассистентов нужно соблюдать баланс. Эффект зловещей долины предполагает, что эмпатия человека к&nbsp;синтетику растет по&nbsp;мере его схожести с&nbsp;человеком. Но&nbsp;после определенного предела излишняя человекоподобность вызывает неприязнь и&nbsp;боязнь у&nbsp;живого человека. Поэтому образ Евы открытый и&nbsp;добродушный, но&nbsp;имеет явный синтетический налет.</p>
+ 
+<p style="text-align: center;"><img src="/upload/medialibrary/394/8v35l0k0b1bb4w5j8waznnt5l72s9ucf/6.jpg" class="_wide"  /></p>
+ 
+<p style="text-align: center;"><i>Знакомьтесь&nbsp;— агент Ева</i></p>
+ 
+<p>Думаю, будущее настолько невероятно, насколько мы&nbsp;не&nbsp;можем его представить. Голосовые ассистенты с&nbsp;ИИ уже есть в&nbsp;телефонах, автомобилях, умных домах, и&nbsp;это развитие пройдет еще много витков. Надеюсь, эти технологии будут соблюдать принципы Айзека Азимова, и&nbsp;мы&nbsp;избежим «Батлерианского восстания». Мне, например, интересны возможности&nbsp;ИИ для людей с&nbsp;ограничениями восприятия: слуха, зрения, тактильности, ведь получение информации из&nbsp;окружающего мира крайне необходимо каждому.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">14</div>
+ 
+  <div class="question-counter__content">Название «Агент Ева»&nbsp;— это отсылка к&nbsp;одноименному фильму с&nbsp;Джессикой Честейн?</div>
+ </div>
+ 
+<p>Агент Ева и&nbsp;фильм Ava действительно появились примерно в&nbsp;одно время. Но, боюсь, никакой отсылки нет, и&nbsp;это банальное совпадение.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">15</div>
+ 
+  <div class="question-counter__content">Вы&nbsp;проделали колоссальную работу над приложением: будто и&nbsp;добавить в&nbsp;него больше нечего. Но&nbsp;если заглянуть в&nbsp;бэклог, много&nbsp;ли там еще задач по&nbsp;обновлению приложения и&nbsp;внедрению в&nbsp;него нового функционала?</div>
+ </div>
+ 
+<p>Бесконечное множество :) Главная наша цель&nbsp;— это сделать самый удобный для пользователя сервис. У&nbsp;нас есть как множество продуктовых идей, так и&nbsp;стратегия по&nbsp;улучшению пользовательского опыта.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">16</div>
+ 
+  <div class="question-counter__content">Насколько большая команда работает над вашим приложением? Сколько в&nbsp;штате продактов, дизайнеров, разработчиков, маркетологов? Как они взаимодействуют между собой, нет&nbsp;ли в&nbsp;работе над таким крупным проектом какой-то путаницы? Привлекаете&nbsp;ли вы&nbsp;специалистов на&nbsp;аутсорс и&nbsp;если&nbsp;да, как это происходит?</div>
+ </div>
+ 
+<p>Наше приложение разделено на&nbsp;некоторое количество логических зон ответственности, за&nbsp;которые отвечают продуктовые команды: корпоративные услуги, финансы и&nbsp;платежные сервисы, партнерские предложения, омниканальность, B2B и&nbsp;так далее.</p>
+ 
+<p>В&nbsp;команде примерно 10&nbsp;человек, необходимых, чтобы сделать задачу «под ключ». Это PO, PM, дизайнеры, системные аналитики, продуктовые аналитики, разработчики, тестировщики и&nbsp;так далее. Плюс, есть сотрудники вне команд: например, контент-менеджеры и&nbsp;копирайтеры. Но&nbsp;мы&nbsp;отвечаем за&nbsp;цифровые продукты: сюда не&nbsp;входит бизнес, который выступает заказчиком.</p>
+ 
+<p>Подрядчиков мы&nbsp;привлекаем. Например, выше я&nbsp;описывал процесс разработки игр с&nbsp;дизайнерами на&nbsp;аутсорсе.</p>
+ 
+<div class="question-counter"> 
+  <div class="question-counter__number">17</div>
+ 
+  <div class="question-counter__content">Есть&nbsp;ли у&nbsp;вас еще столь&nbsp;же мощный проект, чтобы поучаствовать в&nbsp;премии WDA 2024?</div>
+ </div>
+ 
+<p>Безусловно, мобильное приложение МегаФона&nbsp;— мощнейший проект. Оно является главным каналом самооблуживания наших абонентов. Приложение скрупулезно высекалось год за&nbsp;годом, но&nbsp;у&nbsp;нас есть еще чем удивить.</p>
+ 
+<p>В&nbsp;этом году мы&nbsp;подадим проекты Yota, а&nbsp;также жемчужину наших внутренних процессов&nbsp;— дизайн-систему МегаФона. В&nbsp;нее входят не&nbsp;только компоненты, но&nbsp;также миссия, процессы и&nbsp;вспомогательные инструменты.</p>
+ <span data-banners-postload="article"></span></div>
+				</div>
+				<br><br>
+<div class="widget-snippet widget-cases">
+    <div class="widget-snippet__head">
+        <div class="widget-snippet__title">
+            Номинанты премии Workspace Digital Awards
+        </div>
+
+        <div class="">
+            <a href="/cases/" class="widget-snippet__see-more" target="_blank">
+                Посмотреть все            </a>
+        </div>
+    </div>
+
+    <div class="journal-list widget-snippet__list">
+        
+<li class="articles-list-item" data-analytics-view data-analytics-entity="case" data-analytics-id="243813" data-analytics-source="catalog" data-analytics-block="teaser">
+			<div class='awards__ribbon-box'>
+			<a href='/awards/' class='awards__ribbon _gray'
+			   data-tooltip-link='WORKSPACE<br>DIGITAL<br>AWARDS <span>/ 27' target='_blank'>
+				<span class='awards__ribbon-text'>НОМИНАНТ WDA</span>
+			</a>
+		</div>
+			<span class="c-tooltip">
+			<span class='articles-list-item__rating'>
+				10				<span class='c-tooltip__content _fluid _transparent u-pb-10 nowrap'>
+					<span class='c-tooltip__content-wrap nowrap'>
+						Средняя оценка (24 пользователь)
+						<br>
+						<a href="/cases/poizon/#vote">Подробнее...</a>
+					</span>
+				</span>
+			</span>
+		</span>
+		
+	<a
+		class='articles-list-item__img-wrap u-of-h'
+		href="/cases/poizon/"
+
+		data-analytics-event="click"
+		data-analytics-entity="case"
+		data-analytics-id="243813"
+		data-analytics-source="catalog"
+		data-analytics-source-id=""
+		data-analytics-block="teaser-image"
+
+							>
+		<img  src="/upload/resize_cache/executor_cases/010/8o7fg3nwdjrcv5uoegnktgwkvte9ebr6/390_260_2619711fa078991f0a23d032687646b21/01.jpg"  srcset="/upload/resize_cache/executor_cases/010/8o7fg3nwdjrcv5uoegnktgwkvte9ebr6/780_520_2619711fa078991f0a23d032687646b21/01.jpg 2x"  alt="Poizon.ru - умный маркетплейс оригинальных брендовых товаров с сервисом проверки подлинности" class="articles-list-item__img _scalable" />
+	</a>
+
+	<div class='articles-list-item__wrap u-pos-rel'>
+		<span class='articles-list-item__top d-flex align-items-center'>
+							<a class="c-link _gray5-type1" href="/cases/web/">
+					Разработка сайтов				</a>
+			
+			<span class="d-if align-items-center u-ml-auto">
+				868&nbsp;<!--
+				--><svg class="c-svg-icon _eye _xsm _top">
+					<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#eye2"></use>
+				</svg>
+			</span>
+		</span>
+
+		<div class="articles-list-item__title u-mt-0 u-mb-0 _small">
+			<a
+				class='c-link _blue-d-type1'
+				href="/cases/poizon/"
+				
+												
+				data-analytics-event="click"
+				data-analytics-entity="case"
+				data-analytics-id="243813"
+				data-analytics-source="catalog"
+				data-analytics-source-id=""
+				data-analytics-block="teaser-title"
+			>
+				<span class="_underline">Poizon.ru - умный маркетплейс оригинальных брендовых товаров с сервисом проверки подлинности</span>
+
+							</a>
+		</div>
+
+			</div>
+
+	<div class="articles-list-item__wrap u-pos-rel u-mt-auto" data-likes-box>
+					<div class="articles-list-item__author d-flex align-items-center u-mb-10">
+									<a
+						href='/contractors/astrio/'
+						class='c-link _blue-d-type1 d-if align-items-center'
+
+						data-analytics-event="click"
+						data-analytics-entity="executor"
+						data-analytics-id="5180"
+						data-analytics-source="case"
+						data-analytics-source-id="243813"
+						data-analytics-block="teaser-author"
+					>
+						<img  src="https://workspace.ru/upload/executor_logo/676/ut3ao8hyb7zw33xqydz9b1ywmte2uxea/111111.gif"  alt='' class='articles-list-item__author-img'>
+						<span class='border-color-inherit'><span class='c-link__underlined'>ASTRIO</span></span>
+					</a>
+							</div>
+		
+		<div class='d-flex align-items-center u-mt-10'>
+								<a href='/cases/poizon/#vote' class='button _sm _rounded-lg button--outline-dark-blue u-fw-600'>Оценить</a>
+							
+							<a href='/cases/poizon/#comments' class='u-btn-reset button _sm _rounded-lg button--outline-dark-blue u-fw-600 u-ml-7'  >
+					<svg class="c-svg-icon _lg _top">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/journal-sprite.svg#comments3"></use>
+					</svg>
+					0				</a>
+						<span class="articles-list-item__time u-ml-auto" data-public-date="2025-12-10T15:37:22+00:00"></span>
+		</div>
+	</div>
+</li>
+<li class="articles-list-item" data-analytics-view data-analytics-entity="case" data-analytics-id="170241" data-analytics-source="catalog" data-analytics-block="teaser">
+			<div class='awards__ribbon-box'>
+			<a href='/awards/' class='awards__ribbon _gray'
+			   data-tooltip-link='WORKSPACE<br>DIGITAL<br>AWARDS <span>/ 27' target='_blank'>
+				<span class='awards__ribbon-text'>НОМИНАНТ WDA</span>
+			</a>
+		</div>
+		
+	<a
+		class='articles-list-item__img-wrap u-of-h'
+		href="/cases/kak-my-pomogli-mebelnomu-saytu-vyrasti-v-poiske-i-uvelichit-konversii-v-10-raz/"
+
+		data-analytics-event="click"
+		data-analytics-entity="case"
+		data-analytics-id="170241"
+		data-analytics-source="catalog"
+		data-analytics-source-id=""
+		data-analytics-block="teaser-image"
+
+							>
+		<img  src="/upload/resize_cache/executor_cases/ca6/udpbubgqnrel4ctfjc1pzbr9wqqze12l/390_260_2619711fa078991f0a23d032687646b21/15.jpg"  srcset="/upload/resize_cache/executor_cases/ca6/udpbubgqnrel4ctfjc1pzbr9wqqze12l/780_520_2619711fa078991f0a23d032687646b21/15.jpg 2x"  alt="Как мы помогли мебельному сайту вырасти в поиске и увеличить конверсии в 10 раз" class="articles-list-item__img _scalable" />
+	</a>
+
+	<div class='articles-list-item__wrap u-pos-rel'>
+		<span class='articles-list-item__top d-flex align-items-center'>
+							<a class="c-link _gray5-type1" href="/cases/seo/">
+					Поисковая оптимизация				</a>
+			
+			<span class="d-if align-items-center u-ml-auto">
+				416&nbsp;<!--
+				--><svg class="c-svg-icon _eye _xsm _top">
+					<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#eye2"></use>
+				</svg>
+			</span>
+		</span>
+
+		<div class="articles-list-item__title u-mt-0 u-mb-0 _small">
+			<a
+				class='c-link _blue-d-type1'
+				href="/cases/kak-my-pomogli-mebelnomu-saytu-vyrasti-v-poiske-i-uvelichit-konversii-v-10-raz/"
+				
+												
+				data-analytics-event="click"
+				data-analytics-entity="case"
+				data-analytics-id="170241"
+				data-analytics-source="catalog"
+				data-analytics-source-id=""
+				data-analytics-block="teaser-title"
+			>
+				<span class="_underline">Как мы помогли мебельному сайту вырасти в поиске и увеличить конверсии в 10 раз</span>
+
+							</a>
+		</div>
+
+			</div>
+
+	<div class="articles-list-item__wrap u-pos-rel u-mt-auto" data-likes-box>
+					<div class="articles-list-item__author d-flex align-items-center u-mb-10">
+									<a
+						href='/contractors/acidhead/'
+						class='c-link _blue-d-type1 d-if align-items-center'
+
+						data-analytics-event="click"
+						data-analytics-entity="executor"
+						data-analytics-id="15294"
+						data-analytics-source="case"
+						data-analytics-source-id="170241"
+						data-analytics-block="teaser-author"
+					>
+						<img  src="https://workspace.ru/upload/resize_cache/companies_logos/15294/89f/30_30_2619711fa078991f0a23d032687646b21/d6d76132477d933a8fd94ea529594acb.jpg"  srcset="https://workspace.ru/upload/resize_cache/companies_logos/15294/89f/60_60_2619711fa078991f0a23d032687646b21/d6d76132477d933a8fd94ea529594acb.jpg 2x"  alt='' class='articles-list-item__author-img'>
+						<span class='border-color-inherit'><span class='c-link__underlined'>Ahead</span></span>
+					</a>
+							</div>
+		
+		<div class='d-flex align-items-center u-mt-10'>
+								<a href='/cases/kak-my-pomogli-mebelnomu-saytu-vyrasti-v-poiske-i-uvelichit-konversii-v-10-raz/#vote' class='button _sm _rounded-lg button--outline-dark-blue u-fw-600'>Оценить</a>
+							
+							<a href='/cases/kak-my-pomogli-mebelnomu-saytu-vyrasti-v-poiske-i-uvelichit-konversii-v-10-raz/#comments' class='u-btn-reset button _sm _rounded-lg button--outline-dark-blue u-fw-600 u-ml-7'  >
+					<svg class="c-svg-icon _lg _top">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/journal-sprite.svg#comments3"></use>
+					</svg>
+					0				</a>
+						<span class="articles-list-item__time u-ml-auto" data-public-date="2021-03-03T09:02:45+00:00"></span>
+		</div>
+	</div>
+</li>    </div>
+
+            <div class="widget-snippet__footer">
+            <div>
+                Приём кейсов на конкурс открыт до 26 марта 2027 года
+            </div>
+
+            <div>
+                <a href="/personal/cases/" target="_blank">
+                    <svg class='c-svg-icon _stroke u-mr-5' xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-width="2">
+                            <path d="M8.275.184L8.275 14.904M15.73 7.544L.82 7.544" transform="translate(-844 -244) translate(606.723 227.367) translate(238.368 18.147)" />
+                        </g>
+                    </svg>
+                    Подать кейс
+                </a>
+            </div>
+        </div>
+    </div><br><br><br><br>			</div>
+		</div>
+	</div>
+</div>
+		<!-- width content_end -->
+	</div>
+
+	<footer data-footer class="footer _no_margin" data-opinion-btn-unfixed>
+		<div data-back-btn-unfixed class="footer__goto">
+			<a data-back-btn-fixed class="footer__goto-up" data-goto-up
+			   href="javascript:void(0);">Наверх <i class="fa fa-angle-up" aria-hidden="true"></i></a>
+		</div>
+		<div class='footer__chat-btns' data-fixed-cb-buttons>
+			<a href='https://t.me/workspace_robot' target='_blank' class='footer__chat-btn' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace_robot" data-analytics-block="content">
+				<svg class="c-svg-icon _lg u-va-txt-top">
+					<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#chatbot"></use>
+				</svg>&nbsp;
+				Чат-бот
+			</a>
+			<div class='footer__chat-btn-balloon _left'>Подпишитесь на тендеры/лиды, узнайте больше о работе проекта, оставьте отзыв или задайте вопрос</div>
+
+			<a href='/contacts/' target='_blank' class='footer__chat-btn'>Обратная связь</a>
+			<div class='footer__chat-btn-balloon nowrap'>Свяжитесь с менеджером проекта</div>
+		</div>
+
+		<div class='footer__grid page-inner__container'>
+			<div class='footer__grid-col d-flex align-items-center'><a class="footer__logo" href="/" aria-label="На главную Workspace"></a></div>
+			<div class='footer__grid-col _subscribe d-flex align-items-center'>
+				<div class='footer__top-row-subscribe'>
+					Подписывайтесь на наc
+					в&nbsp;Телеграм:&nbsp;<a class='c-link _underline _gray3-type2' target='_blank' href='https://t.me/workspace' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace" data-analytics-block="content">t.me/workspace</a>
+					&nbsp;и&nbsp;Max:&nbsp;<a class='c-link _underline _gray3-type2' target='_blank' href='https://max.ru/workspace' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://max.ru/workspace" data-analytics-block="content">max.ru/workspace</a>
+				</div>
+			</div>
+			<div class='footer__grid-col d-flex align-items-center'>
+				<a href='https://t.me/workspace_robot' target='_blank' class='button button--outline _radius-lg u-ml-auto u-px-20 u-trs-fast' data-ext-link-allow data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace_robot" data-analytics-block="content">
+					<svg class="c-svg-icon _lg u-va-txt-top">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#chatbot"></use>
+					</svg>&nbsp;
+					Чат-бот
+				</a>
+				<a href="/contacts/" aria-label="Обратная связь" class='button button--outline _radius-lg u-px-20 u-trs-fast'>Обратная связь</a>
+			</div>
+
+			
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Тендеры и лиды</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Тендерная площадка"
+														href="/b2b/"
+						>Тендерная площадка</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Как это работает"
+														href="/how-it-works/"
+						>Как это работает</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог тендеров"
+														href="/tenders/"
+						>Каталог тендеров</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+							data-footer-tender-create							aria-label="Организовать тендер"
+														href="/create/"
+						>Организовать тендер</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Исполнители</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог диджитал-агентств"
+														href="/contractors/"
+						>Диджитал-агентства</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Каталог специалистов"
+														href="/people/"
+						>Специалисты</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Отзывы об агентствах"
+														href="/gratitude-letters/"
+						>Отзывы об агентствах</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Узнать стоимость услуг агентств"
+														href="/calculator/"
+						>Стоимость услуг</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Рейтинги"
+														href="/rating/"
+						>Рейтинги</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Медиа</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог кейсов"
+														href="/cases/"
+						>Кейсы</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Статьи"
+														href="/blog/"
+						>Статьи</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Афиша"
+														href="/events/"
+						>Афиша</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Слово экспертам"
+														href="/expert/"
+						>Слово экспертам</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Документация"
+														href="/docs/"
+						>Документация</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Новости компаний"
+														href="/news/"
+						>Новости компаний</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Интервью"
+														href="/interview/"
+						>Интервью</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Видео"
+														href="/video/"
+						>Видео</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Информация</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="О проекте"
+														href="/about/"
+						>О проекте</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Новости проекта"
+														href="/project-news/"
+						>Новости проекта</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Каталог задач"
+														href="/advertising/"
+						>Платные опции</a><span class="footer__list-item-fire"></span>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Помощь"
+														href="/help/"
+						>Помощь</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Наша айдентика"
+														href="/corporate-identity/"
+						>Наша айдентика</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Наш пульс в ТГ"
+														href="/pulse/"
+						>Наш пульс в ТГ</a>					</li>
+							</ul>
+		</section>
+	
+		<section class='footer__grid-col footer__block'>
+							<div class="footer__block-title">Другое</div>
+			
+			<ul class="footer__list">
+
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Премия WDA"
+							target="_blank"							href="/awards/"
+						>Премия WDA</a>							<span class="header__menu-item-badge"></span>
+											</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Перейти в каталог инструментов"
+														href="/tools/"
+						>Инструменты</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Вакансии"
+														href="/vacancies/"
+						>Вакансии</a>					</li>
+									<li class="footer__list-item">
+						<a
+							class='c-link _underline _gray3-type2'
+														aria-label="Каталог премий"
+														href="/contests/"
+						>Каталог премий</a>					</li>
+							</ul>
+		</section>
+	
+			<section class='footer__grid-col footer__bottom-col'>
+				<ul class="footer__social">
+					<li><a class="footer__social-item _telegram" target="_blank" href="https://t.me/workspace" aria-label="Workspace в
+					Telegram" rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://t.me/workspace" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _vk" target="_blank" href="https://vk.com/workspace_ru" aria-label="Workspace в VK"
+						   rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://vk.com/workspace_ru" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _yandex" target="_blank"
+						   href="https://dzen.ru/workspace" aria-label="Workspace на Яндекс.Дзен" rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://dzen.ru/workspace" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _twitter" target="_blank" href="https://x.com/WORKSPACE_ru" aria-label="Workspace в X"
+					       rel="noopener noreferrer" data-ext-link-allow="" data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://x.com/WORKSPACE_ru" data-analytics-block="content"></a></li>
+
+					<li><a class="footer__social-item _star" target="_blank" href="/company/workspace/" aria-label="Workspace"
+					       rel="noopener noreferrer" data-ext-link-allow=""></a></li>
+				</ul>
+			</section>
+
+			<section class='footer__grid-col footer__copyright footer__bottom-col _middle'>© 2026, ООО «Воркспейс»</section>
+
+			<section class='footer__grid-col footer__bottom-col _last'>
+				<!-- Yandex.Metrika informer -->
+				<a href="/redirect/?url=aHR0cHM6Ly9tZXRyaWthLnlhbmRleC5ydS9zdGF0Lz9pZD0zNDE1MjgzMCZhbXA7ZnJvbT1pbmZvcm1lcg%3D%3D&backurl=%2Finterview%2Fpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili%2F%3FCODE%3Dpochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili" target="_blank" rel="nofollow noopener noreferrer"
+				   target="_blank" rel="nofollow" class='u-mr-30' data-analytics-event="click" data-analytics-entity="external_link" data-analytics-id="https://metrika.yandex.ru/stat/?id=34152830&amp;amp;from=informer" data-analytics-block="content"><img src="https://informer.yandex.ru/informer/34152830/3_0_203F51FF_001F31FF_1_pageviews"
+				                                                         style="width:88px; height:31px; border:0" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и
+				                                       уникальные
+				                                       посетители)" class="ym-advanced-informer" data-cid="34152830" data-lang="ru" /></a>
+				<!-- /Yandex.Metrika informer -->
+				<div>
+					<div class='footer__confidential-item u-mb-7'>
+						Workspace — зарегистрированный торговый знак. Свидетельство №846654, №604820 и №99363.
+					</div>
+					<ul class="footer__confidential footer__list">
+						<li class="footer__confidential-item">
+							<a class='c-link _underline _gray4' href="/upload/security_policy.pdf" aria-label="Скачать файл 'Политика обработки персональных данных'" target="_blank">
+								Политика обработки персональных данных
+							</a>
+						</li>
+						<li class="footer__confidential-item">
+							<a class='c-link _underline _gray4' href="/upload/terms_of_use.pdf" aria-label="Скачать файл 'Пользовательское соглашение'" target="_blank">
+								Пользовательское соглашение
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+					<div class='footer-cookies-consent' data-cookies-consent>
+				<div class='page-inner__container d-flex align-items-center footer-cookies-consent__inner'>
+					<p class='u-my-auto'>
+						Нажмите «ОК», если вы соглашаетесь с
+						<a href="/upload/security_policy.pdf" target="_blank" class='c-link _underline'>условиями</a>
+						обработки cookie и ваших данных о&nbsp;поведении на&nbsp;сайте, необходимых для&nbsp;аналитики.
+						Запретить обработку cookie можете через браузер.
+					</p>
+				<button class='footer-cookies-consent__btn button button--blue text-uppercase' data-cookies-consent-btn='/api-v/set/cookies/consent/accept/'>ок</button>
+				<button class='footer-cookies-consent__btn-close c-link _gray4-type1 d-if u-btn-reset'
+				        aria-label='Закрыть уведомление о cookie'
+				        data-cookies-consent-btn='/api-v/set/cookies/consent/decline/' data-cookies-consent-btn-close>
+					<svg class="c-svg-icon _xsm">
+						<use xlink:href="/local/templates/tender_v2/ws_build/images/d-tender-sprite.svg#close"></use>
+					</svg>
+				</button>
+				</div>
+			</div>
+			</footer>
+		<noscript>
+			<div><img src="https://mc.yandex.ru/watch/34152830" style="position:absolute; left:-9999px;" alt="" /></div>
+		</noscript>
+		<noscript><img src="//counter.rambler.ru/top100.cnt?pid=7123451" alt="Топ-100" /></noscript>
+	<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=yoHzv1CJLq20jn" style="display:none" height="1" width="1" alt="" /></noscript>
+		<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-900899-1oTXR" style="position:fixed; left:-999px;" alt="" /></noscript>
+
+<script  src="/bitrix/cache/js/s1/tender_v2/template_29e1f976e7cd524d1e178aea24c016e8/template_29e1f976e7cd524d1e178aea24c016e8_v1.js?1794477942263824"></script>
+
+
+<script>window.b_want_stat = true</script><script>
+(function () {
+    if (navigator.webdriver) return; // явная автоматизация (Selenium/Playwright по умолчанию) — не тратим маячок
+
+    function getCookie(name) {
+        var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+        return m ? decodeURIComponent(m[1]) : '';
+    }
+
+    var delay = 2500 + Math.random() * 1500; // 2.5–4с, не мгновенно
+
+    setTimeout(function () {
+        var token = getCookie('bp_bcn');
+        if (!token || !('sendBeacon' in navigator)) return;
+
+        var blob = new Blob(['token=' + encodeURIComponent(token)], {
+            type: 'application/x-www-form-urlencoded'
+        });
+        navigator.sendBeacon('/ajax/bp_engagement.php', blob);
+    }, delay);
+})();
+</script>
+</body>
+</html>
+<div class="modal" data-ext-link-confirm-popup data-modal-popup>
+	<div class="modal__overlay" tabindex="-1">
+		<div class="pop-up__wrapper pop-up__wrapper--narrow2">
+			<button type="button" class="pop-up__close" data-modal-popup-close aria-label="Закрыть"></button>
+
+			<div class="pop-up__main">
+				<h3 class="pop-up__title">Переход на внешний сайт</h3>
+				<p class="pop-up__text">Подтвердите переход по ссылке:</p>
+				<p class="pop-up__text">
+					<a href=""
+					   class="button button--change _big pop-up__link-button"
+					   target="_blank"
+					   data-ext-link-confirm-link
+					   data-ext-link-allow
+					   data-metric-goals='{"yaText":"pop_up_go_to_external_site","gaCategory":"pop_up_external_site","gaAction":"click","gaLabel":"url"}'
+					>
+						<i class="button__icon button__icon--ext-link"></i>
+						Перейти на: <span data-ext-link-confirm-text></span>
+					</a>
+				</p>
+			</div>
+
+			<div class="pop-up__footer">
+				<div class="pop-up__text">
+					<div class="pop-up__note-create-tender">
+						<div><b>Создавайте тендеры на WORKSPACE.RU</b></div>
+						<div>17 000+ агентств готовы обсудить новый проект.</div>
+					</div>
+				</div>
+
+				<a href="/create/"
+				   class="pop-up__button pop-up__button--target"
+				   target="_blank"
+				   data-metric-goals='{"yaText":"pop_up_create_tender","gaCategory":"pop_up_external_site","gaAction":"click","gaLabel":"button"}'
+				>Организовать тендер</a>
+			</div>
+		</div>
+	</div>
+</div>

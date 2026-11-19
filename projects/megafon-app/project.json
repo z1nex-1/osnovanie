@@ -1,0 +1,30 @@
+{
+  "slug": "megafon-app",
+  "title": "megafon-app",
+  "question": "Пользователи приложения МегаФон реже заходят в него после первого месяца. Что менять в продукте?",
+  "created_at": "2026-11-19T19:10:52+03:00",
+  "budget_usd": 30.0,
+  "approved_domains": [
+    "1000bankov.ru",
+    "appgoblin.info",
+    "apps.apple.com",
+    "corp.megafon.ru",
+    "habr.com",
+    "investmint.ru",
+    "mobile-review.com",
+    "moskva.beeline.ru",
+    "msk.t2.ru",
+    "nn.megafon.ru",
+    "orenburg.megafon.ru",
+    "osetia.megafon.ru",
+    "personal.mts.ru",
+    "support.mts.ru",
+    "workspace.ru",
+    "www.comnews.ru",
+    "www.iphones.ru",
+    "www.mtsbank.ru",
+    "www.rustore.ru",
+    "www.sostav.ru",
+    "www.techinsider.ru"
+  ]
+}

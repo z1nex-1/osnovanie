@@ -1,0 +1,213 @@
+{"kind": "created", "question": "Пользователи приложения МегаФон реже заходят в него после первого месяца. Что менять в продукте?", "ts": "2026-11-19T19:10:52+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:11:21+03:00"}
+{"kind": "brief", "ts": "2026-11-19T19:11:31+03:00"}
+{"gate": "G1", "kind": "gate_open", "ts": "2026-11-19T19:11:36+03:00"}
+{"channel": "tty", "gate": "G1", "kind": "gate_approve", "ts": "2026-11-19T19:11:58+03:00"}
+{"kind": "stage", "stage": "plan", "ts": "2026-11-19T19:11:58+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T19:12:23+03:00"}
+{"kind": "budget", "ts": "2026-11-19T19:12:50+03:00", "usd": 14.0}
+{"agent": "researcher", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T19:13:55+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда cd вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:13:58+03:00"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:01+03:00", "url": "https://www.comnews.ru/content/244126/2026-03-06/2026-w10/1010/megafon-podvel-finansovye-itogi-2025-g"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:03+03:00", "url": "https://www.comnews.ru/content/247010/2026-08-21/2026-w34/1010/megafon-podvel-finansovye-itogi-pervogo-polugodiya-2026-g"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:04+03:00", "url": "https://www.comnews.ru/content/244174/2026-03-12/itogi-telekoma-2025-g-mts-megafon-bilayn-t2"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:04+03:00", "url": "https://corp.megafon.ru/download/~federal/corp/investoram/report/msfo/megafon_2023_ifrs_fs_rus.pdf"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:05+03:00", "url": "https://investmint.ru/mfon/reports/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:05+03:00", "url": "https://www.sostav.ru/publication/megafon-razrabotal-platformu-83154.html"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:06+03:00", "url": "https://workspace.ru/interview/pochemu-polzovateli-zalipayut-v-prilozhenii-megafona-sprosili/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:07+03:00", "url": "https://mobile-review.com/articles/2020/mega-superapp.shtml"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:07+03:00", "url": "https://habr.com/ru/post/721778"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:08+03:00", "url": "https://www.iphones.ru/iNotes/prilozhenie-megafona-udalili-iz-google-play-07-14-2023"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:09+03:00", "url": "https://apps.apple.com/ru/app/%D0%BC%D0%B5%D0%B3%D0%B0%D1%84%D0%BE%D0%BD/id778681735"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:09+03:00", "url": "https://appgoblin.info/apps/778681735"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:10+03:00", "url": "https://www.rustore.ru/prostore/kak-skachat-prilozhenie-megafon-na-android"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:11+03:00", "url": "https://1000bankov.ru/wiki/lichnyy-kabinet-megafon-kak-upravlyat-servisami/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:11+03:00", "url": "https://www.comnews.ru/content/225031/2023-03-28/2023-w13/mobilnye-prilozheniya-poka-ne-zamenyat-vizit-ofis-operatora"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:12+03:00", "url": "https://www.mtsbank.ru/upload/static/documents/prezentaciya-4-kv-25.pdf"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:12+03:00", "url": "https://www.rustore.ru/catalog/app/ru.mts.mymts"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:13+03:00", "url": "https://www.rustore.ru/catalog/app/ru.tele2.mytele2"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:13+03:00", "url": "https://habr.com/ru/articles/914162"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:14+03:00", "url": "https://workspace.ru/cases/prilozhenie-dlya-federalnogo-operatora-tele2/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:15+03:00", "url": "https://www.techinsider.ru/gadgets/1664361-mobilnoe-prilojenie-bilaina-poluchilo-krupneishee-obnovlenie-v-istorii/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:15+03:00", "url": "https://www.comnews.ru/content/246361/2026-07-16/2026-w29/1180/servisy-bezopasnosti-mobilnykh-prilozheniyakh-operatorov"}
+{"kind": "source_plan", "ts": "2026-11-19T19:14:17+03:00", "url": "https://mobile-review.com/all/?p=141521"}
+{"gate": "G2", "kind": "gate_open", "ts": "2026-11-19T19:15:00+03:00"}
+{"channel": "tty", "gate": "G2", "kind": "gate_revise", "ts": "2026-11-19T19:15:50+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда P=bin/osnovanie source plan вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:16:29+03:00"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:34+03:00", "url": "https://support.mts.ru/mts_cashback/obschaya-informatsiya-o-keshbeke/chto-takoye-mts-cashback"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:34+03:00", "url": "https://personal.mts.ru/bonus"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:34+03:00", "url": "https://moskva.beeline.ru/customers/products/mobile/priveleges/happy-time-postpaid/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:34+03:00", "url": "https://moskva.beeline.ru/customers/support/new-abonent/lichnyj-kabinet-i-prilozhenie/mobilnoe-prilozhenie-moy-beeline/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:34+03:00", "url": "https://msk.t2.ru/journal/article/more-loyalty"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:35+03:00", "url": "https://msk.t2.ru/help/article/my-cabinet"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:35+03:00", "url": "https://nn.megafon.ru/help/web_lk/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:35+03:00", "url": "https://orenburg.megafon.ru/help/info/ussd"}
+{"kind": "source_plan", "ts": "2026-11-19T19:16:35+03:00", "url": "https://osetia.megafon.ru/help/cab/"}
+{"gate": "G2", "kind": "gate_open", "ts": "2026-11-19T19:16:56+03:00"}
+{"channel": "tty", "gate": "G2", "kind": "gate_approve", "ts": "2026-11-19T19:17:11+03:00"}
+{"kind": "stage", "stage": "research", "ts": "2026-11-19T19:17:11+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:17:26+03:00"}
+{"id": "s001", "kind": "source_added", "quarantined": 0, "title": "ComNews: МегаФон подвёл финансовые итоги 2025 г.", "ts": "2026-11-19T19:17:34+03:00"}
+{"id": "s002", "kind": "source_added", "quarantined": 0, "title": "ComNews: итоги 1П 2026 МегаФон", "ts": "2026-11-19T19:17:35+03:00"}
+{"id": "s003", "kind": "source_added", "quarantined": 0, "title": "ComNews: итоги телекома 2025 МТС МегаФон Билайн Т2", "ts": "2026-11-19T19:17:37+03:00"}
+{"id": "s004", "kind": "source_added", "quarantined": 0, "title": "Workspace: почему пользователи залипают в приложении МегаФона", "ts": "2026-11-19T19:17:38+03:00"}
+{"id": "s005", "kind": "source_added", "quarantined": 0, "title": "RuStore: Мой МТС", "ts": "2026-11-19T19:17:39+03:00"}
+{"kind": "failure", "op": "fetch", "ts": "2026-11-19T19:17:45+03:00", "url": "https://apps.apple.com/ru/app/%D0%BC%D0%B5%D0%B3%D0%B0%D1%84%D0%BE%D0%BD/id778681735"}
+{"id": "s006", "kind": "source_added", "quarantined": 0, "title": "RuStore: Мой Tele2/t2", "ts": "2026-11-19T19:17:49+03:00"}
+{"id": "s007", "kind": "source_added", "quarantined": 0, "title": "Workspace: кейс приложения Tele2", "ts": "2026-11-19T19:17:50+03:00"}
+{"id": "s008", "kind": "source_added", "quarantined": 0, "title": "ComNews: сервисы безопасности в приложениях операторов", "ts": "2026-11-19T19:18:23+03:00"}
+{"id": "s009", "kind": "source_added", "quarantined": 0, "title": "Sostav: МегаФон разработал платформу MegaRITM", "ts": "2026-11-19T19:18:23+03:00"}
+{"id": "s010", "kind": "source_added", "quarantined": 0, "title": "МТС: что такое МТС Cashback", "ts": "2026-11-19T19:18:25+03:00"}
+{"id": "s011", "kind": "source_added", "quarantined": 0, "title": "Билайн: Счастливое время", "ts": "2026-11-19T19:18:27+03:00"}
+{"kind": "failure", "op": "fetch", "ts": "2026-11-19T19:18:37+03:00", "url": "https://msk.t2.ru/journal/article/more-loyalty"}
+{"id": "s012", "kind": "source_added", "quarantined": 0, "title": "МегаФон: личный кабинет на сайте", "ts": "2026-11-19T19:18:39+03:00"}
+{"id": "s013", "kind": "source_added", "quarantined": 0, "title": "МегаФон: помощь по кабинету", "ts": "2026-11-19T19:18:41+03:00"}
+{"id": "s014", "kind": "source_added", "quarantined": 0, "title": "iPhones.ru: приложение МегаФона удалили из Google Play", "ts": "2026-11-19T19:18:42+03:00"}
+{"id": "s015", "kind": "source_added", "quarantined": 0, "title": "AppGoblin: МегаФон (App Store)", "ts": "2026-11-19T19:18:55+03:00"}
+{"id": "s016", "kind": "source_added", "quarantined": 0, "title": "Habr: обновление приложения МегаФон", "ts": "2026-11-19T19:18:57+03:00"}
+{"id": "s017", "kind": "source_added", "quarantined": 0, "title": "ComNews: приложения пока не заменят визит в офис", "ts": "2026-11-19T19:18:58+03:00"}
+{"id": "s018", "kind": "source_added", "quarantined": 0, "title": "RuStore: как скачать приложение МегаФон", "ts": "2026-11-19T19:18:59+03:00"}
+{"id": "s019", "kind": "source_added", "quarantined": 0, "title": "Mobile-review: интервью о приложении-экосистеме МегаФона", "ts": "2026-11-19T19:19:01+03:00"}
+{"kind": "failure", "op": "fetch", "ts": "2026-11-19T19:19:11+03:00", "url": "https://www.mtsbank.ru/upload/static/documents/prezentaciya-4-kv-25.pdf"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда for вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:19:12+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T19:19:26+03:00"}
+{"id": "c001", "kind": "claim_added", "ts": "2026-11-19T19:20:31+03:00", "type": "fact"}
+{"id": "c002", "kind": "claim_added", "ts": "2026-11-19T19:20:32+03:00", "type": "fact"}
+{"id": "c003", "kind": "claim_added", "ts": "2026-11-19T19:20:33+03:00", "type": "opinion"}
+{"id": "c004", "kind": "claim_added", "ts": "2026-11-19T19:20:36+03:00", "type": "fact"}
+{"id": "c005", "kind": "claim_added", "ts": "2026-11-19T19:20:36+03:00", "type": "opinion"}
+{"id": "c006", "kind": "claim_added", "ts": "2026-11-19T19:20:37+03:00", "type": "fact"}
+{"id": "c007", "kind": "claim_added", "ts": "2026-11-19T19:20:37+03:00", "type": "fact"}
+{"id": "c008", "kind": "claim_added", "ts": "2026-11-19T19:20:38+03:00", "type": "opinion"}
+{"id": "c009", "kind": "claim_added", "ts": "2026-11-19T19:20:39+03:00", "type": "fact"}
+{"id": "c010", "kind": "claim_added", "ts": "2026-11-19T19:20:39+03:00", "type": "opinion"}
+{"id": "c011", "kind": "claim_added", "ts": "2026-11-19T19:20:40+03:00", "type": "opinion"}
+{"id": "c012", "kind": "claim_added", "ts": "2026-11-19T19:20:41+03:00", "type": "opinion"}
+{"id": "c013", "kind": "claim_added", "ts": "2026-11-19T19:20:44+03:00", "type": "fact"}
+{"id": "c014", "kind": "claim_added", "ts": "2026-11-19T19:20:46+03:00", "type": "opinion"}
+{"id": "c015", "kind": "claim_added", "ts": "2026-11-19T19:20:47+03:00", "type": "opinion"}
+{"id": "c016", "kind": "claim_added", "ts": "2026-11-19T19:20:48+03:00", "type": "fact"}
+{"id": "c017", "kind": "claim_added", "ts": "2026-11-19T19:20:49+03:00", "type": "fact"}
+{"id": "c018", "kind": "claim_added", "ts": "2026-11-19T19:20:50+03:00", "type": "fact"}
+{"id": "c019", "kind": "claim_added", "ts": "2026-11-19T19:20:51+03:00", "type": "fact"}
+{"id": "c020", "kind": "claim_added", "ts": "2026-11-19T19:20:52+03:00", "type": "fact"}
+{"id": "c021", "kind": "claim_added", "ts": "2026-11-19T19:20:53+03:00", "type": "fact"}
+{"id": "c022", "kind": "claim_added", "ts": "2026-11-19T19:20:54+03:00", "type": "fact"}
+{"id": "c023", "kind": "claim_added", "ts": "2026-11-19T19:20:55+03:00", "type": "fact"}
+{"id": "c024", "kind": "claim_added", "ts": "2026-11-19T19:20:56+03:00", "type": "fact"}
+{"id": "c025", "kind": "claim_added", "ts": "2026-11-19T19:21:00+03:00", "type": "fact"}
+{"id": "c026", "kind": "claim_added", "ts": "2026-11-19T19:21:01+03:00", "type": "fact"}
+{"id": "c027", "kind": "claim_added", "ts": "2026-11-19T19:21:02+03:00", "type": "fact"}
+{"id": "c028", "kind": "claim_added", "ts": "2026-11-19T19:21:03+03:00", "type": "fact"}
+{"id": "c029", "kind": "claim_added", "ts": "2026-11-19T19:21:04+03:00", "type": "fact"}
+{"id": "c030", "kind": "claim_added", "ts": "2026-11-19T19:21:05+03:00", "type": "fact"}
+{"id": "c031", "kind": "claim_added", "ts": "2026-11-19T19:21:06+03:00", "type": "fact"}
+{"id": "c032", "kind": "claim_added", "ts": "2026-11-19T19:21:07+03:00", "type": "fact"}
+{"id": "c033", "kind": "claim_added", "ts": "2026-11-19T19:21:08+03:00", "type": "fact"}
+{"id": "c034", "kind": "claim_added", "ts": "2026-11-19T19:21:09+03:00", "type": "opinion"}
+{"id": "c035", "kind": "claim_added", "ts": "2026-11-19T19:21:10+03:00", "type": "fact"}
+{"id": "c036", "kind": "claim_added", "ts": "2026-11-19T19:21:11+03:00", "type": "opinion"}
+{"id": "c037", "kind": "claim_added", "ts": "2026-11-19T19:21:12+03:00", "type": "opinion"}
+{"id": "c038", "kind": "claim_added", "ts": "2026-11-19T19:21:15+03:00", "type": "fact"}
+{"id": "c039", "kind": "claim_added", "ts": "2026-11-19T19:21:16+03:00", "type": "fact"}
+{"id": "c040", "kind": "claim_added", "ts": "2026-11-19T19:21:17+03:00", "type": "opinion"}
+{"id": "c041", "kind": "claim_added", "ts": "2026-11-19T19:21:18+03:00", "type": "fact"}
+{"id": "c042", "kind": "claim_added", "ts": "2026-11-19T19:21:19+03:00", "type": "fact"}
+{"id": "c043", "kind": "claim_added", "ts": "2026-11-19T19:21:20+03:00", "type": "fact"}
+{"id": "c044", "kind": "claim_added", "ts": "2026-11-19T19:21:21+03:00", "type": "fact"}
+{"id": "c045", "kind": "claim_added", "ts": "2026-11-19T19:21:22+03:00", "type": "opinion"}
+{"id": "c046", "kind": "claim_added", "ts": "2026-11-19T19:21:23+03:00", "type": "fact"}
+{"id": "c047", "kind": "claim_added", "ts": "2026-11-19T19:21:25+03:00", "type": "fact"}
+{"id": "c048", "kind": "claim_added", "ts": "2026-11-19T19:21:25+03:00", "type": "fact"}
+{"contested": 28, "kind": "verify", "ts": "2026-11-19T19:21:26+03:00", "verified": 20}
+{"id": "c049", "kind": "claim_added", "ts": "2026-11-19T19:21:55+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c049", "old": "c001", "ts": "2026-11-19T19:21:55+03:00"}
+{"id": "c050", "kind": "claim_added", "ts": "2026-11-19T19:21:56+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c050", "old": "c002", "ts": "2026-11-19T19:21:56+03:00"}
+{"id": "c051", "kind": "claim_added", "ts": "2026-11-19T19:21:57+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c051", "old": "c003", "ts": "2026-11-19T19:21:57+03:00"}
+{"id": "c052", "kind": "claim_added", "ts": "2026-11-19T19:21:57+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c052", "old": "c004", "ts": "2026-11-19T19:21:57+03:00"}
+{"id": "c053", "kind": "claim_added", "ts": "2026-11-19T19:21:58+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c053", "old": "c005", "ts": "2026-11-19T19:21:58+03:00"}
+{"id": "c054", "kind": "claim_added", "ts": "2026-11-19T19:21:59+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c054", "old": "c006", "ts": "2026-11-19T19:21:59+03:00"}
+{"id": "c055", "kind": "claim_added", "ts": "2026-11-19T19:22:00+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c055", "old": "c007", "ts": "2026-11-19T19:22:00+03:00"}
+{"id": "c056", "kind": "claim_added", "ts": "2026-11-19T19:22:01+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c056", "old": "c008", "ts": "2026-11-19T19:22:01+03:00"}
+{"id": "c057", "kind": "claim_added", "ts": "2026-11-19T19:22:02+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c057", "old": "c009", "ts": "2026-11-19T19:22:02+03:00"}
+{"id": "c058", "kind": "claim_added", "ts": "2026-11-19T19:22:03+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c058", "old": "c013", "ts": "2026-11-19T19:22:03+03:00"}
+{"id": "c059", "kind": "claim_added", "ts": "2026-11-19T19:22:04+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c059", "old": "c014", "ts": "2026-11-19T19:22:04+03:00"}
+{"id": "c060", "kind": "claim_added", "ts": "2026-11-19T19:22:06+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c060", "old": "c015", "ts": "2026-11-19T19:22:06+03:00"}
+{"id": "c061", "kind": "claim_added", "ts": "2026-11-19T19:22:06+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c061", "old": "c016", "ts": "2026-11-19T19:22:06+03:00"}
+{"id": "c062", "kind": "claim_added", "ts": "2026-11-19T19:22:10+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c062", "old": "c017", "ts": "2026-11-19T19:22:10+03:00"}
+{"id": "c063", "kind": "claim_added", "ts": "2026-11-19T19:22:10+03:00", "type": "fact"}
+{"id": "c064", "kind": "claim_added", "ts": "2026-11-19T19:22:11+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c064", "old": "c018", "ts": "2026-11-19T19:22:11+03:00"}
+{"id": "c065", "kind": "claim_added", "ts": "2026-11-19T19:22:12+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c065", "old": "c021", "ts": "2026-11-19T19:22:12+03:00"}
+{"id": "c066", "kind": "claim_added", "ts": "2026-11-19T19:22:13+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c066", "old": "c022", "ts": "2026-11-19T19:22:13+03:00"}
+{"id": "c067", "kind": "claim_added", "ts": "2026-11-19T19:22:14+03:00", "type": "fact"}
+{"id": "c068", "kind": "claim_added", "ts": "2026-11-19T19:22:14+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c068", "old": "c027", "ts": "2026-11-19T19:22:14+03:00"}
+{"id": "c069", "kind": "claim_added", "ts": "2026-11-19T19:22:15+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c069", "old": "c033", "ts": "2026-11-19T19:22:15+03:00"}
+{"id": "c070", "kind": "claim_added", "ts": "2026-11-19T19:22:16+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c070", "old": "c034", "ts": "2026-11-19T19:22:16+03:00"}
+{"id": "c071", "kind": "claim_added", "ts": "2026-11-19T19:22:17+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c071", "old": "c036", "ts": "2026-11-19T19:22:17+03:00"}
+{"id": "c072", "kind": "claim_added", "ts": "2026-11-19T19:22:18+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c072", "old": "c037", "ts": "2026-11-19T19:22:18+03:00"}
+{"id": "c073", "kind": "claim_added", "ts": "2026-11-19T19:22:18+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c073", "old": "c038", "ts": "2026-11-19T19:22:18+03:00"}
+{"id": "c074", "kind": "claim_added", "ts": "2026-11-19T19:22:19+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c074", "old": "c039", "ts": "2026-11-19T19:22:19+03:00"}
+{"id": "c075", "kind": "claim_added", "ts": "2026-11-19T19:22:20+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c075", "old": "c040", "ts": "2026-11-19T19:22:20+03:00"}
+{"id": "c076", "kind": "claim_added", "ts": "2026-11-19T19:22:21+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c076", "old": "c041", "ts": "2026-11-19T19:22:21+03:00"}
+{"id": "c077", "kind": "claim_added", "ts": "2026-11-19T19:22:22+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c077", "old": "c042", "ts": "2026-11-19T19:22:22+03:00"}
+{"id": "c078", "kind": "claim_added", "ts": "2026-11-19T19:22:23+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c078", "old": "c043", "ts": "2026-11-19T19:22:23+03:00"}
+{"contested": 28, "kind": "verify", "ts": "2026-11-19T19:22:23+03:00", "verified": 30}
+{"id": "c079", "kind": "claim_added", "ts": "2026-11-19T19:22:30+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c079", "old": "c074", "ts": "2026-11-19T19:22:30+03:00"}
+{"id": "c080", "kind": "claim_added", "ts": "2026-11-19T19:22:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c080", "old": "c047", "ts": "2026-11-19T19:22:31+03:00"}
+{"id": "c081", "kind": "claim_added", "ts": "2026-11-19T19:22:32+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c081", "old": "c024", "ts": "2026-11-19T19:22:32+03:00"}
+{"contested": 28, "kind": "verify", "ts": "2026-11-19T19:22:32+03:00", "verified": 3}
+{"id": "s020", "kind": "source_added", "quarantined": 0, "title": "App Store: МегаФон", "ts": "2026-11-19T19:23:20+03:00"}
+{"id": "s021", "kind": "source_added", "quarantined": 0, "title": "RuStore: МегаФон (карточка)", "ts": "2026-11-19T19:23:31+03:00"}
+{"id": "s022", "kind": "source_added", "quarantined": 0, "title": "RuStore: отзывы МегаФон, стр. 2", "ts": "2026-11-19T19:23:32+03:00"}
+{"id": "s023", "kind": "source_added", "quarantined": 0, "title": "Habr: комментарии к новости о согласии МегаФона", "ts": "2026-11-19T19:23:42+03:00"}
+{"id": "c082", "kind": "claim_added", "ts": "2026-11-19T19:23:48+03:00", "type": "opinion"}
+{"id": "c083", "kind": "claim_added", "ts": "2026-11-19T19:23:49+03:00", "type": "opinion"}
+{"id": "c084", "kind": "claim_added", "ts": "2026-11-19T19:23:50+03:00", "type": "opinion"}
+{"id": "c085", "kind": "claim_added", "ts": "2026-11-19T19:23:51+03:00", "type": "opinion"}
+{"id": "c086", "kind": "claim_added", "ts": "2026-11-19T19:23:52+03:00", "type": "opinion"}
+{"id": "c087", "kind": "claim_added", "ts": "2026-11-19T19:23:53+03:00", "type": "opinion"}
+{"id": "c088", "kind": "claim_added", "ts": "2026-11-19T19:23:54+03:00", "type": "opinion"}
+{"id": "c089", "kind": "claim_added", "ts": "2026-11-19T19:23:55+03:00", "type": "fact"}
+{"id": "c090", "kind": "claim_added", "ts": "2026-11-19T19:23:58+03:00", "type": "fact"}
+{"contested": 28, "kind": "verify", "ts": "2026-11-19T19:23:59+03:00", "verified": 9}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T19:24:29+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:24:34+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T19:24:52+03:00"}
+{"id": "c091", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
+{"id": "c092", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
+{"id": "c093", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
+{"id": "c094", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
+{"id": "c095", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
+{"id": "c096", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Текст источника читают только субагенты.", "tool": "Bash", "ts": "2026-11-19T19:25:33+03:00"}
+{"agent": "verifier", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Grep", "ts": "2026-11-19T19:27:23+03:00"}

@@ -1,0 +1,70 @@
+AppGoblin
+B2B Intelligence
+Company Rankings
+All Companies
+Ad Networks Analytics: Attribution Analytics Development Tools Mediation Platforms Business Tools
+App Intelligence
+Ad Creatives Top Mobile Advertisers App Explorer Free SDK Scans
+Rankings
+Top Google Play App Ranks Apple App Store Ranks Top Growth Apps Top CTV Apps New Apps
+Resources
+Free Reports Free Datasets Docs: API & MCP Docs: Paid Datasets Blog
+Pricing
+LOGIN
+App Menu · Overview Overview Trends
+SDKs
+Latest SDKs SDK History Unmapped SDKs SKAdNetwork Keywords Store Rankings
+МегаФон
+Developer: PJSC MegaFon
+Add to Compare
+Follow App
+Request New SDK & API Scans
+42.9M installs
+858K ratings
+2.8M monthly active users
+Revenue not available
+Install Trends
+Weekly +150
+Declining
+Monthly +784
+Declining
+МегаФон Summary
+МегаФон is a free iOS app in Tools by PJSC MegaFon. Released in Dec 2013 (12 years ago). It has 858K ratings with a 4.26★ (good)
+average. Based on AppGoblin estimates, it reaches roughly 2.8M monthly active users . Store last updated Aug 28, 2026
+Recent activity: 3.00 new ratings this week View trends →
+SDK intelligence: AppGoblin detected 2 development tools(e.g. Airbnb Engineering) integrated into МегаФон. View full SDK list →
+МегаФон SDKs Summary
+МегаФон was last scanned for SDKs on 2026-11-14. Below is the overview of third-party companies detected in the app. The full list of SDKs, permissions and unknowns is available here.
+МегаФон has
+2
+Development Tools SDKs
+Airbnb Engineering
+SDWebImage
+App Details
+Store ID: 778681735
+First Released: 2013-12-16
+Store Last Updated: 2026-08-28
+App Store Category: Tools
+In-App Purchases: No
+Ads: No
+Price: Free
+Website: megafon.ru
+App Store
+Crawl Status: Success
+AppGoblin First Crawled: 2025-02-08
+AppGoblin Last Crawled: 2026-11-17
+Ads & App-Ads.txt
+App does not have ads.
+4.26★
+Ratings: 858K
+5★
+4★
+3★
+2★
+1★
+Screenshots
+App Description
+Menu
+Dark mode
+About AppGoblin | Contact | Blog | Reports | Pricing | Privacy Policy | GitHub | LinkedIn
+© 2026 AppGoblin. All rights reserved.
