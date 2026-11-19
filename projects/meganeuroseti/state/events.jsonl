@@ -326,3 +326,36 @@
 {"id": "k002", "kind": "commitment", "ts": "2026-11-19T19:00:51+03:00"}
 {"id": "k003", "kind": "commitment", "ts": "2026-11-19T19:00:52+03:00"}
 {"id": "k004", "kind": "commitment", "ts": "2026-11-19T19:00:52+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:02:26+03:00"}
+{"kind": "source_plan", "ts": "2026-11-19T19:02:29+03:00", "url": "https://lenta.ru/articles/2026/10/28/na-telekom-rynke-poyavilsya-novyy-igrok/"}
+{"kind": "source_plan", "ts": "2026-11-19T19:02:29+03:00", "url": "https://pravo.ru/news/264822/"}
+{"gate": "G2", "kind": "gate_open", "ts": "2026-11-19T19:03:44+03:00"}
+{"channel": "tty", "gate": "G2", "kind": "gate_approve", "ts": "2026-11-19T19:03:56+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:04:55+03:00"}
+{"id": "s023", "kind": "source_added", "quarantined": 0, "title": "Lenta.ru: на телеком-рынке появился новый игрок", "ts": "2026-11-19T19:05:03+03:00"}
+{"id": "s024", "kind": "source_added", "quarantined": 0, "title": "Pravo.ru: закон об ИИ", "ts": "2026-11-19T19:05:03+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда echo вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:05:08+03:00"}
+{"id": "c127", "kind": "claim_added", "ts": "2026-11-19T19:05:25+03:00", "type": "fact"}
+{"id": "c128", "kind": "claim_added", "ts": "2026-11-19T19:05:25+03:00", "type": "fact"}
+{"id": "c129", "kind": "claim_added", "ts": "2026-11-19T19:05:25+03:00", "type": "fact"}
+{"id": "c130", "kind": "claim_added", "ts": "2026-11-19T19:05:25+03:00", "type": "fact"}
+{"contested": 19, "kind": "verify", "ts": "2026-11-19T19:05:29+03:00", "verified": 2}
+{"id": "c127", "kind": "claim_retracted", "ts": "2026-11-19T19:05:43+03:00", "why": "дата не в цитате, переписано с цитатой, содержащей дату"}
+{"id": "c129", "kind": "claim_retracted", "ts": "2026-11-19T19:05:43+03:00", "why": "дата не в цитате, переписано с цитатой, содержащей дату"}
+{"id": "c131", "kind": "claim_added", "ts": "2026-11-19T19:05:43+03:00", "type": "fact"}
+{"id": "c132", "kind": "claim_added", "ts": "2026-11-19T19:05:43+03:00", "type": "fact"}
+{"id": "c133", "kind": "claim_added", "ts": "2026-11-19T19:05:43+03:00", "type": "fact"}
+{"contested": 18, "kind": "verify", "ts": "2026-11-19T19:05:43+03:00", "verified": 2}
+{"id": "c132", "kind": "claim_retracted", "ts": "2026-11-19T19:05:49+03:00", "why": "смешаны два утверждения, одно из них об отсутствии; переписано"}
+{"id": "c134", "kind": "claim_added", "ts": "2026-11-19T19:05:49+03:00", "type": "fact"}
+{"contested": 17, "kind": "verify", "ts": "2026-11-19T19:05:49+03:00", "verified": 1}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:06:17+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T19:06:24+03:00"}
+{"contested": 17, "kind": "verify", "ts": "2026-11-19T19:06:40+03:00", "verified": 0}
+{"kind": "model_run", "ranking": ["O3", "O5", "O1", "O4", "O2"], "run": "r007", "ts": "2026-11-19T19:06:47+03:00"}
+{"kind": "review", "leader_changed": false, "number": 1, "ts": "2026-11-19T19:06:47+03:00"}
+{"gate": "R", "kind": "gate_open", "ts": "2026-11-19T19:06:47+03:00"}
+{"channel": "tty", "gate": "R", "kind": "gate_approve", "ts": "2026-11-19T19:08:27+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:08:33+03:00"}
+{"kind": "snapshot", "label": "после пересмотра", "ts": "2026-11-19T19:08:41+03:00", "version": "v2"}
+{"kind": "map_built", "ts": "2026-11-19T19:08:41+03:00"}

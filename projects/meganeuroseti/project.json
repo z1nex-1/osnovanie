@@ -12,9 +12,11 @@
     "habr.com",
     "hi-tech.mail.ru",
     "kod.ru",
+    "lenta.ru",
     "mobile-review.com",
     "moscow.megafon.ru",
     "mts.ai",
+    "pravo.ru",
     "toolfox.ru",
     "tproger.ru",
     "www.anti-malware.ru",
@@ -34,5 +36,6 @@
     "owner": "руководитель продукта МегаНейросети (роль)",
     "ts": "2026-11-19T19:00:10+03:00",
     "comment": "оператор прогона: утверждаю O3 как пилот с контрольной группой, без запуска на всю базу; интервью O2 параллельно"
-  }
+  },
+  "review_accepted": "2026-11-19T19:08:27+03:00"
 }

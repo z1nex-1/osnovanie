@@ -15,3 +15,7 @@
 {"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), правка по «G3 правка» оператора","tokens":94452,"tool_uses":30,"seconds":227.6}
 {"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Opus 5.5), стратегии, validation, G4","tokens":107168,"tool_uses":46,"seconds":168.1}
 {"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Opus 5.5), обязательства после G4","tokens":66086,"tool_uses":10,"seconds":42.2}
+{"task":"t1-meganeuroseti","stage":"review","agent":"researcher (Sonnet), первый заход: домены не разрешены","tokens":13615,"tool_uses":5,"seconds":22.9}
+{"task":"t1-meganeuroseti","stage":"review","agent":"researcher (Sonnet), загрузка s023, s024 и утверждения","tokens":29614,"tool_uses":15,"seconds":66.9}
+{"task":"t1-meganeuroseti","stage":"review","agent":"general-purpose (Opus 5.5), review run, точка R","tokens":68359,"tool_uses":19,"seconds":45.4}
+{"task":"t1-meganeuroseti","stage":"review","agent":"general-purpose (Sonnet), review finish, map, diff","tokens":59747,"tool_uses":4,"seconds":13.9}
