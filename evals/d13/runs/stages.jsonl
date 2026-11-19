@@ -4,3 +4,14 @@
 {"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Opus 5.5), продолжение","tokens":69093,"tool_uses":7,"seconds":24.0}
 {"task":"t1-meganeuroseti","stage":"research","agent":"researcher (Sonnet), загрузка и утверждения, второй заход после перезапуска","tokens":136871,"tool_uses":38,"seconds":258.2,"note":"первый заход прерван перезапуском сессии, его время не записано"}
 {"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Opus 5.5)","tokens":135473,"tool_uses":97,"seconds":276.4}
+{"task":"t1-meganeuroseti","stage":"research","agent":"verifier (субагент)","tokens":39674,"tool_uses":26,"seconds":83.9}
+{"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Opus 5.5), правки по verifier и advance","tokens":74017,"tool_uses":24,"seconds":60.6}
+{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), варианты O1–O5","tokens":86096,"tool_uses":36,"seconds":109.3}
+{"task":"t1-meganeuroseti","stage":"options","agent":"closure-advocate (Sonnet)","tokens":23048,"tool_uses":13,"seconds":35.5}
+{"task":"t1-meganeuroseti","stage":"options","agent":"skeptic (Sonnet)","tokens":26236,"tool_uses":24,"seconds":419.1}
+{"task":"t1-meganeuroseti","stage":"review-prep","agent":"researcher (Sonnet), разведка новости для пересмотра","tokens":23797,"tool_uses":7,"seconds":41.9}
+{"task":"t1-meganeuroseti","stage":"options","agent":"проверка стопа: «стоп» подан в хук оператором, haiku-агент: resume разрешён, objection add заблокирован","tokens":58977,"tool_uses":2,"seconds":10.4}
+{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), модель, options.md, G3","tokens":122803,"tool_uses":47,"seconds":291.8}
+{"task":"t1-meganeuroseti","stage":"options","agent":"general-purpose (Opus 5.5), правка по «G3 правка» оператора","tokens":94452,"tool_uses":30,"seconds":227.6}
+{"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Opus 5.5), стратегии, validation, G4","tokens":107168,"tool_uses":46,"seconds":168.1}
+{"task":"t1-meganeuroseti","stage":"strategy","agent":"general-purpose (Opus 5.5), обязательства после G4","tokens":66086,"tool_uses":10,"seconds":42.2}

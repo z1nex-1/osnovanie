@@ -249,3 +249,80 @@
 {"agent": "opencode-main", "kind": "blocked", "reason": "Запись разрешена только в projects/<проект>/outputs/. Состояние меняется через osnovanie, правила и код защищены.", "tool": "Write", "ts": "2026-11-19T18:21:41+03:00"}
 {"agent": "opencode-main", "kind": "blocked", "reason": "Прямое чтение страниц запрещено. Страницы загружает osnovanie source fetch: там allowlist, разбор и карантин.", "tool": "WebFetch", "ts": "2026-11-19T18:21:41+03:00"}
 {"agent": "opencode-main", "kind": "blocked", "reason": "Сырые файлы и карантин недоступны модели: там может быть внедрённый текст.", "tool": "Read", "ts": "2026-11-19T18:21:41+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Инструмент mcp__ccd_turn__update_plan не разрешён политикой агента.", "tool": "mcp__ccd_turn__update_plan", "ts": "2026-11-19T18:31:58+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Команда git вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:32:00+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T18:32:03+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T18:32:30+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда for вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:34:47+03:00"}
+{"id": "c120", "kind": "claim_added", "ts": "2026-11-19T18:35:02+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c120", "old": "c058", "ts": "2026-11-19T18:35:02+03:00"}
+{"id": "c121", "kind": "claim_added", "ts": "2026-11-19T18:35:03+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c121", "old": "c114", "ts": "2026-11-19T18:35:03+03:00"}
+{"id": "c122", "kind": "claim_added", "ts": "2026-11-19T18:35:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c122", "old": "c004", "ts": "2026-11-19T18:35:04+03:00"}
+{"id": "c123", "kind": "claim_added", "ts": "2026-11-19T18:35:05+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c123", "old": "c117", "ts": "2026-11-19T18:35:05+03:00"}
+{"contested": 17, "kind": "verify", "ts": "2026-11-19T18:35:08+03:00", "verified": 3}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:35:09+03:00"}
+{"id": "c124", "kind": "claim_added", "ts": "2026-11-19T18:35:13+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c124", "old": "c120", "ts": "2026-11-19T18:35:13+03:00"}
+{"contested": 17, "kind": "verify", "ts": "2026-11-19T18:35:28+03:00", "verified": 1}
+{"kind": "stage", "stage": "options", "ts": "2026-11-19T18:35:32+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T18:36:11+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:36:19+03:00"}
+{"id": "zz", "kind": "option", "ts": "2026-11-19T18:36:30+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда for вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:37:30+03:00"}
+{"id": "O1", "kind": "option", "ts": "2026-11-19T18:37:38+03:00"}
+{"id": "O2", "kind": "option", "ts": "2026-11-19T18:37:39+03:00"}
+{"id": "O3", "kind": "option", "ts": "2026-11-19T18:37:39+03:00"}
+{"id": "O4", "kind": "option", "ts": "2026-11-19T18:37:39+03:00"}
+{"id": "O5", "kind": "option", "ts": "2026-11-19T18:37:40+03:00"}
+{"id": "zz", "kind": "option_withdrawn", "reason": "пробная запись агента этапа вариантов при проверке формата; убрал оператор прогона", "ts": "2026-11-19T18:39:52+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:40:04+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T18:40:10+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T18:40:10+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Команда cd вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:40:11+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:41:21+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Команда curl вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:41:21+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Запись разрешена только в projects/<проект>/outputs/. Состояние меняется через osnovanie, правила и код защищены.", "tool": "Write", "ts": "2026-11-19T18:41:21+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Прямое чтение страниц запрещено. Страницы загружает osnovanie source fetch: там allowlist, разбор и карантин.", "tool": "WebFetch", "ts": "2026-11-19T18:41:21+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Сырые файлы и карантин недоступны модели: там может быть внедрённый текст.", "tool": "Read", "ts": "2026-11-19T18:41:21+03:00"}
+{"kind": "paused", "ts": "2026-11-19T18:47:08+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Работа остановлена человеком. Дождитесь сообщения «продолжить».", "tool": "Bash", "ts": "2026-11-19T18:47:22+03:00"}
+{"kind": "resumed", "ts": "2026-11-19T18:47:38+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:47:51+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:47:59+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T18:48:16+03:00"}
+{"id": "O2", "kind": "option", "ts": "2026-11-19T18:48:55+03:00"}
+{"id": "O4", "kind": "option", "ts": "2026-11-19T18:48:56+03:00"}
+{"kind": "model_set", "options": 1, "params": 2, "ts": "2026-11-19T18:49:10+03:00"}
+{"kind": "model_run", "ranking": ["O1"], "run": "r001", "ts": "2026-11-19T18:49:13+03:00"}
+{"kind": "model_run", "ranking": ["O1"], "run": "r002", "ts": "2026-11-19T18:49:29+03:00"}
+{"kind": "model_run", "ranking": ["O1"], "run": "r003", "ts": "2026-11-19T18:49:37+03:00"}
+{"kind": "model_run", "ranking": ["O1"], "run": "r004", "ts": "2026-11-19T18:49:43+03:00"}
+{"kind": "model_set", "options": 5, "params": 21, "ts": "2026-11-19T18:50:51+03:00"}
+{"kind": "model_run", "ranking": ["O3", "O5", "O1", "O4", "O2"], "run": "r005", "ts": "2026-11-19T18:50:51+03:00"}
+{"kind": "model_run", "ranking": ["O3", "O5", "O1", "O4", "O2"], "run": "r006", "ts": "2026-11-19T18:50:55+03:00"}
+{"gate": "G3", "kind": "gate_open", "ts": "2026-11-19T18:52:27+03:00"}
+{"channel": "tty", "gate": "G3", "kind": "gate_revise", "ts": "2026-11-19T18:52:45+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:53:02+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:53:07+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Инструмент TaskStop не разрешён политикой агента.", "tool": "TaskStop", "ts": "2026-11-19T18:55:13+03:00"}
+{"gate": "G3", "kind": "gate_open", "ts": "2026-11-19T18:56:35+03:00"}
+{"channel": "tty", "gate": "G3", "kind": "gate_approve", "ts": "2026-11-19T18:56:48+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:57:22+03:00"}
+{"kind": "stage", "stage": "strategy", "ts": "2026-11-19T18:57:24+03:00"}
+{"id": "c125", "kind": "claim_added", "ts": "2026-11-19T18:59:17+03:00", "type": "hypothesis"}
+{"id": "c126", "kind": "claim_added", "ts": "2026-11-19T18:59:17+03:00", "type": "hypothesis"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T18:59:25+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:59:49+03:00"}
+{"kind": "map_built", "ts": "2026-11-19T18:59:52+03:00"}
+{"gate": "G4", "kind": "gate_open", "ts": "2026-11-19T18:59:55+03:00"}
+{"channel": "tty", "gate": "G4", "kind": "gate_approve", "ts": "2026-11-19T19:00:10+03:00"}
+{"kind": "snapshot", "label": "решение G4", "ts": "2026-11-19T19:00:10+03:00", "version": "v1"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:00:27+03:00"}
+{"kind": "stage", "stage": "decided", "ts": "2026-11-19T19:00:32+03:00"}
+{"id": "k001", "kind": "commitment", "ts": "2026-11-19T19:00:42+03:00"}
+{"id": "k002", "kind": "commitment", "ts": "2026-11-19T19:00:51+03:00"}
+{"id": "k003", "kind": "commitment", "ts": "2026-11-19T19:00:52+03:00"}
+{"id": "k004", "kind": "commitment", "ts": "2026-11-19T19:00:52+03:00"}

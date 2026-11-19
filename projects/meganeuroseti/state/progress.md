@@ -4,23 +4,23 @@
 
 Проект: meganeuroseti — МегаНейросети: кому продавать и продолжать ли
 Вопрос: Через полгода после запуска МегаНейросетей: кому и как продавать и стоит ли продолжать направление?
-Этап: исследование
-Точки человека: G1: approved, G2: approved
-Источники: 22. Утверждения: отозвано 29, устарело 22, факт 56, мнение 8, прогноз 3, гипотеза 1. Варианты: нет
-Потрачено: $2.69 из $15.00
-Дальше: Загрузите источники, запишите утверждения, проверьте цитаты, закройте вопросы, затем osnovanie advance.
+Этап: решение принято, сопровождение
+Точки человека: G1: approved, G2: approved, G3: approved, G4: approved
+Источники: 22. Утверждения: отозвано 29, устарело 27, факт 56, мнение 8, прогноз 3, гипотеза 3. Варианты: O1, O2, O3, O4, O5
+Потрачено: $9.73 из $15.00
+Дальше: Запишите обязательства. При новых данных: osnovanie review run.
 
 ## Последние действия
 
-- 2026-11-19T18:20 claim_retracted id=c066 why=заменено c107
-- 2026-11-19T18:20 claim_retracted id=c067 why=заменено c108
-- 2026-11-19T18:20 claim_retracted id=c068 why=заменено c109
-- 2026-11-19T18:20 claim_retracted id=c069 why=заменено c110
-- 2026-11-19T18:20 claim_retracted id=c070 why=заменено c111
-- 2026-11-19T18:20 claim_retracted id=c074 why=заменено c112
-- 2026-11-19T18:20 claim_retracted id=c076 why=заменено c113
-- 2026-11-19T18:20 claim_retracted id=c078 why=заменено c114
-- 2026-11-19T18:20 claim_retracted id=c079 why=заменено c115
-- 2026-11-19T18:20 claim_retracted id=c100 why=заменено c119
-- 2026-11-19T18:20 verify contested=16 verified=0
-- 2026-11-19T18:20 verify contested=16 verified=0
+- 2026-11-19T18:59 blocked agent=general-purpose reason=Перенаправления и фоновые запуски запрещены. Передавайте данные через -
+- 2026-11-19T18:59 blocked agent=general-purpose reason=Команда head вне разрешённого списка. Рабочий инструмент агента: bin/os
+- 2026-11-19T18:59 map_built 
+- 2026-11-19T18:59 gate_open gate=G4
+- 2026-11-19T19:00 gate_approve channel=tty gate=G4
+- 2026-11-19T19:00 snapshot label=решение G4 version=v1
+- 2026-11-19T19:00 blocked agent=general-purpose reason=Команда head вне разрешённого списка. Рабочий инструмент агента: bin/os
+- 2026-11-19T19:00 stage stage=decided
+- 2026-11-19T19:00 commitment id=k001
+- 2026-11-19T19:00 commitment id=k002
+- 2026-11-19T19:00 commitment id=k003
+- 2026-11-19T19:00 commitment id=k004
