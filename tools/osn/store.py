@@ -143,7 +143,8 @@ class Project:
         return read_jsonl(self.log(name))
 
     def current(self, name: str) -> dict[str, dict]:
-        return latest_by_id(self.records(name))
+        # отозванная запись остаётся в журнале, но выпадает из текущего состояния
+        return {k: v for k, v in latest_by_id(self.records(name)).items() if not v.get("withdrawn")}
 
     def append(self, name: str, record: dict) -> None:
         append_jsonl(self.log(name), record)

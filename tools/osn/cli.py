@@ -293,6 +293,14 @@ def cmd_options(args):
         project.append("options", record)
         project.event("option", id=record["id"])
         emit(record, f"Вариант {record['id']} записан.")
+    elif args.action == "withdraw":
+        if args.id not in current:
+            raise OsnError(f"Варианта {args.id} нет.")
+        if not args.reason.strip():
+            raise OsnError("Нужна причина: --reason.")
+        project.append("options", {**current[args.id], "withdrawn": True, "withdraw_reason": args.reason, "ts": now()})
+        project.event("option_withdrawn", id=args.id, reason=args.reason[:200])
+        emit({"id": args.id, "withdrawn": True}, f"Вариант {args.id} отозван. Запись осталась в журнале.")
     else:
         rows = list(current.values())
         lines = []
@@ -766,6 +774,9 @@ def parser() -> argparse.ArgumentParser:
     payload(a.add_parser("add"))
     a.add_parser("list")
     a.add_parser("render")
+    w = a.add_parser("withdraw")
+    w.add_argument("id")
+    w.add_argument("--reason", required=True)
 
     p = add("objection", cmd_objection, "возражение к варианту")
     s = actions(p).add_parser("add")

@@ -39,6 +39,16 @@ class Fields(unittest.TestCase):
         self.assertIn("O4: не указано влияние на портфель", report)
         self.assertIn(f"O4: у гипотез в основании нет уверенности: {claims[3]}", report)
 
+    def test_withdrawn_option_leaves_state_but_stays_in_log(self):
+        box = self.box
+        claims = full_path(box)
+        box.ok("options", "add", "--json", json.dumps({"id": "zz", "title": "t", "kind": "keep", "thesis": "проба формата", "basis": [claims[0]]}))
+        self.assertNotEqual(box.osn("options", "withdraw", "zz", "--reason", " ").returncode, 0)
+        box.ok("options", "withdraw", "zz", "--reason", "пробная запись")
+        self.assertNotIn("zz", [o["id"] for o in box.js("options", "list")])
+        self.assertNotEqual(box.osn("objection", "add", "zz", "--by", "skeptic", "--text", "x").returncode, 0)
+        self.assertIn("option_withdrawn", box.ok("log"))
+
     def test_commitment_records_expected_and_outcome(self):
         box = self.box
         claims = full_path(box)
