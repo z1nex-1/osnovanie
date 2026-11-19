@@ -4,23 +4,23 @@
 
 Проект: megafon-app — megafon-app
 Вопрос: Пользователи приложения МегаФон реже заходят в него после первого месяца. Что менять в продукте?
-Этап: стратегии
-Точки человека: G1: approved, G2: approved, G3: approved, G4: open
-Источники: 23. Утверждения: устарело 56, мнение 28, факт 38, гипотеза 6, отозвано 4. Варианты: O1, O2, O3, O4, O5
-Потрачено: $15.05 из $30.00
-ЖДЁМ РЕШЕНИЯ ЧЕЛОВЕКА: точка G4, файл outputs/gates/G4.md
+Этап: решение принято, сопровождение
+Точки человека: G1: approved, G2: approved, G3: approved, G4: approved
+Источники: 23. Утверждения: устарело 54, мнение 29, факт 39, гипотеза 6. Варианты: O1, O2, O3, O4, O5
+Потрачено: $15.39 из $30.00
+Дальше: Запишите обязательства. При новых данных: osnovanie review run.
 
 ## Последние действия
 
-- 2026-11-19T21:07 claim_superseded new=c129 old=c117
-- 2026-11-19T21:07 claim_added id=c130 type=fact
-- 2026-11-19T21:07 claim_superseded new=c130 old=c114
-- 2026-11-19T21:07 claim_added id=c131 type=fact
-- 2026-11-19T21:07 claim_superseded new=c131 old=c058
-- 2026-11-19T21:07 claim_added id=c132 type=fact
-- 2026-11-19T21:07 claim_superseded new=c132 old=c004
-- 2026-11-19T21:07 verify contested=43 verified=0
-- 2026-11-19T21:07 claim_retracted id=c129 why=ошибочная запись: команда ушла в чужой проект после смены активного
-- 2026-11-19T21:07 claim_retracted id=c130 why=ошибочная запись: команда ушла в чужой проект после смены активного
-- 2026-11-19T21:07 claim_retracted id=c131 why=ошибочная запись: команда ушла в чужой проект после смены активного
 - 2026-11-19T21:07 claim_retracted id=c132 why=ошибочная запись: команда ушла в чужой проект после смены активного
+- 2026-11-19T21:08 repair note=откат ошибочных записей t1 в megafon-app: c004, c058, c114, c117 и пометки verify records=46
+- 2026-11-19T22:03 gate_approve channel=tty gate=G4
+- 2026-11-19T22:03 snapshot label=решение G4 version=v1
+- 2026-11-19T22:03 blocked agent=general-purpose reason=Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osn
+- 2026-11-19T22:03 stage stage=decided
+- 2026-11-19T22:03 blocked agent=general-purpose reason=Команда P=bin/osnovanie --project megafon-app commit add --json вне раз
+- 2026-11-19T22:04 commitment id=k001
+- 2026-11-19T22:04 commitment id=k002
+- 2026-11-19T22:04 commitment id=k003
+- 2026-11-19T22:04 commitment id=k004
+- 2026-11-19T22:04 commitment id=k005
