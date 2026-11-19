@@ -70,6 +70,8 @@ def fallen(project: Project, claims: dict[str, dict], changed: list[str], before
         if old.get("superseded_by"):
             new = claims[old["superseded_by"]]
             cause[claim_id] = {"was": old["text"], "now": new["text"], "new_id": new["id"], "source": new.get("source_id"), "quote": new.get("quote")}
+        elif old.get("status") != "retracted":
+            cause[claim_id] = {"was": None, "now": old["text"], "new_id": claim_id, "source": old.get("source_id"), "quote": old.get("quote")}
         else:
             cause[claim_id] = {"was": old["text"], "now": None, "reason": old.get("retract_reason")}
     chains = _chains(claims, set(changed))
@@ -102,7 +104,9 @@ def fallen(project: Project, claims: dict[str, dict], changed: list[str], before
 def render_fallen(f: dict, claims: dict[str, dict]) -> list[str]:
     lines = ["## Что упало и почему", ""]
     for claim_id, c in f["cause"].items():
-        if c["now"] is not None:
+        if c["was"] is None:
+            lines.append(f"- Новое основание {claim_id}: «{_short(c['now'])}» (источник {c.get('source') or 'нет, это допущение'}).")
+        elif c["now"] is not None:
             quote = f" Цитата: «{_short(c['quote'], 160)}»" if c.get("quote") else ""
             lines.append(f"- Основание {claim_id} больше не верно: «{_short(c['was'])}». Теперь {c['new_id']}: «{_short(c['now'])}» (источник {c.get('source') or 'нет, это допущение'}).{quote}")
         else:
@@ -191,6 +195,8 @@ def run(project: Project, changed: set[str] | None = None, note: str = "") -> di
         if old.get("superseded_by"):
             new = claims[old["superseded_by"]]
             lines.append(f"- {claim_id} → {new['id']}: было «{old['text']}», стало «{new['text']}» (источник {new.get('source_id')})")
+        elif old.get("status") != "retracted":
+            lines.append(f"- {claim_id} новое: «{old['text']}» (источник {old.get('source_id')})")
         else:
             lines.append(f"- {claim_id} отозвано: {old.get('retract_reason')}")
     lines += ["", "## Что затронуто", "", f"- Зависимые утверждения: {', '.join(impact['downstream']) or 'нет'}", f"- Варианты: {', '.join(impact['options']) or 'нет'}", f"- Величины модели: {', '.join(impact['params']) or 'нет'}", f"- Обязательства: {', '.join(impact['commitments']) or 'нет'}", ""]

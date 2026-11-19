@@ -61,6 +61,17 @@ class Fields(unittest.TestCase):
         box.say("G2 да")
         self.assertIn("decided", box.js("status")["stage"])
 
+    def test_review_lists_new_claim_as_new_not_retracted(self):
+        box = self.box
+        full_path(box)
+        source = box.source("Новый оператор запустил ИИ-ассистента 28 октября.", "n.txt", "secondary")
+        fact = box.js("claim", "add", "--json", json.dumps({"text": "Новый оператор запустил ИИ-ассистента", "type": "fact", "source_id": source["id"], "quote": "Новый оператор запустил ИИ-ассистента 28 октября"}))
+        box.ok("verify")
+        report = box.js("review", "run", "--claims", fact["id"], "--note", "новость")["report"]
+        text = (box.tmp / "projects" / "demo" / report).read_text("utf-8")
+        self.assertIn(f"{fact['id']} новое", text)
+        self.assertNotIn("отозвано: None", text)
+
     def test_commitment_records_expected_and_outcome(self):
         box = self.box
         claims = full_path(box)
