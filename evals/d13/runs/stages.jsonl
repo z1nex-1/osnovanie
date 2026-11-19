@@ -30,3 +30,10 @@
 {"task":"t2-megafon-app","stage":"research","agent":"general-purpose (Sonnet 5.5), разбор отзывов, гипотезы, situation.md","tokens":93696,"tool_uses":39,"seconds":147.6}
 {"task":"t2-megafon-app","stage":"research","agent":"verifier (Sonnet)","tokens":43225,"tool_uses":23,"seconds":68.1}
 {"task":"t2-megafon-app","stage":"research","agent":"source-sanitizer (Sonnet), все 30 отзывов s022","tokens":28350,"tool_uses":1,"seconds":null,"note":"время не снято: 2007 с включают перезапуск сессии оператора"}
+{"task":"t2-megafon-app","stage":"research","agent":"general-purpose (Sonnet 5.5), правки по verifier, 9 отзывов, situation.md","tokens":127829,"tool_uses":69,"seconds":168.3}
+{"task":"t2-megafon-app","stage":"options","agent":"general-purpose (Sonnet 5.5), варианты O1–O5","tokens":84490,"tool_uses":32,"seconds":94.9}
+{"task":"t2-megafon-app","stage":"options","agent":"closure-advocate (Sonnet)","tokens":22813,"tool_uses":16,"seconds":41.0}
+{"task":"t2-megafon-app","stage":"options","agent":"skeptic (Sonnet)","tokens":20702,"tool_uses":14,"seconds":54.1}
+{"task":"t2-megafon-app","stage":"options","agent":"general-purpose (Sonnet 5.5), модель и options.md, G3 не открылась: у O1 и O2 по одному возражению","tokens":111177,"tool_uses":19,"seconds":111.5}
+{"task":"t2-megafon-app","stage":"options","agent":"closure-advocate (Sonnet), вторые возражения к O1 и O2","tokens":24004,"tool_uses":3,"seconds":10.7}
+{"task":"t2-megafon-app","stage":"options","agent":"general-purpose (Sonnet 5.5), G3 открыта","tokens":115995,"tool_uses":21,"seconds":153.1}

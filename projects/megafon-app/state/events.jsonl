@@ -211,3 +211,84 @@
 {"id": "c096", "kind": "claim_added", "ts": "2026-11-19T19:25:08+03:00", "type": "hypothesis"}
 {"agent": "general-purpose", "kind": "blocked", "reason": "Текст источника читают только субагенты.", "tool": "Bash", "ts": "2026-11-19T19:25:33+03:00"}
 {"agent": "verifier", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Grep", "ts": "2026-11-19T19:27:23+03:00"}
+{"id": "c097", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c098", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c099", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c100", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c101", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c102", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c103", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c104", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c105", "kind": "claim_added", "ts": "2026-11-19T20:52:46+03:00", "type": "opinion"}
+{"id": "c106", "kind": "claim_added", "ts": "2026-11-19T20:52:47+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c106", "old": "c083", "ts": "2026-11-19T20:52:47+03:00"}
+{"id": "c107", "kind": "claim_added", "ts": "2026-11-19T20:52:48+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c107", "old": "c086", "ts": "2026-11-19T20:52:48+03:00"}
+{"id": "c108", "kind": "claim_added", "ts": "2026-11-19T20:52:49+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c108", "old": "c032", "ts": "2026-11-19T20:52:49+03:00"}
+{"id": "c109", "kind": "claim_added", "ts": "2026-11-19T20:52:50+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c109", "old": "c046", "ts": "2026-11-19T20:52:50+03:00"}
+{"id": "c110", "kind": "claim_added", "ts": "2026-11-19T20:52:51+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c110", "old": "c066", "ts": "2026-11-19T20:52:51+03:00"}
+{"id": "c111", "kind": "claim_added", "ts": "2026-11-19T20:52:52+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c111", "old": "c067", "ts": "2026-11-19T20:52:52+03:00"}
+{"id": "c112", "kind": "claim_added", "ts": "2026-11-19T20:53:03+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c112", "old": "c091", "ts": "2026-11-19T20:53:03+03:00"}
+{"id": "c113", "kind": "claim_added", "ts": "2026-11-19T20:53:04+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c113", "old": "c092", "ts": "2026-11-19T20:53:04+03:00"}
+{"id": "c114", "kind": "claim_added", "ts": "2026-11-19T20:53:05+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c114", "old": "c094", "ts": "2026-11-19T20:53:05+03:00"}
+{"contested": 39, "kind": "verify", "ts": "2026-11-19T20:53:09+03:00", "verified": 4}
+{"id": "c115", "kind": "claim_added", "ts": "2026-11-19T20:53:38+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c115", "old": "c097", "ts": "2026-11-19T20:53:38+03:00"}
+{"id": "c116", "kind": "claim_added", "ts": "2026-11-19T20:53:44+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c116", "old": "c098", "ts": "2026-11-19T20:53:44+03:00"}
+{"id": "c117", "kind": "claim_added", "ts": "2026-11-19T20:53:47+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c117", "old": "c099", "ts": "2026-11-19T20:53:47+03:00"}
+{"id": "c118", "kind": "claim_added", "ts": "2026-11-19T20:53:51+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c118", "old": "c100", "ts": "2026-11-19T20:53:51+03:00"}
+{"id": "c119", "kind": "claim_added", "ts": "2026-11-19T20:53:55+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c119", "old": "c101", "ts": "2026-11-19T20:53:55+03:00"}
+{"id": "c120", "kind": "claim_added", "ts": "2026-11-19T20:53:58+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c120", "old": "c102", "ts": "2026-11-19T20:53:58+03:00"}
+{"id": "c121", "kind": "claim_added", "ts": "2026-11-19T20:54:00+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c121", "old": "c103", "ts": "2026-11-19T20:54:00+03:00"}
+{"id": "c122", "kind": "claim_added", "ts": "2026-11-19T20:54:02+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c122", "old": "c104", "ts": "2026-11-19T20:54:02+03:00"}
+{"id": "c123", "kind": "claim_added", "ts": "2026-11-19T20:54:03+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c123", "old": "c105", "ts": "2026-11-19T20:54:03+03:00"}
+{"id": "c124", "kind": "claim_added", "ts": "2026-11-19T20:54:04+03:00", "type": "opinion"}
+{"kind": "claim_superseded", "new": "c124", "old": "c106", "ts": "2026-11-19T20:54:04+03:00"}
+{"id": "c125", "kind": "claim_added", "ts": "2026-11-19T20:54:05+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c125", "old": "c109", "ts": "2026-11-19T20:54:05+03:00"}
+{"id": "c126", "kind": "claim_added", "ts": "2026-11-19T20:54:10+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c126", "old": "c112", "ts": "2026-11-19T20:54:10+03:00"}
+{"id": "c127", "kind": "claim_added", "ts": "2026-11-19T20:54:11+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c127", "old": "c113", "ts": "2026-11-19T20:54:11+03:00"}
+{"id": "c128", "kind": "claim_added", "ts": "2026-11-19T20:54:12+03:00", "type": "hypothesis"}
+{"kind": "claim_superseded", "new": "c128", "old": "c114", "ts": "2026-11-19T20:54:12+03:00"}
+{"contested": 39, "kind": "verify", "ts": "2026-11-19T20:54:16+03:00", "verified": 11}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:54:22+03:00"}
+{"contested": 39, "kind": "verify", "ts": "2026-11-19T20:54:57+03:00", "verified": 0}
+{"kind": "stage", "stage": "options", "ts": "2026-11-19T20:55:09+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T20:55:24+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:55:32+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T20:55:35+03:00"}
+{"id": "O1", "kind": "option", "ts": "2026-11-19T20:56:43+03:00"}
+{"id": "O2", "kind": "option", "ts": "2026-11-19T20:56:45+03:00"}
+{"id": "O3", "kind": "option", "ts": "2026-11-19T20:56:46+03:00"}
+{"id": "O4", "kind": "option", "ts": "2026-11-19T20:56:47+03:00"}
+{"id": "O5", "kind": "option", "ts": "2026-11-19T20:56:48+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:57:05+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:57:05+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:57:08+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Команда for вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:57:09+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T20:57:15+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:57:17+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T20:57:22+03:00"}
+{"kind": "model_set", "options": 5, "params": 12, "ts": "2026-11-19T20:58:44+03:00"}
+{"kind": "model_run", "ranking": ["O1", "O3", "O4", "O2", "O5"], "run": "r001", "ts": "2026-11-19T20:58:46+03:00"}
+{"kind": "model_run", "ranking": ["O1", "O3", "O4", "O2", "O5"], "run": "r002", "ts": "2026-11-19T20:58:53+03:00"}
+{"gate": "G3", "kind": "gate_open", "ts": "2026-11-19T21:00:35+03:00"}
+{"channel": "tty", "gate": "G3", "kind": "gate_approve", "ts": "2026-11-19T21:00:44+03:00"}
+{"kind": "stage", "stage": "strategy", "ts": "2026-11-19T21:00:44+03:00"}
