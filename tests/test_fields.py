@@ -49,6 +49,18 @@ class Fields(unittest.TestCase):
         self.assertNotEqual(box.osn("objection", "add", "zz", "--by", "skeptic", "--text", "x").returncode, 0)
         self.assertIn("option_withdrawn", box.ok("log"))
 
+    def test_new_domains_after_decision_need_second_g2(self):
+        box = self.box
+        claims = full_path(box)
+        write_strategy(box, claims)
+        box.ok("gate", "open", "G4")
+        box.say("G4 да O1 ответственный Анна")
+        box.ok("advance")
+        self.assertNotEqual(box.osn("gate", "open", "G3").returncode, 0)
+        box.ok("gate", "open", "G2")
+        box.say("G2 да")
+        self.assertIn("decided", box.js("status")["stage"])
+
     def test_commitment_records_expected_and_outcome(self):
         box = self.box
         claims = full_path(box)

@@ -70,11 +70,13 @@ def open_gate(project: Project, gate: str, summary: str | None) -> dict:
         _ensure_running(state)
         if gate not in GATE_LABEL:
             raise OsnError("Точки человека: G1, G2, G3, G4, R.")
-        if gate != "R" and GATE_AT.get(state["stage"]) != gate:
+        # при сопровождении новые домены для пересмотра подтверждает человек повторной G2
+        extra_sources = gate == "G2" and state["stage"] == "decided"
+        if gate != "R" and GATE_AT.get(state["stage"]) != gate and not extra_sources:
             raise PolicyError(f"Сейчас этап «{STAGE_LABEL[state['stage']]}», точку {gate} открыть нельзя.")
         if state["awaiting"] and state["awaiting"] != gate:
             raise PolicyError(f"Уже открыта точка {state['awaiting']}.")
-        problems = checks.failures(project, state["stage"]) if gate != "R" else []
+        problems = checks.failures(project, "plan" if extra_sources else state["stage"]) if gate != "R" else []
         if problems:
             raise PolicyError(f"Точку {gate} открыть нельзя:\n- " + "\n- ".join(problems))
         state["awaiting"] = gate
