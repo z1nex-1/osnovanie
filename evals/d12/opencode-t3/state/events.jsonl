@@ -1,0 +1,11 @@
+{"kind": "created", "question": "Как объяснять абонентам ИИ-ассистента для звонков, чтобы им начали пользоваться?", "ts": "2026-11-19T20:55:21+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Команда bin/osnovium вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T20:55:31+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T20:55:41+03:00"}
+{"kind": "brief", "ts": "2026-11-19T20:55:59+03:00"}
+{"kind": "brief", "ts": "2026-11-19T20:56:26+03:00"}
+{"gate": "G1", "kind": "gate_open", "ts": "2026-11-19T22:10:06+03:00"}
+{"channel": "tty", "gate": "G1", "kind": "gate_approve", "ts": "2026-11-19T22:12:06+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Подстановка команд запрещена.", "tool": "Bash", "ts": "2026-11-19T22:18:12+03:00"}
+{"kind": "stage", "stage": "plan", "ts": "2026-11-19T22:27:57+03:00"}
+{"kind": "budget", "ts": "2026-11-19T22:28:07+03:00", "usd": 200.0}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T22:29:15+03:00"}

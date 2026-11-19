@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-18T17:29:59+03:00",
+  "generated_at": "2026-11-19T22:19:27+03:00",
   "agent": {
     "cli_commands": 44,
     "methods": 21,
     "skills": 10,
     "subagents": 6,
-    "rule_files": 30,
+    "rule_files": 31,
     "rule_patterns": 13,
-    "tests": 83
+    "tests": 95
   },
   "evals": {
     "split": "test2",
@@ -24,6 +24,69 @@
     "tasks": 6
   },
   "projects": {
+    "megafon-app": {
+      "stage": "decided",
+      "sources": 23,
+      "claims": 128,
+      "claims_by_type": {
+        "fact": 39,
+        "hypothesis": 6,
+        "opinion": 29,
+        "stale": 54
+      },
+      "facts_verified": 39,
+      "options": 5,
+      "objections": 10,
+      "gates": {
+        "G1": "approved",
+        "G2": "approved",
+        "G3": "approved",
+        "G4": "approved"
+      },
+      "reviews": 0,
+      "commitments": 4,
+      "llm_usd": 16.8255,
+      "llm_rub": 1547.95,
+      "human_minutes": 0,
+      "total_rub": 1547.95,
+      "elapsed": {
+        "first": "2026-11-19T19:10:52+03:00",
+        "last": "2026-11-19T22:05:54+03:00"
+      }
+    },
+    "meganeuroseti": {
+      "stage": "decided",
+      "sources": 24,
+      "claims": 138,
+      "claims_by_type": {
+        "fact": 65,
+        "forecast": 3,
+        "hypothesis": 3,
+        "opinion": 8,
+        "retracted": 32,
+        "stale": 27
+      },
+      "facts_verified": 65,
+      "options": 5,
+      "objections": 10,
+      "gates": {
+        "G1": "approved",
+        "G2": "approved",
+        "G3": "approved",
+        "G4": "approved",
+        "R": "approved"
+      },
+      "reviews": 1,
+      "commitments": 4,
+      "llm_usd": 11.8903,
+      "llm_rub": 1093.91,
+      "human_minutes": 0,
+      "total_rub": 1093.91,
+      "elapsed": {
+        "first": "2026-11-19T17:42:33+03:00",
+        "last": "2026-11-19T21:07:38+03:00"
+      }
+    },
     "meganeuroseti-ref": {
       "stage": "decided",
       "sources": 19,

@@ -1,0 +1,1 @@
+Точка G1 принята. Сначала выполни ровно: bin/osnovanie advance  (у команды нет флагов). Затем bin/osnovanie resume и сделай то, что он говорит для этапа плана: план источников, бюджет (bin/osnovanie budget --help), затем bin/osnovanie gate open G2 с кратким пакетом. После gate open остановись.
