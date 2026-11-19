@@ -359,3 +359,12 @@
 {"agent": "general-purpose", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T19:08:33+03:00"}
 {"kind": "snapshot", "label": "после пересмотра", "ts": "2026-11-19T19:08:41+03:00", "version": "v2"}
 {"kind": "map_built", "ts": "2026-11-19T19:08:41+03:00"}
+{"id": "c135", "kind": "claim_added", "ts": "2026-11-19T21:07:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c135", "old": "c117", "ts": "2026-11-19T21:07:31+03:00"}
+{"id": "c136", "kind": "claim_added", "ts": "2026-11-19T21:07:33+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c136", "old": "c114", "ts": "2026-11-19T21:07:33+03:00"}
+{"id": "c137", "kind": "claim_added", "ts": "2026-11-19T21:07:34+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c137", "old": "c058", "ts": "2026-11-19T21:07:34+03:00"}
+{"id": "c138", "kind": "claim_added", "ts": "2026-11-19T21:07:35+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c138", "old": "c004", "ts": "2026-11-19T21:07:35+03:00"}
+{"contested": 17, "kind": "verify", "ts": "2026-11-19T21:07:38+03:00", "verified": 4}
