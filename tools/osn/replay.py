@@ -222,11 +222,15 @@ def _state_events(project: Project) -> list[dict]:
         "paused": lambda r: {"k": "ctx", "op": "pause"},
         "resumed": lambda r: {"k": "ctx", "op": "resume"},
     }
+    # В прогонах для оценки точки закрывала сессия Claude в роли руководителя; реплей не должен выдавать это за человека
+    by_operator = {(r.get("gate"), r.get("ts")) for r in project.records("gates") if "оператор прогона" in (r.get("comment") or "").lower()}
     out = []
     for record in project.records("events"):
         kind = record.get("kind", "")
         if kind.startswith("gate_"):
             event = {"k": "gate", "gate": record.get("gate"), "op": kind[5:], "channel": record.get("channel")}
+            if (record.get("gate"), record.get("ts")) in by_operator:
+                event["operator"] = True
         elif kind in mapping:
             event = mapping[kind](record)
         else:
@@ -308,7 +312,8 @@ def _label(event: dict, first: bool = False) -> str:
     if k == "user":
         return f"Человек: {event['gate']}" if event.get("gate") else ("Вопрос руководителя" if first else "Реплика человека")
     if k == "gate":
-        return f"{event['gate']}: " + {"open": "агент остановился и ждёт", "approve": "человек принял", "revise": "человек поправил", "reject": "человек отклонил"}.get(event.get("op"), event.get("op", ""))
+        who = "оператор прогона (Claude, не человек)" if event.get("operator") else "человек"
+        return f"{event['gate']}: " + {"open": "агент остановился и ждёт", "approve": f"{who} принял", "revise": f"{who} поправил", "reject": f"{who} отклонил"}.get(event.get("op"), event.get("op", ""))
     if k == "stage":
         return f"Этап: {event.get('stage')}"
     if k == "review":

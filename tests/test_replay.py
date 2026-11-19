@@ -78,3 +78,19 @@ class Replay(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OperatorGates(unittest.TestCase):
+    def test_gate_closed_by_run_operator_is_not_called_human(self):
+        box = Sandbox()
+        self.addCleanup(box.close)
+        full_path(box)
+        gates = box.tmp / "projects" / "demo" / "state" / "gates.jsonl"
+        rows = [json.loads(x) for x in gates.read_text("utf-8").splitlines() if x.strip()]
+        first = next(r for r in rows if r["action"] == "approve")
+        first["comment"] = "Оператор прогона (сессия Claude в роли руководителя, не человек): принято"
+        gates.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), "utf-8")
+        from osn.store import Project
+        labels = [replay._label(e) for e in replay._state_events(Project("demo", box.tmp)) if e["k"] == "gate" and e["op"] == "approve"]
+        self.assertIn("оператор прогона (Claude, не человек) принял", labels[0])
+        self.assertTrue(labels[1:] and all(label.endswith(": человек принял") for label in labels[1:]))
