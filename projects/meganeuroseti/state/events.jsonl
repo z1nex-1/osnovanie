@@ -1,0 +1,251 @@
+{"kind": "created", "question": "Через полгода после запуска МегаНейросетей: кому и как продавать и стоит ли продолжать направление?", "ts": "2026-11-19T17:42:33+03:00"}
+{"kind": "brief", "ts": "2026-11-19T17:42:33+03:00"}
+{"gate": "G1", "kind": "gate_open", "ts": "2026-11-19T17:42:33+03:00"}
+{"channel": "tty", "gate": "G1", "kind": "gate_approve", "ts": "2026-11-19T17:44:28+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T17:44:46+03:00"}
+{"kind": "stage", "stage": "plan", "ts": "2026-11-19T17:44:49+03:00"}
+{"kind": "budget", "ts": "2026-11-19T17:45:23+03:00", "usd": 15.0}
+{"agent": "researcher", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T17:46:48+03:00"}
+{"kind": "source_plan", "ts": "2026-11-19T17:46:52+03:00", "url": "https://moscow.megafon.ru/corporate/services/mega_ai"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда cd вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T17:47:04+03:00"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:16+03:00", "url": "https://moscow.megafon.ru/services/joy/gpt/gpt.html"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:16+03:00", "url": "https://www.anti-malware.ru/news/2026-04-10-121598/49666"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:16+03:00", "url": "https://mobile-review.com/all/articles/operator/tarify-s-nejrosetyami-u-operatorov/"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:16+03:00", "url": "https://www.comnews.ru/content/244785/2026-04-15/2026-w16/1010/bilayn-ustanovil-novuyu-normu-telekoma-kompaniya-vklyuchila-valyutu-dlya-neyrosetey-svoi-pakety"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:16+03:00", "url": "https://developers.sber.ru/docs/ru/gigachat/tariffs/individual-tariffs"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:17+03:00", "url": "https://developers.sber.ru/docs/ru/gigachat/tariffs/legal-tariffs"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:17+03:00", "url": "https://yandex.cloud/en/docs/ai-studio/pricing"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:17+03:00", "url": "https://developers.openai.com/api/docs/pricing"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:17+03:00", "url": "https://www.tks.ru/technology/2026/08/25/0004/"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:18+03:00", "url": "https://toolfox.ru/services/s/bothub"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:18+03:00", "url": "https://toolfox.ru/services/s/gptunnel"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:18+03:00", "url": "https://habr.com/ru/companies/bothub/news/896184"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:19+03:00", "url": "https://www.sostav.ru/blogs/288620/82742"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:19+03:00", "url": "https://www.comnews.ru/content/245871/2026-06-18/2026-w25/1007/chetvernoy-pryzhok-k-2030-g-rossiyskiy-rynok-dlya-iskusstvennogo-intellekta-vyrastet-do-95-mlrd-rub"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:19+03:00", "url": "https://finance.mail.ru/article/um-nabil-karmanyi-69221885/"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:20+03:00", "url": "https://mts.ai/wp-content/uploads/GEN-AI-v-rabote.pdf"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:20+03:00", "url": "https://www1.ru/news/2026/03/20/chatgpt-claude-i-gemini-v-rossii-gotoviat-ograniceniia-dlia-zarubeznyx-neironok.html"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:21+03:00", "url": "https://hi-tech.mail.ru/news/149926-v-rossii-ne-budut-zapreshat-zarubezhnye-nejroseti/"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:21+03:00", "url": "https://www.m24.ru/news/20032026/884275"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:22+03:00", "url": "https://kod.ru/blokirovka-chatgpt-v-rossii"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:22+03:00", "url": "https://digital-razor.ru/media/articles/workstation/cloud-gpu-vs-own-server-cost/"}
+{"kind": "source_plan", "ts": "2026-11-19T17:47:23+03:00", "url": "https://tproger.ru/articles/luchwie-rossijskie-nejroseti-analogi-chata-gpt--chat-gpt-na-russkom--top-8-nejrosetej--kotorye-predostavlyayut-funkcional-izvestnyh-nejrosetej-v-rossii--gpt-o4--midjorney--gemini--dalle--deepseek-i-dr"}
+{"gate": "G2", "kind": "gate_open", "ts": "2026-11-19T17:47:52+03:00"}
+{"channel": "tty", "gate": "G2", "kind": "gate_approve", "ts": "2026-11-19T17:48:07+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T17:48:28+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T17:48:40+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда for вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T17:48:44+03:00"}
+{"id": "s001", "kind": "source_added", "quarantined": 0, "title": "https://moscow.megafon.ru/corporate/services/mega_ai", "ts": "2026-11-19T17:48:57+03:00"}
+{"id": "s002", "kind": "source_added", "quarantined": 0, "title": "https://moscow.megafon.ru/services/joy/gpt/gpt.html", "ts": "2026-11-19T17:49:05+03:00"}
+{"id": "s003", "kind": "source_added", "quarantined": 0, "title": "https://www.anti-malware.ru/news/2026-04-10-121598/49666", "ts": "2026-11-19T17:49:07+03:00"}
+{"id": "s004", "kind": "source_added", "quarantined": 0, "title": "https://mobile-review.com/all/articles/operator/tarify-s-nejrosetyami-u-operatorov/", "ts": "2026-11-19T17:49:09+03:00"}
+{"id": "s005", "kind": "source_added", "quarantined": 1, "title": "https://www.comnews.ru/content/244785/2026-04-15/2026-w16/1010/bilayn-ustanovil-novuyu-normu-telekoma-kompaniya-vklyuchila-valyutu-dlya-neyrosetey-svoi-pakety", "ts": "2026-11-19T17:49:11+03:00"}
+{"id": "s006", "kind": "source_added", "quarantined": 0, "title": "https://developers.sber.ru/docs/ru/gigachat/tariffs/individual-tariffs", "ts": "2026-11-19T17:49:13+03:00"}
+{"id": "s007", "kind": "source_added", "quarantined": 0, "title": "https://developers.sber.ru/docs/ru/gigachat/tariffs/legal-tariffs", "ts": "2026-11-19T17:49:15+03:00"}
+{"id": "s008", "kind": "source_added", "quarantined": 0, "title": "https://yandex.cloud/en/docs/ai-studio/pricing", "ts": "2026-11-19T17:49:17+03:00"}
+{"id": "s009", "kind": "source_added", "quarantined": 1, "title": "https://developers.openai.com/api/docs/pricing", "ts": "2026-11-19T17:49:21+03:00"}
+{"id": "s010", "kind": "source_added", "quarantined": 0, "title": "https://www.tks.ru/technology/2026/08/25/0004/", "ts": "2026-11-19T17:49:24+03:00"}
+{"id": "s011", "kind": "source_added", "quarantined": 0, "title": "https://toolfox.ru/services/s/bothub", "ts": "2026-11-19T17:49:26+03:00"}
+{"id": "s012", "kind": "source_added", "quarantined": 0, "title": "https://toolfox.ru/services/s/gptunnel", "ts": "2026-11-19T17:49:29+03:00"}
+{"kind": "failure", "op": "fetch", "ts": "2026-11-19T17:49:32+03:00", "url": "https://habr.com/ru/companies/bothub/news/896184"}
+{"kind": "failure", "op": "fetch", "ts": "2026-11-19T17:49:33+03:00", "url": "https://www.sostav.ru/blogs/288620/82742"}
+{"id": "s013", "kind": "source_added", "quarantined": 0, "title": "https://www.comnews.ru/content/245871/2026-06-18/2026-w25/1007/chetvernoy-pryzhok-k-2030-g-rossiyskiy-rynok-dlya-iskusstvennogo-intellekta-vyrastet-do-95-mlrd-rub", "ts": "2026-11-19T17:49:36+03:00"}
+{"id": "s014", "kind": "source_added", "quarantined": 0, "title": "https://finance.mail.ru/article/um-nabil-karmanyi-69221885/", "ts": "2026-11-19T17:49:39+03:00"}
+{"id": "s015", "kind": "source_added", "quarantined": 0, "title": "https://mts.ai/wp-content/uploads/GEN-AI-v-rabote.pdf", "ts": "2026-11-19T17:49:44+03:00"}
+{"id": "s016", "kind": "source_added", "quarantined": 0, "title": "https://www1.ru/news/2026/03/20/chatgpt-claude-i-gemini-v-rossii-gotoviat-ograniceniia-dlia-zarubeznyx-neironok.html", "ts": "2026-11-19T17:49:46+03:00"}
+{"id": "s017", "kind": "source_added", "quarantined": 0, "title": "https://hi-tech.mail.ru/news/149926-v-rossii-ne-budut-zapreshat-zarubezhnye-nejroseti/", "ts": "2026-11-19T17:49:48+03:00"}
+{"id": "s018", "kind": "source_added", "quarantined": 0, "title": "https://www.m24.ru/news/20032026/884275", "ts": "2026-11-19T17:49:50+03:00"}
+{"id": "s019", "kind": "source_added", "quarantined": 0, "title": "https://kod.ru/blokirovka-chatgpt-v-rossii", "ts": "2026-11-19T17:49:52+03:00"}
+{"id": "s020", "kind": "source_added", "quarantined": 0, "title": "https://digital-razor.ru/media/articles/workstation/cloud-gpu-vs-own-server-cost/", "ts": "2026-11-19T17:49:54+03:00"}
+{"id": "s021", "kind": "source_added", "quarantined": 0, "title": "https://tproger.ru/articles/luchwie-rossijskie-nejroseti-analogi-chata-gpt--chat-gpt-na-russkom--top-8-nejrosetej--kotorye-predostavlyayut-funkcional-izvestnyh-nejrosetej-v-rossii--gpt-o4--midjorney--gemini--dalle--deepseek-i-dr", "ts": "2026-11-19T17:49:56+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T18:11:41+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:11:48+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:12:07+03:00"}
+{"id": "c001", "kind": "claim_added", "ts": "2026-11-19T18:12:11+03:00", "type": "fact"}
+{"id": "c001", "kind": "claim_retracted", "ts": "2026-11-19T18:12:17+03:00", "why": "пробная запись для проверки формата"}
+{"id": "s022", "kind": "source_added", "quarantined": 0, "title": "https://www.tks.ru/technology/2026/08/03/0002/ot-gigachat-do-natsionalnyih-modelej-kak-rossiya-sobiraetsya-stroit-sobstvennyij-ii/", "ts": "2026-11-19T18:13:09+03:00"}
+{"id": "c002", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c003", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c004", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c005", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c006", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c007", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "opinion"}
+{"id": "c008", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c009", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c010", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c011", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c012", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c013", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c014", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c015", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c016", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "opinion"}
+{"id": "c017", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "opinion"}
+{"id": "c018", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"id": "c019", "kind": "claim_added", "ts": "2026-11-19T18:13:31+03:00", "type": "fact"}
+{"agent": "researcher", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T18:13:50+03:00"}
+{"id": "c020", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c021", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c022", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c023", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c024", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c025", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c026", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c027", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c028", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c029", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "opinion"}
+{"id": "c030", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c031", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c032", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c033", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c034", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c035", "kind": "claim_added", "ts": "2026-11-19T18:14:05+03:00", "type": "fact"}
+{"id": "c036", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c037", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c038", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "forecast"}
+{"id": "c039", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "forecast"}
+{"id": "c040", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "opinion"}
+{"id": "c041", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "opinion"}
+{"id": "c042", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c043", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "forecast"}
+{"id": "c044", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "hypothesis"}
+{"id": "c045", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c046", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c047", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c048", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c049", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c050", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c051", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c052", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c053", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c054", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c055", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c056", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c057", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c058", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c059", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "opinion"}
+{"id": "c060", "kind": "claim_added", "ts": "2026-11-19T18:14:30+03:00", "type": "fact"}
+{"id": "c061", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c061", "old": "c010", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c062", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c062", "old": "c013", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c063", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c063", "old": "c014", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c064", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c064", "old": "c018", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c065", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c065", "old": "c019", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c066", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c066", "old": "c020", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c067", "kind": "claim_added", "ts": "2026-11-19T18:15:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c067", "old": "c021", "ts": "2026-11-19T18:15:04+03:00"}
+{"id": "c068", "kind": "claim_added", "ts": "2026-11-19T18:15:05+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c068", "old": "c023", "ts": "2026-11-19T18:15:05+03:00"}
+{"id": "c069", "kind": "claim_added", "ts": "2026-11-19T18:15:16+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c069", "old": "c028", "ts": "2026-11-19T18:15:16+03:00"}
+{"id": "c070", "kind": "claim_added", "ts": "2026-11-19T18:15:16+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c070", "old": "c030", "ts": "2026-11-19T18:15:16+03:00"}
+{"id": "c071", "kind": "claim_added", "ts": "2026-11-19T18:15:16+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c071", "old": "c031", "ts": "2026-11-19T18:15:16+03:00"}
+{"id": "c072", "kind": "claim_added", "ts": "2026-11-19T18:15:16+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c072", "old": "c036", "ts": "2026-11-19T18:15:16+03:00"}
+{"id": "c073", "kind": "claim_added", "ts": "2026-11-19T18:15:16+03:00", "type": "forecast"}
+{"kind": "claim_superseded", "new": "c073", "old": "c038", "ts": "2026-11-19T18:15:16+03:00"}
+{"id": "c074", "kind": "claim_added", "ts": "2026-11-19T18:15:16+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c074", "old": "c042", "ts": "2026-11-19T18:15:16+03:00"}
+{"id": "c075", "kind": "claim_added", "ts": "2026-11-19T18:15:17+03:00", "type": "forecast"}
+{"kind": "claim_superseded", "new": "c075", "old": "c043", "ts": "2026-11-19T18:15:17+03:00"}
+{"id": "c076", "kind": "claim_added", "ts": "2026-11-19T18:15:17+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c076", "old": "c046", "ts": "2026-11-19T18:15:17+03:00"}
+{"id": "c077", "kind": "claim_added", "ts": "2026-11-19T18:15:17+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c077", "old": "c047", "ts": "2026-11-19T18:15:17+03:00"}
+{"id": "c078", "kind": "claim_added", "ts": "2026-11-19T18:15:17+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c078", "old": "c053", "ts": "2026-11-19T18:15:17+03:00"}
+{"id": "c079", "kind": "claim_added", "ts": "2026-11-19T18:15:17+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c079", "old": "c056", "ts": "2026-11-19T18:15:17+03:00"}
+{"id": "c080", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"id": "c081", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"id": "c082", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"id": "c083", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"id": "c084", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"id": "c085", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"id": "c086", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "opinion"}
+{"id": "c087", "kind": "claim_added", "ts": "2026-11-19T18:15:25+03:00", "type": "fact"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-19T18:16:04+03:00"}
+{"kind": "stage", "stage": "research", "ts": "2026-11-19T18:16:09+03:00"}
+{"contested": 43, "kind": "verify", "ts": "2026-11-19T18:16:14+03:00", "verified": 37}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда for вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:16:36+03:00"}
+{"id": "c088", "kind": "claim_added", "ts": "2026-11-19T18:17:24+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c088", "old": "c002", "ts": "2026-11-19T18:17:24+03:00"}
+{"id": "c089", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c090", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c091", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c092", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c093", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c094", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c095", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c096", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c097", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "opinion"}
+{"id": "c098", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c099", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c100", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c101", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c102", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c103", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c104", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c105", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c106", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c107", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c108", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c109", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c110", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c111", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c112", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c113", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c114", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"id": "c115", "kind": "claim_added", "ts": "2026-11-19T18:18:12+03:00", "type": "fact"}
+{"contested": 44, "kind": "verify", "ts": "2026-11-19T18:18:15+03:00", "verified": 27}
+{"id": "c116", "kind": "claim_added", "ts": "2026-11-19T18:18:21+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c116", "old": "c100", "ts": "2026-11-19T18:18:21+03:00"}
+{"id": "c117", "kind": "claim_added", "ts": "2026-11-19T18:18:35+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c117", "old": "c077", "ts": "2026-11-19T18:18:35+03:00"}
+{"id": "c118", "kind": "claim_added", "ts": "2026-11-19T18:18:38+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c118", "old": "c082", "ts": "2026-11-19T18:18:38+03:00"}
+{"contested": 44, "kind": "verify", "ts": "2026-11-19T18:18:41+03:00", "verified": 3}
+{"id": "c008", "kind": "claim_retracted", "ts": "2026-11-19T18:19:36+03:00", "why": "заменено c089: числа не в цитате"}
+{"id": "c009", "kind": "claim_retracted", "ts": "2026-11-19T18:19:36+03:00", "why": "заменено c090: числа не в цитате"}
+{"id": "c011", "kind": "claim_retracted", "ts": "2026-11-19T18:19:37+03:00", "why": "заменено c091: даты не в цитате"}
+{"id": "c015", "kind": "claim_retracted", "ts": "2026-11-19T18:19:38+03:00", "why": "заменено c092"}
+{"id": "c022", "kind": "claim_retracted", "ts": "2026-11-19T18:19:38+03:00", "why": "заменено c093"}
+{"id": "c025", "kind": "claim_retracted", "ts": "2026-11-19T18:19:39+03:00", "why": "заменено c094"}
+{"id": "c026", "kind": "claim_retracted", "ts": "2026-11-19T18:19:40+03:00", "why": "заменено c116"}
+{"id": "c037", "kind": "claim_retracted", "ts": "2026-11-19T18:19:40+03:00", "why": "заменено c096"}
+{"id": "c040", "kind": "claim_retracted", "ts": "2026-11-19T18:19:49+03:00", "why": "заменено c097"}
+{"id": "c045", "kind": "claim_retracted", "ts": "2026-11-19T18:19:50+03:00", "why": "заменено c098"}
+{"id": "c049", "kind": "claim_retracted", "ts": "2026-11-19T18:19:51+03:00", "why": "заменено c099"}
+{"id": "c051", "kind": "claim_retracted", "ts": "2026-11-19T18:19:51+03:00", "why": "заменено новой версией без дат вне цитаты"}
+{"id": "c052", "kind": "claim_retracted", "ts": "2026-11-19T18:19:52+03:00", "why": "заменено c101"}
+{"id": "c054", "kind": "claim_retracted", "ts": "2026-11-19T18:19:52+03:00", "why": "заменено c102"}
+{"id": "c057", "kind": "claim_retracted", "ts": "2026-11-19T18:19:53+03:00", "why": "заменено c103"}
+{"id": "c060", "kind": "claim_retracted", "ts": "2026-11-19T18:19:53+03:00", "why": "заменено c104"}
+{"id": "c119", "kind": "claim_added", "ts": "2026-11-19T18:20:03+03:00", "type": "fact"}
+{"contested": 28, "kind": "verify", "ts": "2026-11-19T18:20:07+03:00", "verified": 1}
+{"id": "c061", "kind": "claim_retracted", "ts": "2026-11-19T18:20:10+03:00", "why": "заменено c105"}
+{"id": "c064", "kind": "claim_retracted", "ts": "2026-11-19T18:20:11+03:00", "why": "заменено c106"}
+{"id": "c066", "kind": "claim_retracted", "ts": "2026-11-19T18:20:11+03:00", "why": "заменено c107"}
+{"id": "c067", "kind": "claim_retracted", "ts": "2026-11-19T18:20:12+03:00", "why": "заменено c108"}
+{"id": "c068", "kind": "claim_retracted", "ts": "2026-11-19T18:20:13+03:00", "why": "заменено c109"}
+{"id": "c069", "kind": "claim_retracted", "ts": "2026-11-19T18:20:13+03:00", "why": "заменено c110"}
+{"id": "c070", "kind": "claim_retracted", "ts": "2026-11-19T18:20:14+03:00", "why": "заменено c111"}
+{"id": "c074", "kind": "claim_retracted", "ts": "2026-11-19T18:20:15+03:00", "why": "заменено c112"}
+{"id": "c076", "kind": "claim_retracted", "ts": "2026-11-19T18:20:15+03:00", "why": "заменено c113"}
+{"id": "c078", "kind": "claim_retracted", "ts": "2026-11-19T18:20:16+03:00", "why": "заменено c114"}
+{"id": "c079", "kind": "claim_retracted", "ts": "2026-11-19T18:20:17+03:00", "why": "заменено c115"}
+{"id": "c100", "kind": "claim_retracted", "ts": "2026-11-19T18:20:17+03:00", "why": "заменено c119"}
+{"contested": 16, "kind": "verify", "ts": "2026-11-19T18:20:36+03:00", "verified": 0}
+{"contested": 16, "kind": "verify", "ts": "2026-11-19T18:20:41+03:00", "verified": 0}
+{"agent": "verifier", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Grep", "ts": "2026-11-19T18:21:35+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Команда cat вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:21:41+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Команда curl вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T18:21:41+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Запись разрешена только в projects/<проект>/outputs/. Состояние меняется через osnovanie, правила и код защищены.", "tool": "Write", "ts": "2026-11-19T18:21:41+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Прямое чтение страниц запрещено. Страницы загружает osnovanie source fetch: там allowlist, разбор и карантин.", "tool": "WebFetch", "ts": "2026-11-19T18:21:41+03:00"}
+{"agent": "opencode-main", "kind": "blocked", "reason": "Сырые файлы и карантин недоступны модели: там может быть внедрённый текст.", "tool": "Read", "ts": "2026-11-19T18:21:41+03:00"}

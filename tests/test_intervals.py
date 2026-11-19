@@ -85,3 +85,23 @@ def test_opencode_runs_under_the_same_policy():
     assert not _opencode("tool", {"tool": "webfetch", "args": {"url": "https://example.com"}})["allow"]
     assert not _opencode("tool", {"tool": "task", "args": {}})["allow"]
     assert not _opencode("tool", {"tool": "read", "args": {"filePath": "projects/x/materials/raw/s001.html"}})["allow"]
+
+
+def test_claude_judge_accepts_yes_no_question_without_options(monkeypatch):
+    from tools.osn import judge
+
+    seen = {}
+
+    class Done:
+        returncode = 0
+        stderr = ""
+        stdout = json.dumps({"structured_output": {"answer": "yes", "confidence": 0.9}, "total_cost_usd": 0})
+
+    def fake_run(command, input, **_):
+        seen["prompt"] = input
+        return Done()
+
+    monkeypatch.setattr(judge.shutil, "which", lambda _: "/usr/bin/claude")
+    monkeypatch.setattr(judge.subprocess, "run", fake_run)
+    verdict = judge._call_claude("sonnet", "noul", "цитата", "следует ли утверждение из цитаты", None)
+    assert verdict["answer"] == "yes" and "yes или no" in seen["prompt"]

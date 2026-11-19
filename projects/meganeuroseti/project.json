@@ -1,0 +1,28 @@
+{
+  "slug": "meganeuroseti",
+  "title": "МегаНейросети: кому продавать и продолжать ли",
+  "question": "Через полгода после запуска МегаНейросетей: кому и как продавать и стоит ли продолжать направление?",
+  "created_at": "2026-11-19T17:42:33+03:00",
+  "budget_usd": 15.0,
+  "approved_domains": [
+    "developers.openai.com",
+    "developers.sber.ru",
+    "digital-razor.ru",
+    "finance.mail.ru",
+    "habr.com",
+    "hi-tech.mail.ru",
+    "kod.ru",
+    "mobile-review.com",
+    "moscow.megafon.ru",
+    "mts.ai",
+    "toolfox.ru",
+    "tproger.ru",
+    "www.anti-malware.ru",
+    "www.comnews.ru",
+    "www.m24.ru",
+    "www.sostav.ru",
+    "www.tks.ru",
+    "www1.ru",
+    "yandex.cloud"
+  ]
+}

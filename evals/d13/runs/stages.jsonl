@@ -1,0 +1,6 @@
+{"task":"t1-meganeuroseti","stage":"intake","agent":"general-purpose (Opus 5.5)","tokens":62728,"tool_uses":5,"seconds":21.5}
+{"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Opus 5.5)","tokens":64671,"tool_uses":18,"seconds":58.4}
+{"task":"t1-meganeuroseti","stage":"collect","agent":"researcher (Sonnet)","tokens":41079,"tool_uses":19,"seconds":105.9}
+{"task":"t1-meganeuroseti","stage":"collect","agent":"general-purpose (Opus 5.5), продолжение","tokens":69093,"tool_uses":7,"seconds":24.0}
+{"task":"t1-meganeuroseti","stage":"research","agent":"researcher (Sonnet), загрузка и утверждения, второй заход после перезапуска","tokens":136871,"tool_uses":38,"seconds":258.2,"note":"первый заход прерван перезапуском сессии, его время не записано"}
+{"task":"t1-meganeuroseti","stage":"research","agent":"general-purpose (Opus 5.5)","tokens":135473,"tool_uses":97,"seconds":276.4}

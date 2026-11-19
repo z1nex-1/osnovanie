@@ -1,0 +1,2 @@
+{"error": "Не удалось загрузить https://habr.com/ru/companies/bothub/news/896184: HTTP Error 403: Forbidden", "op": "fetch", "ts": "2026-11-19T17:49:32+03:00", "url": "https://habr.com/ru/companies/bothub/news/896184"}
+{"error": "Не удалось загрузить https://www.sostav.ru/blogs/288620/82742: HTTP Error 404: Not Found", "op": "fetch", "ts": "2026-11-19T17:49:33+03:00", "url": "https://www.sostav.ru/blogs/288620/82742"}
