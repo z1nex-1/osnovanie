@@ -30,13 +30,14 @@ nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}nav button{font:inher
 .card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin:0 0 10px;font-size:14px}.card .k{font-size:12px;color:var(--mute)}blockquote{margin:6px 0;padding-left:8px;border-left:2px solid var(--brand)}
 .ux{position:relative;display:inline-block;max-width:100%}.ux img{max-width:100%;display:block}.ux i{position:absolute;border:2px solid var(--accent);background:rgba(115,25,130,.14);cursor:pointer}
 @media (max-width:860px){main{grid-template-columns:1fr}aside{position:static;border-left:0;border-top:1px solid var(--line);max-height:none}article,header,.tiles{padding-left:16px;padding-right:16px}}
+.k.warn{color:#9a2a17}
 """
 JS = """
 const D=JSON.parse(document.getElementById('data').textContent),P=document.getElementById('panel');
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function card(id){const c=D.claims[id];if(!c)return'';const s=D.sources[c.source_id];
 const link=s?(/^https?:/.test(s.origin)?`<a href="${esc(s.origin)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a>`:esc(s.title)):'нет источника';
-return`<div class=card><b>${id}</b> · ${esc(c.label)}<p>${esc(c.text)}</p>${c.quote?`<blockquote>${esc(c.quote)}</blockquote>`:''}<div class=k>Источник: ${link}${s?' · получен '+esc(s.accessed_at.slice(0,10))+' · '+esc(s.kind):''}</div><div class=k>Проверено: ${esc(c.verified_by||'—')}${c.confidence!=null?' · уверенность '+Math.round(c.confidence*100)+'%':''}${c.expires?' · действует до '+esc(c.expires):''}</div>${c.depends_on.length?`<div class=k>Зависит от: ${c.depends_on.map(esc).join(', ')}</div>`:''}</div>`}
+return`<div class=card><b>${id}</b> · ${esc(c.label)}<p>${esc(c.text)}</p>${c.quote?`<blockquote>${esc(c.quote)}</blockquote>`:''}<div class=k>Источник: ${link}${s?' · получен '+esc(s.accessed_at.slice(0,10))+' · '+esc(s.kind):''}</div><div class=k>Проверено: ${esc(c.verified_by||'—')}${c.confidence!=null?' · уверенность '+Math.round(c.confidence*100)+'%':''}${c.expires?' · действует до '+esc(c.expires):''}</div>${c.depends_on.length?`<div class=k>Зависит от: ${c.depends_on.map(esc).join(', ')}</div>`:''}${(c.flips||[]).map(f=>`<div class="k warn">Порог: ${esc(f)}</div>`).join('')}</div>`}
 function show(ids){P.innerHTML=ids.map(card).join('')||'<p>Нет данных.</p>'}
 document.querySelectorAll('[data-c]').forEach(e=>{const go=()=>show(e.dataset.c.split(','));e.addEventListener('click',go);e.addEventListener('keydown',k=>{if(k.key==='Enter')go()})});
 const tabs=[...document.querySelectorAll('nav button')];tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('.doc').forEach(d=>d.classList.toggle('on',d.id===b.dataset.t))}));
@@ -96,6 +97,24 @@ def _ux_panel(project: Project, claims: dict, sources: dict) -> str:
     return "".join(blocks)
 
 
+def _num(value: float) -> str:
+    return f"{value:,.4g}".replace(",", " ") if abs(value) >= 1000 else f"{value:.4g}"
+
+
+def flip_text(flip: dict, leader: str) -> str:
+    side = "опустится до" if flip["direction"] == "low" else "поднимется до"
+    return f"{leader} теряет первое место, если «{flip['label']}» {side} {_num(flip['threshold'])} {flip['unit']} (сейчас {_num(flip['base'])}); лидером станет {flip['new_leader']}"
+
+
+def _flip_table(run: dict) -> str:
+    flips = run.get("breakeven", [])
+    if not flips:
+        return "<p>В пределах заданных диапазонов лидер не меняется.</p>"
+    leader = run["ranking"][0]
+    body = "".join(f"<tr><td>{html.escape(f['label'])}</td><td>{f.get('claim') or 'допущение'}</td><td>{_num(f['base'])} {html.escape(f['unit'])}</td><td>{_num(f['threshold'])}</td><td>{html.escape(f['new_leader'])}</td></tr>" for f in flips)
+    return f"<h2>Когда {html.escape(leader)} проигрывает</h2><table><tr><th>Величина</th><th>Основание</th><th>Сейчас</th><th>Порог</th><th>Новый лидер</th></tr>{body}</table>"
+
+
 def build(project: Project) -> Path:
     claims = project.current("claims")
     sources = project.current("sources")
@@ -125,11 +144,15 @@ def build(project: Project) -> Path:
     tabs.append('<button role="tab" aria-selected="false" data-t="audit">Ход работы</button>')
     run = model.last_run(project)
     rows = ""
+    flips_by_claim: dict[str, list[str]] = {}
     if run:
-        rows = "<h2>Расчёт вариантов</h2><table><tr><th>Вариант</th><th>База</th><th>P10</th><th>P90</th><th>Лидирует</th></tr>" + "".join(f"<tr><td>{o}</td><td>{r['base']:,.0f}</td><td>{r['p10']:,.0f}</td><td>{r['p90']:,.0f}</td><td>{r['p_best'] * 100:.0f}%</td></tr>" for o, r in run["results"].items()) + f"</table><p>Единица: {html.escape(run['output_unit'])}. Доля допущений в величинах: {run['assumption_share'] * 100:.0f}%.</p>"
+        for flip in run.get("breakeven", []):
+            if flip.get("claim"):
+                flips_by_claim.setdefault(flip["claim"], []).append(flip_text(flip, run["ranking"][0]))
+        rows = "<h2>Расчёт вариантов</h2><table><tr><th>Вариант</th><th>База</th><th>P10</th><th>P90</th><th>Лидирует</th></tr>" + "".join(f"<tr><td>{o}</td><td>{r['base']:,.0f}</td><td>{r['p10']:,.0f}</td><td>{r['p90']:,.0f}</td><td>{r['p_best'] * 100:.0f}%</td></tr>" for o, r in run["results"].items()) + f"</table><p>Единица: {html.escape(run['output_unit'])}. Доля допущений в величинах: {run['assumption_share'] * 100:.0f}%.</p>" + _flip_table(run)
     docs.append(f'<section class="doc" id="audit"><h2>Точки человека</h2><table><tr><th>Точка</th><th>Смысл</th><th>Статус</th><th>Канал</th><th>Когда</th><th>Комментарий</th></tr>{gates}</table>{rows}</section>')
     payload = {
-        "claims": {cid: {"label": claims_mod.LABEL[claims_mod.effective_type(c)], "text": c["text"], "quote": c.get("quote"), "source_id": c.get("source_id"), "verified_by": c.get("verified_by"), "depends_on": c.get("depends_on", []), "confidence": c.get("confidence"), "expires": c.get("expires")} for cid, c in claims.items()},
+        "claims": {cid: {"label": claims_mod.LABEL[claims_mod.effective_type(c)], "text": c["text"], "quote": c.get("quote"), "source_id": c.get("source_id"), "verified_by": c.get("verified_by"), "depends_on": c.get("depends_on", []), "confidence": c.get("confidence"), "expires": c.get("expires"), "flips": flips_by_claim.get(cid, [])} for cid, c in claims.items()},
         "sources": {sid: {"title": s["title"], "origin": s["origin"], "accessed_at": s["accessed_at"], "kind": s["kind"]} for sid, s in sources.items()},
     }
     blob = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")

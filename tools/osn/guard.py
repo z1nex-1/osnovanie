@@ -11,6 +11,8 @@ from .store import active_project, repo_root
 
 SANITIZERS = {"source-sanitizer", "verifier"}
 MATERIAL_SEARCHERS = {"researcher"}
+# среды без отдельных субагентов: основной агент сам читает выжимку источника
+SINGLE_AGENTS = {"cursor-main", "opencode-main"}
 ALLOWED_TOOLS = {"Read", "Grep", "Glob", "Write", "Edit", "MultiEdit", "Bash", "WebSearch", "Agent", "Task", "TodoWrite", "AskUserQuestion", "Skill", "ToolSearch"}
 PROJECT_MCP = "mcp__kb-state__"
 SAFE_ALWAYS = {"Skill", "ToolSearch", "TodoWrite", "AskUserQuestion"}
@@ -63,7 +65,7 @@ def check_read(path_text: str, agent: str | None) -> dict:
     zone = _material_zone(relative)
     if zone in {"raw", "quarantine"}:
         return _deny("Сырые файлы и карантин недоступны модели: там может быть внедрённый текст.")
-    if zone == "parsed" and agent not in SANITIZERS | {"cursor-main"}:
+    if zone == "parsed" and agent not in SANITIZERS | SINGLE_AGENTS:
         return _deny("Текст источников читает только субагент source-sanitizer. Основной агент работает с его выжимкой.")
     return _allow()
 
@@ -131,7 +133,7 @@ def _check_cli(args: list[str], agent: str | None) -> dict:
         return _deny("Это решение принимает только человек: в терминале или сообщением в чате.")
     if "--materials" in words and agent not in MATERIAL_SEARCHERS:
         return _deny("Поиск по материалам доступен только субагенту researcher.")
-    if words[:2] == ["source", "read"] and agent not in SANITIZERS | MATERIAL_SEARCHERS | {"cursor-main"}:
+    if words[:2] == ["source", "read"] and agent not in SANITIZERS | MATERIAL_SEARCHERS | SINGLE_AGENTS:
         return _deny("Текст источника читают только субагенты.")
     if words[:1] == ["serve"]:
         return _deny("HTTP-сервис запускает человек.")

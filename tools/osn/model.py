@@ -5,6 +5,7 @@ import hashlib
 import operator
 import random
 
+from . import intervals
 from .claims import resolve_chain
 from .store import OsnError, PolicyError, Project, now, read_json, write_json
 
@@ -101,6 +102,8 @@ def _resolve(project: Project, model: dict) -> dict[str, dict]:
     claims = project.current("claims")
     resolved = {}
     for name, spec in model["params"].items():
+        if "successes" in spec and "trials" in spec:
+            spec = {**spec, **intervals.share_spec(int(spec["successes"]), int(spec["trials"]), float(spec.get("level", 0.9)))}
         for field in ("label", "unit", "base"):
             if field not in spec:
                 raise OsnError(f"У величины {name} нет поля {field}.")
@@ -125,7 +128,7 @@ def _resolve(project: Project, model: dict) -> dict[str, dict]:
                         low, high = high, low
                 else:
                     base = float(link["value"])
-        resolved[name] = {"label": spec["label"], "unit": spec["unit"], "low": low, "base": base, "high": high, "claim": link["id"] if link else None, "basis": spec.get("basis")}
+        resolved[name] = {"label": spec["label"], "unit": spec["unit"], "low": low, "base": base, "high": high, "claim": link["id"] if link else None, "basis": spec.get("basis"), "interval": spec.get("interval")}
     return resolved
 
 
@@ -185,7 +188,7 @@ def run(project: Project, tag: str = "manual") -> dict:
     record = {
         "id": project.next_id("model_runs", "r"), "ts": now(), "tag": tag, "output_unit": model["output_unit"],
         "results": results, "ranking": ranking, "breakeven": _breakeven(model, params, constants, base_env, ranking[0]),
-        "params": {k: {"base": round(p["base"], 4), "low": round(p["low"], 4), "high": round(p["high"], 4), "claim": p["claim"], "label": p["label"], "unit": p["unit"]} for k, p in params.items()},
+        "params": {k: {"base": round(p["base"], 4), "low": round(p["low"], 4), "high": round(p["high"], 4), "claim": p["claim"], "label": p["label"], "unit": p["unit"], **({"interval": p["interval"]} if p.get("interval") else {})} for k, p in params.items()},
         "assumption_share": _assumption_share(project, params),
     }
     project.append("model_runs", record)
@@ -215,7 +218,7 @@ def _breakeven(model: dict, params: dict, constants: dict, base_env: dict, leade
                     lo = mid
                 else:
                     hi = mid
-            flips.append({"param": name, "label": spec["label"], "unit": spec["unit"], "threshold": round(hi, 4), "direction": bound, "new_leader": leader_at(hi), "base": round(spec["base"], 4)})
+            flips.append({"param": name, "label": spec["label"], "unit": spec["unit"], "threshold": round(hi, 4), "direction": bound, "new_leader": leader_at(hi), "base": round(spec["base"], 4), "claim": spec.get("claim")})
     return flips
 
 
