@@ -292,3 +292,23 @@
 {"gate": "G3", "kind": "gate_open", "ts": "2026-11-19T21:00:35+03:00"}
 {"channel": "tty", "gate": "G3", "kind": "gate_approve", "ts": "2026-11-19T21:00:44+03:00"}
 {"kind": "stage", "stage": "strategy", "ts": "2026-11-19T21:00:44+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда cd вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T21:00:58+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T21:01:03+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-19T21:01:20+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-19T21:04:12+03:00"}
+{"gate": "G4", "kind": "gate_open", "ts": "2026-11-19T21:04:49+03:00"}
+{"agent": "general-purpose", "kind": "blocked", "reason": "Текст источника читают только субагенты.", "tool": "Bash", "ts": "2026-11-19T21:06:56+03:00"}
+{"id": "c129", "kind": "claim_added", "ts": "2026-11-19T21:07:00+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c129", "old": "c117", "ts": "2026-11-19T21:07:00+03:00"}
+{"id": "c130", "kind": "claim_added", "ts": "2026-11-19T21:07:01+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c130", "old": "c114", "ts": "2026-11-19T21:07:01+03:00"}
+{"id": "c131", "kind": "claim_added", "ts": "2026-11-19T21:07:03+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c131", "old": "c058", "ts": "2026-11-19T21:07:03+03:00"}
+{"id": "c132", "kind": "claim_added", "ts": "2026-11-19T21:07:04+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c132", "old": "c004", "ts": "2026-11-19T21:07:04+03:00"}
+{"contested": 43, "kind": "verify", "ts": "2026-11-19T21:07:07+03:00", "verified": 0}
+{"id": "c129", "kind": "claim_retracted", "ts": "2026-11-19T21:07:24+03:00", "why": "ошибочная запись: команда ушла в чужой проект после смены активного"}
+{"id": "c130", "kind": "claim_retracted", "ts": "2026-11-19T21:07:25+03:00", "why": "ошибочная запись: команда ушла в чужой проект после смены активного"}
+{"id": "c131", "kind": "claim_retracted", "ts": "2026-11-19T21:07:26+03:00", "why": "ошибочная запись: команда ушла в чужой проект после смены активного"}
+{"id": "c132", "kind": "claim_retracted", "ts": "2026-11-19T21:07:27+03:00", "why": "ошибочная запись: команда ушла в чужой проект после смены активного"}
+{"kind": "repair", "note": "откат ошибочных записей t1 в megafon-app: c004, c058, c114, c117 и пометки verify", "records": 46, "ts": "2026-11-19T21:08:22+03:00"}

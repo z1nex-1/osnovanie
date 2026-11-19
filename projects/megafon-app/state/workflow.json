@@ -1,6 +1,6 @@
 {
   "stage": "strategy",
-  "awaiting": null,
+  "awaiting": "G4",
   "paused": false,
   "gates": {
     "G1": {
@@ -30,6 +30,11 @@
         "O1",
         "O3"
       ]
+    },
+    "G4": {
+      "status": "open",
+      "opened_at": "2026-11-19T21:04:49+03:00",
+      "round": 1
     }
   }
 }
