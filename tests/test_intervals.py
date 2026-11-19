@@ -73,7 +73,8 @@ def test_breakeven_names_the_claim_and_trust_map_says_when_leader_loses():
 def _opencode(event, payload):
     done = subprocess.run([sys.executable, str(REPO / "tools/hooks/opencode_hook.py"), event], input=json.dumps(payload),
                           capture_output=True, text=True, cwd=REPO,
-                          env={k: v for k, v in os.environ.items() if k not in {"OSNOVANIE_DEV", "OSNOVANIE_PROJECT"}})
+                          # несуществующий проект: отказы теста не должны попадать в журнал настоящего проекта
+                          env={**{k: v for k, v in os.environ.items() if k != "OSNOVANIE_DEV"}, "OSNOVANIE_PROJECT": "no-such-project"})
     return json.loads(done.stdout)
 
 

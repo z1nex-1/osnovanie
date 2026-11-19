@@ -344,18 +344,23 @@ def _yandex(prompt: str, schema: dict) -> dict:
     return {"scores": json.loads(text), "seconds": round(time.monotonic() - started, 1), "usd": None, "family": "yandexgpt"}
 
 
+# работы настоящих прогонов длиннее 32 тыс. токенов; окно задаётся до прогона и пишется в оценку
+OLLAMA_CTX = int(os.environ.get("D13_NUM_CTX", "32768"))
+
+
 def _ollama(model: str, prompt: str, schema: dict) -> dict:
     """Локальная модель через Ollama: другая семья, ни одного запроса наружу."""
     host = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
     body = {"model": model, "prompt": prompt, "stream": False, "format": schema, "think": False,
-            "options": {"temperature": 0, "num_ctx": 32768}}
+            "options": {"temperature": 0, "num_ctx": OLLAMA_CTX}}
     request = urllib.request.Request(f"{host}/api/generate", data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
                                      headers={"Content-Type": "application/json"})
     started = time.monotonic()
     with urllib.request.urlopen(request, timeout=1800) as response:
         payload = json.load(response)
     return {"scores": json.loads(payload["response"]), "seconds": round(time.monotonic() - started, 1), "usd": 0.0,
-            "family": model.split(":")[0], "tokens": {"input": payload.get("prompt_eval_count"), "output": payload.get("eval_count")}}
+            "family": model.split(":")[0], "tokens": {"input": payload.get("prompt_eval_count"), "output": payload.get("eval_count")},
+            "num_ctx": OLLAMA_CTX, "truncated": (payload.get("prompt_eval_count") or 0) >= OLLAMA_CTX * 0.97}
 
 
 def cmd_judge(args) -> None:
@@ -380,6 +385,10 @@ def cmd_judge(args) -> None:
                 done = _claude(prompt, args.judge, args.budget, schema)
                 payload = done["payload"]
                 result = {"scores": payload.get("structured_output"), "seconds": done["seconds"], "usd": payload.get("total_cost_usd"), "family": "claude"}
+            if result.get("truncated"):
+                # Ollama молча отрезает начало запроса, если он длиннее окна: судья не видел одну из работ
+                print(f"{name} {arm} {order}: запрос длиннее окна {result['num_ctx']}, модель видела не всё, не засчитано")
+                continue
             try:
                 _valid(result["scores"])
             except ValueError as error:
