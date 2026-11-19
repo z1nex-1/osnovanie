@@ -1,0 +1,10 @@
+{
+  "project": "meganeuroseti",
+  "usd": 9.7286,
+  "rub": 895.03,
+  "calls": 351,
+  "human_minutes": 0,
+  "total_rub": 895.03,
+  "failures": 2,
+  "note": "настоящий прогон 19.11: этапы — свежие субагенты Claude Code на Sonnet 5.5, оркестрация и точки — оператор прогона на Opus 5.5 (Claude в роли руководителя) из терминала с пометкой; время и токены по этапам в runs/stages.jsonl"
+}

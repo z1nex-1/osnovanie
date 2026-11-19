@@ -101,6 +101,9 @@ def cmd_prepare(args) -> None:
             if source.get("status") != "active":
                 continue
             text = (project.base / source["parsed"]).read_text("utf-8")
+            if args.per_source and len(text) > args.per_source:
+                # руке чата не влезает в окно полмиллиона знаков; правило задано до прогона и одно для всех источников
+                text = text[: args.per_source] + f"\n\n[обрезано: показано {args.per_source} из {len(text)} знаков]"
             parts.append(f"## {source['id']}. {source['title']}\n\n{text.strip()}")
         materials = "\n\n".join(parts)
     elif args.file:
@@ -367,7 +370,7 @@ def cmd_judge(args) -> None:
         target.mkdir(parents=True, exist_ok=True)
         for order in ("XY", "YX"):
             # малым локальным моделям материалы режем сильнее: окно 32 тыс. токенов
-            limit = 12000 if args.judge.startswith("ollama:") else 60000
+            limit = 16000 if args.judge.startswith("ollama:") else 60000
             prompt = judge_prompt(question, (order[0], blind[order[0]]), (order[1], blind[order[1]]), materials, limit)
             if args.judge == "yandex":
                 result = _yandex(prompt, schema)
@@ -531,8 +534,7 @@ def report(results: dict) -> str:
             lines += [""] + noted
         if r.get("rounds"):
             lines += ["", "### Раунды", "",
-                      "После раунда 1 агентскую работу правили по замечаниям судьи, работы чата не менялись. "
-                      "Честное сравнение — раунд 1; следующие раунды показывают, что замечания исправимы. Что правили — `runs/" + task_id + "/ROUNDS.md`.", "",
+                      "Работы чата во всех раундах одни и те же. Что судили в каждом раунде и что менялось между ними — `runs/" + task_id + "/ROUNDS.md`.", "",
                       "| Раунд | Судья | " + " | ".join(f"агент / {ARMS[a]}" for a in ARMS) + " |", "|---|---|" + "---|" * len(ARMS)]
             for name, pairs in r["rounds"]:
                 for judge in sorted({j for a in pairs.values() for j in a}):
@@ -557,7 +559,10 @@ def cmd_score(args) -> None:
             if old:
                 rounds.append((path.name.replace("round-", "раунд "), old["pairs"]))
         if rounds:
-            rounds.append(("раунд " + str(len(rounds) + 1) + ", текущий", r["pairs"]))
+            last = rounds[-1][0].split()[-1]
+            # раунд 4a продолжается как 4b: та же агентская работа, другие материалы для судей
+            name = last[:-1] + chr(ord(last[-1]) + 1) if last[-1].isalpha() else str(len(rounds) + 1)
+            rounds.append(("раунд " + name + ", текущий", r["pairs"]))
             r["rounds"] = rounds
     write_json(HERE / "results.json", results)
     (HERE / "report.md").write_text(report(results), "utf-8")
@@ -571,6 +576,7 @@ def main() -> None:
     p.add_argument("task")
     p.add_argument("--project")
     p.add_argument("--file")
+    p.add_argument("--per-source", type=int, help="сколько знаков каждого источника показывать руке чата")
     p.set_defaults(func=cmd_prepare)
     p = sub.add_parser("prompt", help="запросы трёх рук чата в файлы")
     p.add_argument("task")

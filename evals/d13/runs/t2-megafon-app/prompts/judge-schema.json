@@ -1,0 +1,252 @@
+{
+  "type": "object",
+  "required": [
+    "r1",
+    "r2",
+    "r3",
+    "r4",
+    "r5",
+    "r6",
+    "r7",
+    "prefer",
+    "why"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "r1": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "r2": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "r3": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "r4": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "r5": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "r6": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "r7": {
+      "type": "object",
+      "required": [
+        "X",
+        "Y",
+        "quote_X",
+        "quote_Y",
+        "why"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "X": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "Y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "quote_X": {
+          "type": "string"
+        },
+        "quote_Y": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      }
+    },
+    "prefer": {
+      "type": "string",
+      "enum": [
+        "X",
+        "Y",
+        "equal"
+      ]
+    },
+    "why": {
+      "type": "string"
+    }
+  }
+}
