@@ -358,7 +358,12 @@ def _ollama(model: str, prompt: str, schema: dict) -> dict:
     started = time.monotonic()
     with urllib.request.urlopen(request, timeout=1800) as response:
         payload = json.load(response)
-    return {"scores": json.loads(payload["response"]), "seconds": round(time.monotonic() - started, 1), "usd": 0.0,
+    try:
+        scores = json.loads(payload["response"])
+    except json.JSONDecodeError:
+        # ответ оборвался: окно кончилось на середине JSON; такую оценку не засчитываем
+        scores = {"error": f"ответ не JSON, done_reason={payload.get('done_reason')}"}
+    return {"scores": scores, "seconds": round(time.monotonic() - started, 1), "usd": 0.0,
             "family": model.split(":")[0], "tokens": {"input": payload.get("prompt_eval_count"), "output": payload.get("eval_count")},
             "num_ctx": OLLAMA_CTX, "truncated": (payload.get("prompt_eval_count") or 0) >= OLLAMA_CTX * 0.97}
 
