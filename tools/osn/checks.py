@@ -256,6 +256,9 @@ def _strategy(project: Project) -> list[str]:
 
     problems = doc_problems(project) + promise_problems(project) + structure_problems(project) + language_problems(project)
     problems += fidelity.problems(project)
+    from . import report
+
+    problems += report.problems(project)
     shortlist = set(project.meta().get("shortlist", []))
     for name in ("product.md", "communication.md"):
         path = project.outputs / name

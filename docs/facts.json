@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-19T22:19:27+03:00",
+  "generated_at": "2026-11-20T13:49:49+03:00",
   "agent": {
-    "cli_commands": 44,
+    "cli_commands": 45,
     "methods": 21,
     "skills": 10,
     "subagents": 6,
-    "rule_files": 31,
+    "rule_files": 32,
     "rule_patterns": 13,
-    "tests": 95
+    "tests": 106
   },
   "evals": {
     "split": "test2",
@@ -52,6 +52,38 @@
       "elapsed": {
         "first": "2026-11-19T19:10:52+03:00",
         "last": "2026-11-19T22:05:54+03:00"
+      }
+    },
+    "megafon-family": {
+      "stage": "decided",
+      "sources": 15,
+      "claims": 145,
+      "claims_by_type": {
+        "assumption": 27,
+        "fact": 92,
+        "forecast": 4,
+        "hypothesis": 3,
+        "retracted": 3,
+        "stale": 16
+      },
+      "facts_verified": 92,
+      "options": 4,
+      "objections": 12,
+      "gates": {
+        "G1": "approved",
+        "G2": "approved",
+        "G3": "approved",
+        "G4": "approved"
+      },
+      "reviews": 0,
+      "commitments": 4,
+      "llm_usd": 7.6003,
+      "llm_rub": 699.23,
+      "human_minutes": 0,
+      "total_rub": 699.23,
+      "elapsed": {
+        "first": "2026-11-20T13:09:50+03:00",
+        "last": "2026-11-20T13:47:02+03:00"
       }
     },
     "meganeuroseti": {
@@ -118,7 +150,7 @@
       "total_rub": 0.0,
       "elapsed": {
         "first": "2026-11-18T01:08:41+03:00",
-        "last": "2026-11-18T01:08:41+03:00"
+        "last": "2026-11-20T13:31:40+03:00"
       }
     }
   }

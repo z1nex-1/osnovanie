@@ -9,7 +9,7 @@ from pathlib import Path
 from . import checks, claims as claims_mod, cost, data_tools, judge, model, portable, review, search as search_mod, sources, steps, verify, workflow
 from .store import SLUG, OsnError, PolicyError, Project, active_file, active_project, atomic_write, load_toml, now, read_json, repo_root, scan_jsonl, write_json
 
-MUTATING = {"new", "use", "brief", "budget", "question", "source", "claim", "verify", "options", "objection", "model", "gate", "advance", "commit", "review", "import", "data", "ux", "interview", "step", "route", "map", "watch", "demo", "deck"}
+MUTATING = {"new", "use", "brief", "budget", "question", "source", "claim", "verify", "options", "objection", "model", "gate", "advance", "commit", "review", "import", "data", "ux", "interview", "step", "route", "map", "watch", "demo", "deck", "report"}
 AS_JSON = False
 
 
@@ -463,6 +463,27 @@ def cmd_deck(args):
     emit(result, f"Презентация: {result['path']}, слайдов {result['slides']}, сносок {result['footnotes']}, {result['bytes'] // 1024} КБ.")
 
 
+def cmd_report(args):
+    from . import report
+
+    project = active_project(args.project)
+    if args.action == "profile":
+        if not args.name:
+            emit({"profiles": report.profiles()}, "Чек-листы брифов: " + (", ".join(report.profiles()) or "нет"))
+            return 0
+        result = report.set_profile(project, args.name)
+        emit(result, f"Чек-лист брифа: {result['title']}. Документ пишется в outputs/{result['file']}: резюме и {result['parts']} частей.")
+    elif args.action == "check":
+        result = report.check(project)
+        lines = [f"{'+' if c['ok'] else '-'} {c['part']}: {c['label']}" for c in result["coverage"]]
+        tail = ["", f"Закрыто требований брифа: {result['covered']} из {result['total']}."] + (["Замечания:"] + [f"- {p}" for p in result["problems"]] if result["problems"] else ["Замечаний нет."])
+        emit(result, "\n".join(lines + tail))
+        return 1 if result["problems"] else 0
+    else:
+        result = report.build(project, args.pdf)
+        emit(result, f"Документ: {result['path']}" + (f", PDF: {result['pdf']}" if result["pdf"] else "") + f". Требований брифа закрыто {result['covered']} из {result['total']}, замечаний {result['problems']}, сносок {result['footnotes']}.")
+
+
 def cmd_demo(args):
     from . import demo
 
@@ -855,6 +876,11 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--badge", help="записать SVG-бейдж")
 
     add("deck", cmd_deck, "презентация outputs/deck.html")
+    p = add("report", cmd_report, "один документ по брифу заказчика: profile, check, build")
+    a = actions(p)
+    a.add_parser("profile").add_argument("name", nargs="?")
+    a.add_parser("check")
+    a.add_parser("build").add_argument("--pdf", action="store_true")
 
     p = add("demo", cmd_demo, "эталонный проект из demo/")
     s = actions(p).add_parser("seed")
