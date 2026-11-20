@@ -58,6 +58,15 @@ def add(project: Project, data: dict, author: str = "agent") -> dict:
     expires = data.get("expires")
     if expires and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(expires)):
         raise OsnError("expires — дата ГГГГ-ММ-ДД, после которой факт надо проверить заново.")
+    span = data.get("range")
+    if span is not None:
+        if not (isinstance(span, list) and len(span) == 2 and all(isinstance(v, (int, float)) for v in span) and span[0] <= span[1]):
+            raise OsnError("range — [нижняя, верхняя] граница числами, нижняя не больше верхней.")
+        if isinstance(data.get("value"), (int, float)) and not span[0] <= data["value"] <= span[1]:
+            raise OsnError(f"value {data['value']} вне диапазона {span}.")
+    plan = data.get("verify_plan")
+    if plan is not None and not (isinstance(plan, str) and plan.strip()):
+        raise OsnError("verify_plan — строка: чем и когда проверим.")
     if kind == "calculation" and not data.get("calc_id"):
         raise PolicyError("Расчёт записывается только через osnovanie calc или model, у него должен быть calc_id.")
     with project.lock():
@@ -80,6 +89,9 @@ def add(project: Project, data: dict, author: str = "agent") -> dict:
             "calc_id": data.get("calc_id"), "author": author, "stage": project.meta().get("stage_hint"), "created_at": now(),
             "topic": data.get("topic"), "expires": expires,
         }
+        for field in ("range", "verify_plan", "conflict_between", "resolution"):
+            if data.get(field) is not None:
+                record[field] = data[field]
         if kind in {"hypothesis", "forecast", "assumption", "synthetic"}:
             record["status"] = "open"
         if kind == "calculation":
@@ -120,7 +132,7 @@ def supersede(project: Project, claim_id: str, data: dict) -> dict:
     data = {**data, "supersedes": claim_id}
     data.setdefault("type", old["type"])
     data.setdefault("depends_on", old.get("depends_on", []))
-    for field in ("unit", "period", "topic"):
+    for field in ("unit", "period", "topic", "verify_plan"):
         data.setdefault(field, old.get(field))
     new = add(project, data)
     with project.lock():

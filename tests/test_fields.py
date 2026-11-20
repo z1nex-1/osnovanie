@@ -31,6 +31,33 @@ class Fields(unittest.TestCase):
         self.assertIn("от 0 до 1", bad.stderr)
         box.ok("claim", "add", "--json", json.dumps({"text": "Спрос вырастет", "type": "forecast", "confidence": 0.4}))
 
+    def test_assumption_keeps_range_and_verify_plan(self):
+        box = self.box
+        box.ok("new", "demo", "--question", "q")
+        claim = box.js("claim", "add", "--json", json.dumps({"text": "Допущение: 30 % семей", "type": "assumption", "value": 30, "unit": "%", "confidence": 0.4, "range": [20, 45], "verify_plan": "двухнедельный замер"}))
+        stored = box.js("claim", "show", claim["id"])
+        self.assertEqual(stored["range"], [20, 45])
+        self.assertEqual(stored["verify_plan"], "двухнедельный замер")
+        newer = box.js("claim", "supersede", claim["id"], "--json", json.dumps({"text": "Допущение: 35 % семей", "value": 35, "range": [25, 45]}))
+        self.assertEqual(box.js("claim", "show", newer["id"])["verify_plan"], "двухнедельный замер")
+        for bad in ({"range": [45, 20]}, {"range": [20, 45], "value": 60}, {"verify_plan": ""}):
+            result = box.osn("claim", "add", "--json", json.dumps({"text": "Допущение: доля", "type": "assumption", "value": 30, **bad}))
+            self.assertNotEqual(result.returncode, 0, bad)
+
+    def test_numbers_from_pdf_table_row_verify(self):
+        box = self.box
+        box.ok("new", "demo", "--question", "q")
+        row = "Валовая прибыль за год, млн руб.         282           275           279             285"
+        source = box.source(row + "\nПодключённые семейные группы на конец года   7 500   6 500   8 000   12 000", "brief.txt", "brief")
+        ok = box.js("claim", "add", "--json", json.dumps({"text": "Без изменений прибыль 279 млн руб., цель 285", "type": "fact", "source_id": source["id"], "quote": row}))
+        thousands = box.js("claim", "add", "--json", json.dumps({"text": "Цель — 12 000 подключённых групп", "type": "fact", "source_id": source["id"], "quote": "Подключённые семейные группы на конец года 7 500 6 500 8 000 12 000"}))
+        wrong = box.js("claim", "add", "--json", json.dumps({"text": "Без изменений прибыль 280 млн руб.", "type": "fact", "source_id": source["id"], "quote": row}))
+        box.ok("verify")
+        listing = {c["id"]: c for c in box.js("claim", "list")}
+        self.assertEqual(listing[ok["id"]]["status"], "verified")
+        self.assertEqual(listing[thousands["id"]]["status"], "verified")
+        self.assertNotEqual(listing[wrong["id"]]["status"], "verified")
+
     def test_option_needs_portfolio_and_confident_basis(self):
         box = self.box
         claims = full_path(box)

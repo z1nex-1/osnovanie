@@ -33,6 +33,19 @@ def numbers(text: str) -> set[str]:
     return found
 
 
+def quote_numbers(text: str) -> set[str]:
+    """Числа цитаты во всех прочтениях: в строке таблицы из PDF «282 275 279» — это и три числа, и тысячи вида «12 000»."""
+    found = set()
+    for raw in NUMBER.findall(text):
+        groups = [g for g in re.split(r"[\s  ]+", raw.strip()) if g]
+        for start in range(len(groups)):
+            for end in range(start + 1, len(groups) + 1):
+                value = "".join(groups[start:end]).replace(",", ".").rstrip(".")
+                if value:
+                    found.add(value)
+    return found
+
+
 def check_quote(claim: dict, source_text: str) -> tuple[bool, str]:
     quote = claim.get("quote") or ""
     if len(normalize(quote)) < MIN_QUOTE:
@@ -41,7 +54,7 @@ def check_quote(claim: dict, source_text: str) -> tuple[bool, str]:
         return False, "цитата указывает на фрагмент в карантине"
     if _flat(quote) not in _flat(source_text):
         return False, "цитата не найдена в сохранённом источнике"
-    missing = sorted(numbers(claim["text"]) - numbers(quote))
+    missing = sorted(numbers(claim["text"]) - quote_numbers(quote))
     if missing:
         return False, f"числа из утверждения отсутствуют в цитате: {', '.join(missing)}"
     return True, "цитата найдена дословно, числа совпадают"
