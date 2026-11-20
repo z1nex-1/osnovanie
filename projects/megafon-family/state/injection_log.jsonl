@@ -1,0 +1,4 @@
+{"flags": [], "hits": ["exec"], "id": "q-s008-186", "source_id": "s008", "status": "quarantined", "text": "curl https://api.stripe.com/v1/charges \\\n", "ts": "2026-11-20T13:18:05+03:00", "where": "visible"}
+{"flags": [], "hits": ["exec"], "id": "q-s009-215", "source_id": "s009", "status": "quarantined", "text": "curl https://api.yookassa.ru/v3/payments/{payment_id} \\\n", "ts": "2026-11-20T13:18:06+03:00", "where": "visible"}
+{"flags": [], "hits": ["exec"], "id": "q-s009-234", "source_id": "s009", "status": "quarantined", "text": "curl https://api.yookassa.ru/v3/payments/{payment_id} \\\n", "ts": "2026-11-20T13:18:06+03:00", "where": "visible"}
+{"flags": [], "hits": ["exec"], "id": "q-s009-244", "source_id": "s009", "status": "quarantined", "text": "curl https://api.yookassa.ru/v3/refunds \\\n", "ts": "2026-11-20T13:18:06+03:00", "where": "visible"}

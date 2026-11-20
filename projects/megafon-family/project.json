@@ -1,0 +1,39 @@
+{
+  "slug": "megafon-family",
+  "title": "МегаФон: связь для близких и собственных устройств",
+  "question": "Кому из клиентов помочь первым, что изменить в услуге и почему оператору стоит вложиться?",
+  "created_at": "2026-11-20T13:09:50+03:00",
+  "budget_usd": 15.0,
+  "approved_domains": [
+    "docs.stripe.com",
+    "equator-network.org",
+    "help.keenetic.com",
+    "irecommend.ru",
+    "moscow.megafon.ru",
+    "moskva.beeline.ru",
+    "moskva.mts.ru",
+    "operator-help.ru",
+    "otzovik.com",
+    "pmc.ncbi.nlm.nih.gov",
+    "s3.t2.ru",
+    "spb.megafon.ru",
+    "support.mts.ru",
+    "www.banki.ru",
+    "www.consultant.ru",
+    "www.verizon.com",
+    "yookassa.ru"
+  ],
+  "shortlist": [
+    "O2",
+    "O3",
+    "O2",
+    "O3"
+  ],
+  "report_profile": "megafon-family",
+  "decision": {
+    "option": "O2",
+    "owner": "руководитель направления семейных услуг",
+    "ts": "2026-11-20T13:45:00+03:00",
+    "comment": "O2 ответственный руководитель направления семейных услуг. Перенос цели 285 млн на второй год принимаю. Инструмент не трогай, claims.py поправим отдельно. Запиши обязательства и собери PDF."
+  }
+}

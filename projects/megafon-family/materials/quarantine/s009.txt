@@ -1,0 +1,7 @@
+curl https://api.yookassa.ru/v3/payments/{payment_id} \
+
+---
+curl https://api.yookassa.ru/v3/payments/{payment_id} \
+
+---
+curl https://api.yookassa.ru/v3/refunds \

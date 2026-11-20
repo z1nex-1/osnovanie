@@ -1,0 +1,265 @@
+{"kind": "created", "question": "Кому из клиентов помочь первым, что изменить в услуге и почему оператору стоит вложиться?", "ts": "2026-11-20T13:09:50+03:00"}
+{"id": "s001", "kind": "source_added", "quarantined": 0, "title": "Бриф МегаФона 20.11.2026", "ts": "2026-11-20T13:09:50+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Команда find вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:09:53+03:00"}
+{"kind": "brief", "ts": "2026-11-20T13:11:06+03:00"}
+{"gate": "G1", "kind": "gate_open", "ts": "2026-11-20T13:11:14+03:00"}
+{"channel": "chat", "gate": "G1", "kind": "gate_approve", "ts": "2026-11-20T13:11:45+03:00"}
+{"kind": "budget", "ts": "2026-11-20T13:11:53+03:00", "usd": 15.0}
+{"kind": "stage", "stage": "plan", "ts": "2026-11-20T13:11:53+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда echo вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:12:32+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:12:41+03:00"}
+{"kind": "injection_in_search", "tool": "WebSearch", "ts": "2026-11-20T13:13:36+03:00"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:12+03:00", "url": "https://moscow.megafon.ru/tariffs/all/semejnyj_plus.html"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:13+03:00", "url": "https://moscow.megafon.ru/services/family/megasemiya/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:14+03:00", "url": "https://support.mts.ru/mts_mobilnaya_svyaz/gruppi-dlya-blizkih/usluga-obschii-paket"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:15+03:00", "url": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/gruppa-semya-plus"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:19+03:00", "url": "https://moskva.beeline.ru/family/deli-vse-deli-gigi/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:21+03:00", "url": "https://s3.t2.ru/ds-site/docs/terms/beneficial-together-hmao.pdf"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:22+03:00", "url": "https://www.verizon.com/support/knowledge-base-310889/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:24+03:00", "url": "https://spb.megafon.ru/pay/plati_za_blizkih/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:30+03:00", "url": "https://help.keenetic.com/hc/ru/articles/360009029079-%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-Keenetic-%D0%B4%D0%BB%D1%8F-Android-%D0%B8-iOS-12-%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D0%B0"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:31+03:00", "url": "https://operator-help.ru/podelitsja-gigabajtami-na-megafon/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:33+03:00", "url": "https://otzovik.com/review_17911552.html"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:34+03:00", "url": "https://irecommend.ru/content/velikie-neznaiki-operatory-ili-kak-my-pereshli-na-mega-semyu"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:38+03:00", "url": "https://docs.stripe.com/api"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:39+03:00", "url": "https://yookassa.ru/developers/using-api/interaction-format"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:41+03:00", "url": "https://www.consultant.ru/document/cons_doc_LAW_61801/6c94959bc017ac80140621762d2ac59f6006b08c/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:43+03:00", "url": "https://www.consultant.ru/law/podborki/otzyv_soglasiya_na_obrabotku_personalnyh/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:47+03:00", "url": "https://www.banki.ru/services/responses/bank/response/10046069/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:48+03:00", "url": "https://equator-network.org/reporting-guidelines/consort-cluster/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:49+03:00", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5654877/"}
+{"kind": "source_plan", "ts": "2026-11-20T13:15:50+03:00", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4687983/"}
+{"agent": "researcher", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:15:57+03:00"}
+{"agent": "researcher", "kind": "blocked", "reason": "Команда find вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:16:05+03:00"}
+{"gate": "G2", "kind": "gate_open", "ts": "2026-11-20T13:16:56+03:00"}
+{"channel": "chat", "gate": "G2", "kind": "gate_approve", "ts": "2026-11-20T13:17:23+03:00"}
+{"kind": "stage", "stage": "research", "ts": "2026-11-20T13:17:31+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:17:43+03:00"}
+{"id": "s002", "kind": "source_added", "quarantined": 0, "title": "https://support.mts.ru/mts_mobilnaya_svyaz/gruppi-dlya-blizkih/usluga-obschii-paket", "ts": "2026-11-20T13:17:55+03:00"}
+{"id": "s003", "kind": "source_added", "quarantined": 0, "title": "https://moskva.mts.ru/personal/mobilnaya-svyaz/uslugi/mobilnaya-svyaz/gruppa-semya-plus", "ts": "2026-11-20T13:17:56+03:00"}
+{"id": "s004", "kind": "source_added", "quarantined": 0, "title": "https://moskva.beeline.ru/family/deli-vse-deli-gigi/", "ts": "2026-11-20T13:17:58+03:00"}
+{"id": "s005", "kind": "source_added", "quarantined": 0, "title": "https://s3.t2.ru/ds-site/docs/terms/beneficial-together-hmao.pdf", "ts": "2026-11-20T13:17:59+03:00"}
+{"id": "s006", "kind": "source_added", "quarantined": 0, "title": "https://www.verizon.com/support/knowledge-base-310889/", "ts": "2026-11-20T13:18:01+03:00"}
+{"id": "s007", "kind": "source_added", "quarantined": 0, "title": "https://help.keenetic.com/hc/ru/articles/360009029079-%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-Keenetic-%D0%B4%D0%BB%D1%8F-Android-%D0%B8-iOS-12-%D0%BF%D1%80%D0%B8%D1%87%D0%B8%D0%BD-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D0%B0", "ts": "2026-11-20T13:18:03+03:00"}
+{"id": "s008", "kind": "source_added", "quarantined": 1, "title": "https://docs.stripe.com/api", "ts": "2026-11-20T13:18:05+03:00"}
+{"id": "s009", "kind": "source_added", "quarantined": 3, "title": "https://yookassa.ru/developers/using-api/interaction-format", "ts": "2026-11-20T13:18:06+03:00"}
+{"id": "s010", "kind": "source_added", "quarantined": 0, "title": "https://www.consultant.ru/document/cons_doc_LAW_61801/6c94959bc017ac80140621762d2ac59f6006b08c/", "ts": "2026-11-20T13:18:12+03:00"}
+{"id": "s011", "kind": "source_added", "quarantined": 0, "title": "https://www.consultant.ru/law/podborki/otzyv_soglasiya_na_obrabotku_personalnyh/", "ts": "2026-11-20T13:18:13+03:00"}
+{"id": "s012", "kind": "source_added", "quarantined": 0, "title": "https://www.banki.ru/services/responses/bank/response/10046069/", "ts": "2026-11-20T13:18:15+03:00"}
+{"id": "s013", "kind": "source_added", "quarantined": 0, "title": "https://equator-network.org/reporting-guidelines/consort-cluster/", "ts": "2026-11-20T13:18:16+03:00"}
+{"id": "s014", "kind": "source_added", "quarantined": 0, "title": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5654877/", "ts": "2026-11-20T13:18:18+03:00"}
+{"id": "s015", "kind": "source_added", "quarantined": 0, "title": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4687983/", "ts": "2026-11-20T13:18:19+03:00"}
+{"id": "c001", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c002", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c003", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c004", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c005", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c006", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c007", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c008", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c009", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c010", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c011", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c012", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c013", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c014", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c015", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c016", "kind": "claim_added", "ts": "2026-11-20T13:20:00+03:00", "type": "fact"}
+{"id": "c017", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c018", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c019", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c020", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c021", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c022", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c023", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c024", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c025", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c026", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c027", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c028", "kind": "claim_added", "ts": "2026-11-20T13:20:18+03:00", "type": "fact"}
+{"id": "c029", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c030", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c031", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c032", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c033", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c034", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c035", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c036", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c037", "kind": "claim_added", "ts": "2026-11-20T13:20:34+03:00", "type": "fact"}
+{"id": "c038", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c039", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c040", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c041", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c042", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c043", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c044", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c045", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c046", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c047", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c048", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c049", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c050", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c051", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c052", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c053", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c054", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c055", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c056", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c057", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c058", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c059", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c060", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c061", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c062", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c063", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c064", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c065", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c066", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c067", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c068", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c069", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c070", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c071", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c072", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c073", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c074", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c075", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c076", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c077", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c078", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c079", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c080", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c081", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c082", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c083", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c084", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c085", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c086", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"id": "c087", "kind": "claim_added", "ts": "2026-11-20T13:23:13+03:00", "type": "fact"}
+{"contested": 15, "kind": "verify", "ts": "2026-11-20T13:23:13+03:00", "verified": 72}
+{"agent": null, "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:24:40+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Команда git вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:24:47+03:00"}
+{"id": "c088", "kind": "claim_added", "ts": "2026-11-20T13:25:19+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c088", "old": "c003", "ts": "2026-11-20T13:25:19+03:00"}
+{"id": "c089", "kind": "claim_added", "ts": "2026-11-20T13:25:19+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c089", "old": "c008", "ts": "2026-11-20T13:25:19+03:00"}
+{"id": "c090", "kind": "claim_added", "ts": "2026-11-20T13:25:19+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c090", "old": "c012", "ts": "2026-11-20T13:25:19+03:00"}
+{"id": "c091", "kind": "claim_added", "ts": "2026-11-20T13:25:20+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c091", "old": "c014", "ts": "2026-11-20T13:25:20+03:00"}
+{"id": "c092", "kind": "claim_added", "ts": "2026-11-20T13:25:20+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c092", "old": "c015", "ts": "2026-11-20T13:25:20+03:00"}
+{"id": "c093", "kind": "claim_added", "ts": "2026-11-20T13:25:20+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c093", "old": "c017", "ts": "2026-11-20T13:25:20+03:00"}
+{"id": "c094", "kind": "claim_added", "ts": "2026-11-20T13:25:20+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c094", "old": "c021", "ts": "2026-11-20T13:25:20+03:00"}
+{"id": "c095", "kind": "claim_added", "ts": "2026-11-20T13:25:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c095", "old": "c038", "ts": "2026-11-20T13:25:31+03:00"}
+{"id": "c096", "kind": "claim_added", "ts": "2026-11-20T13:25:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c096", "old": "c039", "ts": "2026-11-20T13:25:31+03:00"}
+{"id": "c097", "kind": "claim_added", "ts": "2026-11-20T13:25:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c097", "old": "c040", "ts": "2026-11-20T13:25:31+03:00"}
+{"id": "c098", "kind": "claim_added", "ts": "2026-11-20T13:25:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c098", "old": "c041", "ts": "2026-11-20T13:25:31+03:00"}
+{"id": "c099", "kind": "claim_added", "ts": "2026-11-20T13:25:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c099", "old": "c042", "ts": "2026-11-20T13:25:31+03:00"}
+{"id": "c100", "kind": "claim_added", "ts": "2026-11-20T13:25:31+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c100", "old": "c073", "ts": "2026-11-20T13:25:31+03:00"}
+{"id": "c101", "kind": "claim_added", "ts": "2026-11-20T13:25:32+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c101", "old": "c074", "ts": "2026-11-20T13:25:32+03:00"}
+{"kind": "claim_superseded", "new": "c075", "old": "c075", "ts": "2026-11-20T13:25:32+03:00"}
+{"contested": 15, "kind": "verify", "ts": "2026-11-20T13:25:32+03:00", "verified": 14}
+{"id": "c075", "kind": "claim_retracted", "ts": "2026-11-20T13:25:47+03:00", "why": "Цитата склеена из двух колонок таблицы брифа и не находится; замена через supersede записалась под тем же номером (ошибка инструмента), исправленная версия добавлена отдельно"}
+{"contested": 14, "kind": "verify", "ts": "2026-11-20T13:25:47+03:00", "verified": 0}
+{"id": "c102", "kind": "claim_added", "ts": "2026-11-20T13:26:03+03:00", "type": "fact"}
+{"contested": 14, "kind": "verify", "ts": "2026-11-20T13:26:04+03:00", "verified": 1}
+{"id": "c103", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c103", "old": "c044", "ts": "2026-11-20T13:30:21+03:00"}
+{"id": "c104", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"kind": "claim_superseded", "new": "c104", "old": "c010", "ts": "2026-11-20T13:30:21+03:00"}
+{"id": "c105", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"id": "c106", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"id": "c107", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"id": "c108", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"id": "c109", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"id": "c110", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"id": "c111", "kind": "claim_added", "ts": "2026-11-20T13:30:21+03:00", "type": "fact"}
+{"contested": 16, "kind": "verify", "ts": "2026-11-20T13:30:21+03:00", "verified": 7}
+{"id": "c110", "kind": "claim_retracted", "ts": "2026-11-20T13:30:29+03:00", "why": "Определение показателя стоит в колонке таблицы брифа и разбито переносами между колонками; дословную цитату одной строкой не собрать. Определение показателя восстановить из построчных цитат на этапе стратегии."}
+{"id": "c111", "kind": "claim_retracted", "ts": "2026-11-20T13:30:29+03:00", "why": "Число 9 не входит в цитату; порог 12 % → 9 % уже покрыт c062."}
+{"kind": "stage", "stage": "options", "ts": "2026-11-20T13:31:24+03:00"}
+{"id": "c112", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "hypothesis"}
+{"id": "c113", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "hypothesis"}
+{"id": "c114", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "hypothesis"}
+{"id": "c115", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c116", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c117", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c118", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c119", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c120", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c121", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c122", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c123", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c124", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c125", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c126", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "c127", "kind": "claim_added", "ts": "2026-11-20T13:32:31+03:00", "type": "assumption"}
+{"id": "O1", "kind": "option", "ts": "2026-11-20T13:33:08+03:00"}
+{"id": "O2", "kind": "option", "ts": "2026-11-20T13:33:08+03:00"}
+{"id": "O3", "kind": "option", "ts": "2026-11-20T13:33:08+03:00"}
+{"id": "O4", "kind": "option", "ts": "2026-11-20T13:33:08+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:18+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:19+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:19+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:28+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:29+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:32+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:32+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:33+03:00"}
+{"kind": "model_set", "options": 4, "params": 15, "ts": "2026-11-20T13:33:37+03:00"}
+{"kind": "model_run", "ranking": ["O2", "O3", "O1", "O4"], "run": "r001", "ts": "2026-11-20T13:33:37+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Чтение вне папки агента запрещено.", "tool": "Read", "ts": "2026-11-20T13:33:43+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:45+03:00"}
+{"agent": "closure-advocate", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:33:51+03:00"}
+{"kind": "model_run", "ranking": ["O2", "O3", "O1", "O4"], "run": "r002", "ts": "2026-11-20T13:34:17+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Команда find вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:34:25+03:00"}
+{"kind": "model_run", "ranking": ["O2", "O3", "O1", "O4"], "run": "r003", "ts": "2026-11-20T13:34:33+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T13:34:39+03:00"}
+{"agent": "skeptic", "kind": "blocked", "reason": "Команда grep вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T13:34:50+03:00"}
+{"gate": "G3", "kind": "gate_open", "ts": "2026-11-20T13:37:55+03:00"}
+{"channel": "chat", "gate": "G3", "kind": "gate_approve", "ts": "2026-11-20T13:38:29+03:00"}
+{"kind": "stage", "stage": "strategy", "ts": "2026-11-20T13:38:33+03:00"}
+{"kind": "report_profile", "profile": "megafon-family", "ts": "2026-11-20T13:38:33+03:00"}
+{"id": "c128", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c129", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c130", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c131", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c132", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c133", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c134", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c135", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c136", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c137", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c138", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c139", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c140", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c141", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "assumption"}
+{"id": "c142", "kind": "claim_added", "ts": "2026-11-20T13:40:09+03:00", "type": "forecast"}
+{"kind": "model_set", "options": 4, "params": 15, "ts": "2026-11-20T13:40:23+03:00"}
+{"kind": "model_run", "ranking": ["O2", "O3", "O1", "O4"], "run": "r004", "ts": "2026-11-20T13:40:24+03:00"}
+{"id": "c143", "kind": "claim_added", "ts": "2026-11-20T13:40:50+03:00", "type": "forecast"}
+{"id": "c144", "kind": "claim_added", "ts": "2026-11-20T13:40:50+03:00", "type": "forecast"}
+{"id": "c145", "kind": "claim_added", "ts": "2026-11-20T13:40:50+03:00", "type": "forecast"}
+{"kind": "map_built", "ts": "2026-11-20T13:44:12+03:00"}
+{"gate": "G4", "kind": "gate_open", "ts": "2026-11-20T13:44:26+03:00"}
+{"channel": "chat", "gate": "G4", "kind": "gate_approve", "ts": "2026-11-20T13:45:00+03:00"}
+{"kind": "snapshot", "label": "решение G4", "ts": "2026-11-20T13:45:00+03:00", "version": "v1"}
+{"kind": "stage", "stage": "decided", "ts": "2026-11-20T13:45:09+03:00"}
+{"id": "k001", "kind": "commitment", "ts": "2026-11-20T13:45:24+03:00"}
+{"id": "k002", "kind": "commitment", "ts": "2026-11-20T13:45:24+03:00"}
+{"id": "k003", "kind": "commitment", "ts": "2026-11-20T13:45:24+03:00"}
+{"id": "k004", "kind": "commitment", "ts": "2026-11-20T13:45:24+03:00"}
+{"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:45:43+03:00"}
+{"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:46:09+03:00"}
+{"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:46:31+03:00"}
+{"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:47:02+03:00"}
