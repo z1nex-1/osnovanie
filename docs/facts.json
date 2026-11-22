@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T13:49:49+03:00",
+  "generated_at": "2026-11-22T12:24:49+03:00",
   "agent": {
     "cli_commands": 45,
     "methods": 21,
@@ -7,7 +7,7 @@
     "subagents": 6,
     "rule_files": 32,
     "rule_patterns": 13,
-    "tests": 106
+    "tests": 107
   },
   "evals": {
     "split": "test2",
@@ -77,13 +77,13 @@
       },
       "reviews": 0,
       "commitments": 4,
-      "llm_usd": 7.6003,
-      "llm_rub": 699.23,
+      "llm_usd": 8.0108,
+      "llm_rub": 737.0,
       "human_minutes": 0,
-      "total_rub": 699.23,
+      "total_rub": 737.0,
       "elapsed": {
         "first": "2026-11-20T13:09:50+03:00",
-        "last": "2026-11-20T13:47:02+03:00"
+        "last": "2026-11-20T15:07:59+03:00"
       }
     },
     "meganeuroseti": {
@@ -150,7 +150,7 @@
       "total_rub": 0.0,
       "elapsed": {
         "first": "2026-11-18T01:08:41+03:00",
-        "last": "2026-11-20T13:31:40+03:00"
+        "last": "2026-11-18T01:08:41+03:00"
       }
     }
   }

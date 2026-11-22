@@ -19,7 +19,7 @@
 <li><b>Откройте карту доверия.</b> Файл <code>projects/meganeuroseti-ref/outputs/trust-map.html</code> открывается в браузере. Цвет абзаца показывает основание: факт, расчёт, допущение, гипотеза. Клик по ссылке <code>[c012]</code> открывает дословную цитату и источник. Результат — страницы 3–7 этого PDF.</li>
 <li><b>Запустите проверки.</b> Нужны Python 3.11+ и uv.
 <pre>make doctor   <span class="m"># окружение, хуки, навыки, хеши правил</span>
-make test     <span class="m"># 106 тестов: путь от запроса до решения, точки человека, защита</span>
+make test     <span class="m"># 107 тестов: путь от запроса до решения, точки человека, защита</span>
 make eval     <span class="m"># инъекции, каналы атак, дефекты стратегии → evals/report.md</span></pre>
 Измерено 18.11.2026: <code>make test</code> — 97 с, <code>make eval</code> — 66 с, вызовов моделей нет.</li>
 <li><b>Посмотрите состояние.</b> <code>bin/osnovanie --project meganeuroseti-ref resume</code> показывает этап, точки человека и следующий шаг. <code>score</code> даёт индекс обоснованности (85 из 100), <code>whatif</code> показывает, что упадёт, если убрать источник.</li>
@@ -308,7 +308,7 @@ make eval     <span class="m"># инъекции, каналы атак, деф�
 <tr><td>YandexGPT-5-Lite 8B и Qwen 3.5 9B (Ollama)</td><td>судьи других семейств в D13, локально, без сети и ключей. Облачный YandexGPT написан по документации, на настоящем ключе не проверен</td><td>нет</td></tr>
 <tr><td>WebSearch Claude Code</td><td>поиск открытых источников субагентом researcher; страницы скачивает только <code>source fetch</code> с разрешённых доменов</td><td>нет</td></tr>
 <tr><td>Python 3.11+, стандартная библиотека</td><td><code>bin/osnovanie</code>: 45 команд, около 6,4 тыс. строк в <code>tools/</code></td><td>да</td></tr>
-<tr><td>uv, pytest</td><td>тесты (106) и запуск evals; векторы fastembed для поиска по смыслу</td><td>для <code>make test</code></td></tr>
+<tr><td>uv, pytest</td><td>тесты (107) и запуск evals; векторы fastembed для поиска по смыслу</td><td>для <code>make test</code></td></tr>
 <tr><td>tesseract, whisper-cli, ffmpeg, pdftotext</td><td>разбор изображений (OCR), расшифровка аудио, кадры видео, pdf. <code>doctor</code> показывает, что установлено</td><td>нет</td></tr>
 <tr><td>MCP <code>kb-state</code></td><td>чтение состояния и базы знаний из среды; HTTP-сервер <code>serve</code> только для чтения</td><td>нет</td></tr>
 <tr><td>Хуки Claude Code</td><td>SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop, SubagentStop, PreCompact</td><td>да</td></tr></table>
@@ -432,7 +432,7 @@ outputs/monday.md — одна страница для руководителя:
 <tr><td>Сборка эталонного проекта (<code>demo seed</code>)</td><td class="num">1,35 с</td><td>измерено 18.11.2026 в копии репозитория; без сети и модели</td></tr>
 <tr><td>Деньги на эталонный проект</td><td class="num">$0,00, 0 вызовов</td><td><code>outputs/cost.md</code>; моделей не вызывали</td></tr>
 <tr><td>Время человека в демо</td><td class="num">0 мин</td><td>точки закрыл сценарий; человек не участвовал</td></tr>
-<tr><td><code>make test</code></td><td class="num">97 с, 106 тестов</td><td>измерено 18.11.2026 на машине автора; без моделей</td></tr>
+<tr><td><code>make test</code></td><td class="num">97 с, 107 тестов</td><td>измерено 18.11.2026 на машине автора; без моделей</td></tr>
 <tr><td><code>make eval</code></td><td class="num">66 с</td><td>тот же замер</td></tr>
 <tr><td>Сбор 27 цитат 14.11.2026</td><td class="num">нет данных</td><td>страницы открывались через curl, цитаты сверены с текстом; время и стоимость сессии не записаны</td></tr>
 <tr><td>Живой прогон t1 «МегаНейросети», до G4 и R</td><td class="num">11,89 $, 416 вызовов</td><td>19.11.2026, <code>cost report</code>; этапы 40 мин; точки закрывала сессия Claude в роли руководителя, не человек</td></tr>
@@ -505,7 +505,7 @@ outputs/monday.md — одна страница для руководителя:
 <tr><td>Оценки и история замеров детектора</td><td><code>evals/report.md</code>, <code>evals/HISTORY.md</code></td></tr>
 <tr><td>Демо и живые прогоны t1, t2</td><td><code>projects/&lt;проект&gt;/outputs/</code></td></tr>
 <tr><td>Числа для README, PDF, сайта</td><td><code>docs/facts.json</code>; сверка <code>facts check</code></td></tr></table>
-<p class="small" style="margin-bottom:0">Числа этого документа взяты из <code>docs/facts.json</code> (на 2026-11-20T13:49:49+03:00) и из файлов проекта. Данные открытые.</p>
+<p class="small" style="margin-bottom:0">Числа этого документа взяты из <code>docs/facts.json</code> (на 2026-11-22T12:24:49+03:00) и из файлов проекта. Данные открытые.</p>
 <div class="foot">Основание · описание работы · конкурсная работа, неофициальный материал</div>
 </section>
 

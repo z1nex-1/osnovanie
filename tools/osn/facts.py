@@ -51,7 +51,7 @@ def build(root: Path) -> dict:
     from .cli import RULE_FILES, _rules_hashes, parser
 
     commands = next(a for a in parser()._actions if a.dest == "command").choices or {}
-    tests = sum(len(re.findall(r"^\s+def test_", p.read_text("utf-8"), re.M)) for p in (root / "tests").glob("test_*.py"))
+    tests = sum(len(re.findall(r"^[ \t]*def test_", p.read_text("utf-8"), re.M)) for p in (root / "tests").glob("test_*.py"))
     results = read_json(root / "evals/results.json", {}) or {}
     inj = results.get("injection", {})
     channels = results.get("channels", {})
