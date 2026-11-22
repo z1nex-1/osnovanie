@@ -7,13 +7,11 @@
 Этап: решение принято, сопровождение
 Точки человека: G1: approved, G2: approved, G3: approved, G4: approved
 Источники: 15. Утверждения: факт 92, устарело 16, отозвано 3, гипотеза 3, допущение 27, прогноз 4. Варианты: O1, O2, O3, O4
-Потрачено: $7.60 из $15.00
+Потрачено: $8.01 из $15.00
 Дальше: Запишите обязательства. При новых данных: osnovanie review run.
 
 ## Последние действия
 
-- 2026-11-20T13:44 gate_open gate=G4
-- 2026-11-20T13:45 gate_approve channel=chat gate=G4
 - 2026-11-20T13:45 snapshot label=решение G4 version=v1
 - 2026-11-20T13:45 stage stage=decided
 - 2026-11-20T13:45 commitment id=k001
@@ -24,3 +22,5 @@
 - 2026-11-20T13:46 report_build covered=77 total=77
 - 2026-11-20T13:46 report_build covered=77 total=77
 - 2026-11-20T13:47 report_build covered=77 total=77
+- 2026-11-20T15:07 blocked agent=None reason=Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie. to
+- 2026-11-20T15:07 blocked agent=None reason=Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из ou

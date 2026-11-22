@@ -263,3 +263,5 @@
 {"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:46:09+03:00"}
 {"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:46:31+03:00"}
 {"covered": 77, "kind": "report_build", "total": 77, "ts": "2026-11-20T13:47:02+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Команда head вне разрешённого списка. Рабочий инструмент агента: bin/osnovanie.", "tool": "Bash", "ts": "2026-11-20T15:07:55+03:00"}
+{"agent": null, "kind": "blocked", "reason": "Перенаправления и фоновые запуски запрещены. Передавайте данные через --file из outputs/.", "tool": "Bash", "ts": "2026-11-20T15:07:59+03:00"}
