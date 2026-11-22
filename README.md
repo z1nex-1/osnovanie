@@ -2,7 +2,7 @@
 
 Папка-агент для руководителя цифрового продукта. Открываете её в Claude Code или Cursor, пишете вопрос своими словами («кому продавать», «почему уходят», «что сказать клиентам») — агент ведёт работу от постановки до продуктовой и коммуникационной стратегии с планом проверки. Каждое число в стратегии ведёт к дословной цитате источника, у каждого варианта есть сильное возражение, а когда приходят новые данные, агент сам находит выводы, которые на них держались.
 
-[Видео, 4 мин 5 с](docs/video/osnovanie-video.mp4) · [презентация](docs/osnovanie-presentation.pdf) · [описание работы, PDF](docs/description.pdf) · [стенд с реплеем прогона](https://osnovanie.z1nex.ru) · [стратегия по брифу, 19 стр.](projects/megafon-family/outputs/report.pdf) · [карта доверия](projects/megafon-family/outputs/trust-map.html)
+[Видео, 2 мин 27 с](docs/video/osnovanie-video.mp4) · [презентация](docs/osnovanie-presentation.pdf) · [описание работы, PDF](docs/description.pdf) · [стенд с реплеем прогона](https://osnovanie.z1nex.ru) · [стратегия по брифу, 19 стр.](projects/megafon-family/outputs/report.pdf) · [карта доверия](projects/megafon-family/outputs/trust-map.html)
 
 ## Прогон по брифу МегаФона «Связь для близких», 20.11.2026
 
